@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>企业网站实例</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/setHomeSetFav.js"></script>
+<script type="text/javascript" src="js/myfocus-2.0.1.min.js" charset="utf-8"></script><!--引入myFocus库-->
+<script type="text/javascript">
+myFocus.set({
+    id:'boxID',//焦点图盒子ID
+    pattern:'mF_fancy',//风格应用的名称
+    time:3,//切换时间间隔(秒)
+    trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+    width:1000,//设置图片区域宽度(像素)
+    height:310,//设置图片区域高度(像素)
+    txtHeight:'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+});
+</script>
+</head>
+
+<body>
+<div class="top">
+  <div class="top_content">
+    <ul>
+      <li><a href="#">联系我们</a></li>
+      <li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a></li>
+      <li><a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a></li>
+    </ul>
+  </div>
+</div>
+<!--页面顶端top结束-->
+
+<div class="wrap">
+  <div  class="logo">
+    <div class="logo_left"><img src="images/logo.jpg" /></div>
+    <div class="logo_right"><img src="images/tel.jpg" width="28" height="28" />服务热线：<span class="tel">13018003978</span></div>
+  </div>
+  <!--logo结束-->
+  
+  <div class="nav">
+    <div  class="nav_left"></div>
+    <div class="nav_mid">
+      <div class="nav_mid_left">
+        <ul>
+          <li><a href="#">首页</a></li>
+          <li><a href="list.html">关于校兼</a></li>
+          <li><a href="list.html">新闻动态</a></li>
+          <li><a href="list.html">服务中心</a></li>
+          <li><a href="list.html">学生招聘</a></li>
+        </ul>
+      </div>
+      <!--nav_mid_left结束-->
+      <div class="nav_mid_right">
+        <form action="" method="post">
+          <input type="text" class="search_text" />
+          <!--<input type="text" class="search_text" x-webkit-speech />-->
+        </form>
+      </div>
+      <!--nav_mid_right结束--> 
+    </div>
+    <!--导航主体nav_mid结束-->
+    <div class="nav_right"></div>
+  </div>
+  <!--nav结束-->
+  
+  <div class="ad">
+    <div id="boxID"><!--焦点图盒子-->
+      <div class="loading"><img src="images/loading.gif" alt="请稍候..." /></div>
+      <!--载入画面(可删除)-->
+      <div class="pic"><!--内容列表(li数目可随意增减)-->
+        <ul>
+          <li><a href="#"><img src="images/ad2.jpg" thumb="" alt="" text="详细描述2" /></a></li>
+          <li><a href="#"><img src="images/ad3.jpg" thumb="" alt="" text="详细描述3" /></a></li>
+          <li><a href="#"><img src="images/ad4.jpg" thumb="" alt="" text="详细描述4" /></a></li>
+          <li><a href="#"><img src="images/ad3.jpg" thumb="" alt="" text="详细描述5" /></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--ad结束-->
+  
+  <div class="main">
+    <div class="news">
+      <div class="title">
+        <h2 class="titile_left">新闻中心</h2>
+        <span class="title_right"><a href="#">More&gt;&gt;</a></span> </div>
+      <!--title结束-->
+      
+      <div class="pic_news"> <img src="images/news.jpg" alt="520 慕女神喊你来表白" width="113" height="77" />
+        <h2><a href="news.html">学生兼职宣讲会</a></h2>
+        <p>活动时间：10月26日—10月28日<br />
+          招人公布时间：10月28日<br />
+          <a href="news.html">Know More>></a></p>
+      </div>
+      <!--pic_news结束-->
+      
+      <div class="news_list">
+        <ul>
+          <li><span>2014-06-01</span> <a href="news.html">
+          [校兼回访] 厉害了我的同学！</a></li>
+          <li><span>2014-06-01</span><a href="news.html">
+          家贫不可怕，懒惰才可怕！</a></li>
+          <li><span>2014-05-30</span><a href="news.html">
+          《说说你在大学都做了什么?》</a></li>
+          <li><span>2014-05-28</span><a href="news.html" title="aa">[校兼访谈] 这位美女学生的奋斗青春</a></li>
+        </ul>
+      </div>
+      <!--news_list结束--> 
+      
+    </div>
+    <!--news结束-->
+    
+    <div class="products">
+      <div class="title">
+        <h2 class="titile_left">服务中心</h2>
+        <span class="title_right"><a href="#">More&gt;&gt;</a></span> </div>
+      <!--title结束-->
+      
+      <div class="product_list"><img src="images/css.jpg" alt="CSS圆角进化论" width="158" height="106" />
+        <h2><a href="news.html">学生好才是真的好！</a></h2>
+        <p> 为了让同学们更好的找到适合自己的岗位，我们的工作人员一直在不断寻找和更新招人单位，也不断的在更新页面内容，让同学们更加方便快捷找到合适的工作。</p>
+      </div>
+      <!--product_list结束-->
+      
+      <div class="product_type">
+        <ul>
+          <li>餐饮服务</li>
+          <li>发传单</li>
+          <li>快递接收</li>
+          <li>学校用人</li>
+        </ul>
+      </div>
+    </div>
+    <!--products结束-->
+    
+    <div class="sidebar">
+      <div class="video">
+        <div class="title">
+          <h2 class="titile_left">学生焦点</h2>
+          <span class="title_right"><a href="#">More&gt;&gt;</a></span> </div>
+        <!--title结束-->
+        <p class="video_content">
+          <embed src="http://player.youku.com/player.php/sid/XNjkzMDE5MTUy/v.swf" allowFullScreen="true" quality="high" width="220" height="140" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+        </p>
+      </div>
+      <!--video结束-->
+      
+      <div class="service"> <img src="images/app.jpg" /> </div>
+    </div>
+    <!--sidebar结束--> 
+    
+  </div>
+  <!--main结束--> 
+</div>
+<!--最外层wrap结束  -->
+<div class="copyright">
+  <div class="copyright_content">
+    <ul>
+      <li>关于
+        <ul>
+          <li><a href="">网站历史</a></li>
+          <li><a href="">联系我们</a></li>
+          <li><a href="">加入我们</a></li>
+          <li><a href="">版权声明</a></li>
+        </ul>
+      </li>
+      <li>工作
+        <ul>
+          <li><a href="">餐厅服务</a></li>
+          <li><a href="">发传单</a></li>
+          <li><a href="">接收快递</a></li>
+          <li><a href="">学校用人</a></li>
+        </ul>
+      </li>
+      <li>关注
+        <ul>
+          <li><a href="">新浪微博</a></li>
+          <li><a href="">腾讯微博</a></li>
+          <li><a href="">企业微信</a></li>
+          <li><a href="">QQ空间</a></li>
+        </ul>
+      </li>
+      <li>留言
+        <ul>
+          <li><a href="">意见反馈</a></li>
+          <li><a href="">问题留言</a></li>
+          <li><a href="">媒体联络</a></li>
+          <li><a href="">在线客服</a></li>
+        </ul>
+      </li>
+      <li><img src="images/weixin.png" alt="微信关注" width="30" height="27" />微信关注
+        <ul>
+          <li><img src="images/qrcode.jpg" alt="扫描关注慕课网官方微信" width="102" height="102" /></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!--copyright_content结束--> 
+</div>
+</body>
+</html>
