@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-      12332312
+  <div class="page-home">
+     <Article />
   </div>
 </template>
 
@@ -8,9 +8,11 @@
 // @ is an alias to /src
 import store from '@/store'
 import { mapState } from 'vuex'
+import Article from '@/components/Article'
 export default {
   name: 'home',
   components: {
+      Article
   },
   computed: mapState({
     posts: state => state.posts,
@@ -32,4 +34,20 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.page{
+    &-home{
+        padding: 0 .15rem;
+        // background: #fff;
+    }
+}
+@media screen and (max-width: 780px) {
+    .page{
+        &-home{
+            padding: 0 .3rem;
+        }
+    }
+}
+</style>
+
 

@@ -26,6 +26,16 @@ export default new Router({
             component: () => import( /* webpackChunkName: "Archive" */ './views/Archive')
         },
         {
+            path: "/label",
+            name: "Label",
+            component: () => import( /* webpackChunkName: "Archive" */ './views/Label')
+        },
+        {
+            path: "/mood",
+            name: "Mood",
+            component: () => import( /* webpackChunkName: "Archive" */ './views/Mood')
+        },
+        {
             path: "/friend",
             name: "Friend",
             component: () => import( /* webpackChunkName: "Friend" */ './views/Friend')

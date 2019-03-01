@@ -16,7 +16,7 @@ export const on = (() =>{
   })()
   
 export const getWindowHeight = (()=> {
-    window.addEventListener('resize',function(){
+    window.addEventListener('scroll',function(){
         console.log(window.innerHeight)
     },false)
 })()
