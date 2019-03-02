@@ -20,14 +20,15 @@ const checkStatus = res => {
 // 获取文章列表
 export const queryPosts = async ({
     page = 1,
-    pageSize = 10,
+    pageSize = 5,
     filter = ''
 }) => {
     try {
         const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
-        const res = await axios(url)
+        const res = await fetch(url)
         checkStatus(res)
-        return res
+        const data = await res.json()
+        return data
     } catch (error) {
         console.log(error)
     }

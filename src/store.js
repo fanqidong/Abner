@@ -4,16 +4,18 @@ import Vuex from "vuex"
 Vue.use(Vuex)
 
 import { queryPosts } from './api/request'
+import { postFormat }  from './utils/format'
 export default new Vuex.Store({
     state: {
         tips: '',
         tipsUpdateAt: '',
         page: 0,
-        pageSize: 10,
+        pageSize: 5,
         posts: [],
         hasMore: true
       },
       mutations: {
+        //  设置文章列表
         setPosts(state,{ posts , page }){
             state.page = page
             state.posts = state.posts.concat(posts)
@@ -21,6 +23,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        // 请求文章列表
         async queryPosts({ commit , state }){
             const { page, pageSize, hasMore } = state
             if(!hasMore) return
@@ -28,6 +31,7 @@ export default new Vuex.Store({
                 page: page + 1,
                 pageSize
             })
+            data.forEach(postFormat)
             commit('setPosts', { posts: data, page: page + 1 }) 
         }
     }

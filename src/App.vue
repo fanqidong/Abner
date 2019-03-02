@@ -38,7 +38,5 @@ export default {
     max-width: 900px;
     margin: auto;
 }
-@media screen and (max-width: 780px) {
-   
-}
+
 </style>
