@@ -60,6 +60,7 @@
         padding: 0.15rem;
         background: rgba($color: #fff, $alpha: 0.6);
         border-radius: 0 5px 5px 0;
+        cursor: pointer;
     }
 
     &-desc {
@@ -82,8 +83,13 @@
         span {
             display: flex;
             align-items: center;
+           
         }
-
+        span.archive{
+            em{
+                margin-right: .04rem;
+            }
+        }
         i {
             display: inline-block;
             margin-right: 0.04rem;

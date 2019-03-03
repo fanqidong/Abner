@@ -4,8 +4,8 @@ export const postFormat = post =>{
     let reg = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
     let info = reg.exec(str[0])
     post.cover = {
-        img: info[1],
-        text: info[2]
+        text: info[1],
+        src: info[2]
     }
     post.desc = str[4]
     return post

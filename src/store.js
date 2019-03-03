@@ -19,11 +19,11 @@ export default new Vuex.Store({
         setPosts(state,{ posts , page }){
             state.page = page
             state.posts = state.posts.concat(posts)
-            // state.hasMore = posts.length === state.pageSize
+            state.hasMore = posts.length === state.pageSize
         }
     },
     actions: {
-        // 请求文章列表
+        // 请求文章列表 && 文章归档
         async queryPosts({ commit , state }){
             const { page, pageSize, hasMore } = state
             if(!hasMore) return

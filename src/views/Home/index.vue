@@ -2,37 +2,45 @@
   <div class="page-home">
     <div class="article-list acticle" v-if="posts.length">
       <article
-        v-for="(item,index) in posts"
-        :key="item.id"
+        v-for="(post,index) in posts"
+        :key="post.id"
         class="article-wrapper clearfix"
         :class="{'article-float':index%2!=0}"
       >
         <div class="article-cover">
           <a href="javascript:;" class="article-link">
-            <img src="../../assets/img/bg.jpg" alt>
+            <img :src="post.cover.src" :alt="post.cover.text">
           </a>
         </div>
+        <!-- 文章内容  Start -->
         <div class="article-content">
-          <div class="article-date">{{item.created_at}}</div>
-          <h2 class="article-title">{{item.title}}</h2>
+          <!-- 发表时间 -->
+          <div class="article-date">发表于{{post.created_at.slice(0,10)}}</div>
+          <!-- 文章标题 -->
+          <h2 class="article-title">{{post.title}}</h2>
+          <!-- 简介 -->
           <div class="article-desc">
-            {{item.desc}}
+            {{post.desc}}
           </div>
           <div class="article-info">
-            <span>
-              <i class="iconfont icon-shouye"></i>
-              <em>{{item.created_at}}</em>
-            </span>
+            <!-- 热度 -->
             <span>
               <i class="iconfont icon-shouye"></i>
               <em>热度：1°C</em>
             </span>
-            <span>
+            <!-- 归档 -->
+             <span>
               <i class="iconfont icon-shouye"></i>
-              <em>{{item.milestone.title}}</em>
+              <em>{{post.milestone.title }}</em>
+            </span>
+            <!-- 标签 -->
+            <span class="archive">
+              <i class="iconfont icon-shouye"></i>
+              <em v-for="label in post.labels" :key="label.id">{{label.name}}</em>
             </span>
           </div>
         </div>
+        <!-- 文章内容 End -->
       </article>
     </div>
   </div>

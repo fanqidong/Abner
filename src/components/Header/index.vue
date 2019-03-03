@@ -51,6 +51,12 @@ export default {
           path: '/friend',
           icon: 'pengyouquan',
           text: '知交'
+        },
+        {
+          id: 6,
+          path: '/mood',
+          icon: 'pengyouquan',
+          text: '每日一说'
         }
       ]
     }
