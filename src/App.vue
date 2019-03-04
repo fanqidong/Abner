@@ -5,7 +5,9 @@
     <main>
       <div class="main-content">
         <transition name="fade" mode="out-in">
-          <router-view/>
+            <keep-alive>
+              <router-view/>
+            </keep-alive>
         </transition>
       </div>
     </main>
@@ -25,8 +27,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('../src/assets/sass/init.scss');
-@import url('../src/assets/sass/animation.scss');
 
 .fade-enter-active {
   animation: zoomIn 0.4s;

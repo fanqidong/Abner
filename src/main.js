@@ -7,6 +7,8 @@ Vue.config.productionTip = false
 
 // 全局样式引入
 import './assets/css/reset.css'
+import './assets/sass/init.scss'
+import './assets/sass/animation.scss'
 
 new Vue({
     router,

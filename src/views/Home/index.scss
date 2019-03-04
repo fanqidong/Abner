@@ -13,15 +13,18 @@
 }
 
 .article {
-    &:hover {
-        top: 0.05rem;
-    }
+    position: relative;
 
     &-wrapper {
         position: relative;
         width: 100%;
         margin: 0.2rem 0;
         border-radius: 5px;
+        transition: all 1s;
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+        }
     }
 
     &-link {
@@ -71,7 +74,9 @@
         text-overflow: ellipsis;
         overflow: hidden;
     }
-
+    &-title{
+        text-align: justify;
+    }
     &-date {
         text-align: center;
     }
@@ -83,13 +88,15 @@
         span {
             display: flex;
             align-items: center;
-           
+
         }
-        span.archive{
-            em{
+
+        span.archive {
+            em {
                 margin-right: .04rem;
             }
         }
+
         i {
             display: inline-block;
             margin-right: 0.04rem;
