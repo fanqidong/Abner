@@ -33,3 +33,19 @@ export const queryPosts = async ({
         console.log(error)
     }
 }
+// 获取心情
+export const queryMood = async ({
+    page = 1,
+    pageSize = 10
+}) => {
+    try {
+        const url = `${blog}/issues?${closed}&labels=mood&&page=${page}&per_page=${pageSize}`
+        const res = await fetch(url);
+        checkStatus(res)
+        const data = await res.json();
+        console.log(data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}

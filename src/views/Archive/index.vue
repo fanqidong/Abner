@@ -1,9 +1,32 @@
 <template>
-  <div>归档</div>
+  <div id="archive-page">
+       <archive-card />
+  </div>
 </template>
 
 <script>
-export default {}
+import ArchiveCard from '@/components/ArchiveCard'
+
+export default {
+    data(){
+        return{
+
+        }
+    },
+    components:{
+        ArchiveCard
+    },
+    computed:{
+
+    },
+    created(){
+
+    },
+    methods:{
+
+    },
+
+}
 </script>
 
 <style>

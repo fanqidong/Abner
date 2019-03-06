@@ -1,23 +1,4 @@
-/*重写滚动条样式*/
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: transparent;
-    border-radius: 40px;
-}
 
-::-webkit-scrollbar-thumb {
-    box-shadow: 0 0 15px rgba(245, 220, 184, 0.81);
-    border-radius: 40px;
-    background-color: #e1bfba;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 13px;
-    }
-}
-
-/*随机渐变背景色*/
 .random-bg0 {
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 }
@@ -68,13 +49,4 @@
 
 .random-bg12 {
     background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-}
-
-/*l页面路由切换*/
-.fade-enter-active {
-    animation: bounceIn .6s;
-}
-
-.fade-leave-active {
-    animation: zoomOut .4s;
 }

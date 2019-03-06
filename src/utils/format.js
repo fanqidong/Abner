@@ -1,4 +1,5 @@
-export const postFormat = post =>{
+// 格式化文章
+export const formatPost = post =>{
     let { body , created_at } = post
     let str = body.split('\r\n')
     let reg = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
@@ -10,3 +11,8 @@ export const postFormat = post =>{
     post.desc = str[4]
     return post
 }
+// 格式化心情
+// export const formatPost = post =>{
+//     let { body , created_at } = post
+    
+// }

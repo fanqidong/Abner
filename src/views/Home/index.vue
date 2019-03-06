@@ -9,7 +9,7 @@
       >
         <div class="article-cover">
           <a href="javascript:;" class="article-link">
-            <img :src="post.cover.src" :alt="post.cover.text">
+            <img v-lazy="post.cover.src" :alt="post.cover.text">
           </a>
         </div>
         <!-- 文章内容  Start -->
@@ -19,9 +19,7 @@
           <!-- 文章标题 -->
           <h2 class="article-title">{{post.title}}</h2>
           <!-- 简介 -->
-          <div class="article-desc">
-            {{post.desc}}
-          </div>
+          <div class="article-desc">{{post.desc}}</div>
           <div class="article-info">
             <!-- 热度 -->
             <span>
@@ -29,7 +27,7 @@
               <em>热度：1°C</em>
             </span>
             <!-- 归档 -->
-             <span>
+            <span>
               <i class="iconfont icon-shouye"></i>
               <em>{{post.milestone.title }}</em>
             </span>
@@ -74,7 +72,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import './index.scss'
+@import './index.scss';
 </style>
 
 

@@ -28,12 +28,6 @@ export default {
 
 <style lang="scss">
 
-.fade-enter-active {
-  animation: zoomIn 0.4s;
-}
-.fade-leave-active {
-  animation: zoomOut 0.4s;
-}
 .main-content{
     max-width: 900px;
     margin: auto;
