@@ -33,6 +33,18 @@ export const queryPosts = async ({
         console.log(error)
     }
 }
+// 获取标签
+export const queryLabel = async () => {
+    try {
+        const url = `${blog}/labels?${access_token}`
+        const response = await fetch(url)
+        checkStatus(response)
+        const data = await response.json()
+        return data
+    } catch (err) {
+        console.log(err)
+    }
+}
 // 获取心情
 export const queryMood = async ({
     page = 1,
@@ -43,7 +55,6 @@ export const queryMood = async ({
         const res = await fetch(url);
         checkStatus(res)
         const data = await res.json();
-        console.log(data)
         return data
     } catch (error) {
         console.log(error)

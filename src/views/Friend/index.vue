@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="friend row">
         友链
     </div>
 </template>

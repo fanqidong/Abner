@@ -1,5 +1,5 @@
 <template>
-  <div class="page-home">
+  <div class="home row">
     <div class="article-list acticle" v-if="posts.length">
       <article
         v-for="(post,index) in posts"
@@ -51,6 +51,14 @@ import { mapState } from 'vuex'
 export default {
   name: 'home',
   components: {},
+  data() {
+    return {
+      animationRate: 0.4,
+      scrolled: 0,
+      bhAnimationFactor: 1,
+      animationFactor: 0
+    }
+  },
   computed: mapState({
     posts: state => state.posts,
     hasMore: state => state.hasMore
@@ -67,7 +75,8 @@ export default {
     }
   },
   mounted() {
-    console.log(store.state.posts)
+  },
+  destroyed: function() {
   }
 }
 </script>

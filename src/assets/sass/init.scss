@@ -11,11 +11,51 @@
     background-color: #e1bfba;
 }
 
+.row {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding-top: 2rem !important;
+    padding-left: .2rem !important;
+    padding-right: .2rem !important;
+}
+
+/*小屏幕下(手机类)的样式*/
+@media only screen and (max-width: 601px) {
+    .container {
+        position: relative;
+        width: 95%;
+    }
+}
+
+/*中等屏幕下(平板类)的样式*/
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .container {
+        position: relative;
+        width: 85%;
+    }
+}
+
+/*大屏幕下(桌面类)的样式*/
+@media only screen and (min-width: 993px) {
+    .container {
+        position: relative;
+        width: 80%;
+        max-width: 1125px;
+    }
+}
+
+/*移动端样式*/
 @media screen and (max-width: 768px) {
     body {
         font-size: 13px;
     }
+
+    .row {
+        width: 92%;
+    }
 }
+
 
 /*随机渐变背景色*/
 .random-bg0 {
@@ -72,7 +112,7 @@
 
 /*l页面路由切换*/
 .fade-enter-active {
-    animation: bounceIn .6s;
+    animation: fadeInUp .6s;
 }
 
 .fade-leave-active {

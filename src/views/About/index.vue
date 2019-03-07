@@ -1,5 +1,5 @@
 <template>
-    <div>关于</div>
+    <div class="about row">??</div>
 </template>
 
 <script>

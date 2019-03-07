@@ -1,5 +1,5 @@
 <template>
-  <div>分类</div>
+  <div class="category row">??</div>
 </template>
 
 <script>

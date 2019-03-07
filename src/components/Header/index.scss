@@ -1,0 +1,56 @@
+.header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: fadeInDown 1s;
+}
+
+.logo {
+    float: left;
+    display: flex;
+    align-items: center;
+    height: .6rem;
+    color: #fff;
+    font-size: .22rem;
+    img {
+        display: inline-block;
+        height: .45rem;
+        margin-right: .1rem;
+    }
+}
+
+.menu-wrapper {
+    margin: auto;
+    font-size: .16rem;
+}
+
+.menu-list {
+    float: right;
+    display: flex;
+    justify-content: space-between;
+
+    li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: .2rem .15rem .1rem;
+    }
+
+    .title {
+        margin-left: .03rem;
+        color: #fff;
+    }
+}
+
+.iconfont {
+    font-size: 16px;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-wrapper {
+        width: 90%;
+        font-size: 14px;
+    }
+}

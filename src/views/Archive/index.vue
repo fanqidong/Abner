@@ -1,5 +1,5 @@
 <template>
-  <div id="archive-page">
+  <div id="archive" class="row archive">
        <archive-card />
   </div>
 </template>

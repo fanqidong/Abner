@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 import {
     queryPosts,
-    queryMood
+    queryMood,
+    queryLabel
 } from './api/request'
 import {
     formatPost
@@ -63,6 +64,12 @@ export default new Vuex.Store({
             })
             console.log(data)
             return data
+        },
+        // 获取文章标签
+        async queryLabel(){
+            let data = await queryLabel()
+            data = data.filter(label =>  !['Mood','Friend','About'].includes(label.name))
+              return data
         }
     }
 })

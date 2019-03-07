@@ -1,8 +1,18 @@
 <template>
-  <div>3213</div>
+  <div class="mood row">
+    <transition name="fade" mode="out-in">
+      <ul class="mood-list">
+        <li class="mood-item" v-for="mood in moodList" :key="mood.id">
+          <p class="desc">{{mood.body}}</p>
+          <span>发表于{{mood.created_at.slice(0,10)}}</span>
+        </li>
+      </ul>
+    </transition>
+  </div>
 </template>
 
 <script>
+import store from '@/store'
 export default {
   data() {
     return {
@@ -16,16 +26,18 @@ export default {
     await this.queryMood()
   },
   methods: {
+    //   获取心情
     async queryMood() {
-      const mood = this.$store.dispatch('queryMood', {
+      const mood = await store.dispatch('queryMood', {
         page: 1,
         pageSize: this.pageSize
       })
-      console.log(mood)
+      this.moodList = mood
     }
   }
 }
 </script>
-
-<style>
+<style lang="scss" scoped>
+@import './index.scss';
 </style>
+
