@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Bg :opacity="opacity" />
+    <Bg :opacity="opacity" :height="height"/>
     <Header/>
     <main ref="scrollingContainer">
       <div class="main-content">
@@ -17,13 +17,15 @@
 // import Header from './componets/Header'
 import Header from '@/components/Header'
 import Bg from '@/components/Background'
+import { getWindowHeight } from '@/utils/dom'
 export default {
   name: 'App',
   data() {
     return {
       animationRate: 0.4,
       scrollTop: 0,
-      opacity: 1
+      opacity: 1,
+      height: ''
     }
   },
   components: {
@@ -37,22 +39,20 @@ export default {
       this.opacity = this.scrollTop / 100
     }
   },
+  created(){
+    this.height=getWindowHeight
+  },
   mounted() {
-    // window.addEventListener('scroll',()=>{
-    //   this.opacity = ((1- document.documentElement.scrollTop / 400) < 0)? 0 : 1- document.documentElement.scrollTop / 400
-    //   console.log(`透明度为${this.opacity}`)
-    // },false)
+    console.log(this.height)
+    window.addEventListener('scroll',()=>{
+      this.opacity = ((1- document.documentElement.scrollTop / 400) < 0)? 0 : 1- document.documentElement.scrollTop / 400
+      console.log(`透明度为${this.opacity}`)
+    },false)
   },
   destroyed: function() {
-    this.$refs.scrollingContainer.removeEventListener('scroll', this.handleScroll, false)
   }
 }
 </script>
 
 <style lang="scss">
-
-.main-content {
-  // max-width: 900px;
-  // margin: auto;
-}
 </style>

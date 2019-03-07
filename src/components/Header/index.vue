@@ -7,7 +7,7 @@
             <span>你的微笑</span>
         </a>
         <ul class="menu-list">
-          <li v-for="item in menuList" :key="item.id">
+          <li v-for="item in menuList" :key="item.id" class="opacity0">
             <i :class="['iconfont',`icon-${item.icon}`]"></i>
             <router-link :to="item.path" class="title">{{item.text}}</router-link>
           </li>
