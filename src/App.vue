@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Bg :opacity="opacity" :height="height"/>
-    <Header/>
+    <Bg/>
+    <Header :is-menu-open="isMenuOpen" />
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fade" mode="out-in">
@@ -17,15 +17,11 @@
 // import Header from './componets/Header'
 import Header from '@/components/Header'
 import Bg from '@/components/Background'
-import { getWindowHeight } from '@/utils/dom'
 export default {
   name: 'App',
   data() {
     return {
-      animationRate: 0.4,
-      scrollTop: 0,
-      opacity: 1,
-      height: ''
+      isMenuOpen: false
     }
   },
   components: {
@@ -33,21 +29,15 @@ export default {
     Bg
   },
   methods: {
-    handleScroll: function() {
-      this.scrollTop = document.documentElement.scrollTop
-      console.log(this.scrollTop)
-      this.opacity = this.scrollTop / 100
-    }
+   
   },
   created(){
-    this.height=getWindowHeight
+   
   },
   mounted() {
-    console.log(this.height)
-    window.addEventListener('scroll',()=>{
-      this.opacity = ((1- document.documentElement.scrollTop / 400) < 0)? 0 : 1- document.documentElement.scrollTop / 400
-      console.log(`透明度为${this.opacity}`)
-    },false)
+      window.addEventListener('scroll',()=>{
+          document.documentElement.scrollTop >= 0? (this.isMenuOpen = true) : (this.isMenuOpen = false)
+    })
   },
   destroyed: function() {
   }

@@ -13,7 +13,3 @@ export const on = (() => {
     }
   }
 })()
-
-export const getWindowHeight = (function(){
-      return window.innerHeight
-})()

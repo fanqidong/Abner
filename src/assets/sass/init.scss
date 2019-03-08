@@ -50,9 +50,12 @@
 /*移动端样式*/
 @media screen and (max-width: 768px) {
     body {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.428;
     }
-
+    .hidden-xs{
+        display: none !important;
+    }
     .row {
         width: 92%;
     }

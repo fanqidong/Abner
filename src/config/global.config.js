@@ -1,3 +1,10 @@
+/*
+ * @LastEditors: Abner.fanqidong
+ * @Github: https://github.com/fanqidong
+ * @description: 博客全局配置
+ * @Date: 2019-02-27 14:19:22
+ * @LastEditTime: 2019-03-08 11:37:04
+ */
 export default {
     title: '樊启东的私人space',
     // 博客仓库Api地址
@@ -13,4 +20,5 @@ export default {
         appId:'1',
         appKey:'2'
     }
+    
  }

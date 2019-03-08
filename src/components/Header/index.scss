@@ -4,32 +4,50 @@
     left: 0;
     width: 100%;
     animation: fadeInDown 1s;
+    z-index: 999;
+    color: #fff;
+    &.active {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &.active .logo {
+        // animation: fadeInDown 1000ms both;
+    }
 }
 
-.logo {
-    float: left;
-    display: flex;
-    align-items: center;
+.nav-logo {
+    position: absolute;
     height: .6rem;
-    color: #fff;
     font-size: .22rem;
+    // opacity: 1;
+    .brand{
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
     img {
         display: inline-block;
         height: .45rem;
         margin-right: .1rem;
     }
-    
+
 }
-.menu-wrapper{
-    @for $i from 1 through 7 {
-        &:hover .menu-list li:nth-of-type(#{$i}){
-            animation: scaleInY .3s .25s*$i both;
-        }
-    }
-}
+
 .menu-wrapper {
     margin: auto;
     font-size: .16rem;
+    height: .6rem;
+    line-height: .6rem;
+    &.menu-open {
+        @for $i from 1 through 7 {
+            .menu-list li:nth-of-type(#{$i}) {
+                animation: scaleInY .3s .25s*$i both;
+            }
+        }
+    }
 }
 
 .menu-list {
@@ -41,7 +59,7 @@
         position: relative;
         display: flex;
         align-items: center;
-        padding: .2rem .15rem .1rem;
+        padding: 0 .15rem .1rem;
     }
 
     .title {
@@ -55,9 +73,32 @@
     color: #fff;
 }
 
+/*移动端导航样式*/
+.nav-collapse{
+    background: none;
+    font-size: .2rem;
+    color: #fff;
+}
+@media screen and (max-width: 992px) {
+    .nav-logo{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        will-change: transform;
+        transition: all .3s ease-out;
+    }
+    .menu-list{
+        display: none;
+    }
+}
 @media screen and (max-width: 768px) {
     .menu-wrapper {
         width: 90%;
         font-size: 14px;
+    }
+}
+@media screen and (min-width: 993px) {
+    .nav-collapse {
+        display: none;
     }
 }

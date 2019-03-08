@@ -1,3 +1,10 @@
+/*
+ * @LastEditors: Abner.fanqidong
+ * @Github: https://github.com/fanqidong
+ * @description: Vue store
+ * @Date: 2019-03-04 10:03:13
+ * @LastEditTime: 2019-03-08 11:36:10
+ */
 import Vue from "vue"
 import Vuex from "vuex"
 
