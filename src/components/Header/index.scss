@@ -1,10 +1,10 @@
 .header {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     animation: fadeInDown 1s;
-    z-index: 999;
+    z-index: 997;
     color: #fff;
     &.active {
         position: fixed;
@@ -78,6 +78,7 @@
     background: none;
     font-size: .2rem;
     color: #fff;
+    cursor: pointer;
 }
 @media screen and (max-width: 992px) {
     .nav-logo{
@@ -85,7 +86,6 @@
         top: 50%;
         transform: translate(-50%,-50%);
         will-change: transform;
-        transition: all .3s ease-out;
     }
     .menu-list{
         display: none;
@@ -95,6 +95,15 @@
     .menu-wrapper {
         width: 90%;
         font-size: 14px;
+    }
+    .header{
+        top: .2rem;
+    }
+    .brand{
+        font-size: .4rem
+    }
+    .nav-collapse{
+        font-size: .35rem;
     }
 }
 @media screen and (min-width: 993px) {

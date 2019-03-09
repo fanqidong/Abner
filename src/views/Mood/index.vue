@@ -2,9 +2,9 @@
   <div class="mood row">
     <transition name="fade" mode="out-in">
       <ul class="mood-list">
-        <li class="mood-item" v-for="mood in moodList" :key="mood.id">
+        <li class="mood-item clearfix" v-for="mood in moodList" :key="mood.id">
           <p class="desc">{{mood.body}}</p>
-          <span>发表于{{mood.created_at.slice(0,10)}}</span>
+          <span class="date">发表于{{mood.created_at.slice(0,10)}}</span>
         </li>
       </ul>
     </transition>

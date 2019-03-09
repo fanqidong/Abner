@@ -9,6 +9,17 @@
             padding: .3rem .4rem;
             text-align: justify;
             margin-bottom: .3rem;
+            transition: all .8s;
+            .desc{
+                margin: 0 0 .1rem 0;
+            }
+            .date{
+                float: right;
+            }
+            &:hover{
+                transform: translateY(-10px);
+                box-shadow: 1px 1px 10px 10px rgba($color: #000000, $alpha: .1);
+            }
        }
     }
 }

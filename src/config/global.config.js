@@ -19,6 +19,50 @@ export default {
     leancloud:{
         appId:'1',
         appKey:'2'
-    }
-    
+    },
+    // 页面导航配置
+    menuList: [
+        {
+          id: 0,
+          path: "/",
+          icon: "shouye",
+          text: "首页"
+        },
+        {
+          id: 1,
+          path: "/archive",
+          icon: "guidangxiangmu",
+          text: "归档"
+        },
+        {
+          id: 2,
+          path: "/label",
+          icon: "biaoqian",
+          text: "标签"
+        },
+        {
+          id: 3,
+          path: "/category",
+          icon: "fenlei",
+          text: "分类"
+        },
+        {
+          id: 4,
+          path: "/about",
+          icon: "guanyu",
+          text: "关于"
+        },
+        {
+          id: 5,
+          path: "/friend",
+          icon: "pengyouquan",
+          text: "知交"
+        },
+        {
+          id: 6,
+          path: "/mood",
+          icon: "pengyouquan",
+          text: "每日一说"
+        }
+      ]
  }

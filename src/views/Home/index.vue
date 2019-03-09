@@ -12,7 +12,8 @@
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
       </div>
     </section>
-
+     <button class="arrow-down">
+      </button>
     <section class="article row">
       <div class="article-list" v-if="posts.length">
         <article
@@ -97,7 +98,20 @@ export default {
 <style lang="scss" scoped>
 @import './index.scss';
 
+.arrow-down{
+  position: absolute;
+  bottom:5%;
+  left: 50%;
+  width: .32rem;
+  height: .32rem;
+  transform: translateX(-50%);
+  border: none;
+  background: url('../../assets/img/arrow-down.svg') no-repeat;
+  background-size:100%;
+  // z-index: 3;
+  animation: floatY 2s infinite;
 
+}
 </style>
 
 
