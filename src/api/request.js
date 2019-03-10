@@ -33,6 +33,19 @@ export const queryPosts = async ({
         console.log(error)
     }
 }
+// 获取当前文章
+export const queryPost = async number => {
+    try {
+        const url = `${blog}/issues/${number}?${open}`
+        const res = await fetch(url)
+        checkStatus(res)
+        const data = await res.json()
+        console.log(data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
 // 获取标签
 export const queryLabel = async () => {
     try {
@@ -60,3 +73,4 @@ export const queryMood = async ({
         console.log(error)
     }
 }
+

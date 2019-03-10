@@ -47,7 +47,7 @@ export default {
   mounted() {
       window.addEventListener('scroll',()=>{
           document.documentElement.scrollTop >= 0? (this.isMenuOpen = true) : (this.isMenuOpen = false)
-    })
+    },{passive:true})
   },
   destroyed: function() {
   }

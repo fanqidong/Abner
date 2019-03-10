@@ -21,6 +21,7 @@
           :key="post.id"
           class="article-wrapper clearfix"
           :class="{'article-float':index%2!=0}"
+          @click="goDetail(post.number)"
         >
           <div class="article-cover">
             <a href="javascript:;" class="article-link">
@@ -64,9 +65,12 @@
 // @ is an alias to /src
 import store from '@/store'
 import { mapState } from 'vuex'
+import MarkDown from '@/components/Markdown'
 export default {
   name: 'home',
-  components: {},
+  components: {
+    MarkDown
+  },
   data() {
     return {
       opacity:''
@@ -82,9 +86,13 @@ export default {
     }
   },
   methods: {
-    //   获取文章列表
+    //  获取文章列表
     async getPosts() {
       await store.dispatch('queryPosts')
+    },
+    // 前往文章详情页
+    goDetail(number){
+      this.$router.push({name: 'ArticleDetail', params:{ number}})
     }
   },
   mounted() {
@@ -109,7 +117,7 @@ export default {
   background: url('../../assets/img/arrow-down.svg') no-repeat;
   background-size:100%;
   // z-index: 3;
-  animation: floatY 2s infinite;
+  animation: floatY 2.2s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 }
 </style>

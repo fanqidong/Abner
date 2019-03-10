@@ -43,6 +43,11 @@ export default new Router({
             path: "/category",
             name: "Category",
             component: () => import( /* webpackChunkName: "Category" */ './views/Category')
+        },
+        {
+            path: "/article/detail/:number",
+            name: "ArticleDetail",
+            component: () => import( /* webpackChunkName: "ArticleDetail" */ './views/ArticleDetail')
         }
     ],
     scrollBehavior (to, from, savedPosition) {

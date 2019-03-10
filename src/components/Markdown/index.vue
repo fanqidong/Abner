@@ -1,17 +1,49 @@
 <template>
-  <div class="markdown-content" v-html="html"></div>
+  <div class="markdown-content" v-html="html">
+  </div>
 </template>
 
 <script>
 import marked from 'marked'
-import hljs from '@/assets/lib/highlight'
+import hljs from 'highlight'
 const rendered = new marked.Renderer()
-rendered.heading = (text, level, raw, slugger)=>{
-    // const 
+
+export default {
+  name: "MarkDown",
+  props:{
+    content:{
+        type: String,
+        default: ''
+    }
+  },
+  data(){
+    return {
+       html: ''
+    }
+  },
+  created(){
+    this.formatMarkdown()
+  },
+  mounted(){
+      console.log(this.content)
+  },
+  watch:{
+    content(){
+      this.formatMarkdown()
+    }
+  },
+  methods:{
+     formatMarkdown(){
+        this.html = marked(this.content)
+        console.log(this.html)
+     }
+  }
 }
-export default {}
 </script>
 
 <style lang="scss" scoped>
+.markdown-content{
+  color: #fff;
+}
 </style>
 

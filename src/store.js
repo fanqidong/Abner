@@ -12,6 +12,7 @@ Vue.use(Vuex)
 
 import {
     queryPosts,
+    queryPost,
     queryMood,
     queryLabel
 } from './api/request'
@@ -60,6 +61,14 @@ export default new Vuex.Store({
                 page: page + 1
             })
         },
+        // 获取当前文章详情
+        async queryPost({ state },{ number }) {
+            let post = state.posts.find(item=> item.number === number)
+            if (!post) {
+             let data = await queryPost(number)
+            }
+            return post
+        },
         // 获取每日一说
         async queryMood({
             page,
@@ -73,10 +82,10 @@ export default new Vuex.Store({
             return data
         },
         // 获取文章标签
-        async queryLabel(){
+        async queryLabel() {
             let data = await queryLabel()
-            data = data.filter(label =>  !['Mood','Friend','About'].includes(label.name))
-              return data
+            data = data.filter(label => !['Mood', 'Friend', 'About'].includes(label.name))
+            return data
         }
     }
 })
