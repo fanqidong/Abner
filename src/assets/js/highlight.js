@@ -4,6 +4,7 @@ import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'
 import xml from 'highlight.js/lib/languages/xml'
 import less from 'highlight.js/lib/languages/less'
+import scss from 'highlight.js/lib/languages/scss'
 import css from 'highlight.js/lib/languages/css'
 import java from 'highlight.js/lib/languages/java'
 import python from 'highlight.js/lib/languages/python'
@@ -22,6 +23,7 @@ linenumber(hljs)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('xml', xml)
 hljs.registerLanguage('less', less)
+hljs.registerLanguage('scss', scss)
 hljs.registerLanguage('css', css)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('python', python)

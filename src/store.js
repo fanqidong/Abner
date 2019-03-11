@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-08 11:36:10
+ * @LastEditTime: 2019-03-11 11:22:20
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -66,6 +66,7 @@ export default new Vuex.Store({
             let post = state.posts.find(item=> item.number === number)
             if (!post) {
              let data = await queryPost(number)
+             console.log(data)
             }
             return post
         },

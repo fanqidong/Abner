@@ -20,10 +20,10 @@ export default {
   },
   async created() {
     this.number = this.$route.params.number
+    console.log(this.number)
     await this.queryPost()
   },
   mounted() {
-    console.log(this.post.body)
   },
   methods: {
     async queryPost() {

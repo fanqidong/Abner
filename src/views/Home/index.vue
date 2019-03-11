@@ -80,9 +80,9 @@ export default {
     posts: state => state.posts,
     hasMore: state => state.hasMore
   }),
-  async created() {
+ created() {
     if (!this.posts.length) {
-      await this.getPosts()
+     this.getPosts()
     }
   },
   methods: {

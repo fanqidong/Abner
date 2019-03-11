@@ -2,9 +2,9 @@
   <section class="archive-wrapper">
     <ul class="archive-card">
       <li v-for="(item,index) in 6" :key="index" class="card-item" :class="'random-bg'+`${item*2}`">
-        <h2 class="title">你真的了解Vue中的Eventbus的用法吗？🐶</h2>
-        <p class="desc">空巢青年：孤独得像条狗，和Siri做朋友</p>
-        <a href="javascript:;" class="btn-more">新世界之门</a>
+        <h2 class="title">ä½ çœŸçš„äº†è§£Vueä¸­çš„Eventbusçš„ç”¨æ³•å�—ï¼ŸðŸ�¶</h2>
+        <p class="desc">ç©ºå·¢é�’å¹´ï¼šå­¤ç‹¬å¾—åƒ�æ�¡ç‹—ï¼Œå’ŒSiriå�šæœ‹å�‹</p>
+        <a href="javascript:;" class="btn-more">æ–°ä¸–ç•Œä¹‹é—¨</a>
       </li>
     </ul>
   </section>

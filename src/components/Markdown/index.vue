@@ -5,7 +5,7 @@
 
 <script>
 import marked from 'marked'
-import hljs from 'highlight'
+import hljs from '@/assets/js/highlight'
 const rendered = new marked.Renderer()
 
 export default {
@@ -35,7 +35,6 @@ export default {
   methods:{
      formatMarkdown(){
         this.html = marked(this.content)
-        console.log(this.html)
      }
   }
 }
@@ -44,6 +43,7 @@ export default {
 <style lang="scss" scoped>
 .markdown-content{
   color: #fff;
+  text-align: left;
 }
 </style>
 
