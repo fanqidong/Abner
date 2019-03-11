@@ -45,7 +45,7 @@ export default new Router({
             component: () => import( /* webpackChunkName: "Category" */ './views/Category')
         },
         {
-            path: "/article/detail/:number",
+            path: "/detail/:number",
             name: "ArticleDetail",
             component: () => import( /* webpackChunkName: "ArticleDetail" */ './views/ArticleDetail')
         }

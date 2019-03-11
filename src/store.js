@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-11 11:22:20
+ * @LastEditTime: 2019-03-11 16:07:25
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -13,11 +13,13 @@ Vue.use(Vuex)
 import {
     queryPosts,
     queryPost,
+    queryCategory,
     queryMood,
     queryLabel
 } from './api/request'
 import {
-    formatPost
+    formatPost,
+    formatCategory
 } from './utils/format'
 export default new Vuex.Store({
     state: {
@@ -41,15 +43,8 @@ export default new Vuex.Store({
     },
     actions: {
         // 获取文章列表 && 文章归档
-        async queryPosts({
-            commit,
-            state
-        }) {
-            const {
-                page,
-                pageSize,
-                hasMore
-            } = state
+        async queryPosts({commit, state}) {
+            const { page, pageSize, hasMore } = state
             if (!hasMore) return
             let data = await queryPosts({
                 page: page + 1,
@@ -63,23 +58,23 @@ export default new Vuex.Store({
         },
         // 获取当前文章详情
         async queryPost({ state },{ number }) {
+            console.log(number)
             let post = state.posts.find(item=> item.number === number)
             if (!post) {
-             let data = await queryPost(number)
-             console.log(data)
+              post = await queryPost(number)
+              console.log(post)
             }
             return post
         },
+        // 获取文章分类
+        async queryCategory(){
+            let data = await queryCategory()
+            data = formatCategory(data)
+            return data
+        },
         // 获取每日一说
-        async queryMood({
-            page,
-            pageSize
-        }) {
-            const data = await queryMood({
-                page,
-                pageSize
-            })
-            console.log(data)
+        async queryMood({ page, pageSize }) {
+            const data = await queryMood({ page, pageSize })
             return data
         },
         // 获取文章标签

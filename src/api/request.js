@@ -40,7 +40,18 @@ export const queryPost = async number => {
         const res = await fetch(url)
         checkStatus(res)
         const data = await res.json()
-        console.log(data)
+        return data
+    } catch (error) {
+        console.log(error)
+    }
+}
+// 获取分类
+export const queryCategory = async ()=> {
+    try {
+        const url = `${blog}/milestones?${access_token}` 
+        const res = await fetch(url)
+        checkStatus(res)
+        const data = await res.json()
         return data
     } catch (error) {
         console.log(error)
