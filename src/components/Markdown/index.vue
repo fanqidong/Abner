@@ -6,7 +6,9 @@
 import marked from "marked"
 import hljs from "@/assets/js/highlight"
 const rendered = new marked.Renderer()
-
+marked.setOptions({
+  highlight: code => hljs.highlightAuto(code).value
+})
 export default {
   name: "MarkDown",
   props: {
@@ -50,7 +52,27 @@ h3 {
   margin: 0.1rem 0 !important;
 }
 p {
-    text-indent: 2em;
+  text-indent: 2em;
+}
+pre {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1em;
+  padding-left: 2.5em;
+  background-color: rgba(0, 0, 0, 0.8);
+  > code {
+    margin: 0;
+    padding: 1em;
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: block;
+    line-height: 1.6em;
+    color: hsla(0, 0%, 100%, 0.87);
+    background-color: transparent;
+    overflow: auto;
+  }
 }
 </style>
 

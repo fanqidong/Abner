@@ -5,7 +5,6 @@
           <div class="nav-logo">
             <a href="javascript:;" class="brand">
                 <img src="../../assets/img/logo.png" alt="网站logo"  @click="isMenuOpen=!isMenuOpen">
-                <span>你的微笑</span>
             </a>
           </div>
         <ul class="menu-list">

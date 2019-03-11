@@ -58,7 +58,6 @@ export default new Vuex.Store({
         },
         // 获取当前文章详情
         async queryPost({ state },{ number }) {
-            console.log(number)
             let post = state.posts.find(item=> item.number === number)
             if (!post) {
               post = await queryPost(number)
