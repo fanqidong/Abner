@@ -27,7 +27,7 @@ export default new Vuex.Store({
         tips: '',
         tipsUpdateAt: '',
         page: 0,
-        pageSize: 5,
+        pageSize: 10,
         posts: [],
         hasMore: true
     },
@@ -44,19 +44,27 @@ export default new Vuex.Store({
     },
     actions: {
         // 获取文章列表 && 文章归档
-        async queryPosts({commit, state}) {
+        async queryPosts({commit, state}, {type}) {
             const { page, pageSize, hasMore } = state
-            if (!hasMore) return
-            let data = await queryPosts({
-                page: page + 1,
-                pageSize
-            })
-            data.forEach(formatPost)
-            data = await queryHot(data)
-            commit('setPosts', {
-                posts: data,
-                page: page + 1
-            })
+            if (type === 'archive') {
+                let res =  await queryPosts({
+                    page: 1,
+                    pageSize: 1
+                })
+                return res
+            }else{
+                if (!hasMore) return
+                let data = await queryPosts({
+                    page: page + 1,
+                    pageSize
+                })
+                data.forEach(formatPost)
+                data = await queryHot(data)
+                commit('setPosts', {
+                    posts: data,
+                    page: page + 1
+                })
+            }
         },
         // 获取当前文章详情
         async queryPost({ state },{ number }) {

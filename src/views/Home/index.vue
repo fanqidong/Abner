@@ -88,7 +88,7 @@ export default {
   methods: {
     //  获取文章列表
     async getPosts() {
-      await store.dispatch('queryPosts')
+      await store.dispatch('queryPosts', { type: 'article'})
     },
     // 前往文章详情页
     goDetail(number){

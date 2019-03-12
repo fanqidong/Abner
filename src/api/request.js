@@ -21,7 +21,7 @@ const checkStatus = res => {
 // 获取文章列表
 export const queryPosts = async ({
     page = 1,
-    pageSize = 5,
+    pageSize = 10,
     filter = ''
 }) => {
     try {
