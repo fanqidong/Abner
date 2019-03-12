@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap3": "^3.3.5",
     "highlight.js": "^9.15.6",
+    "leancloud-storage": "^3.12.0",
     "marked": "^0.6.1",
     "vue": "^2.6.6",
     "vue-lazyload": "^1.2.6",

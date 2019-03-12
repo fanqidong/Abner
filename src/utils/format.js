@@ -1,7 +1,6 @@
 // 格式化文章
 export const formatPost = post =>{
     let { body , created_at } = post
-    console.log(post)
     let str = body.split('\r\n').filter(item=>item!="")
     let reg = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
     let info = reg.exec(str[0])

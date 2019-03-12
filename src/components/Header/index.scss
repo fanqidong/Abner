@@ -6,15 +6,20 @@
     animation: fadeInDown 1s;
     z-index: 997;
     color: #fff;
+    transition:  all 1s;
     &.active {
         position: fixed;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        background: rgba(74, 80, 217, 0.8);
     }
-
-    &.active .logo {
-        // animation: fadeInDown 1000ms both;
+    .nav-logo{
+        transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+    &.active .nav-logo{
+        // top: .05rem;
+        background: #fff;
     }
     a{
         color: #fff;
@@ -62,7 +67,7 @@
         position: relative;
         display: flex;
         align-items: center;
-        padding: 0 .15rem .1rem;
+        padding: 0 .15rem 0;
     }
 
     .title {

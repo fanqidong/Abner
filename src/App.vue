@@ -35,7 +35,6 @@ export default {
       this.isMobileMenuOpen = status
     },
     closeMenu(status){
-      console.log(status)
       this.isMobileMenuOpen = status
     }
   },

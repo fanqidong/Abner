@@ -49,7 +49,7 @@ export default {
 h1,
 h2,
 h3 {
-  margin: 0.1rem 0 !important;
+  margin: 0.1rem 0;
 }
 p {
   text-indent: 2em;

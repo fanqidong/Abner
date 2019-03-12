@@ -3,8 +3,9 @@ import App from "./App.vue"
 import router from "./router"
 import store from "./store"
 import config from "./config/global.config"
+import AV from 'leancloud-storage';
 
-
+AV.init(config.leancloud)
 // 全局样式引入
 import './assets/css/reset.css'
 import './assets/sass/init.scss'
@@ -12,6 +13,7 @@ import './assets/sass/animation.scss'
 
 // 检测是否是移动端
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+
 // 配置全局变量
 Vue.config.productionTip = false
 Vue.prototype.$isMobile = isMobile

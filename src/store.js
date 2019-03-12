@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-11 16:07:25
+ * @LastEditTime: 2019-03-12 13:54:06
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -13,6 +13,7 @@ Vue.use(Vuex)
 import {
     queryPosts,
     queryPost,
+    queryHot,
     queryCategory,
     queryMood,
     queryLabel
@@ -51,6 +52,7 @@ export default new Vuex.Store({
                 pageSize
             })
             data.forEach(formatPost)
+            data = await queryHot(data)
             commit('setPosts', {
                 posts: data,
                 page: page + 1

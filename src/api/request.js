@@ -1,5 +1,6 @@
 import axios from 'axios'
 import gobalConfig from '../config/global.config'
+import AV from 'leancloud-storage'
 
 const {
     blog,
@@ -46,9 +47,9 @@ export const queryPost = async number => {
     }
 }
 // 获取分类
-export const queryCategory = async ()=> {
+export const queryCategory = async () => {
     try {
-        const url = `${blog}/milestones?${access_token}` 
+        const url = `${blog}/milestones?${access_token}`
         const res = await fetch(url)
         checkStatus(res)
         const data = await res.json()
@@ -84,4 +85,45 @@ export const queryMood = async ({
         console.log(error)
     }
 }
-
+//  获取文章热度
+export const queryHot = async postList => {
+    return new Promise(resolve => {
+        const seq = postList.map(item =>{
+            return new Promise( resolve =>{
+                const query = new AV.Query('Counter')
+                const Counter = AV.Object.extend('Counter')
+                const { title, id } = item
+                query.equalTo('id', id)
+                query.find().then(res =>{
+                    if (res.length > 0) {
+                        //已存在数据直接返回
+                        const counter = res[0]
+                        item.times = counter.get('time')
+                        resolve(item)
+                    }else{
+                        // 不存在则新建
+                        const newCounter = new Counter()
+                        newCounter.set('title', title)
+                        newCounter.set('id', id)
+                        newCounter.set('time', 1)
+                        newCounter.set('sitelink', location.href)
+                        newCounter.save().then(() =>
+                            resolve(item)
+                         ).catch(error=>{
+                            console.log(error)
+                        })
+                    }
+                }).catch(error=>{
+                    console.log(error)
+                })
+            }).catch(error=>{
+                console.log(error)
+            })
+        })
+        Promise.all(seq).then( data => resolve(data)).catch(error=>{
+            console.log(error)
+        })
+    }).catch(error=>{
+        console.log(error)
+    })
+}

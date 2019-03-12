@@ -40,7 +40,7 @@
               <!-- 热度 -->
               <span>
                 <i class="iconfont icon-shouye"></i>
-                <em>热度：1°C</em>
+                <em>热度：{{post.times}}°C</em>
               </span>
               <!-- 归档 -->
               <span>

@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-03-08 11:37:04
+ * @LastEditTime: 2019-03-12 13:51:19
  */
 export default {
     title: '樊启东的私人space',
@@ -17,8 +17,8 @@ export default {
      * leancloud 配置【文章阅读量】
      */
     leancloud:{
-        appId:'1',
-        appKey:'2'
+        appId:'sJRaApO77xsR8cgUE3UELNUV-gzGzoHsz',
+        appKey:'nAuMqrs9MEIdVWjM85oGeDa9'
     },
     // 页面导航配置
     menuList: [
