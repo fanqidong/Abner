@@ -2,9 +2,8 @@
   <div class="category row">
     <ul class="category-list">
       <li v-for="category in categoryList" :key="category.id">
-             {{category.title}}
-             {{category.subject}}
-            <img :src="category.cover.trim()" alt="">
+             <p>{{category.title}}</p>
+            <img :src="category.cover.trim()" alt="" class="cover">
       </li>
     </ul>
   </div>
@@ -30,5 +29,20 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.category-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: #fff;
+  li{
+   flex:.3;
+    .cover{
+      display: block;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+}
 </style>
+

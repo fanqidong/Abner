@@ -41,11 +41,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .markdown-content {
   color: #fff;
   text-align: left;
-}
 h1,
 h2,
 h3 {
@@ -54,25 +53,8 @@ h3 {
 p {
   text-indent: 2em;
 }
-pre {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 1em;
-  padding-left: 2.5em;
-  background-color: rgba(0, 0, 0, 0.8);
-  > code {
-    margin: 0;
-    padding: 1em;
-    float: left;
-    width: 100%;
-    height: 100%;
-    display: block;
-    line-height: 1.6em;
-    color: hsla(0, 0%, 100%, 0.87);
-    background-color: transparent;
-    overflow: auto;
-  }
+
 }
+
 </style>
 
