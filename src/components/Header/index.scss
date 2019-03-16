@@ -82,6 +82,9 @@
 
 /*移动端导航样式*/
 .nav-collapse{
+    position: absolute;
+    left: 0;
+    line-height: .6rem;
     background: none;
     font-size: .2rem;
     color: #fff;

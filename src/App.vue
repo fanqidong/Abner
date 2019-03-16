@@ -10,11 +10,13 @@
         </transition>
       </div>
     </main>
+    <Footer />
     <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
   </div>
 </template>
 <script>
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import Bg from '@/components/Background'
 import MobileMenu from '@/components/MobileMenu'
 export default {
@@ -28,7 +30,8 @@ export default {
   components: {
     Header,
     Bg,
-    MobileMenu
+    MobileMenu,
+    Footer
   },
   methods: {
     setMenu(status){
@@ -52,6 +55,12 @@ export default {
 </script>
 
 <style lang="scss">
+#abner{
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+  text-align: center;
+}
 .mobile-menu-open {
    .menu-mask{
       opacity: .7;

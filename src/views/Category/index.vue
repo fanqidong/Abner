@@ -18,8 +18,8 @@ export default {
         categoryList: []
     }
   },
-  async created() {
-    await this.queryCategory()
+ created() {
+     this.queryCategory()
   },
   methods: {
     async queryCategory() {
