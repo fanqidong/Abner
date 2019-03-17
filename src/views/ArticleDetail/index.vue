@@ -1,6 +1,6 @@
 <template>
-  <div class="article-detail row">
-    <MarkDown :content="post.body"/>
+  <div class="article-detail row" id="post">
+    <MarkDown :content="post.body" target="#post" />
   </div>
 </template>
 

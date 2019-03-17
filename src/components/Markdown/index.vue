@@ -6,12 +6,24 @@
 import marked from "marked"
 import hljs from "@/assets/js/highlight"
 const rendered = new marked.Renderer()
+console.log(rendered)
+rendered.image = function(href, title, text) {
+  return `<span class="img-box" data-src="${href}" data-sub-html="
+          <h4>${text}</h4>">
+          <img src="${href}" alt="${text}" />
+          ${text ? `<span>◭ ${text}</span>` : ''}</span>`
+}
 marked.setOptions({
+  rendered,
   highlight: code => hljs.highlightAuto(code).value
 })
 export default {
   name: "MarkDown",
   props: {
+    target: {
+      type: String,
+      default: ""
+    },
     content: {
       type: String,
       default: ""
@@ -26,7 +38,7 @@ export default {
     this.formatMarkdown()
   },
   mounted() {
-    console.log(this.content)
+    // console.log(this.content)
   },
   watch: {
     content() {
@@ -36,6 +48,19 @@ export default {
   methods: {
     formatMarkdown() {
       this.html = marked(this.content)
+      this.$nextTick(() => {
+        if (this.target) {
+          // hljs.initLineNumbersOnload({
+          //   target: this.target
+          // })
+          // window.lightGallery(document.getElementById("post"), {
+          //   selector: ".show-img",
+          //   thumbMargin: 5,
+          //   download: false,
+          //   subHtmlSelectorRelative: true
+          // })
+        }
+      })
     }
   }
 }
@@ -45,16 +70,14 @@ export default {
 .markdown-content {
   color: #fff;
   text-align: left;
-h1,
-h2,
-h3 {
-  margin: 0.1rem 0;
+  h1,
+  h2,
+  h3 {
+    margin: 0.1rem 0;
+  }
+  p {
+    text-indent: 2em;
+  }
 }
-p {
-  text-indent: 2em;
-}
-
-}
-
 </style>
 

@@ -56,9 +56,8 @@ export default {
 
 <style lang="scss">
 #abner{
-  position: relative;
+  // position: relative;
   min-height: 100vh;
-  padding-bottom: 1rem;
   text-align: center;
 }
 .mobile-menu-open {
