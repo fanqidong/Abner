@@ -2,14 +2,26 @@
     &-list{
         padding: .3rem 0;
         li{
+            position: relative;
             max-width: 700px;
             margin: auto;
             background: rgba(255,255,255,.8);
-            border-radius: .16rem;
-            padding: .3rem .4rem;
+            border-radius: 5px;
+            border-bottom-right-radius: 0;
+            padding: .3rem .2rem;
             text-align: justify;
-            margin-bottom: .3rem;
+            margin-bottom: .4rem;
             transition: all .8s;
+            &::before{
+                content: '';
+                position: absolute;
+                bottom: -.3rem;
+                right: .3rem;
+                border-width: .15rem;
+                border-style: solid;
+                transform: skewX(-64deg);
+                border-color: rgba($color: #fff, $alpha: .8) transparent transparent transparent;
+            }
             .desc{
                 margin: 0 0 .1rem 0;
             }
@@ -17,7 +29,7 @@
                 float: right;
             }
             &:hover{
-                transform: translateY(-10px);
+                transform: translateY(-5px);
                 box-shadow: 1px 1px 10px 10px rgba($color: #000000, $alpha: .1);
             }
        }

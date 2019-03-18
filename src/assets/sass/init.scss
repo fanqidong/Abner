@@ -39,11 +39,14 @@
 }
 
 /*大屏幕下(桌面类)的样式*/
-@media only screen and (min-width: 993px) {
+@media only screen and (max-width: 993px) {
     .container {
         position: relative;
-        width: 80%;
+        width: 80% !important;
         max-width: 1125px;
+    }
+    .row{
+        width: 85%;
     }
 }
 
@@ -55,6 +58,9 @@
     }
     .hidden-xs{
         display: none !important;
+    }
+    .container {
+        width: 90% !important;
     }
     .row {
         width: 92%;
@@ -157,5 +163,9 @@ pre {
     }
   }
   a{
-      color: #555;
+      color: #233330;
+      transition: color .3s;
+  }
+  a:hover{
+    color: #2a6496;
   }

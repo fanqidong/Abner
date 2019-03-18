@@ -5,16 +5,22 @@
 <script>
 import marked from "marked"
 import hljs from "@/assets/js/highlight"
-const rendered = new marked.Renderer()
-console.log(rendered)
-rendered.image = function(href, title, text) {
-  return `<span class="img-box" data-src="${href}" data-sub-html="
+const renderer = new marked.Renderer()
+// console.log(rendered)
+// rendered.image = function(href, title, text) {
+//   return `<span class="img-box" data-src="${href}" data-sub-html="
+//           <h4>${text}</h4>">
+//           <img src="${href}" alt="${text}" />
+//           ${text ? `<span>◭ ${text}</span>` : ''}</span>`
+// }
+renderer.image = function(href, title, text) {
+  return `<span class="show-img" data-src="${href}" data-sub-html="
           <h4>${text}</h4>">
           <img src="${href}" alt="${text}" />
           ${text ? `<span>◭ ${text}</span>` : ''}</span>`
 }
 marked.setOptions({
-  rendered,
+  renderer,
   highlight: code => hljs.highlightAuto(code).value
 })
 export default {
@@ -53,12 +59,12 @@ export default {
           // hljs.initLineNumbersOnload({
           //   target: this.target
           // })
-          // window.lightGallery(document.getElementById("post"), {
-          //   selector: ".show-img",
-          //   thumbMargin: 5,
-          //   download: false,
-          //   subHtmlSelectorRelative: true
-          // })
+          window.lightGallery(document.getElementById("post"), {
+            selector: ".show-img",
+            thumbMargin: 5,
+            download: false,
+            subHtmlSelectorRelative: true
+          })
         }
       })
     }
@@ -66,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .markdown-content {
   text-align: left;
   h1,
@@ -76,6 +82,9 @@ export default {
   }
   p {
     text-indent: 2em;
+  }
+  img{
+    cursor: pointer;
   }
 }
 </style>

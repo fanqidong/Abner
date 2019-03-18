@@ -3,7 +3,7 @@
     <nav class="menu-wrapper container clearfix" :class="{'menu-open':isMenuOpen}">
       <div class="menu-pc">
           <div class="nav-logo">
-            <a href="javascript:;" class="brand">
+            <a href="/" class="brand">
                 <img src="../../assets/img/logo.png" alt="网站logo"  @click="isMenuOpen=!isMenuOpen">
             </a>
           </div>

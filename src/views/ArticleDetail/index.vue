@@ -31,7 +31,6 @@ export default {
   methods: {
     async queryPost() {
       this.post = await store.dispatch("queryPost", { number: this.number })
-      console.log(this.post.body)
     }
   }
 }
@@ -39,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .article-detail {
-  background:rgba(255, 255, 255, 0.7);
+  background:rgba(255, 255, 255, .7);
   margin-top: 1rem;
   padding: 0.2rem;
 }
