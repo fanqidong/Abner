@@ -7,7 +7,6 @@
     }
 
     .title {
-        color: #000;
         margin: .1rem 0 .2rem 0;
     }
 
@@ -17,7 +16,6 @@
         justify-content: space-around;
         letter-spacing: 1px;
         color: rgba($color: #fff, $alpha: .9);
-        color: #fff;
     }
 
     &-item {
@@ -25,18 +23,22 @@
         justify-content: center;
         align-items: center;
         min-width: .8rem;
-        margin: .1rem;
+        margin: .1rem .1rem .2rem .1rem;
         padding: .1rem;
         cursor: pointer;
         box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
         border-radius: 5px;
-        font-style: italic;
+        // font-style: italic;
         transition: all 1s;
-
+        &.up{
+            transform: skewY(-5deg);
+        }
+        &.down{
+            transform: skewY(5deg);
+        }
         &:hover {
-            font-weight: 500;
             background-image: linear-gradient(to right, #4481eb 0%, #04befe 100%);
-            transform: translate3d(0, -4px, 0);
+            transform: none;
         }
     }
 }

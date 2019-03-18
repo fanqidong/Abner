@@ -1,12 +1,16 @@
 <template>
   <div class="article-detail row" id="post">
-    <MarkDown :content="post.body" target="#post" />
+      <div class="contanier" v-if="post.body">
+        <MarkDown :content="post.body" target="#post" />
+      </div>
+      <Loading v-else />
   </div>
 </template>
 
 <script>
 import store from "@/store"
 import MarkDown from "@/components/Markdown"
+import Loading from "@/components/Loading"
 export default {
   name: "ArticleDetail",
   data() {
@@ -16,17 +20,18 @@ export default {
     }
   },
   components: {
-    MarkDown
+    MarkDown,
+    Loading
   },
-  async created() {
+   created() {
     this.number = this.$route.params.number
-    console.log(`文章id${this.number}`)
-    await this.queryPost()
+    this.queryPost()
   },
   mounted() {},
   methods: {
     async queryPost() {
       this.post = await store.dispatch("queryPost", { number: this.number })
+      console.log(this.post.body)
     }
   }
 }
@@ -34,8 +39,8 @@ export default {
 
 <style lang="scss" scoped>
 .article-detail {
-  background: rgba(0, 0, 0, 0.5);
-  margin-top: 2rem;
+  background:rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
   padding: 0.2rem;
 }
 </style>

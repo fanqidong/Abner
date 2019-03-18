@@ -5,13 +5,14 @@
     <MobileMenu @handle-menu="closeMenu" />
     <main ref="scrollingContainer">
       <div class="main-content">
-        <transition name="fade" mode="out-in">
+        <transition name="fadeIn" mode="out-in">
             <router-view/>
         </transition>
       </div>
     </main>
     <Footer />
     <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
+  <!-- <Loading/> -->
   </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Bg from '@/components/Background'
 import MobileMenu from '@/components/MobileMenu'
+import Loading from '@/components/Loading'
 export default {
   name: 'App',
   data() {
@@ -31,7 +33,8 @@ export default {
     Header,
     Bg,
     MobileMenu,
-    Footer
+    Footer,
+    Loading
   },
   methods: {
     setMenu(status){
@@ -56,9 +59,13 @@ export default {
 
 <style lang="scss">
 #abner{
-  // position: relative;
+  position: relative;
   min-height: 100vh;
+  padding-bottom: 1.1rem;
   text-align: center;
+}
+.main-content{
+    overflow: hidden;
 }
 .mobile-menu-open {
    .menu-mask{

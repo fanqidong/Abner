@@ -1,19 +1,19 @@
 <template>
   <div class="home">
     <section class="site-meta text-center">
-      <div class="person-info"
-        :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}">
+      <div class="person-info" :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}">
+      <!-- <div class="person-info"> -->
         <h2 class="title">
           <ruby>2019
             <rt>Hi, Fan Qi Dong!</rt>
           </ruby>
         </h2>
-        <p class="slogan">代码不规范，重构两行泪</p>
+        <p class="slogan">人生短暂，及时行乐。</p>
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
       </div>
-    </section>
-     <button class="arrow-down">
+       <button class="arrow-down">
       </button>
+    </section>
     <section class="article row">
       <div class="article-list" v-if="posts.length">
         <article
@@ -39,7 +39,7 @@
             <div class="article-info">
               <!-- 热度 -->
               <span>
-                <i class="iconfont icon-shouye"></i>
+               <i class="fa fa-envira"></i>
                 <em>热度：{{post.times}}°C</em>
               </span>
               <!-- 归档 -->
@@ -57,6 +57,7 @@
           <!-- 文章内容 End -->
         </article>
       </div>
+      <Loading v-else />
     </section>
   </div>
 </template>
@@ -66,10 +67,12 @@
 import store from '@/store'
 import { mapState } from 'vuex'
 import MarkDown from '@/components/Markdown'
+import Loading from '@/components/Loading'
 export default {
   name: 'home',
   components: {
-    MarkDown
+    MarkDown,
+    Loading
   },
   data() {
     return {
@@ -116,9 +119,7 @@ export default {
   border: none;
   background: url('../../assets/img/arrow-down.svg') no-repeat;
   background-size:100%;
-  // z-index: 3;
   animation: floatY 2.2s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
 }
 </style>
 

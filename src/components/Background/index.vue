@@ -36,7 +36,8 @@ export default {
   width: 100%;
   height: 100vh;
   text-align: center;
-  background: #1f1f1f url(../../assets/img/bg.jpg);
+//   background:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553486196&di=fbc990c55d52659d59afacf9d15971bb&imgtype=jpg&er=1&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fe69f7c5067c0f222c6c1c38d6d45cb7dd8d53a27.png) center/cover;
+  background:url(../../assets/img/bg7.png) left/cover;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

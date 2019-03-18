@@ -5,24 +5,21 @@
     width: 100%;
     animation: fadeInDown 1s;
     z-index: 997;
-    color: #fff;
     transition:  all 1s;
     &.active {
         position: fixed;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(74, 80, 217, 0.8);
+        // background: rgba(0, 0, 0, 0.8);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.05);
     }
     .nav-logo{
         transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
     &.active .nav-logo{
         // top: .05rem;
-        background: #fff;
-    }
-    a{
-        color: #fff;
     }
 }
 
@@ -76,8 +73,7 @@
 }
 
 .iconfont {
-    font-size: 16px;
-    color: #fff;
+    font-size: 15px;
 }
 
 /*移动端导航样式*/
@@ -105,9 +101,6 @@
     .menu-wrapper {
         width: 90%;
         font-size: 14px;
-    }
-    .header{
-        top: .2rem;
     }
     .brand{
         font-size: .4rem

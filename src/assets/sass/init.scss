@@ -115,7 +115,7 @@
     background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
 }
 
-/*l页面路由切换*/
+/*页面路由切换*/
 .fade-enter-active {
     animation: fadeInUp .6s;
 }
@@ -123,9 +123,17 @@
 .fade-leave-active {
     animation: zoomOut .4s;
 }
+.fadeIn-enter-active {
+    animation: fadeIn 1s;
+}
+.fadeIn-leave-active {
+    animation: fadeOut 1s;
+}
+
 .markdown-content{
     p{
         text-indent: 2em;
+        margin: .1rem 0;
     }
 }
 pre {
@@ -147,4 +155,7 @@ pre {
       background-color: transparent;
       overflow: auto;
     }
+  }
+  a{
+      color: #555;
   }

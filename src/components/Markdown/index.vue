@@ -68,7 +68,6 @@ export default {
 
 <style lang="scss" scoped>
 .markdown-content {
-  color: #fff;
   text-align: left;
   h1,
   h2,

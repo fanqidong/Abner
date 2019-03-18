@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  position: relative;
+  position: absolute;
   left: 0;
   bottom: 0;
   display: flex;
@@ -26,6 +26,7 @@ export default {
   align-items: center;
   width: 100%;
   min-height: .5rem;
+  padding: .1rem 0 .2rem 0;
   z-index: 100;
   color: #fff;
   &-container {

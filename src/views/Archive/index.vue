@@ -1,14 +1,9 @@
 <template>
-  <div id="archive" class="archive">
-    <h2 class="text-center">文章归档</h2>
-    <p class="archive-total">好! 目前共计 187 篇日志。 继续努力。</p>
-    <section class="timeline-contanier">
-      <div
-        class="tl-wrapper"
-        v-for="(item,index1) in 4"
-        :key="index1"
-        :class="{'tl-open': index1 == currentIndex}"
-      >
+  <div id="archive" class="archive" >
+    <section class="timeline-contanier"  v-if="posts.length">
+        <h2 class="text-center">文章归档</h2>
+        <p class="archive-total">好! 目前共计 187 篇日志。 继续努力。</p>
+      <div class="tl-wrapper" v-for="(item,index1) in posts" :key="index1" :class="{'tl-open': index1 == currentIndex}">
         <div class="tl-header" @click="toggleTimeline(index1,$event)">
           <h2 :class="`bg-${colorArr[index1+2]}`">2019年0{{item}}月</h2>
         </div>
@@ -29,22 +24,25 @@
         </ul>
       </div>
     </section>
+     <Loading v-else />
   </div>
 </template>
 
 <script>
 import ArchiveCard from "@/components/ArchiveCard"
+import Loading from '@/components/Loading'
 import store from '@/store'
 export default {
   data() {
     return {
       currentIndex: "",
       colorArr: ["light", "dark", "black", "primary", "success", "info", "warning", "danger"],
-      posts:[]
+      posts:[1,2,3,4]
     }
   },
   components: {
-    ArchiveCard
+    ArchiveCard,
+    Loading
   },
   computed: {},
   created() {
@@ -56,7 +54,6 @@ export default {
     //  获取所有文章列表 && =>归档
     async getPosts() {
      const res = await store.dispatch('queryPosts',{ type: 'archive'})
-     console.log(res)
     },
     toggleTimeline(index, event) {
       this.currentIndex = index

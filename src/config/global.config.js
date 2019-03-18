@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-03-12 13:51:19
+ * @LastEditTime: 2019-03-18 14:58:56
  */
 export default {
     title: '樊启东的私人space',
@@ -62,7 +62,7 @@ export default {
           id: 6,
           path: "/mood",
           icon: "pengyouquan",
-          text: "每日一说"
+          text: "悟言"
         }
       ]
  }

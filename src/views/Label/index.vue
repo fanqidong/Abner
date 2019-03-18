@@ -1,33 +1,38 @@
 <template>
   <div class="label row">
-    <div class="label-content">
+    <div class="label-content"  v-if="labelList.length">
       <h2 class="title">
         <ruby>文章标签
           <rt>Article label</rt>
         </ruby>
       </h2>
-      <ul class="label-wrapper" v-if="labelList.length">
+      <ul class="label-wrapper">
         <li
-          v-for="label in labelList"
+          v-for="(label,index) in labelList"
           :key="label.id"
-          class="label-item"
+          :class="['label-item',index%2==0?'down':'up']"
           :style="{backgroundColor:`#${label.color}`}"
         >
           <span class="text">{{label.name}}</span>
         </li>
       </ul>
     </div>
+    <Loading v-else />
   </div>
 </template>
 
 <script>
-import store from '@/store'
+import store from "@/store"
+import Loading from '@/components/Loading'
 export default {
-  name: 'Label',
+  name: "Label",
   data() {
     return {
       labelList: []
     }
+  },
+  components:{
+      Loading
   },
   async created() {
     await this.queryLabel()
@@ -36,14 +41,13 @@ export default {
   methods: {
     //   获取标签
     async queryLabel() {
-      this.labelList = await store.dispatch('queryLabel')
-      console.log(this.labelList)
+      this.labelList = await store.dispatch("queryLabel")
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './index.scss';
+@import "./index.scss";
 </style>
 

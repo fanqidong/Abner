@@ -1,6 +1,6 @@
 <template>
   <div class="mood row">
-    <transition name="fade" mode="out-in">
+    <transition name="fade" mode="out-in"  v-if="moodList.length">
       <ul class="mood-list">
         <li class="mood-item clearfix" v-for="mood in moodList" :key="mood.id">
           <p class="desc">{{mood.body}}</p>
@@ -8,11 +8,13 @@
         </li>
       </ul>
     </transition>
+      <Loading v-else />
   </div>
 </template>
 
 <script>
 import store from '@/store'
+import Loading from "@/components/Loading"
 export default {
   data() {
     return {
@@ -22,6 +24,9 @@ export default {
     }
   },
   computed: {},
+  components:{
+      Loading
+  },
   async created() {
     await this.queryMood()
   },
