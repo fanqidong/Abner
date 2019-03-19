@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-12 13:54:06
+ * @LastEditTime: 2019-03-19 15:36:16
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -17,11 +17,11 @@ import {
     queryCategory,
     queryMood,
     queryLabel
-} from './api/request'
+} from '@/api/request'
 import {
     formatPost,
     formatCategory
-} from './utils/format'
+} from '@/utils/format'
 export default new Vuex.Store({
     state: {
         tips: '',
@@ -69,9 +69,9 @@ export default new Vuex.Store({
         // 获取当前文章详情
         async queryPost({ state },{ number }) {
             let post = state.posts.find(item=> item.number === number)
+            // 如果存在文章数据则直接获取不发请求
             if (!post) {
               post = await queryPost(number)
-              console.log(post)
             }
             return post
         },

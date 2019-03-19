@@ -19,9 +19,11 @@
     padding-left: .2rem !important;
     padding-right: .2rem !important;
 }
-.opacity0{
+
+.opacity0 {
     opacity: 0;
 }
+
 /*小屏幕下(手机类)的样式*/
 @media only screen and (max-width: 601px) {
     .container {
@@ -45,7 +47,8 @@
         width: 80% !important;
         max-width: 1125px;
     }
-    .row{
+
+    .row {
         width: 85%;
     }
 }
@@ -56,14 +59,21 @@
         font-size: 14px;
         line-height: 1.428;
     }
-    .hidden-xs{
+
+    .hidden-xs {
         display: none !important;
     }
+
     .container {
         width: 90% !important;
     }
+
     .row {
         width: 92%;
+    }
+    .prev span,
+    .next span{
+        display: block;
     }
 }
 
@@ -129,43 +139,90 @@
 .fade-leave-active {
     animation: zoomOut .4s;
 }
+
 .fadeIn-enter-active {
     animation: fadeIn 1s;
 }
+
 .fadeIn-leave-active {
     animation: fadeOut 1s;
 }
 
-.markdown-content{
-    p{
+/* markdown 内容样式*/
+.markdown-content {
+    text-align: left;
+
+    h1,
+    h2,
+    h3 {
+        margin: .1rem 0;
+    }
+
+    img {
+        display:block;
+        margin: auto;
+    }
+
+    p {
         text-indent: 2em;
         margin: .1rem 0;
     }
+
+    a {
+        text-indent: initial;
+    }
+    .show-img{
+        display: block;
+        text-align: center;
+        text-indent: initial;
+        em{
+            display: inline-block;
+            margin-top: .1rem;
+        }
+    }
 }
+
 pre {
     display: block;
     position: relative;
-    overflow: hidden;
+    max-height: 5rem;
+    padding: .16rem .14rem;
+    overflow: auto;
     margin-bottom: 1em;
-    padding-left: 2.5em;
-    background-color: #151718;
-    > code {
-      margin: 0;
-      padding: 1em;
-      float: left;
-      width: 100%;
-      height: 100%;
-      display: block;
-      line-height: 1.6em;
-      color: hsla(0, 0%, 100%, 0.87);
-      background-color: transparent;
-      overflow: auto;
+    background-color: rgba($color: #000, $alpha: .8);
+
+    >code {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 1.6em;
+        color: hsla(0, 0%, 100%, .87);
+        background-color: transparent;
     }
-  }
-  a{
-      color: #233330;
-      transition: color .3s;
-  }
-  a:hover{
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        border-radius: 40px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 15px rgba(245, 220, 184, .81);
+        background-color: #e1bfba;
+    }
+
+    .hljs-ln-numbers {
+        margin-right: 2em;
+        padding: 0 .1rem;
+        text-align: left;
+    }
+}
+
+a {
+    color: #233330;
+    transition: color .3s;
+}
+
+a:hover {
     color: #2a6496;
-  }
+}

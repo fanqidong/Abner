@@ -71,10 +71,7 @@ export const queryLabel = async () => {
     }
 }
 // 获取心情
-export const queryMood = async ({
-    page = 1,
-    pageSize = 10
-}) => {
+export const queryMood = async ({page = 1, pageSize = 10}) => {
     try {
         const url = `${blog}/issues?${closed}&labels=mood&&page=${page}&per_page=${pageSize}`
         const res = await fetch(url);

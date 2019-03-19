@@ -1,28 +1,41 @@
 <template>
-  <div class="markdown-content" v-html="html"></div>
+  <div id="markdown">
+    <div class="markdown-content" v-html="html"></div>
+  </div>
 </template>
 
 <script>
 import marked from "marked"
 import hljs from "@/assets/js/highlight"
 const renderer = new marked.Renderer()
-// console.log(rendered)
-// rendered.image = function(href, title, text) {
-//   return `<span class="img-box" data-src="${href}" data-sub-html="
-//           <h4>${text}</h4>">
-//           <img src="${href}" alt="${text}" />
-//           ${text ? `<span>◭ ${text}</span>` : ''}</span>`
-// }
-renderer.image = function(href, title, text) {
-  return `<span class="show-img" data-src="${href}" data-sub-html="
-          <h4>${text}</h4>">
-          <img src="${href}" alt="${text}" />
-          ${text ? `<span>◭ ${text}</span>` : ''}</span>`
+
+// 渲染图片
+renderer.image = (href, title, text) => {
+  return `<span class="show-img" data-src="${href}" data-sub-html="<h4>${text}</h4>">
+                        <img src="${href}" alt="${text}" />
+                        ${text ? `<em>${text}</em>` : ""}
+                  </span>`
 }
+
+// 渲染a链接
+renderer.link = (href, title, text) => {
+  // 只显示一个图标
+  return `<a href="${href}" target="_blank">
+                    <i class="fa fa-link"></i>
+                    ${text}
+                </a>`
+}
+
+/**
+ * @description: 配置代码高亮
+ * @param {code: String} //代码内容——是一个字符串。
+ * @return:
+ */
 marked.setOptions({
   renderer,
   highlight: code => hljs.highlightAuto(code).value
 })
+
 export default {
   name: "MarkDown",
   props: {
@@ -46,19 +59,18 @@ export default {
   mounted() {
     // console.log(this.content)
   },
-  watch: {
-    content() {
-      this.formatMarkdown()
-    }
-  },
+  destroyed() {},
   methods: {
+    // 格式化markdown文本内容
     formatMarkdown() {
       this.html = marked(this.content)
       this.$nextTick(() => {
         if (this.target) {
-          // hljs.initLineNumbersOnload({
-          //   target: this.target
-          // })
+          //显示代码行数
+          hljs.initLineNumbersOnLoad({
+            target: this.target
+          })
+          //   实例化图片画廊
           window.lightGallery(document.getElementById("post"), {
             selector: ".show-img",
             thumbMargin: 5,
@@ -68,24 +80,19 @@ export default {
         }
       })
     }
+  },
+  watch: {
+    content() {
+      this.formatMarkdown()
+    }
   }
 }
 </script>
-
-<style lang="scss">
-.markdown-content {
-  text-align: left;
-  h1,
-  h2,
-  h3 {
-    margin: 0.1rem 0;
-  }
-  p {
-    text-indent: 2em;
-  }
-  img{
-    cursor: pointer;
-  }
+<style lang="scss" scoped>
+.post-siblings {
+  display: flex;
+  justify-content: space-around;
 }
 </style>
+
 
