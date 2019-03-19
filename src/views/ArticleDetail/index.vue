@@ -49,7 +49,7 @@ export default {
   created() {
     this.number = this.$route.params.number
     this.queryPost()
-    this.getPosts()
+    this.getPosts(this.number)
   },
   mounted() {
     //   console.log(this.number)
@@ -59,19 +59,19 @@ export default {
     async queryPost(number = this.number) {
       this.post = await store.dispatch("queryPost", { number })
     },
-    async getPosts() {
-        console.log(this.posts == false)
-      if (this.posts) {
+    async getPosts(number) {
+      if (this.posts.length) {
         this.postAll = this.posts
+        console.log("所有", ...this.postAll)
       } else {
         this.postAll = await queryPosts({
           page: 1,
           pageSize: ""
         })
-        console.log("所有"+ this.postAll)
+        console.log("新增", ...this.postAll)
       }
       this.postAll.map((item, index, arr) => {
-        if (this.number == item.number) {
+        if (number == item.number) {
           this.prevPost = arr[index - 1]
           this.nextPost = arr[index + 1]
           index == 0 && (this.prevPost = arr[arr.length - 1])
@@ -80,24 +80,11 @@ export default {
       })
     },
     goDetail(number){
-        console.log(number)
+        window.scrollTo(0,0)
+        this.$router.push({name: 'ArticleDetail', params:{ number}})
         this.queryPost(number)
+        this.getPosts(number)
     }
-    // async getPosts() {
-    //   this.postAll = await queryPosts({
-    //     page: 1,
-    //     pageSize: ""
-    //   })
-
-    //   this.postAll.map((item, index, arr) => {
-    //     if (this.number == item.number) {
-    //       this.prevPost = arr[index - 1]
-    //       this.nextPost = arr[index + 1]
-    //       index == 0 && (this.prevPost = arr[arr.length - 1])
-    //       index == arr.length - 1 && (this.nextPost = arr[0])
-    //     }
-    //   })
-    // }
   }
 }
 </script>
