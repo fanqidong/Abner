@@ -58,6 +58,7 @@ export default {
   methods: {
     async queryPost(number = this.number) {
       this.post = await store.dispatch("queryPost", { number })
+      console.log(this.post)
     },
     async getPosts(number) {
       if (this.posts.length) {

@@ -33,7 +33,14 @@ renderer.link = (href, title, text) => {
  */
 marked.setOptions({
   renderer,
-  highlight: code => hljs.highlightAuto(code).value
+  highlight: code => hljs.highlightAuto(code).value,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false
 })
 
 export default {
@@ -57,6 +64,7 @@ export default {
     this.formatMarkdown()
   },
   mounted() {
+      this.formatCode()
     // console.log(this.content)
   },
   destroyed() {},
@@ -79,6 +87,19 @@ export default {
           })
         }
       })
+    },
+    // 格式化pre code代码块
+    formatCode(){
+        let codes = document.querySelectorAll('pre')
+        let arr = [];
+        for (let index = 0; index < codes.length; index++) {
+            if (!codes[index].children[0].className) {
+                codes[index].children[0].className = 'text'
+            }
+             codes[index].children[0].setAttribute('data-language',codes[index].children[0].className.replace('language-',''))
+            // arr.push(codes[index].children[0].className)
+        }
+        console.log(arr)
     }
   },
   watch: {

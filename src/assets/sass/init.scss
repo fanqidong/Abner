@@ -161,6 +161,9 @@
     img {
         display:block;
         margin: auto;
+        &:hover{
+            animation: jump 1s;
+        }
     }
 
     p {
@@ -186,11 +189,10 @@ pre {
     display: block;
     position: relative;
     max-height: 5rem;
-    padding: .16rem .14rem;
-    overflow: auto;
+    padding: .45rem .14rem .16rem .14rem;
+    overflow: hidden;
     margin-bottom: 1em;
     background-color: rgba($color: #000, $alpha: .8);
-
     >code {
         margin: 0;
         width: 100%;
@@ -198,6 +200,23 @@ pre {
         line-height: 1.6em;
         color: hsla(0, 0%, 100%, .87);
         background-color: transparent;
+        overflow: auto;
+        &::before {
+            color: #fff;
+            content: attr(data-language) " CODE";
+            height: .4rem;
+            line-height: .4rem;
+            font-size: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-weight: 700;
+            background-color: rgba(68,68,68,.9);
+            display: block;
+            text-transform: uppercase;
+            text-align: center;
+        }
     }
 
     &::-webkit-scrollbar {
