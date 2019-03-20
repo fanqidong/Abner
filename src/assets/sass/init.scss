@@ -192,7 +192,21 @@ pre {
     padding: .45rem .14rem .16rem .14rem;
     overflow: hidden;
     margin-bottom: 1em;
-    background-color: rgba($color: #000, $alpha: .8);
+    background-color: #21252b;
+    &::before {
+        content: " ";
+        position: absolute;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background: #fc625d;
+        width: 12px;
+        height: 12px;
+        left: 12px;
+        margin-top: -30px;
+        -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        z-index: 2;
+    }
     >code {
         margin: 0;
         width: 100%;
@@ -203,7 +217,7 @@ pre {
         overflow: auto;
         &::before {
             color: #fff;
-            content: attr(data-language) " CODE";
+            content: attr(data-language);
             height: .4rem;
             line-height: .4rem;
             font-size: 1em;

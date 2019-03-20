@@ -96,7 +96,7 @@ export default {
             if (!codes[index].children[0].className) {
                 codes[index].children[0].className = 'text'
             }
-             codes[index].children[0].setAttribute('data-language',codes[index].children[0].className.replace('language-',''))
+             codes[index].children[0].setAttribute('data-language',codes[index].children[0].className.toLowerCase().replace('language-',''))
             // arr.push(codes[index].children[0].className)
         }
         console.log(arr)
