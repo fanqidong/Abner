@@ -1,9 +1,16 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-        <p class="copyright" v-show="!$isMobile">Copyright © 2017-2019 Qi Dong Fan. All Rights Reserved.</p>
+        <p class="copyright" v-show="!$isMobile">
+            <span>Copyright © 2017-2019</span>
+            <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
+            All Rights Reserved.
+        </p>
         <div class="copyright" v-show="$isMobile">
-            <p>Copyright © 2017-2019 Qi Dong Fan.</p>
+            <p>
+                <span>Copyright © 2017-2019</span>
+                <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
+            </p>
             <p>All Rights Reserved.</p>
         </div>
     </div>
@@ -32,6 +39,12 @@ export default {
   &-container {
     max-width: 1200px;
     margin: auto;
+  }
+  a{
+      color: #fff;
+  }
+  .author{
+      margin: 0 .1rem;
   }
 }
 </style>

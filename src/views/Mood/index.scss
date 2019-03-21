@@ -1,7 +1,8 @@
-.mood{
-    &-list{
+.mood {
+    &-list {
         padding: .3rem 0;
-        li{
+
+        li {
             position: relative;
             max-width: 700px;
             margin: auto;
@@ -13,7 +14,36 @@
             text-align: justify;
             margin-bottom: .4rem;
             transition: all .8s;
-            &::before{
+
+            .title {
+                &::before {
+                    position: absolute;
+                    top: -.1rem;
+                    left: -.2rem;
+                    z-index: 1;
+                    padding-right: 10px;
+                    font-weight: 600;
+                    color: #000;
+                    line-height: 0;
+                    border: .15rem#f9a532 solid;
+                    border-right-color: transparent;
+                    content: attr(data-title);
+                    box-shadow: 0 5px 5px -6px #000;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: .2rem;
+                    left: -.2rem;
+                    border: #89540c .1rem solid;
+                    border-left-color: transparent;
+                    border-bottom-color: transparent;
+                }
+
+            }
+
+            &::after {
                 content: '';
                 position: absolute;
                 bottom: -.3rem;
@@ -23,21 +53,27 @@
                 transform: skewX(-64deg);
                 border-color: rgba($color: #FCFAF2, $alpha:.75) transparent transparent transparent;
             }
-            >.title{
-                position: absolute;
-                padding: .2rem;
-                
-            }
-            >.desc{
+
+            >.desc {
                 margin: 0 0 .1rem 0;
             }
-            >.date{
-                float: right;
+
+            >.date {
+                position: absolute;
+                right: .4rem;
+                bottom: .1rem;
             }
-            &:hover{
-                transform: translateY(-5px);
+
+            &:hover {
+                transform: translate3d(0, -5px, 0);
                 box-shadow: 1px 1px 10px 10px rgba($color: #000000, $alpha: .1);
             }
-       }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: .22rem;
     }
 }

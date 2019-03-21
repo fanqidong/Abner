@@ -1,4 +1,4 @@
-import 'highlight.js/styles/atelier-dune-dark.css'
+import 'highlight.js/styles/tomorrow-night-eighties.css'
 
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'

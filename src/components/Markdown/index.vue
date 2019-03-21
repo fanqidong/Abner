@@ -12,7 +12,7 @@ const renderer = new marked.Renderer()
 // 渲染图片
 renderer.image = (href, title, text) => {
   return `<span class="show-img" data-src="${href}" data-sub-html="<h4>${text}</h4>">
-                        <img src="${href}" alt="${text}" />
+                        <img src="${href}" alt="${text}" title="点击图片查看大图" />
                         ${text ? `<em>${text}</em>` : ""}
                   </span>`
 }
@@ -23,8 +23,27 @@ renderer.link = (href, title, text) => {
   return `<a href="${href}" target="_blank">
                     <i class="fa fa-link"></i>
                     ${text}
-                </a>`
+            </a>`
 }
+
+// 渲染代码块
+var language = [];
+renderer.code = (code, language) =>{
+    console.log(code)
+    language.push(code)
+    // console.log(language)
+    // return `<pre class='pre-wrap'>
+    //     <code class='language-${language}'>${code}</code>
+    // </pre>`
+} 
+console.log(language)
+renderer.pre = (pre, language) =>{
+    console.log(pre)
+    // console.log(language)
+    // return `<pre class='pre-wrap'>
+    //     <code class='language-${language}'>${code}</code>
+    // </pre>`
+} 
 
 /**
  * @description: 配置代码高亮
@@ -34,13 +53,6 @@ renderer.link = (href, title, text) => {
 marked.setOptions({
   renderer,
   highlight: code => hljs.highlightAuto(code).value,
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false
 })
 
 export default {
@@ -64,7 +76,7 @@ export default {
     this.formatMarkdown()
   },
   mounted() {
-      this.formatCode()
+    //   this.formatCode()
     // console.log(this.content)
   },
   destroyed() {},
@@ -99,12 +111,12 @@ export default {
              codes[index].children[0].setAttribute('data-language',codes[index].children[0].className.toLowerCase().replace('language-',''))
             // arr.push(codes[index].children[0].className)
         }
-        console.log(arr)
     }
   },
   watch: {
     content() {
       this.formatMarkdown()
+    //   this.formatCode()
     }
   }
 }

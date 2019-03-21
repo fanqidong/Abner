@@ -1,23 +1,23 @@
 <template>
   <div class="article-detail row" id="post">
     <div class="contanier" v-if="post.body">
-        <MarkDown :content="post.body" target="#post"/>
-        <div class="post-siblings">
-            <div class="prev">
-                <span>上一篇</span>
-                <a href="javascript:;" :data-number="prevPost.number" @click="goDetail(prevPost.number)">
-                <span>#{{prevPost.title}}#</span>
-                </a>
-            </div>
-            <div class="next">
-                <span>下一篇</span>
-                <a href="javascript:;" :data-number="nextPost.number" @click="goDetail(nextPost.number)">
-                <span>#{{nextPost.title}}#</span>
-                </a>
-            </div>
+      <MarkDown :content="post.body" target="#post"/>
+      <div class="post-siblings">
+        <div class="prev">
+          <span>上一篇</span>
+          <a href="javascript:;" :data-number="prevPost.number" @click="goDetail(prevPost.number)">
+            <span>#{{prevPost.title}}#</span>
+          </a>
         </div>
+        <div class="next">
+          <span>下一篇</span>
+          <a href="javascript:;" :data-number="nextPost.number" @click="goDetail(nextPost.number)">
+            <span>#{{nextPost.title}}#</span>
+          </a>
+        </div>
+      </div>
     </div>
-    <Loading v-else />
+    <Loading v-else/>
   </div>
 </template>
 
@@ -80,11 +80,11 @@ export default {
         }
       })
     },
-    goDetail(number){
-        window.scrollTo(0,0)
-        this.$router.push({name: 'ArticleDetail', params:{ number}})
-        this.queryPost(number)
-        this.getPosts(number)
+    goDetail(number) {
+      window.scrollTo(0, 0)
+      this.$router.push({ name: "ArticleDetail", params: { number } })
+      this.queryPost(number)
+      this.getPosts(number)
     }
   }
 }
@@ -92,10 +92,15 @@ export default {
 
 <style lang="scss" scoped>
 .article-detail {
-  background: rgba(255, 255, 255, 0.7);
-  margin-top: 1rem;
-  padding: 0.2rem;
-  border-radius: 10px;
+    &.row{
+        padding-top: initial;
+    }
+  .contanier {
+    background: rgba(255, 255, 255, 0.7);
+    margin-top: 1rem;
+    padding: 0.2rem;
+    border-radius: 10px;
+  }
 }
 .post-siblings {
   display: flex;

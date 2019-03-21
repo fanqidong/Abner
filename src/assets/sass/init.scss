@@ -76,7 +76,43 @@
         display: block;
     }
 }
+/*a链接处理*/ 
+@media screen and (min-width: 768px){
 
+    a[target="_blank"]{
+        &:hover::before{
+                color: #404d5b;
+                background-color: #f7f7f5;
+                border: solid 1px;
+                border-color: #e2e2e2;
+                transition-delay: 0s, 0s, 0s, 0.1s;
+                transform: scale(1) translateY(-65%);
+                pointer-events: auto;
+            }
+        &::before{
+            font-size: 12px;
+            font-weight: 600;
+            content: "❤ " attr(href);
+            position: absolute;
+            top: -50%;
+            margin: 0;
+            padding: 4px 10px;
+            width: max-content;
+            max-width: 800px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            transition: opacity 0.3s, color 0.3s, transform 0.3s, background-position 0.2s;
+            transition-delay: 0s, 0s, 0s, 0s;
+            transform: scale(0.5);
+            background-color: transparent;
+            line-height: 1.8em;
+            color: transparent;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+    }
+    
+}
 
 /*随机渐变背景色*/
 .random-bg0 {
@@ -151,7 +187,9 @@
 /* markdown 内容样式*/
 .markdown-content {
     text-align: left;
-
+    .fa-link{
+        color: #0ba360;
+    }
     h1,
     h2,
     h3 {
@@ -172,6 +210,7 @@
     }
 
     a {
+        position: relative;
         text-indent: initial;
     }
     .show-img{
@@ -192,7 +231,7 @@ pre {
     padding: .45rem .14rem .16rem .14rem;
     overflow: hidden;
     margin-bottom: 1em;
-    background-color: #21252b;
+    background-color: #1d1f21;
     &::before {
         content: " ";
         position: absolute;
@@ -201,8 +240,8 @@ pre {
         background: #fc625d;
         width: 12px;
         height: 12px;
-        left: 12px;
-        margin-top: -30px;
+        left: .12rem;
+        margin-top: -.3rem;
         -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
         box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
         z-index: 2;
@@ -226,7 +265,7 @@ pre {
             left: 0;
             width: 100%;
             font-weight: 700;
-            background-color: rgba(68,68,68,.9);
+            background-color: #21252b;
             display: block;
             text-transform: uppercase;
             text-align: center;
