@@ -4,7 +4,8 @@
       <ul class="mood-list">
         <li class="mood-item" v-for="mood in moodList" :key="mood.id">
           <span class="title" :data-title="mood.title"></span>
-          <p class="desc">{{mood.body}}</p>
+          <!-- <p class="desc">{{mood.body}}</p> -->
+          <Markdown :content="mood.body" :only-render="true"/>
           <span class="date">发表于{{mood.created_at.slice(0,10)}}</span>
         </li>
       </ul>
@@ -16,6 +17,7 @@
 <script>
 import store from "@/store"
 import Loading from "@/components/Loading"
+import Markdown from "@/components/Markdown"
 export default {
   data() {
     return {
@@ -26,7 +28,8 @@ export default {
   },
   computed: {},
   components: {
-    Loading
+    Loading,
+    Markdown
   },
   async created() {
     await this.queryMood()

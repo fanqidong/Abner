@@ -5,13 +5,23 @@
       <div class="post-siblings">
         <div class="prev">
           <span>上一篇</span>
-          <a href="javascript:;" :data-number="prevPost.number" @click="goDetail(prevPost.number)">
+          <a
+            href="javascript:;"
+            class="post-title"
+            :data-number="prevPost.number"
+            @click="goDetail(prevPost.number)"
+          >
             <span>#{{prevPost.title}}#</span>
           </a>
         </div>
         <div class="next">
           <span>下一篇</span>
-          <a href="javascript:;" :data-number="nextPost.number" @click="goDetail(nextPost.number)">
+          <a
+            href="javascript:;"
+            class="post-title"
+            :data-number="nextPost.number"
+            @click="goDetail(nextPost.number)"
+          >
             <span>#{{nextPost.title}}#</span>
           </a>
         </div>
@@ -92,9 +102,9 @@ export default {
 
 <style lang="scss" scoped>
 .article-detail {
-    &.row{
-        padding-top: initial;
-    }
+  &.row {
+    padding-top: initial;
+  }
   .contanier {
     background: rgba(255, 255, 255, 0.7);
     margin-top: 1rem;
@@ -102,9 +112,15 @@ export default {
     border-radius: 10px;
   }
 }
-.post-siblings {
-  display: flex;
-  justify-content: space-around;
+.post {
+  &-siblings {
+    display: flex;
+    justify-content: space-around;
+  }
+  &-title{
+    display: inline-block;
+    margin-left: .1rem;
+  }
 }
 </style>
 

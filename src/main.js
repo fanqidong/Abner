@@ -23,7 +23,7 @@ import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(VueLazyLoad, {
     preLoad: 1.3,
-    error: '',
+    error: require('../src/assets/img/bg7.png'),
     loading: 'http://img.zcool.cn/community/01f02059151e27b5b3086ed481bc0e.gif'
 })
 new Vue({

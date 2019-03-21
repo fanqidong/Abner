@@ -27,23 +27,14 @@ renderer.link = (href, title, text) => {
 }
 
 // 渲染代码块
-var language = [];
-renderer.code = (code, language) =>{
-    console.log(code)
-    language.push(code)
-    // console.log(language)
-    // return `<pre class='pre-wrap'>
-    //     <code class='language-${language}'>${code}</code>
-    // </pre>`
-} 
-console.log(language)
-renderer.pre = (pre, language) =>{
-    console.log(pre)
-    // console.log(language)
-    // return `<pre class='pre-wrap'>
-    //     <code class='language-${language}'>${code}</code>
-    // </pre>`
-} 
+// renderer.code = (code, language) => {
+//   if (language == undefined){
+//      language = 'text'
+//   }
+//   return `<pre class='pre-wrap' data-language='${language}'>
+//       <code class='language-${language}'>${code}</code>
+//   </pre>`
+// }
 
 /**
  * @description: 配置代码高亮
@@ -52,11 +43,11 @@ renderer.pre = (pre, language) =>{
  */
 marked.setOptions({
   renderer,
-  highlight: code => hljs.highlightAuto(code).value,
+  highlight: code => hljs.highlightAuto(code).value
 })
 
 export default {
-  name: "MarkDown",
+  name: "Markdown",
   props: {
     target: {
       type: String,
@@ -65,6 +56,10 @@ export default {
     content: {
       type: String,
       default: ""
+    },
+    onlyRender: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -84,8 +79,10 @@ export default {
     // 格式化markdown文本内容
     formatMarkdown() {
       this.html = marked(this.content)
+      if (this.onlyRender) return
       this.$nextTick(() => {
         if (this.target) {
+         this.formatCode()
           //显示代码行数
           hljs.initLineNumbersOnLoad({
             target: this.target
@@ -101,22 +98,23 @@ export default {
       })
     },
     // 格式化pre code代码块
-    formatCode(){
-        let codes = document.querySelectorAll('pre')
-        let arr = [];
-        for (let index = 0; index < codes.length; index++) {
-            if (!codes[index].children[0].className) {
-                codes[index].children[0].className = 'text'
-            }
-             codes[index].children[0].setAttribute('data-language',codes[index].children[0].className.toLowerCase().replace('language-',''))
-            // arr.push(codes[index].children[0].className)
+    formatCode() {
+      let codes = document.querySelectorAll("pre")
+      for (let index = 0; index < codes.length; index++) {
+        if (!codes[index].children[0].className) {
+          codes[index].children[0].className = "text"
         }
+        codes[index].children[0].setAttribute(
+          "data-language",
+          codes[index].children[0].className.toLowerCase().replace("language-", "")
+        )
+      }
     }
   },
   watch: {
     content() {
       this.formatMarkdown()
-    //   this.formatCode()
+      //   this.formatCode()
     }
   }
 }
