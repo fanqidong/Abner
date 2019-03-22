@@ -1,3 +1,5 @@
+@import '@/assets/sass/mixin.scss';
+
 @media screen and (max-width: 768px) {
     .page {
         &-home {
@@ -12,10 +14,8 @@
     height: 100vh;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    @include flex-center(column);
 
     .title {
         font-size: .4rem;
@@ -46,18 +46,21 @@
 
 .article {
     position: relative;
-    z-index: 2;
     &-wrapper {
         position: relative;
-        width: 100%;
         margin: 0 0 .3rem 0;
         border-radius: 5px;
-        transition: all 1s;
+        transition: all 1.2s;
 
         &:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+            box-shadow: 0 10px 10px rgba(0, 0, 0, .1), 0 6px 6px rgba(0, 0, 0, .1);
         }
+    }
+
+    &-title {
+        @include overflow-num(3);
+        font-weight: lighter;
     }
 
     &-link {
@@ -88,9 +91,9 @@
 
     &-content {
         float: right;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        @include flex(column){
+            justify-content: space-around;
+        }
         width: 50%;
         height: 3rem;
         padding: 0.15rem;
@@ -100,12 +103,8 @@
     }
 
     &-desc {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
+        @include overflow-num(3);
         text-align: justify;
-        text-overflow: ellipsis;
-        overflow: hidden;
     }
 
     &-title {
@@ -117,9 +116,9 @@
     }
 
     &-info {
-        display: flex;
-        justify-content: space-around;
-
+        @include flex(){
+            justify-content: space-around;
+        }
         span {
             display: flex;
             align-items: center;
@@ -128,7 +127,7 @@
 
         span.archive {
             em {
-                margin-right: .04rem;
+                margin-left: .1rem;
             }
         }
 
@@ -141,10 +140,15 @@
 
 .article-float .article-content {
     float: left;
+    border-radius: 5px 0 0 5px;
 }
 
 .article-float .article-cover {
     float: right;
+}
+
+.article-float .article-cover .article-link {
+    border-radius: 0 5px 5px 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -167,8 +171,22 @@
         .title {
             font-size: .5rem;
         }
-        .slogan{
+
+        .slogan {
             font-size: .35rem;
         }
     }
+}
+
+.arrow-down {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    width: .32rem;
+    height: .32rem;
+    transform: translateX(-50%);
+    border: none;
+    background: url(../../assets/img/arrow-down.svg) no-repeat;
+    background-size: 100%;
+    animation: floatY 2s infinite;
 }

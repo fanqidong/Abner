@@ -147,6 +147,31 @@
         transform:translate(0) rotate(0deg)
     }
 }
+@keyframes rotate3dTurnInY {
+    0% {
+        transform: rotateY(0deg) scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(1);
+        opacity: 1;
+    }
+}
+@keyframes rotate3dTurnOutY {
+    0% {
+        transform: rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(0);
+    }
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -299,8 +324,7 @@
 }
 @keyframes floatY {
 
-    from,
-    50% {
+    from {
         transform: translateY(-100%);
         opacity: 0;
     }

@@ -2,7 +2,7 @@
     &-content {
         padding: .3rem 0;
         text-align: center;
-        background: #fff;
+        background:rgba(255,255,255,.8);
         border-radius: 10px;
     }
 
@@ -28,7 +28,6 @@
         cursor: pointer;
         box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
         border-radius: 5px;
-        // font-style: italic;
         transition: all 1s;
         &.up{
             transform: skewY(-5deg);
@@ -47,5 +46,6 @@
     .label-item {
         min-width: 1rem;
         padding: .15rem;
+        font-size: 13px;
     }
 }

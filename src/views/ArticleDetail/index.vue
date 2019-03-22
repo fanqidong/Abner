@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <Loading v-else/>
+    <Loading v-if="isLoading"/>
   </div>
 </template>
 
@@ -45,7 +45,8 @@ export default {
       post: [],
       postAll: [],
       prevPost: {},
-      nextPost: {}
+      nextPost: {},
+      isLoading: false
     }
   },
   components: {
@@ -67,10 +68,12 @@ export default {
   updated() {},
   methods: {
     async queryPost(number = this.number) {
+      this.isLoading = true
       this.post = await store.dispatch("queryPost", { number })
-      console.log(this.post)
+      this.isLoading = false
     },
     async getPosts(number) {
+        this.isLoading = true
       if (this.posts.length) {
         this.postAll = this.posts
         console.log("所有", ...this.postAll)
@@ -89,6 +92,7 @@ export default {
           index == arr.length - 1 && (this.nextPost = arr[0])
         }
       })
+      this.isLoading = false
     },
     goDetail(number) {
       window.scrollTo(0, 0)
@@ -117,9 +121,9 @@ export default {
     display: flex;
     justify-content: space-around;
   }
-  &-title{
+  &-title {
     display: inline-block;
-    margin-left: .1rem;
+    margin-left: 0.1rem;
   }
 }
 </style>

@@ -1,3 +1,5 @@
+@import '@/assets/sass/mixin.scss';
+
 .header {
     position: absolute;
     top: 0;
@@ -5,7 +7,8 @@
     width: 100%;
     animation: fadeInDown 1s;
     z-index: 997;
-    transition:  all 1s;
+    transition: all 1s;
+
     &.active {
         position: fixed;
         top: 0;
@@ -15,14 +18,17 @@
         background: rgba($color: rgb(26, 21, 21), $alpha: .8);
         box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.05);
         color: #fff;
-        a{
+
+        a {
             color: #fff;
         }
     }
-    .nav-logo{
+
+    .nav-logo {
         transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
-    &.active .nav-logo{
+
+    &.active .nav-logo {
         // top: .05rem;
     }
 }
@@ -31,12 +37,14 @@
     position: absolute;
     height: .6rem;
     font-size: .22rem;
+
     // opacity: 1;
-    .brand{
-        display: flex;
-        align-items: center;
+    .brand {
+
+        @include flex-align();
         color: #fff;
     }
+
     img {
         display: inline-block;
         height: .55rem;
@@ -51,6 +59,7 @@
     font-size: .16rem;
     height: .6rem;
     line-height: .6rem;
+
     &.menu-open {
         @for $i from 1 through 7 {
             .menu-list li:nth-of-type(#{$i}) {
@@ -62,13 +71,13 @@
 
 .menu-list {
     float: right;
-    display: flex;
-    justify-content: space-between;
+    @include flex(){
+        justify-content: space-between;
+    };
 
     li {
         position: relative;
-        display: flex;
-        align-items: center;
+        @include flex-align();
         padding: 0 .15rem 0;
     }
 
@@ -82,7 +91,7 @@
 }
 
 /*移动端导航样式*/
-.nav-collapse{
+.nav-collapse {
     position: absolute;
     left: 0;
     line-height: .6rem;
@@ -91,30 +100,36 @@
     color: #fff;
     cursor: pointer;
 }
+
 @media screen and (max-width: 992px) {
-    .nav-logo{
+    .nav-logo {
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         will-change: transform;
     }
-    .menu-list{
+
+    .menu-list {
         display: none;
     }
 }
+
 @media screen and (max-width: 768px) {
     .menu-wrapper {
         width: 90%;
         font-size: 14px;
         height: .7rem;
     }
-    .brand{
+
+    .brand {
         font-size: .4rem
     }
-    .nav-collapse{
+
+    .nav-collapse {
         font-size: .35rem;
     }
 }
+
 @media screen and (min-width: 993px) {
     .nav-collapse {
         display: none;

@@ -44,13 +44,13 @@
               </span>
               <!-- 归档 -->
               <span>
-                <i class="iconfont icon-shouye"></i>
+                <i class="fa fa-cloud"></i>
                 <em>{{post.milestone.title }}</em>
               </span>
               <!-- 标签 -->
               <span class="archive">
-                <i class="iconfont icon-shouye"></i>
-                <em v-for="label in post.labels" :key="label.id">{{label.name}}</em>
+                <i class="fa fa-tags"></i>
+                <em v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</em>
               </span>
             </div>
           </div>
@@ -100,7 +100,8 @@ export default {
   },
   mounted() {
       window.addEventListener('scroll',()=>{
-      this.opacity = ((1- document.documentElement.scrollTop / 400) < 0)? 0 : 1- document.documentElement.scrollTop / 400
+        let scrollTop = document.documentElement.scrollTop || document.documentElement.scrollTop || window.pageYOffset
+         this.opacity = ((1- scrollTop / 400) < 0)? 0 : 1- scrollTop / 400
     },false)
   },
   destroyed: function() {}
@@ -108,19 +109,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import './index.scss';
-
-.arrow-down{
-  position: absolute;
-  bottom:5%;
-  left: 50%;
-  width: .32rem;
-  height: .32rem;
-  transform: translateX(-50%);
-  border: none;
-  background: url('../../assets/img/arrow-down.svg') no-repeat;
-  background-size:100%;
-  animation: floatY 2.2s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 </style>
 
 

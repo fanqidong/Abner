@@ -12,19 +12,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "@/assets/sass/mixin.scss";
+
 .loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba($color: #000, $alpha: .5);
+  @include flex-center();
+  @include full-screen();
+  background: rgba($color: #000, $alpha: 0.5);
   z-index: 9999;
 }
-
 </style>
 

@@ -2,7 +2,10 @@
   <div class="category row">
     <ul class="category-list"  v-if="categoryList.length">
       <li v-for="category in categoryList" :key="category.id">
-        <p>{{category.title}}</p>
+        <div>
+            <span>{{category.title}}</span>
+            <span>{{category.open_issues}}</span>
+        </div>
         <img :src="category.cover.trim()" alt class="cover">
       </li>
     </ul>
@@ -29,6 +32,7 @@ export default {
   methods: {
     async queryCategory() {
       this.categoryList = await store.dispatch("queryCategory")
+      console.info(this.categoryList)
     }
   }
 }

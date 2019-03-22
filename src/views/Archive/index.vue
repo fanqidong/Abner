@@ -1,9 +1,14 @@
 <template>
-  <div id="archive" class="archive" >
-    <section class="timeline-contanier"  v-if="posts.length">
-        <h2 class="text-center">文章归档</h2>
-        <p class="archive-total">好! 目前共计 187 篇日志。 继续努力。</p>
-      <div class="tl-wrapper" v-for="(item,index1) in posts" :key="index1" :class="{'tl-open': index1 == currentIndex}">
+  <div id="archive" class="archive">
+    <section class="timeline-contanier" v-if="posts.length">
+      <h2 class="text-center">文章归档</h2>
+      <p class="archive-total">好! 目前共计 187 篇日志。 继续努力。</p>
+      <div
+        class="tl-wrapper"
+        v-for="(item,index1) in posts"
+        :key="index1"
+        :class="{'tl-open': index1 == currentIndex}"
+      >
         <div class="tl-header" @click="toggleTimeline(index1,$event)">
           <h2 :class="`bg-${colorArr[index1+2]}`">2019年0{{item}}月</h2>
         </div>
@@ -24,20 +29,20 @@
         </ul>
       </div>
     </section>
-     <Loading v-else />
+    <Loading v-else/>
   </div>
 </template>
 
 <script>
 import ArchiveCard from "@/components/ArchiveCard"
-import Loading from '@/components/Loading'
-import store from '@/store'
+import Loading from "@/components/Loading"
+import store from "@/store"
 export default {
   data() {
     return {
       currentIndex: "",
       colorArr: ["light", "dark", "black", "primary", "success", "info", "warning", "danger"],
-      posts:[1,2,3,4]
+      posts: [1, 2, 3, 4]
     }
   },
   components: {
@@ -47,29 +52,32 @@ export default {
   computed: {},
   created() {
     if (!this.posts.length) {
-       this.getPosts()
+      this.getPosts()
     }
   },
   methods: {
     //  获取所有文章列表 && =>归档
     async getPosts() {
-     const res = await store.dispatch('queryPosts',{ type: 'archive'})
+      const res = await store.dispatch("queryPosts", { type: "archive" })
     },
     toggleTimeline(index, event) {
       this.currentIndex = index
-     let parent = event.currentTarget.parentElement
-     parent.classList.contains('tl-open') ? parent.classList.remove('tl-open') : parent.classList.add('tl-open')
+      let parent = event.currentTarget.parentElement
+      parent.classList.contains("tl-open")
+        ? parent.classList.remove("tl-open")
+        : parent.classList.add("tl-open")
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "./index.scss";
+@import "@/assets/sass/mixin.scss";
 h2 {
   margin: 0;
 }
-.archive-total{
-  margin: .1rem 0;
+.archive-total {
+  margin: 0.1rem 0;
 }
 .tl-wrapper {
   margin: 0 0 0.2rem 0;
@@ -96,8 +104,7 @@ h2 {
 }
 .tl-content {
   position: relative;
-  display: flex;
-  align-items: center;
+  @include flex-align();
 }
 .tl-info {
   position: relative;
@@ -108,7 +115,7 @@ h2 {
     content: "";
     position: relative;
     float: left;
-    left:-27px;
+    left: -27px;
     top: 10px;
     transform: translateY(-50%);
     width: 10px;
@@ -146,7 +153,7 @@ h2 {
 .bg-light {
   color: #58666e;
   background-color: #edf1f2;
-  &::before{
+  &::before {
     border-right-color: #edf1f2;
   }
 }
@@ -156,7 +163,7 @@ h2 {
 .bg-dark {
   color: #a6a8b1;
   background-color: #3a3f51;
-  &::before{
+  &::before {
     border-right-color: #3a3f51;
   }
 }
@@ -166,7 +173,7 @@ h2 {
 .bg-black {
   color: #7793a7;
   background-color: #1c2b36;
-   &::before{
+  &::before {
     border-right-color: #1c2b36;
   }
 }
@@ -176,7 +183,7 @@ h2 {
 .bg-primary {
   color: #f4f3f9;
   background-color: #7266ba;
-  &::before{
+  &::before {
     border-right-color: #7266ba;
   }
 }
@@ -186,7 +193,7 @@ h2 {
 .bg-success {
   color: #c6efd0;
   background-color: #27c24c;
-  &::before{
+  &::before {
     border-right-color: #27c24c;
   }
 }
@@ -196,7 +203,7 @@ h2 {
 .bg-info {
   color: #dcf2f8;
   background-color: #23b7e5;
-  &::before{
+  &::before {
     border-right-color: #23b7e5;
   }
 }
@@ -206,7 +213,7 @@ h2 {
 .bg-warning {
   color: #fffefa;
   background-color: #fad733;
-  &::before{
+  &::before {
     border-right-color: #fad733;
   }
 }
@@ -216,7 +223,7 @@ h2 {
 .bg-danger {
   color: #fff;
   background-color: #f05050;
-  &::before{
+  &::before {
     border-right-color: #f05050;
   }
 }
@@ -226,7 +233,7 @@ h2 {
 .bg-white {
   color: #58666e;
   background-color: #fff;
-  &::before{
+  &::before {
     border-right-color: #fff;
   }
 }

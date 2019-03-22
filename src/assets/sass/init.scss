@@ -76,6 +76,17 @@
     .next span {
         display: block;
     }
+
+    pre {
+        &::before {
+            margin-top: -.2rem;
+            box-shadow: .35rem 0 #fdbc40, .7rem 0 #35cd4b !important;
+        }
+
+        &::-webkit-scrollbar {
+            height: .15rem !important;
+        }
+    }
 }
 
 /*a链接处理*/
@@ -200,9 +211,16 @@
     }
 
     .hljs-ln-numbers {
-        margin-right: 2em;
+        display: inline-block;
+        margin-right: .2rem;
         padding: 0 .1rem;
         text-align: left;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+        // color: #e48686;
+        color: rgba($color: #4eda60, $alpha: .8);
     }
 
     h1,
@@ -245,11 +263,23 @@
 pre {
     display: block;
     position: relative;
-    max-height: 5rem;
-    padding: .45rem .14rem .16rem .14rem;
-    overflow: hidden;
+    padding: .45rem .14rem .16rem 0;
+    overflow: auto;
     margin-bottom: 1em;
-    background-color: #1d1f21;
+    background-color: #080808;
+    // background-color: #21252b;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        border-radius: 40px;
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        // box-shadow: 0 0 15px rgba(245, 220, 184, .81);
+        background-color: none;
+        box-shadow: none !important;
+    }
 
     &::before {
         content: " ";
@@ -261,8 +291,8 @@ pre {
         height: 12px;
         left: .12rem;
         margin-top: -.3rem;
-        -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        -webkit-box-shadow: .2rem 0 #fdbc40, .4rem 0 #35cd4b;
+        box-shadow: .2rem 0 #fdbc40, .4rem 0 #35cd4b;
         z-index: 2;
     }
 
@@ -272,7 +302,7 @@ pre {
         height: 100%;
         line-height: 1.6em;
         color: hsla(0, 0%, 100%, .87);
-        background-color: transparent;
+        background-color: #1d1f21;
         overflow: auto;
 
         &::before {
@@ -291,17 +321,6 @@ pre {
             text-transform: capitalize;
         }
 
-        &::-webkit-scrollbar {
-            background-color: transparent;
-            border-radius: 40px;
-            height: 8px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            // box-shadow: 0 0 15px rgba(245, 220, 184, .81);
-            background-color: none;
-            box-shadow: none !important;
-        }
     }
 }
 

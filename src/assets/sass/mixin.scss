@@ -1,13 +1,53 @@
-@mixin flex-box ($dir:row) {
+@mixin flex($dir:row) {
     display: flex;
+    flex-direction: $dir;
+    @content;
+}
+
+@mixin flex-center($dir:row) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: center;
+    align-items: center;
+    @content;
+}
+
+@mixin flex-align($dir:row) {
+    display: flex;
+    flex-direction: $dir;
+    align-items: center;
+    @content;
+}
+
+@mixin flex-justify($dir:row) {
+    display: flex;
+    flex-direction: $dir;
     justify-content: center;
     @content;
 }
+
+@mixin full-screen() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @content;
+}
+
 @mixin text-overflow() {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@mixin overflow-num($num:3) {
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 @mixin box-shadow() {
     box-shadow: 0 0 10px #000;
 }

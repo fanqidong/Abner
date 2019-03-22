@@ -26,16 +26,6 @@ renderer.link = (href, title, text) => {
             </a>`
 }
 
-// 渲染代码块
-// renderer.code = (code, language) => {
-//   if (language == undefined){
-//      language = 'text'
-//   }
-//   return `<pre class='pre-wrap' data-language='${language}'>
-//       <code class='language-${language}'>${code}</code>
-//   </pre>`
-// }
-
 /**
  * @description: 配置代码高亮
  * @param {code: String} //代码内容——是一个字符串。
@@ -72,7 +62,6 @@ export default {
   },
   mounted() {
     //   this.formatCode()
-    // console.log(this.content)
   },
   destroyed() {},
   methods: {
@@ -106,7 +95,7 @@ export default {
         }
         codes[index].children[0].setAttribute(
           "data-language",
-          codes[index].children[0].className.toLowerCase().replace("language-", "")
+          codes[index].children[0].className.replace("language-", "")
         )
       }
     }
@@ -120,9 +109,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import "@/assets/sass/mixin.scss";
 .post-siblings {
-  display: flex;
-  justify-content: space-around;
+  @include flex(){
+      justify-content: space-around;
+  }
 }
 </style>
 
