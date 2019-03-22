@@ -71,7 +71,7 @@ export default {
       if (this.onlyRender) return
       this.$nextTick(() => {
         if (this.target) {
-         this.formatCode()
+          this.formatCode()
           //显示代码行数
           hljs.initLineNumbersOnLoad({
             target: this.target
@@ -89,7 +89,8 @@ export default {
     // 格式化pre code代码块
     formatCode() {
       let codes = document.querySelectorAll("pre")
-      for (let index = 0; index < codes.length; index++) {
+      for (let index = 0, len = codes.length; index < len; index++) {
+        
         if (!codes[index].children[0].className) {
           codes[index].children[0].className = "text"
         }
@@ -111,8 +112,8 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/sass/mixin.scss";
 .post-siblings {
-  @include flex(){
-      justify-content: space-around;
+  @include flex() {
+    justify-content: space-around;
   }
 }
 </style>

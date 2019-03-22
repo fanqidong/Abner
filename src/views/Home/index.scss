@@ -14,7 +14,15 @@
     height: 100vh;
     top: 0;
     left: 0;
-
+    // &::after{
+    //     content: '';
+    //     position: absolute;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     top: 0;
+    //     background: linear-gradient(transparent 80%,rgba(0,0,0,.4) 90%,rgba(0,0,0,.7) 100%);
+    // }
     @include flex-center(column);
 
     .title {

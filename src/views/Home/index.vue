@@ -11,8 +11,7 @@
         <p class="slogan">人生短暂，及时行乐。</p>
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
       </div>
-       <button class="arrow-down">
-      </button>
+       <button class="arrow-down"></button>
     </section>
     <section class="article row">
       <div class="article-list" v-if="posts.length">

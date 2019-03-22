@@ -13,3 +13,10 @@ export const on = (() => {
     }
   }
 })()
+
+export const scrollTop = (() => {
+  return  on(window,'scroll',function(){
+     return  console.log(1)
+      // return 
+    })
+})()

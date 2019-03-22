@@ -212,7 +212,7 @@
 
     .hljs-ln-numbers {
         display: inline-block;
-        margin-right: .2rem;
+        margin-right: .1rem;
         padding: 0 .1rem;
         text-align: left;
     }
@@ -302,7 +302,7 @@ pre {
         height: 100%;
         line-height: 1.6em;
         color: hsla(0, 0%, 100%, .87);
-        background-color: #1d1f21;
+        // background-color: #1d1f21;
         overflow: auto;
 
         &::before {
