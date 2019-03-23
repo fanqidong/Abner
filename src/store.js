@@ -72,12 +72,14 @@ export default new Vuex.Store({
             // 如果存在文章数据则直接获取不发请求
             if (!post) {
               post = await queryPost(number)
+              const newPost = await queryHot([post])
+              post = formatPost(newPost[0])
             }
             return post
         },
         // 获取文章分类
         async queryCategory(){
-            let data = await queryCategory()
+            const data = await queryCategory()
             data = formatCategory(data)
             return data
         },

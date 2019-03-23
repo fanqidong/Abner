@@ -1,31 +1,50 @@
 <template>
   <div class="article-detail row" id="post">
     <div class="contanier" v-if="post.body">
-      <MarkDown :content="post.body" target="#post"/>
-      <div class="post-siblings">
-        <div class="prev">
-          <span>上一篇</span>
-          <a
-            href="javascript:;"
-            class="post-title"
-            :data-number="prevPost.number"
-            @click="goDetail(prevPost.number)"
-          >
-            <span>#{{prevPost.title}}#</span>
-          </a>
+      <section class="article-header">
+        <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}">
         </div>
-        <div class="next">
-          <span>下一篇</span>
-          <a
-            href="javascript:;"
-            class="post-title"
-            :data-number="nextPost.number"
-            @click="goDetail(nextPost.number)"
-          >
-            <span>#{{nextPost.title}}#</span>
-          </a>
+        <div class="title-wrapper">
+            <h1 class="article-title">{{post.title}}</h1>
+              <div class="article-meta">
+                  <div class="article-category">
+                      <a href="" class="article-category-link">{{post.milestone.title}}</a>
+                  </div>
+                  <div class="article-date">
+                    <time :datetime="post.created_at">
+                      {{post.created_at}}
+                    </time>
+                  </div>
+              </div>
         </div>
-      </div>
+      </section>
+      <section class="article-main">
+          <MarkDown :content="post.body" target="#post"/>
+          <div class="post-siblings">
+            <div class="prev">
+              <span>上一篇</span>
+              <a
+                href="javascript:;"
+                class="post-title"
+                :data-number="prevPost.number"
+                @click="goDetail(prevPost.number)"
+              >
+                <span>#{{prevPost.title}}#</span>
+              </a>
+            </div>
+            <div class="next">
+              <span>下一篇</span>
+              <a
+                href="javascript:;"
+                class="post-title"
+                :data-number="nextPost.number"
+                @click="goDetail(nextPost.number)"
+              >
+                <span>#{{nextPost.title}}#</span>
+              </a>
+            </div>
+          </div>
+      </section>
     </div>
     <Loading v-if="isLoading"/>
   </div>
@@ -105,26 +124,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article-detail {
-  &.row {
-    padding-top: initial;
-  }
-  .contanier {
-    background: rgba(255, 255, 255, 0.7);
-    margin-top: 1rem;
-    padding: 0.2rem;
-    border-radius: 10px;
-  }
-}
-.post {
-  &-siblings {
-    display: flex;
-    justify-content: space-around;
-  }
-  &-title {
-    display: inline-block;
-    margin-left: 0.1rem;
-  }
-}
+@import './index.scss'
 </style>
 

@@ -58,6 +58,7 @@
       </div>
       <Loading v-else />
     </section>
+    <Bg />
   </div>
 </template>
 
@@ -67,11 +68,14 @@ import store from '@/store'
 import { mapState } from 'vuex'
 import MarkDown from '@/components/Markdown'
 import Loading from '@/components/Loading'
+import Bg from "@/components/Background"
+
 export default {
   name: 'home',
   components: {
     MarkDown,
-    Loading
+    Loading,
+    Bg
   },
   data() {
     return {

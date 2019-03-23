@@ -241,7 +241,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 body{
     font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
-    font-size: .15rem;
+    font-size: 14px;
     color:#606975;
     line-height: 1.4;
 }

@@ -36,6 +36,7 @@ export default {
   padding: .1rem 0 .2rem 0;
   z-index: 100;
   color: #fff;
+  background: #0c0e10;
   &-container {
     max-width: 1200px;
     margin: auto;

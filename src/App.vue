@@ -1,6 +1,6 @@
 <template>
   <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}">
-    <Bg/>
+    <!-- <Bg/> -->
     <Header :is-menu-open="isMenuOpen" @toggle-menu="setMenu"/>
     <MobileMenu @handle-menu="closeMenu"/>
     <main ref="scrollingContainer">
@@ -21,7 +21,7 @@
 <script>
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import Bg from "@/components/Background"
+// import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
 export default {
@@ -34,7 +34,7 @@ export default {
   },
   components: {
     Header,
-    Bg,
+    // Bg,
     MobileMenu,
     Footer,
     Loading
@@ -56,12 +56,10 @@ export default {
   },
   created() {},
   mounted() {
-    // window.addEventListener("scroll",() => {
-    //   console.log(scrollTop)
-
-    //   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-    //     scrollTop >= 0 ? (this.isMenuOpen = true) : (this.isMenuOpen = false)
-    //   },{ passive: true })
+    window.addEventListener("scroll",() => {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+        scrollTop >= 0 ? (this.isMenuOpen = true) : (this.isMenuOpen = false)
+      },{ passive: true })
   },
   destroyed: function() {}
 }
@@ -71,7 +69,7 @@ export default {
 #abner {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 1.1rem;
+  padding-bottom: 1.4rem;
   text-align: center;
 }
 .main-content {
@@ -81,7 +79,7 @@ export default {
   .menu-mask {
     opacity: 0.7;
     transform: translateX(-100%);
-    transition: opacity 0.5s;
+    transition: opacity .3s;
   }
   .menu-mobile {
     transform: translateX(100%);
@@ -100,9 +98,8 @@ export default {
 .go-top {
   position: fixed;
   right: 2%;
-  bottom: 5%;
-  font-size: 0.4rem;
-  i {
-  }
+  bottom: 8%;
+  z-index: 100;
+  font-size: .4rem;
 }
 </style>

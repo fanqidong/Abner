@@ -73,6 +73,24 @@ export default {
 <style lang="scss" scoped>
 @import "./index.scss";
 @import "@/assets/sass/mixin.scss";
+.archive{
+    max-width: 900px;
+    margin: 2rem auto 0;
+    min-height: 6rem;
+    padding: .15rem;
+    background: rgba($color: #fff, $alpha: .5);
+}
+@media screen and (max-width: 992px){
+    .archive{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 768px){
+    .archive{
+        width: 90%;
+    }
+}
+
 h2 {
   margin: 0;
 }
