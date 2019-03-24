@@ -147,6 +147,22 @@
         transform:translate(0) rotate(0deg)
     }
 }
+@keyframes textConcatIn {
+    0% {
+        letter-spacing: 2em;
+        transform: translateZ(400px);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
 @keyframes rotate3dTurnInY {
     0% {
         transform: rotateY(0deg) scale(0);

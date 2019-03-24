@@ -26,11 +26,16 @@
             <a href="javascript:;" class="article-link">
               <img v-lazy="post.cover.src" :alt="post.cover.text">
             </a>
+             <!-- 发表时间 -->
+            <div class="article-date">
+                <span class="month">{{post.timeinfo.month}}</span>
+                <span class="time">
+                    <i class="fa fa-calendar-check-o"></i>{{post.timeinfo.date}}</span>
+            </div>
           </div>
           <!-- 文章内容  Start -->
           <div class="article-content">
-            <!-- 发表时间 -->
-            <div class="article-date">发表于{{post.created_at.slice(0,10)}}</div>
+           
             <!-- 文章标题 -->
             <h2 class="article-title">{{post.title}}</h2>
             <!-- 简介 -->

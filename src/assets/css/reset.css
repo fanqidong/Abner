@@ -239,9 +239,15 @@ input[type="search"]::-webkit-search-decoration {
 [v-cloak] {
     display: none !important;
 }
+html,body{
+    height:100%;
+}
 body{
     font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
     font-size: 14px;
     color:#606975;
     line-height: 1.4;
+}
+.fa{
+    margin-right: 3px;
 }

@@ -7,15 +7,29 @@
         <div class="title-wrapper">
             <h1 class="article-title">{{post.title}}</h1>
               <div class="article-meta">
+                <div class="article-archive">
+                      <i class="fa fa-archive"></i>
+                      <router-link :to="{name:'Category'}" class="article-category-link">{{post.milestone.title}}</router-link>
+                    </div>
                   <div class="article-category">
-                      <a href="" class="article-category-link">{{post.milestone.title}}</a>
+                    <ul class="arcitle-label">
+                        <i class="fa fa-tags"></i>
+                      <!-- <li v-for="label in post.labels" :key="label.id" :style="{backgroundColor: `#${label.color}`}"> -->
+                      <li v-for="label in post.labels" :key="label.id">
+                        {{label.name}}
+                      </li>
+                    </ul>
                   </div>
                   <div class="article-date">
+                    <i class="fa fa-calendar"></i>
                     <time :datetime="post.created_at">
-                      {{post.created_at}}
+                      {{post.timeinfo.date}}丨{{post.timeinfo.time.toLowerCase()}}
                     </time>
                   </div>
               </div>
+            <h2 class="article-month">
+              {{post.timeinfo.month}}
+            </h2>
         </div>
       </section>
       <section class="article-main">

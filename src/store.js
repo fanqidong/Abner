@@ -49,8 +49,10 @@ export default new Vuex.Store({
             if (type === 'archive') {
                 let res =  await queryPosts({
                     page: 1,
-                    pageSize: 1
+                    pageSize: ''
                 })
+                res.forEach(formatPost)
+                console.log(res)
                 return res
             }else{
                 if (!hasMore) return
@@ -74,12 +76,13 @@ export default new Vuex.Store({
               post = await queryPost(number)
               const newPost = await queryHot([post])
               post = formatPost(newPost[0])
+              console.log(post)
             }
             return post
         },
         // 获取文章分类
         async queryCategory(){
-            const data = await queryCategory()
+            let data = await queryCategory()
             data = formatCategory(data)
             return data
         },

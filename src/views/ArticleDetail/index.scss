@@ -1,18 +1,26 @@
 .article-detail {
     &.row {
-        padding-top: initial;
+        // padding-top: initial;
     }
 
     .contanier {
-        background: rgba(255, 255, 255, 0.7);
+        // background: rgba(255, 255, 255, 0.7);
         border-radius: 10px;
     }
 }
 
 .article-header {
     position: relative;
+    width:100%;
+    min-height: 4rem;
+    overflow:hidden;
+    &:hover .article-cover{
+        transform: scale(1.1) rotate(-2deg);
+    }
 }
-
+.article-meta div {
+    margin: 5px 0;
+}
 .article-cover {
     position: absolute;
     left: 0;
@@ -22,7 +30,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
+    transition: all 1.5s;
     &::before {
         content: '';
         position: absolute;
@@ -45,10 +53,38 @@
         background: linear-gradient(transparent 80%, rgba(0, 0, 0, .4) 90%, rgba(0, 0, 0, .7) 100%);
     }
 }
-
+.article-category{
+    &-link{
+        color:#fff;
+    }
+}
+.arcitle-label{
+    display: flex;
+    align-items: center;
+    li{
+        margin-right: 4px;
+    }
+}
+.article-month{
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    font-size: 40px;
+}
+.article-main{
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2% 3%;
+}
 .title-wrapper {
-    margin-bottom: .3rem;
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: .1rem;
     text-align: left;
+    color: #fff;
+    z-index: 30;
 }
 
 .post {
@@ -59,7 +95,7 @@
 
     &-title {
         display: inline-block;
-        margin-left: 0.1rem;
+        margin-left: .1rem;
     }
 }
 
@@ -69,32 +105,27 @@
     }
 
     .title-wrapper {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transform: translateY(-10px);
-        padding: 0 15px;
-        z-index: 30;
-        color: #fff;
+        // transform: translateY(-10px);
     }
-
+    .article-month{
+        right: 10px;
+    }
     .row {
         width: 100%;
         padding: 0 !important;
     }
-
-    // .article-main{
-    //     padding-top: 100vh;
-    // }
 }
 
 @media screen and (min-width: 769px) {
-    .article-cover {
-        display: none;
+    .article-header{
+
     }
+    // .article-cover {
+    //     display: none;
+    // }
 
     .contanier {
-        margin-top: 1rem;
-        padding: 0 .2rem .2rem;
+        // margin-top: 1rem;
+        // padding: 0 .2rem .2rem;
     }
 }

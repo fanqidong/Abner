@@ -1,6 +1,6 @@
 <template>
   <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}">
-    <!-- <Bg/> -->
+    <Bg/>
     <Header :is-menu-open="isMenuOpen" @toggle-menu="setMenu"/>
     <MobileMenu @handle-menu="closeMenu"/>
     <main ref="scrollingContainer">
@@ -21,7 +21,7 @@
 <script>
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-// import Bg from "@/components/Background"
+import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
 export default {
@@ -34,7 +34,7 @@ export default {
   },
   components: {
     Header,
-    // Bg,
+    Bg,
     MobileMenu,
     Footer,
     Loading
@@ -66,10 +66,11 @@ export default {
 </script>
 
 <style lang="scss">
+
 #abner {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 1.4rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 .main-content {

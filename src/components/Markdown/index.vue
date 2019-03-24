@@ -111,6 +111,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/sass/mixin.scss";
+.markdown-content{
+   overflow:hidden;
+}
 .post-siblings {
   @include flex() {
     justify-content: space-around;
