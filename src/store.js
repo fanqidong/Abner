@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-19 15:36:16
+ * @LastEditTime: 2019-03-25 14:02:28
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -52,7 +52,7 @@ export default new Vuex.Store({
                     pageSize: ''
                 })
                 res.forEach(formatPost)
-                console.log(res)
+                // console.log(res)
                 return res
             }else{
                 if (!hasMore) return

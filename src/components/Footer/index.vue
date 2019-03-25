@@ -36,7 +36,6 @@ export default {
   padding: .1rem 0 .2rem 0;
   z-index: 100;
   color: #fff;
-  background: #0c0e10;
   &-container {
     max-width: 1200px;
     margin: auto;
@@ -47,6 +46,11 @@ export default {
   .author{
       margin: 0 .1rem;
   }
+}
+@media screen and (max-width:768px){
+    .footer{
+          background: #0c0e10;
+    }
 }
 </style>
 

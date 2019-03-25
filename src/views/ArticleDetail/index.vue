@@ -2,62 +2,62 @@
   <div class="article-detail row" id="post">
     <div class="contanier" v-if="post.body">
       <section class="article-header">
-        <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}">
-        </div>
+        <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
-            <h1 class="article-title">{{post.title}}</h1>
-              <div class="article-meta">
-                <div class="article-archive">
-                      <i class="fa fa-archive"></i>
-                      <router-link :to="{name:'Category'}" class="article-category-link">{{post.milestone.title}}</router-link>
-                    </div>
-                  <div class="article-category">
-                    <ul class="arcitle-label">
-                        <i class="fa fa-tags"></i>
-                      <!-- <li v-for="label in post.labels" :key="label.id" :style="{backgroundColor: `#${label.color}`}"> -->
-                      <li v-for="label in post.labels" :key="label.id">
-                        {{label.name}}
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="article-date">
-                    <i class="fa fa-calendar"></i>
-                    <time :datetime="post.created_at">
-                      {{post.timeinfo.date}}丨{{post.timeinfo.time.toLowerCase()}}
-                    </time>
-                  </div>
-              </div>
-            <h2 class="article-month">
-              {{post.timeinfo.month}}
-            </h2>
+          <h1 class="article-title">{{post.title}}</h1>
+          <div class="article-meta">
+            <div class="article-archive">
+              <i class="fa fa-archive"></i>
+              <router-link
+                :to="{name:'Category'}"
+                class="article-category-link"
+              >{{post.milestone.title}}</router-link>
+            </div>
+              <ul class="arcitle-label">
+                <i class="fa fa-tags"></i>
+                <!-- <li v-for="label in post.labels" :key="label.id" :style="{backgroundColor: `#${label.color}`}"> -->
+                <li v-for="label in post.labels" :key="label.id">{{label.name}}</li>
+              </ul>
+            <div class="article-date">
+              <i class="fa fa-calendar"></i>
+              <time
+                :datetime="post.created_at"
+              >{{post.timeinfo.date}}丨{{post.timeinfo.time.toLowerCase()}}</time>
+            </div>
+            <div class="article-hot">
+                <i class="fa fa-eye"></i>
+                <span>{{post.times}}</span>
+            </div>
+          </div>
+          <h2 class="article-month">{{post.timeinfo.month}}</h2>
         </div>
       </section>
       <section class="article-main">
-          <MarkDown :content="post.body" target="#post"/>
-          <div class="post-siblings">
-            <div class="prev">
-              <span>上一篇</span>
-              <a
-                href="javascript:;"
-                class="post-title"
-                :data-number="prevPost.number"
-                @click="goDetail(prevPost.number)"
-              >
-                <span>#{{prevPost.title}}#</span>
-              </a>
-            </div>
-            <div class="next">
-              <span>下一篇</span>
-              <a
-                href="javascript:;"
-                class="post-title"
-                :data-number="nextPost.number"
-                @click="goDetail(nextPost.number)"
-              >
-                <span>#{{nextPost.title}}#</span>
-              </a>
-            </div>
+        <MarkDown :content="post.body" target="#post"/>
+        <div class="post-siblings">
+          <div class="prev">
+            <span>上一篇</span>
+            <a
+              href="javascript:;"
+              class="post-title"
+              :data-number="prevPost.number"
+              @click="goDetail(prevPost.number)"
+            >
+              <span>#{{prevPost.title}}#</span>
+            </a>
           </div>
+          <div class="next">
+            <span>下一篇</span>
+            <a
+              href="javascript:;"
+              class="post-title"
+              :data-number="nextPost.number"
+              @click="goDetail(nextPost.number)"
+            >
+              <span>#{{nextPost.title}}#</span>
+            </a>
+          </div>
+        </div>
       </section>
     </div>
     <Loading v-if="isLoading"/>
@@ -106,7 +106,7 @@ export default {
       this.isLoading = false
     },
     async getPosts(number) {
-        this.isLoading = true
+      this.isLoading = true
       if (this.posts.length) {
         this.postAll = this.posts
         console.log("所有", ...this.postAll)
@@ -138,6 +138,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './index.scss'
+@import "./index.scss";
 </style>
 

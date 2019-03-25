@@ -1,6 +1,6 @@
 <template>
   <div class="label row">
-    <div class="label-content"  v-if="labelList.length">
+    <div class="label-content"  v-if="labelList.length" data-aos="fade-up">
       <h2 class="title">
         <ruby>文章标签
           <rt>Article label</rt>
@@ -24,6 +24,7 @@
 <script>
 import store from "@/store"
 import Loading from '@/components/Loading'
+import Aos from 'aos'
 export default {
   name: "Label",
   data() {
@@ -36,6 +37,13 @@ export default {
   },
   async created() {
     await this.queryLabel()
+    Aos.init({
+      duration: 1000,
+      easing: "ease-out",
+      debounceDelay: 200,
+      offset: 20
+    }),
+    setTimeout(Aos.refresh, 600)
   },
   mounted() {},
   methods: {

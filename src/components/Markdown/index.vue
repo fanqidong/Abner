@@ -60,10 +60,9 @@ export default {
   created() {
     this.formatMarkdown()
   },
-  mounted() {
-    //   this.formatCode()
+  beforeDestroy() {
+    this.gallery && this.gallery.destroy()
   },
-  destroyed() {},
   methods: {
     // 格式化markdown文本内容
     formatMarkdown() {
@@ -90,13 +89,11 @@ export default {
     formatCode() {
       let codes = document.querySelectorAll("pre")
       for (let index = 0, len = codes.length; index < len; index++) {
-        
-        if (!codes[index].children[0].className) {
-          codes[index].children[0].className = "text"
+        let className = codes[index].children[0].className
+        if (!className) {
+          className = "text"
         }
-        codes[index].children[0].setAttribute(
-          "data-language",
-          codes[index].children[0].className.replace("language-", "")
+        codes[index].children[0].setAttribute("data-language",className.replace("language-", "")
         )
       }
     }
@@ -104,7 +101,6 @@ export default {
   watch: {
     content() {
       this.formatMarkdown()
-      //   this.formatCode()
     }
   }
 }

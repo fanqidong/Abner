@@ -2,7 +2,7 @@
   <div class="mood row">
     <transition name="fade" mode="out-in" v-if="moodList.length">
       <ul class="mood-list">
-        <li class="mood-item" v-for="mood in moodList" :key="mood.id">
+        <li class="mood-item" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
           <span class="title" :data-title="mood.title"></span>
           <!-- <p class="desc">{{mood.body}}</p> -->
           <Markdown :content="mood.body" :only-render="true"/>
@@ -18,6 +18,7 @@
 import store from "@/store"
 import Loading from "@/components/Loading"
 import Markdown from "@/components/Markdown"
+import Aos from "aos"
 export default {
   data() {
     return {
@@ -33,6 +34,13 @@ export default {
   },
   async created() {
     await this.queryMood()
+    Aos.init({
+      duration: 1000,
+      easing: "ease-out",
+      debounceDelay: 200,
+      offset: 20
+    }),
+    setTimeout(Aos.refresh, 600)
   },
   methods: {
     //   获取心情

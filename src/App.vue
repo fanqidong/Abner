@@ -6,7 +6,7 @@
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <router-view/>
+          <router-view />
         </transition>
       </div>
     </main>
