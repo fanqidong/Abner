@@ -36,15 +36,15 @@ export default {
         },
         {
           id: 2,
-          path: "/label",
-          icon: "biaoqian",
-          text: "标签"
-        },
-        {
-          id: 3,
           path: "/category",
           icon: "fenlei",
           text: "分类"
+        },
+        {
+          id: 3,
+          path: "/label",
+          icon: "biaoqian",
+          text: "标签"
         },
         {
           id: 4,

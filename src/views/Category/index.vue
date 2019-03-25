@@ -11,7 +11,7 @@
         <li
           v-for="(category,index) in categoryList"
           :key="category.id"
-          @click="handleFilter(index)"
+          @click="handleFilter(index,category.number)"
         >
           <div class="category-cover" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
           <div class="category-info">
@@ -47,12 +47,21 @@ export default {
       this.categoryList = await store.dispatch("queryCategory")
       console.info(this.categoryList)
     },
-    handleFilter(index) {
-      this.currentIndex = index
-      index == 0 &&
-        this.$router.push({
-          name: "Mood"
-        })
+    handleFilter(index,number) {
+      if (index == 0) {
+         this.$router.push({name: "Mood"})
+         return
+      }
+      console.log(number)
+      this.queryPost(number)
+    },
+   async queryPost(number){
+       let posts = await store.dispatch("queryArchive",{
+          page: 1,
+          pageSize: '',
+          filter: `&milestone=${number}`
+       })
+       console.log(posts)
     }
   }
 }
@@ -60,11 +69,12 @@ export default {
 
 <style lang="scss" scoped>
 .category {
-  max-width: 900px;
-  margin: 2rem auto 0;
-  min-height: 6rem;
-  padding: 0.15rem;
-  background: rgba(255, 255, 255, 0.5);
+  &-wrapper{
+    max-width: 900px;
+    min-height: 6rem;
+    padding: 0.15rem;
+    background: rgba(255, 255, 255, 0.5);
+  }
   &-title {
     margin: 0 0 1em 0;
   }
@@ -81,11 +91,11 @@ export default {
     border-radius: 50%;
     cursor: pointer;
     span{
-        display: none;
+        // display: none;
         font-size: 22px;
     }
     .category-desc{
-        display: none;
+        // display: none;
         font-size: 16px;
     }
     &:hover{

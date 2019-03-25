@@ -43,30 +43,28 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        // 获取文章列表 && 文章归档
-        async queryPosts({commit, state}, {type}) {
+        // 获取文章列表
+        async queryPosts({commit, state}) {
             const { page, pageSize, hasMore } = state
-            if (type === 'archive') {
-                let res =  await queryPosts({
-                    page: 1,
-                    pageSize: ''
-                })
-                res.forEach(formatPost)
-                // console.log(res)
-                return res
-            }else{
-                if (!hasMore) return
-                let data = await queryPosts({
-                    page: page + 1,
-                    pageSize
-                })
-                data.forEach(formatPost)
-                data = await queryHot(data)
-                commit('setPosts', {
-                    posts: data,
-                    page: page + 1
-                })
-            }
+            if (!hasMore) return
+            let data = await queryPosts({
+                page: page + 1,
+                pageSize
+            })
+            data.forEach(formatPost)
+            data = await queryHot(data)
+            commit('setPosts', {
+                posts: data,
+                page: page + 1
+            })
+        },
+        // 获取文章归档
+        async queryArchive(context,payLoad){
+            console.log(payLoad)
+            let data = await queryPosts(payLoad)
+            data.forEach(formatPost)
+            data = await queryHot(data)
+            return data
         },
         // 获取当前文章详情
         async queryPost({ state },{ number }) {

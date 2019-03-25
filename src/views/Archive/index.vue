@@ -102,13 +102,17 @@ export default {
   methods: {
     //  获取所有文章列表 && =>归档
     async getPosts() {
-      let res = await store.dispatch("queryPosts", { type: "archive" })
+      let data = await store.dispatch("queryArchive",{
+        page: 1,
+        pageSize: ''
+      })
+      console.log(data)
       let arr = []
       let obj = {
         // post: []
       }
       let n = 0
-      res.forEach((item, index, array) => {
+      data.forEach((item, index, array) => {
         let { created_at } = item
         // 日期 "2019/3/22"
         let date = new Date(created_at)
