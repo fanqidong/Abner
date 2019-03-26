@@ -1,3 +1,7 @@
+html {
+    cursor: url(//cnabdplanibplpgkomnjmfbdhoblgmkp/img/angry_24.png), auto !important;
+}
+
 /*重写滚动条样式*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -230,6 +234,13 @@
         margin: .1rem 0;
     }
 
+    code {
+        color: #0084ff;
+        background: rgba(1, 12, 21, 0.1);
+        padding: 2px 5px;
+        border-radius: 2px;
+    }
+
     img {
         display: block;
         margin: auto;
@@ -259,12 +270,13 @@
             margin-top: .1rem;
         }
     }
-}
 
+    
+}
 pre {
     display: block;
     position: relative;
-    padding: .45rem .14rem .16rem 0;
+    padding: .45rem .14rem 0 0;
     overflow: auto;
     margin-bottom: 1em;
     background-color: #080808;
@@ -302,7 +314,7 @@ pre {
         width: 100%;
         height: 100%;
         line-height: 1.6em;
-        color: hsla(0, 0%, 100%, .87);
+        color: hsla(0, 0%, 100%, .87) !important;
         // background-color: #1d1f21;
         overflow: auto;
 

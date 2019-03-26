@@ -10,7 +10,7 @@ const {
 const access_token = `access_token=${token.join('')}`
 const open = `creator=${creator}&state=open&${access_token}`
 const closed = `creator=${creator}&state=closed&${access_token}`
-
+const isDev = window.location.href.includes('localhost')
 // 状态码检测
 const checkStatus = res => {
     if (res.status >= 200 && res.status < 300) return res
@@ -86,6 +86,7 @@ export const queryMood = async ({page = 1, pageSize = 10}) => {
 //  获取文章热度
 export const queryHot = async postList => {
     return new Promise(resolve => {
+        if (isDev) return resolve(postList)
         const seq = postList.map(item =>{
             return new Promise( resolve =>{
                 const query = new AV.Query('Counter')

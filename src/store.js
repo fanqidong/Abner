@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-25 14:02:28
+ * @LastEditTime: 2019-03-26 14:50:29
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -60,7 +60,6 @@ export default new Vuex.Store({
         },
         // 获取文章归档
         async queryArchive(context,payLoad){
-            console.log(payLoad)
             let data = await queryPosts(payLoad)
             data.forEach(formatPost)
             data = await queryHot(data)

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section class="site-meta text-center">
+    <section class="site-meta">
       <div
         class="person-info"
         :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}"
@@ -14,6 +14,11 @@
         </h2>
         <p class="slogan">人生短暂，及时行乐。</p>
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
+        <div class="socail-link">
+            <a :href="item.link" v-for="item in $config.socailLink" :key="item.id" :title="item.name" target="_blank">
+                <i class="fa" :class="`fa-${item.icon}`"></i>
+            </a>
+        </div>
       </div>
       <button class="arrow-down"></button>
     </section>

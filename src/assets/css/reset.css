@@ -21,10 +21,10 @@ th,
 td,
 em,
 button,
-blockquote {
+blockquote,
+figure {
     margin: 0;
     padding: 0;
-    font-family: "Microsoft YaHei";
 }
 
 html {
@@ -42,13 +42,6 @@ html {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-td,
-th,
-ul,
-ol {
-    padding: 0;
 }
 
 img {
@@ -87,7 +80,6 @@ input,
 select,
 textarea {
     outline: none;
-    font-family: 'Microsoft Yahei';
     -webkit-appearance: none;
     appearance: none;
 }
@@ -151,34 +143,15 @@ a:focus {
 
 
 /*HTML5 reset*/
-
-header,
-footer,
-section,
-aside,
-details,
-menu,
-article,
-section,
-nav,
-address,
-hgroup,
-figure,
-figcaption,
-legend {
-    display: block;
-    margin: 0;
-    padding: 0
-}
-
 time {
     display: inline
 }
 
-button{
+button {
     border: none;
     outline: none;
 }
+
 audio,
 canvas,
 video {
@@ -191,29 +164,8 @@ audio:not([controls]) {
     display: none
 }
 
-legend {
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 40px;
-    border: 0;
-    border-bottom: 1px solid #e5e5e5
-}
-
-legend small {
-    font-size: 15px;
-    color: #999
-}
-
 svg:not(:root) {
     overflow: hidden
-}
-
-fieldset {
-    border-width: 0;
-    padding: 0.35em 0.625em 0.75em;
-    margin: 0 2px;
-    border: 1px solid #c0c0c0
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -236,18 +188,37 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /**/
+@font-face {
+    font-family: 'webfont';
+    src: url('//at.alicdn.com/t/webfont_yx9il4whah.eot');
+    /* IE9*/
+    src: url('//at.alicdn.com/t/webfont_yx9il4whah.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('//at.alicdn.com/t/webfont_yx9il4whah.woff') format('woff'),
+        /* chrome、firefox */
+        url('//at.alicdn.com/t/webfont_yx9il4whah.ttf') format('truetype'),
+        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url('//at.alicdn.com/t/webfont_yx9il4whah.svg#站酷小薇体') format('svg');
+    /* iOS 4.1- */
+}
+
 [v-cloak] {
     display: none !important;
 }
-html,body{
-    height:100%;
+
+html,
+body {
+    height: 100%;
 }
-body{
+
+body {
     font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
+    /* font-family: 'webfont'; */
     font-size: 14px;
-    color:#606975;
+    color: #606975;
     line-height: 1.4;
 }
-.fa{
+
+.fa {
     margin-right: 3px;
 }
