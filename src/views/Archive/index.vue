@@ -1,7 +1,12 @@
 <template>
   <div id="archive" class="archive">
     <section class="timeline-contanier" v-if="postList.length">
-      <h2 class="text-center">文章归档</h2>
+      <h2 class="text-center">
+        <ruby>
+            文章归档
+          <rt>Article archive</rt>
+        </ruby>
+      </h2>
       <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
       <div
         class="tl-wrapper"

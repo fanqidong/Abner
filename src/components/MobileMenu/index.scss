@@ -28,16 +28,15 @@
         height: 20%;
     }
     .site-info{
-        height: 2.5rem;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        padding: .5rem 0;
     }
     .avatar{
         display: block;
-        width: 50%;
+        width: 30%;
         border-radius: 50%;
     }
     .menu-body{
@@ -53,7 +52,7 @@
     .menu-list{
         display: flex;
         flex-direction: column;
-        padding: 1rem 0 0 1rem;
+        padding: .5rem 0 0 1rem;
         text-align: left;
         .menu-link{
             margin-bottom: .3rem;;

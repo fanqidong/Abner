@@ -5,7 +5,12 @@ Vue.use(Router);
 
 export default new Router({
     mode: "history",
-    routes: [{
+    routes: [
+        {
+            path: '*',
+            redirect: '/'
+        },
+        {
             path: "/",
             name: "Home",
             component: () => import('./views/Home')
@@ -16,8 +21,7 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () =>
-                import( /* webpackChunkName: "About" */ "./views/About")
+            component: () => import( /* webpackChunkName: "About" */ "./views/About")
         },
         {
             path: "/archive",
@@ -50,7 +54,5 @@ export default new Router({
             component: () => import( /* webpackChunkName: "ArticleDetail" */ './views/ArticleDetail')
         }
     ],
-    scrollBehavior (to, from, savedPosition) {
-        return { x: 0, y: 0 }
-      }
+    scrollBehavior: (to, from, savedPosition) => {  y: 0 }
 });

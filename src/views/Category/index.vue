@@ -15,11 +15,46 @@
         >
           <div class="category-cover" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
           <div class="category-info">
-            <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
+            <span
+              class="category-name"
+            >{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
             <span class="category-desc">{{category.subject}}</span>
           </div>
         </li>
       </ul>
+      <div class="article-wrapper" v-if="postList.length">
+        <ul class="article-list">
+          <li v-for="post in postList" :key="post.id" class="article-item"  @click="goDetail(post.number)">
+            <div class="article-mask"></div>
+            <img class="article-cover" v-lazy="post.cover.src" :alt="post.cover.text">
+            <div class="article-meta">
+              <!-- 文章内容  Start -->
+              <!-- 文章标题 -->
+              <h2 class="article-title">{{post.title}}</h2>
+              <!-- 简介 -->
+              <div class="article-desc">{{post.desc}}</div>
+              <div class="article-tags">
+                <!-- 热度 -->
+                <span>
+                  <i class="fa fa-envira"></i>
+                  <em>热度：{{post.times}}°C</em>
+                </span>
+                <!-- 归档 -->
+                <span>
+                  <i class="fa fa-cloud"></i>
+                  <em>{{post.milestone.title }}</em>
+                </span>
+                <!-- 标签 -->
+                <span class="archive">
+                  <i class="fa fa-tags"></i>
+                  <em v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</em>
+                </span>
+              </div>
+              <!-- 文章内容 End -->
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
     <Loading v-else/>
   </div>
@@ -33,7 +68,8 @@ export default {
   name: "Category",
   data() {
     return {
-      categoryList: []
+      categoryList: [],
+      postList: []
     }
   },
   components: {
@@ -47,100 +83,31 @@ export default {
       this.categoryList = await store.dispatch("queryCategory")
       console.info(this.categoryList)
     },
-    handleFilter(index,number) {
+    handleFilter(index, number) {
       if (index == 0) {
-         this.$router.push({name: "Mood"})
-         return
+        this.$router.push({ name: "Mood" })
+        return
       }
-      console.log(number)
       this.queryPost(number)
     },
-   async queryPost(number){
-       let posts = await store.dispatch("queryArchive",{
-          page: 1,
-          pageSize: '',
-          filter: `&milestone=${number}`
-       })
-       console.log(posts)
+    // 前往文章详情页
+    goDetail(number) {
+      this.$router.push({ name: "ArticleDetail", params: { number } })
+    },
+    async queryPost(number) {
+      let posts = await store.dispatch("queryArchive", {
+        page: 1,
+        pageSize: "",
+        filter: `&milestone=${number}`
+      })
+      this.postList = posts
+      console.log(posts)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.category {
-  &-wrapper{
-    max-width: 900px;
-    min-height: 6rem;
-    padding: 0.15rem;
-    background: rgba(255, 255, 255, 0.5);
-  }
-  &-title {
-    margin: 0 0 1em 0;
-  }
-}
-.category-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  color: #fff;
-  li {
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    cursor: pointer;
-    span{
-        // display: none;
-        font-size: 22px;
-    }
-    .category-desc{
-        // display: none;
-        font-size: 16px;
-    }
-    &:hover{
-        .category-desc{
-            display: block;
-        }
-    }
-    .category-cover {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      border-radius: 50%;
-      background: no-repeat center/cover;
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 50%;
-        background: rgba($color: #000, $alpha: 0.5);
-      }
-    }
-    .category-info {
-      position: relative;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding: 30% 0;
-      z-index: 5;
-    }
-  }
-}
-@media screen and (max-width: 768px) {
-    .category-list{
-        li{
-            span{
-                font-size: 12px !important;
-            }
-        }
-    }
-}
+@import './index,.scss';
 </style>
 
