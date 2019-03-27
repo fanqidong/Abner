@@ -7,12 +7,7 @@
         </ruby>
       </h2>
       <ul class="label-wrapper">
-        <li
-          v-for="(label,index) in labelList"
-          :key="label.id"
-          :class="['label-item',index%2==0?'down':'up']"
-          :style="{backgroundColor:`#${label.color}`}"
-        >
+        <li  v-for="label in labelList" :key="label.id" class="label-item">
           <span class="text">{{label.name}}</span>
         </li>
       </ul>

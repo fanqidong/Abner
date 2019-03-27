@@ -198,8 +198,9 @@ body {
 
 body {
     font-size: 14px;
-    color: #606975;
-    line-height: 1.4;
+    /* color: #606975; */
+    color: #525b66;
+    line-height: 1.5;
 }
 
 .fa {

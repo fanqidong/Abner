@@ -14,8 +14,6 @@ export const formatPost = post => {
     let time = dayjs(new Date(created_at)).format('MMMM,YYYY/MM/DD,A').split(',');
     let year = new Date(created_at).getFullYear()
     let month = new Date(created_at).getMonth() + 1
-    // console.log("条件"+dayjs(time[1]).isBetween(`${year}/${month}`, `${year}/${month+1}`))
-    // console.log('是否相等'+dayjs('2019-3').isSame('2019-3'))
     // 截取文章内容
     let str = body.split('\r\n').filter(item => item != "")
     // 截取封面图信息
@@ -44,14 +42,26 @@ export const formatCategory = category => {
     })
     return category
 }                    
-// var arr = ['11', '1', '1', '2', , '3', '4', '5', '5', '6', '6', '7', '8', '9', '9', '10'],
-//     newArr = [],
-//     n = 0;
-// for (var i = 0; i < arr.length; i++) {
-//     // debugger
-//     if (arr[i] != arr[i + 1]) {
-//         newArr.push(arr.slice(n, i + 1))
-//         n = i + 1;
-//     }
-// }
-// console.log(newArr)
+//  格式化友链 && 关于
+export const formatType = (data, type)=> {
+    if(!data.body) return
+    let res = data.body.split('##').filter(item => item)
+    switch (type) {
+        case 'Friend':
+            res = res.map(item => {
+                const content = item.split('\r\n').filter(item => item)
+                    return {
+                        name: content[0],
+                        link: content[1].split('link:')[1],
+                        avatar: content[2].split('avatar:')[1],
+                        siteImage: content[3].split('siteImage:')[1],
+                        introduction: content[4].split('introduction:')[1],
+                    }
+                })
+            break;
+                
+        default:
+            break;
+    }
+    return res
+}

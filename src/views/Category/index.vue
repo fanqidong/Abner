@@ -22,9 +22,14 @@
           </div>
         </li>
       </ul>
-      <div class="article-wrapper" v-if="postList.length">
-        <ul class="article-list">
-          <li v-for="post in postList" :key="post.id" class="article-item"  @click="goDetail(post.number)">
+      <div class="article-wrapper">
+        <ul class="article-list" v-if="postList.length">
+          <li
+            v-for="post in postList"
+            :key="post.id"
+            class="article-item"
+            @click="goDetail(post.number)"
+          >
             <div class="article-mask"></div>
             <img class="article-cover" v-lazy="post.cover.src" :alt="post.cover.text">
             <div class="article-meta">
@@ -54,6 +59,7 @@
             </div>
           </li>
         </ul>
+        <partLoading v-if="partLoading"/>
       </div>
     </section>
     <Loading v-else/>
@@ -64,16 +70,20 @@
 import store from "@/store"
 import Loading from "@/components/Loading"
 import Aos from "aos"
+import partLoading from "@/components/partLoading"
 export default {
   name: "Category",
   data() {
     return {
       categoryList: [],
-      postList: []
+      postList: [],
+      partLoading: false,
+      milestone: ''
     }
   },
   components: {
-    Loading
+    Loading,
+    partLoading
   },
   created() {
     this.queryCategory()
@@ -84,6 +94,7 @@ export default {
       console.info(this.categoryList)
     },
     handleFilter(index, number) {
+      this.partLoading = true
       if (index == 0) {
         this.$router.push({ name: "Mood" })
         return
@@ -95,19 +106,20 @@ export default {
       this.$router.push({ name: "ArticleDetail", params: { number } })
     },
     async queryPost(number) {
+      this.partLoading = true
       let posts = await store.dispatch("queryArchive", {
         page: 1,
         pageSize: "",
         filter: `&milestone=${number}`
       })
+      this.partLoading = false
       this.postList = posts
-      console.log(posts)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import './index,.scss';
+@import "./index,.scss";
 </style>
 

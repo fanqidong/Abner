@@ -1,0 +1,25 @@
+<template>
+    <div class="part-loading">
+        <img src="../../assets/img/lemon-loading.svg" alt="">
+        <p>拼命加载中...</p>
+    </div>
+</template>
+
+<script>
+export default {
+     name: 'partLoading'
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../../assets/sass/animation.scss';
+.part-loading{
+    position: relative;
+    z-index: 999;
+    img{
+        width: 1rem;
+        margin: 1rem auto;
+        animation: ld-bounce 1s infinite;
+    }
+}
+</style>

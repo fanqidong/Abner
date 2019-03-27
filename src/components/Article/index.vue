@@ -90,7 +90,7 @@ export default {
     width: 50%;
     height: 3rem;
     padding: 0.15rem;
-    background: rgba($color: #fff, $alpha: 0.6);
+    background: rgba($color: #fff, $alpha: .6);
     border-radius: 0 5px 5px 0;
   }
   &-desc {

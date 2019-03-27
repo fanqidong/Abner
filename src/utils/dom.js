@@ -1,22 +1,24 @@
-export const on = (() => {
-  if (document.addEventListener) {
-    return function (element, event, handler) {
-      if (element && event && handler) {
-        element.addEventListener(event, handler, false)
-      }
-    }
-  } else {
-    return function (element, event, handler) {
-      if (element && event && handler) {
-        element.attachEvent('on' + event, handler)
-      }
-    }
-  }
-})()
+export const addEvent = (handle, fn, type) => {
+    window.addEventListener(handle, fn, type || false)
+}
+export const removeEvent = (handle, fn, type) => {
+    window.removeEventListener(handle, fn, type || false)
+}
 
-export const scrollTop = (() => {
-  return  on(window,'scroll',function(){
-     return  console.log(1)
-      // return 
+// 页面标题
+let timer = null
+let OriginTitile =  document.title
+export const setTitle = () => {
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+            document.title = "(￣︶￣),我藏好了哦~"
+        } else {
+            document.title = "(*´∇｀*) 被你发现啦~ "
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3000)
+        }
     })
-})()
+}
+

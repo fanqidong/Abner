@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-26 14:50:29
+ * @LastEditTime: 2019-03-27 17:49:47
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -16,11 +16,13 @@ import {
     queryHot,
     queryCategory,
     queryMood,
-    queryLabel
+    queryLabel,
+    queryType
 } from '@/api/request'
 import {
     formatPost,
-    formatCategory
+    formatCategory,
+    formatType
 } from '@/utils/format'
 export default new Vuex.Store({
     state: {
@@ -92,6 +94,12 @@ export default new Vuex.Store({
         async queryLabel() {
             let data = await queryLabel()
             data = data.filter(label => !['Mood', 'Friend', 'About'].includes(label.name))
+            return data
+        },
+        // 获取友链 && 关于
+        async queryType(context, {type}){
+            let data = await queryType(type)
+            data = formatType(data, type)
             return data
         }
     }

@@ -1,36 +1,37 @@
 <template>
   <div id="archive" class="archive">
-    <section class="timeline-contanier" v-if="postList.length">
-      <h2 class="text-center">
-        <ruby>
-            文章归档
-          <rt>Article archive</rt>
-        </ruby>
-      </h2>
-      <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
-      <div
-        class="tl-wrapper"
-        v-for="(item,index1) in postList"
-        :key="index1"
-        :class="{'tl-open': index1 == currentIndex}"
-      >
-        <div class="tl-header" @click="toggleTimeline(index1,$event)">
-          <h2 :class="`bg-${colorArr[index1+2]}`">{{item.time}}</h2>
+    <section class="archive-contanier" v-if="postList.length">
+        <div class="archive-header">
+            <h2>
+                <ruby>
+                文章归档
+                <rt>Article archive</rt>
+                </ruby>
+            </h2>
+            <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
         </div>
-        <ul class="tl-body">
-          <li class="tl-item clearfix" v-for="(item,index) in item.posts" :key="index">
-            <div class="tl-content">
-              <span class="tl-time">{{item.day}}日</span>
-              <div class="tl-info" :class="`b-${colorArr[index1+2]}`">
-                <span class="arrow"></span>
-                <a href="javascript:;" :class="['tl-link',`bg-${colorArr[index1+2]}`]" @click="goDetail(item.number)">
-                    <span>{{item.title}}</span>
-                </a>
-              </div>
+        <div class="timeline-contanier">
+            <div class="tl-wrapper"
+                v-for="(item,index1) in postList"
+                :key="index1"
+                :class="{'tl-open': index1 == currentIndex}">
+                <div class="tl-header" @click="toggleTimeline(index1,$event)">
+                        <div class="tl-year">{{item.time}}</div>
+                </div>
+                <ul class="tl-body">
+                    <li class="tl-item clearfix" v-for="(item,index) in item.posts" :key="index">
+                            <span class="tl-time">{{item.day}}日</span>
+                        <div class="tl-content">
+                            <div class="tl-info">
+                                <a href="javascript:;"  class="tl-link" @click="goDetail(item.number)">
+                                    {{item.title}}
+                                    </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-          </li>
-        </ul>
-      </div>
+        </div>
     </section>
     <Loading v-else/>
   </div>
@@ -89,7 +90,7 @@ export default {
       data.forEach(function(el, index) {
         let { created_at } = el
         el.day = dayjs(created_at).date()
-        el.time = dayjs(created_at).format('YYYY年MM月')
+        el.time = dayjs(created_at).format("YYYY年MM月")
         for (let i = 0, length = listArr.length; i < length; i++) {
           // 对比相同的字段key，相同放入对应的数组
           if (listArr[i].time == el.time) {

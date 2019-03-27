@@ -59,11 +59,9 @@ html {
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
-    body {
-        font-size: 14px;
-        line-height: 1.428;
+    a:hover{
+        color: inherit !important;
     }
-
     .hidden-xs {
         display: none !important;
     }

@@ -35,7 +35,7 @@
 
 .nav-logo {
     position: absolute;
-    height: .6rem;
+    height: 50px;
     font-size: .22rem;
 
     // opacity: 1;
@@ -47,7 +47,7 @@
 
     img {
         display: inline-block;
-        height: .55rem;
+        height: 45px;
         margin-right: .1rem;
     }
 
@@ -57,8 +57,8 @@
     width: 75%;
     margin: auto;
     font-size: .16rem;
-    height: .6rem;
-    line-height: .6rem;
+    height: 50px;
+    line-height: 50px;
 
     &.menu-open {
         @for $i from 1 through 7 {
@@ -94,7 +94,7 @@
 .nav-collapse {
     position: absolute;
     left: 0;
-    line-height: .6rem;
+    line-height: 50px;
     background: none;
     font-size: .2rem;
     color: #fff;
@@ -118,7 +118,7 @@
     .menu-wrapper {
         width: 90%;
         font-size: 14px;
-        height: .7rem;
+        height: 50px;
     }
 
     .brand {
@@ -126,7 +126,7 @@
     }
 
     .nav-collapse {
-        font-size: .35rem;
+        font-size: 24px;
     }
 }
 

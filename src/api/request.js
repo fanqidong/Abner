@@ -71,7 +71,10 @@ export const queryLabel = async () => {
     }
 }
 // 获取心情
-export const queryMood = async ({page = 1, pageSize = 10}) => {
+export const queryMood = async ({
+    page = 1,
+    pageSize = 10
+}) => {
     try {
         const url = `${blog}/issues?${closed}&labels=mood&&page=${page}&per_page=${pageSize}`
         const res = await fetch(url);
@@ -87,19 +90,22 @@ export const queryMood = async ({page = 1, pageSize = 10}) => {
 export const queryHot = async postList => {
     return new Promise(resolve => {
         if (isDev) return resolve(postList)
-        const seq = postList.map(item =>{
-            return new Promise( resolve =>{
+        const seq = postList.map(item => {
+            return new Promise(resolve => {
                 const query = new AV.Query('Counter')
                 const Counter = AV.Object.extend('Counter')
-                const { title, id } = item
+                const {
+                    title,
+                    id
+                } = item
                 query.equalTo('id', id)
-                query.find().then(res =>{
+                query.find().then(res => {
                     if (res.length > 0) {
                         //已存在数据直接返回
                         const counter = res[0]
                         item.times = counter.get('time')
                         resolve(item)
-                    }else{
+                    } else {
                         // 不存在则新建
                         const newCounter = new Counter()
                         newCounter.set('title', title)
@@ -108,21 +114,33 @@ export const queryHot = async postList => {
                         newCounter.set('sitelink', location.href)
                         newCounter.save().then(() =>
                             resolve(item)
-                         ).catch(error=>{
+                        ).catch(error => {
                             console.log(error)
                         })
                     }
-                }).catch(error=>{
+                }).catch(error => {
                     console.log(error)
                 })
-            }).catch(error=>{
+            }).catch(error => {
                 console.log(error)
             })
         })
-        Promise.all(seq).then( data => resolve(data)).catch(error=>{
+        Promise.all(seq).then(data => resolve(data)).catch(error => {
             console.log(error)
         })
-    }).catch(error=>{
+    }).catch(error => {
         console.log(error)
     })
+}
+// 获取友链 && 关于
+export const queryType = async type => {
+    try {
+        const url = `${blog}/issues?${closed}&labels=${type}`
+        const response = await fetch(url)
+        checkStatus(response)
+        const data = await response.json()
+        return data[0]
+    } catch (error) {
+        console.log(error)
+    }
 }

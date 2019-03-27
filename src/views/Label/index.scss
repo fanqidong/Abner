@@ -29,15 +29,9 @@
         box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
         border-radius: 5px;
         transition: all 1s;
-        &.up{
-            transform: skewY(-5deg);
-        }
-        &.down{
-            transform: skewY(5deg);
-        }
+        background: #4b7c9c;
         &:hover {
             background-image: linear-gradient(to right, #4481eb 0%, #04befe 100%);
-            transform: none;
         }
     }
 }

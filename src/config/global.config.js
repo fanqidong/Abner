@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-03-26 16:31:12
+ * @LastEditTime: 2019-03-27 11:58:52
  */
 export default {
     title: '樊启东的私人space',
@@ -20,6 +20,8 @@ export default {
         appId: 'sJRaApO77xsR8cgUE3UELNUV-gzGzoHsz',
         appKey: 'nAuMqrs9MEIdVWjM85oGeDa9'
     },
+    // lemon-loading 页面局部加载loading
+    loading: '../assets/img/lemon-loading.svg',
     // 页面导航配置
     menuList: [{
             id: 0,

@@ -6,7 +6,7 @@
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <router-view />
+          <router-view/>
         </transition>
       </div>
     </main>
@@ -24,6 +24,7 @@ import Footer from "@/components/Footer"
 import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
+import { setTitle } from "@/utils/dom"
 export default {
   name: "App",
   data() {
@@ -56,6 +57,8 @@ export default {
   },
   created() {},
   mounted() {
+    //   页面标题彩蛋
+    setTitle()
     window.addEventListener("scroll",() => {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
         scrollTop >= 0 ? (this.isMenuOpen = true) : (this.isMenuOpen = false)
@@ -66,7 +69,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 #abner {
   position: relative;
   min-height: 100vh;
@@ -74,13 +76,13 @@ export default {
   text-align: center;
 }
 .main-content {
-  overflow: hidden;
+  margin-bottom: 1rem;
 }
 .mobile-menu-open {
   .menu-mask {
     opacity: 0.7;
     transform: translateX(-100%);
-    transition: opacity .3s;
+    transition: opacity 0.3s;
   }
   .menu-mobile {
     transform: translateX(100%);
@@ -101,6 +103,6 @@ export default {
   right: 2%;
   bottom: 8%;
   z-index: 100;
-  font-size: .4rem;
+  font-size: 0.4rem;
 }
 </style>

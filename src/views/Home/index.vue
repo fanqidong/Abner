@@ -5,7 +5,6 @@
         class="person-info"
         :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}"
       >
-        <!-- <div class="person-info"> -->
         <h2 class="title">
           <ruby>
             2019
@@ -15,7 +14,7 @@
         <p class="slogan">人生短暂，及时行乐。</p>
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
         <div class="socail-link">
-            <a :href="item.link" v-for="item in $config.socailLink" :key="item.id" :title="item.name" target="_blank">
+            <a :href="item.link" v-for="item in $config.socailLink" :key="item.id" :title="item.name" target="_blank" rel="noopener noreferer">
                 <i class="fa" :class="`fa-${item.icon}`"></i>
             </a>
         </div>
@@ -125,17 +124,11 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener(
-      "scroll",
-      () => {
-        let scrollTop =
-          document.documentElement.scrollTop || document.documentElement.scrollTop || window.pageYOffset
+    window.addEventListener("scroll",() => {
+        let scrollTop = document.documentElement.scrollTop || document.documentElement.scrollTop || window.pageYOffset
         this.opacity = 1 - scrollTop / 400 < 0 ? 0 : 1 - scrollTop / 400
-      },
-      false
-    )
-  },
-  destroyed: function() {}
+      },false)
+  }
 }
 </script>
 <style lang="scss" scoped>
