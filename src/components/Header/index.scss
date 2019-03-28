@@ -1,5 +1,5 @@
 @import '@/assets/sass/mixin.scss';
-
+@import '@/assets/sass/theme.scss';
 .header {
     position: absolute;
     top: 0;
@@ -8,15 +8,14 @@
     animation: fadeInDown 1s;
     z-index: 997;
     transition: all 1s;
-
+    a,i{
+        color:$white
+    }
     &.active {
         position: fixed;
         top: 0;
-        // left: 50%;
-        // transform: translateX(-50%);
-        // background: rgba(0, 0, 0, 0.8);
         background: rgba($color: rgb(26, 21, 21), $alpha: .8);
-        box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
         color: #fff;
 
         a {
@@ -37,8 +36,6 @@
     position: absolute;
     height: 50px;
     font-size: .22rem;
-
-    // opacity: 1;
     .brand {
 
         @include flex-align();
@@ -80,15 +77,8 @@
         @include flex-align();
         padding: 0 .15rem 0;
     }
-
-    .title {
-        margin-left: .03rem;
-    }
 }
 
-.iconfont {
-    font-size: 15px;
-}
 
 /*移动端导航样式*/
 .nav-collapse {
@@ -96,9 +86,11 @@
     left: 0;
     line-height: 50px;
     background: none;
-    font-size: .2rem;
     color: #fff;
     cursor: pointer;
+    i{
+        font-size: 40px;
+    }
 }
 
 @media screen and (max-width: 992px) {

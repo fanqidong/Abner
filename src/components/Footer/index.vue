@@ -1,12 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-        <p class="copyright" v-show="!$isMobile">
-            <span>Copyright © 2017-2019</span>
-            <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
-            All Rights Reserved.
-        </p>
-        <div class="copyright" v-show="$isMobile">
+        <div class="copyright">
             <p>
                 <span>Copyright © 2017-2019</span>
                 <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>

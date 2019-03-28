@@ -4,7 +4,6 @@
       <ul class="mood-list">
         <li class="mood-item" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
           <span class="title" :data-title="mood.title"></span>
-          <!-- <p class="desc">{{mood.body}}</p> -->
           <Markdown :content="mood.body" :only-render="true"/>
           <span class="date">发表于{{mood.created_at.slice(0,10)}}</span>
         </li>

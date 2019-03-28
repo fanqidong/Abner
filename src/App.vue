@@ -6,7 +6,7 @@
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <router-view/>
+                <router-view/>
         </transition>
       </div>
     </main>
@@ -14,7 +14,7 @@
     <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     <!-- <Loading/> -->
     <a href="javascript:;" class="go-top" @click="goTop">
-      <i class="fa fa-github"></i>
+      <i class="iconfont icon-rocket"></i>
     </a>
   </div>
 </template>
@@ -68,41 +68,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-#abner {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 1rem;
-  text-align: center;
-}
-.main-content {
-  margin-bottom: 1rem;
-}
-.mobile-menu-open {
-  .menu-mask {
-    opacity: 0.7;
-    transform: translateX(-100%);
-    transition: opacity 0.3s;
-  }
-  .menu-mobile {
-    transform: translateX(100%);
-  }
-}
-.menu-mask {
-  position: fixed;
-  left: 100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 998;
-  opacity: 0;
-}
-.go-top {
-  position: fixed;
-  right: 2%;
-  bottom: 8%;
-  z-index: 100;
-  font-size: 0.4rem;
-}
-</style>

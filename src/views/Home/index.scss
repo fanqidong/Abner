@@ -1,11 +1,7 @@
 @import '@/assets/sass/mixin.scss';
-
-@media screen and (max-width: 768px) {
-    .page {
-        &-home {
-            padding: 0 .3rem;
-        }
-    }
+@import '@/assets/sass/theme.scss';
+.home{
+    color: $white;
 }
 
 .site-meta {
@@ -17,7 +13,7 @@
     @include flex-center(column);
 
     .title {
-        font-size: .4rem;
+        font-size: 50px;
     }
 
     .person-info {
@@ -43,10 +39,12 @@
             }
         }
     }
-
+    .iconfont{
+        font-size: 30px;
+    }
     .user-avatar {
         display: block;
-        width: 1.5rem;
+        width: 120px;
         border-radius: 50%;
         margin: 0 auto .3rem;
         border: 1px solid gold;
@@ -65,7 +63,7 @@
 
 .article {
     position: relative;
-
+    color: $articleColor;
     &-wrapper {
         position: relative;
         margin: 0 0 .3rem 0;
@@ -89,11 +87,6 @@
                 animation-delay: .8s;
             }
         }
-    }
-
-    &-title {
-        @include overflow-num(3);
-        font-weight: lighter;
     }
 
     &-link {
@@ -133,7 +126,7 @@
 
         width: 50%;
         height: 3rem;
-        padding: 0.15rem;
+        padding: 15px;
         background: rgba($color: #fff, $alpha: .6);
         border-radius: 0 5px 5px 0;
         cursor: pointer;
@@ -158,6 +151,7 @@
         right: 0;
         bottom: 0;
         top: 0;
+        border-radius: 5px 0 0 5px;
         background: rgba($color: #000, $alpha: .6);
         text-align: center;
         color: #fff;
@@ -181,7 +175,7 @@
         }
 
         span.archive {
-            em {
+            em:not(:first-of-type) {
                 margin-left: .1rem;
             }
         }
@@ -202,10 +196,12 @@
     float: right;
 }
 
-.article-float .article-cover .article-link {
+.article-float  .article-link {
     border-radius: 0 5px 5px 0;
 }
-
+.article-float .article-date{
+    border-radius: 0 5px 5px 0;
+}
 @media screen and (max-width: 768px) {
     .article {
         &-desc {
@@ -216,19 +212,31 @@
         &-cover {
             width: 100%;
         }
-
-        &-content {
+        &-content{
+            border-radius: 0 0 5px 5px;
+        }
+        .article-float .article-content {
             height: auto;
+            border-radius: 0 0 5px 5px;
+        }
+        .article-float .article-link{
+            border-radius: 5px 5px 0 0;
+        }
+        &-link{
+            border-radius: 5px 5px 0 0;
         }
     }
 
     .site-meta {
         .title {
-            font-size: .5rem;
+            font-size: 50px;
         }
 
         .slogan {
-            font-size: .35rem;
+            font-size: 25px;
+        }
+        .socail-link{
+            min-width: 6rem;
         }
     }
 }

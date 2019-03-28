@@ -147,6 +147,18 @@
         transform:translate(0) rotate(0deg)
     }
 }
+@keyframes rocket {
+	0% {
+		transform: translate(0,0);
+	}
+	50% {
+		transform:translateY(5px);
+	}
+	100% {
+        transform: translate(0,0);
+    }
+}
+
 @keyframes textConcatIn {
     0% {
         letter-spacing: 2em;
@@ -397,14 +409,14 @@
 
     50% {
         animation-timing-function: cubic-bezier(.4, 0, 1, .6);
-        -webkit-transform: translate(0%, -37%) scaleY(1.1);
-        transform: translate(0%, -37%) scaleY(1.1)
+        -webkit-transform: translate(0%, -17%) scaleY(1.1);
+        transform: translate(0%, -17%) scaleY(1.1)
     }
 
     0%,
     to {
-        -webkit-transform: translate(0%, 30%) scaleY(.5);
-        transform: translate(0%, 30%) scaleY(.5)
+        -webkit-transform: translate(0%, 14%) scaleY(.5);
+        transform: translate(0%, 14%) scaleY(.5)
     }
 
     90% {

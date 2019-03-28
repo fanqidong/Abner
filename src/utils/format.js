@@ -1,9 +1,4 @@
 import dayjs from 'dayjs'
-import toObject from 'dayjs/plugin/toObject'
-dayjs.extend(toObject)
-import isBetween from 'dayjs/plugin/isBetween'
-dayjs.extend(isBetween)
-
 // 格式化文章
 export const formatPost = post => {
     let {
@@ -12,10 +7,10 @@ export const formatPost = post => {
     } = post
     // 格式化时间
     let time = dayjs(new Date(created_at)).format('MMMM,YYYY/MM/DD,A').split(',');
-    let year = new Date(created_at).getFullYear()
-    let month = new Date(created_at).getMonth() + 1
+    let year = dayjs(created_at).year()
+    let month = dayjs(created_at).month()
     // 截取文章内容
-    let str = body.split('\r\n').filter(item => item != "")
+    let str = body.split('\r\n').filter(item => item)
     // 截取封面图信息
     let reg = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
     let info = reg.exec(str[0])
@@ -31,6 +26,7 @@ export const formatPost = post => {
     }
 
     post.desc = str[1]
+    console.log(post)
     return post
 }
 // 格式化分类

@@ -1,7 +1,11 @@
 @import "@/assets/sass/mixin.scss";
 .archive{
+    padding-top: 2rem;
+    margin: auto;
+}
+.archive-contanier{
     max-width: 900px;
-    margin: 2rem auto 0;
+    margin: auto;
     min-height: 6rem;
     padding: .15rem;
     background: rgba($color: #fff, $alpha: .6);

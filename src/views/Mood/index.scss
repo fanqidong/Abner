@@ -1,7 +1,6 @@
 .mood {
     &-list {
         padding: .3rem 0;
-
         li {
             position: relative;
             max-width: 700px;
@@ -10,7 +9,7 @@
             background: rgba($color: #FCFAF2, $alpha: .75);
             border-radius: 5px;
             border-bottom-right-radius: 0;
-            padding: .3rem .2rem;
+            padding: 25px 20px;
             text-align: justify;
             margin-bottom: .4rem;
             transition: all .8s;
@@ -70,10 +69,13 @@
             }
         }
     }
+    .markdown-content p{
+        text-indent: 0 !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .title {
-        font-size: .22rem;
+        font-size: 12px;
     }
 }

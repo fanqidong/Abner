@@ -4,7 +4,7 @@
       <div class="menu-pc">
           <div class="nav-logo">
             <a href="/" class="brand">
-                <img src="../../assets/img/logo.png" alt="网站logo"  @click="isMenuOpen=!isMenuOpen">
+                <img src="../../assets/img/logo.png" alt="logo"  @click="isMenuOpen=!isMenuOpen">
             </a>
           </div>
         <ul class="menu-list">
@@ -15,7 +15,7 @@
         </ul>
       </div>
       <button class="nav-collapse" @click="openMenu">
-        <i class="fa fa-navicon fa-lg"></i>
+        <i class="iconfont icon-kuaijiedaohang"></i>
       </button>
     </nav>
   </header>
@@ -45,7 +45,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/iconfont.scss";
 @import "./index.scss";
 </style>
 

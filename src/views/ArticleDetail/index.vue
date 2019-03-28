@@ -7,25 +7,25 @@
           <h1 class="article-title">{{post.title}}</h1>
           <div class="article-meta">
             <div class="article-archive">
-              <i class="fa fa-archive"></i>
+              <i class="iconfont icon-guidangxiangmu"></i>
               <router-link
                 :to="{name:'Category'}"
                 class="article-category-link"
               >{{post.milestone.title}}</router-link>
             </div>
               <ul class="arcitle-label">
-                <i class="fa fa-tags"></i>
+                <i class="iconfont icon-biaoqian"></i>
                 <!-- <li v-for="label in post.labels" :key="label.id" :style="{backgroundColor: `#${label.color}`}"> -->
                 <li v-for="label in post.labels" :key="label.id">{{label.name}}</li>
               </ul>
             <div class="article-date">
-              <i class="fa fa-calendar"></i>
+              <i class="iconfont icon-calendar"></i>
               <time
                 :datetime="post.created_at"
               >{{post.timeinfo.date}}丨{{post.timeinfo.time.toLowerCase()}}</time>
             </div>
             <div class="article-hot">
-                <i class="fa fa-eye"></i>
+                <i class="iconfont icon-eye"></i>
                 <span>{{post.times}}</span>
             </div>
           </div>

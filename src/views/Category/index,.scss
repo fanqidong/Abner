@@ -1,9 +1,12 @@
 @import '@/assets/sass/mixin.scss';
 .category {
+    padding-top: 2rem;
+    margin: auto;
   &-wrapper {
     max-width: 900px;
     min-height: 6rem;
     padding: 0.15rem;
+    margin: auto;
     background: rgba(255, 255, 255, 0.5);
   }
   &-title {
@@ -124,6 +127,9 @@
   }
 }
 @media screen and (max-width: 768px) {
+    .category{
+        width: 90%;
+    }
   .category-list {
     li {
       span {

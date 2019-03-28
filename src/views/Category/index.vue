@@ -1,6 +1,6 @@
 <template>
-  <div class="category row">
-    <section class="category-wrapper" v-if="categoryList.length">
+  <div class="category">
+    <section class="category-wrapper" v-if="categoryList.length" data-aos="fade-up">
       <h2 class="category-title">
         <ruby>
           文章分类
@@ -78,7 +78,7 @@ export default {
       categoryList: [],
       postList: [],
       partLoading: false,
-      milestone: ''
+      milestone: ""
     }
   },
   components: {
@@ -86,6 +86,13 @@ export default {
     partLoading
   },
   created() {
+    Aos.init({
+      duration: 1000,
+      easing: "ease-out",
+      debounceDelay: 200,
+      offset: 20
+    }),
+      setTimeout(Aos.refresh, 600)
     this.queryCategory()
   },
   methods: {

@@ -1,37 +1,41 @@
 <template>
   <div id="archive" class="archive">
-    <section class="archive-contanier" v-if="postList.length">
-        <div class="archive-header">
-            <h2>
-                <ruby>
-                文章归档
-                <rt>Article archive</rt>
-                </ruby>
-            </h2>
-            <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
-        </div>
-        <div class="timeline-contanier">
-            <div class="tl-wrapper"
-                v-for="(item,index1) in postList"
-                :key="index1"
-                :class="{'tl-open': index1 == currentIndex}">
-                <div class="tl-header" @click="toggleTimeline(index1,$event)">
-                        <div class="tl-year">{{item.time}}</div>
+    <section class="archive-contanier" v-if="postList.length" data-aos="fade-up">
+      <div class="archive-header">
+        <h2>
+          <ruby>
+            文章归档
+            <rt>Article archive</rt>
+          </ruby>
+        </h2>
+        <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
+      </div>
+      <div class="timeline-contanier">
+        <div
+          class="tl-wrapper"
+          v-for="(item,index1) in postList"
+          :key="index1"
+          :class="{'tl-open': index1 == currentIndex}"
+        >
+          <div class="tl-header" @click="toggleTimeline(index1,$event)">
+            <div class="tl-year">{{item.time}}</div>
+          </div>
+          <ul class="tl-body">
+            <li class="tl-item clearfix" v-for="(item,index) in item.posts" :key="index">
+              <span class="tl-time">{{item.day}}日</span>
+              <div class="tl-content">
+                <div class="tl-info">
+                  <a
+                    href="javascript:;"
+                    class="tl-link"
+                    @click="goDetail(item.number)"
+                  >{{item.title}}</a>
                 </div>
-                <ul class="tl-body">
-                    <li class="tl-item clearfix" v-for="(item,index) in item.posts" :key="index">
-                            <span class="tl-time">{{item.day}}日</span>
-                        <div class="tl-content">
-                            <div class="tl-info">
-                                <a href="javascript:;"  class="tl-link" @click="goDetail(item.number)">
-                                    {{item.title}}
-                                    </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </section>
     <Loading v-else/>
   </div>
@@ -41,6 +45,7 @@
 import ArchiveCard from "@/components/ArchiveCard"
 import Loading from "@/components/Loading"
 import store from "@/store"
+import Aos from "aos"
 import dayjs from "dayjs"
 export default {
   name: "Archive",
@@ -56,8 +61,14 @@ export default {
     ArchiveCard,
     Loading
   },
-  computed: {},
   created() {
+    Aos.init({
+      duration: 1000,
+      easing: "ease-out",
+      debounceDelay: 200,
+      offset: 20
+    }),
+    setTimeout(Aos.refresh, 600)
     if (!this.postList.length) {
       this.getPosts()
     }

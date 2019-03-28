@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-03-27 11:58:52
+ * @LastEditTime: 2019-03-28 12:56:55
  */
 export default {
     title: '樊启东的私人space',
@@ -62,7 +62,7 @@ export default {
         {
             id: 6,
             path: "/mood",
-            icon: "pengyouquan",
+            icon: "shuoshuo",
             text: "悟言"
         }
     ],
@@ -80,9 +80,21 @@ export default {
         },
         {
             id: 3,
-            icon: 'envelope',
+            icon: 'youxiang',
             link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Z1ZTVVJTVFNTVlQnFhZJBAgK',
             name: 'QQ邮箱'
+        },
+        {
+            id: 4,
+            icon: 'zhihu',
+            link: 'https://www.zhihu.com/people/fan-qi-dong-57/activities',
+            name: '知乎'
+        },
+        {
+            id: 5,
+            icon: 'juejin',
+            link: 'https://juejin.im/user/5bec34d36fb9a049fb433716',
+            name: '掘金'
         },
     ]
 }
