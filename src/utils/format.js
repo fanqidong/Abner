@@ -26,7 +26,6 @@ export const formatPost = post => {
     }
 
     post.desc = str[1]
-    console.log(post)
     return post
 }
 // 格式化分类

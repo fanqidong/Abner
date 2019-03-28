@@ -296,7 +296,6 @@ pre {
     &::before {
         content: " ";
         position: absolute;
-        -webkit-border-radius: 50%;
         border-radius: 50%;
         background: #fc625d;
         width: 12px;
@@ -314,7 +313,6 @@ pre {
         height: 100%;
         line-height: 1.6em;
         color: hsla(0, 0%, 100%, .87) !important;
-        // background-color: #1d1f21;
         overflow: auto;
 
         &::before {
@@ -328,7 +326,6 @@ pre {
             left: 0;
             width: 100%;
             font-weight: 600;
-            // background-color: #21252b;
             text-align: center;
             text-transform: capitalize;
         }
@@ -358,9 +355,9 @@ a {
   }
   .mobile-menu-open {
     .menu-mask {
-      opacity: 0.7;
+      opacity: .7;
       transform: translateX(-100%);
-      transition: opacity 0.3s;
+      transition: opacity .3s;
     }
     .menu-mobile {
       transform: translateX(100%);
@@ -381,7 +378,6 @@ a {
     right: 2%;
     bottom: 8%;
     z-index: 100;
-    animation: ld-bounce 1.5s infinite;
     color: $white;
     i{
         font-size: 70px;

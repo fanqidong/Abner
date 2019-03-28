@@ -75,7 +75,6 @@ export default new Vuex.Store({
               post = await queryPost(number)
               const newPost = await queryHot([post])
               post = formatPost(newPost[0])
-              console.log(post)
             }
             return post
         },
