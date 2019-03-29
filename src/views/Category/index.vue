@@ -112,7 +112,11 @@ export default {
     goDetail(number) {
       this.$router.push({ name: "ArticleDetail", params: { number } })
     },
+    // 根据分类查询文章
     async queryPost(number) {
+      if(this.postList){
+          this.postList = ''
+      } 
       this.partLoading = true
       let posts = await store.dispatch("queryArchive", {
         page: 1,

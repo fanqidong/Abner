@@ -11,6 +11,7 @@ import './assets/css/reset.css'
 import './assets/sass/init.scss'
 import './assets/sass/animation.scss'
 import 'aos/dist/aos.css'
+
 // 检测是否是移动端
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
 

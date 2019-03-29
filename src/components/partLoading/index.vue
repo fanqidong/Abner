@@ -18,7 +18,7 @@ export default {
     z-index: 999;
     img{
         width: 1rem;
-        margin: 1rem auto;
+        margin: 20px auto;
         animation: ld-bounce 1s infinite;
     }
 }
