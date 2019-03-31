@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <APlayer autoplay fixed :list="$config.musicList" :music="currentMusic" :showLrc="true"/>
     <div class="footer-container">
         <div class="copyright">
             <p>
@@ -13,8 +14,25 @@
 </template>
 
 <script>
+import APlayer from 'vue-aplayer'
+APlayer.disableVersionBadge = true
 export default {
-  name: "Footer"
+  name: "Footer",
+  data(){
+    return {
+      currentMusic:{
+        title: '天亮以后说再见',
+        artist: '曲肖冰',
+        src: 'http://m801.music.126.net/20190331220430/9ea2072a92b86af9c04c4456c30b7869/jdyyaac/555c/0359/0753/b6994eea92432431accb0921a0ced83e.m4a'
+      }
+    }
+  },
+  mounted(){
+    console.log(this.$config.musicList)
+  },
+  components:{
+    APlayer
+  }
 }
 </script>
 

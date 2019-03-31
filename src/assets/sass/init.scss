@@ -376,6 +376,14 @@ a {
     bottom: 8%;
     z-index: 100;
     color: $white;
+    transform: translateX(100%);
+    transition: tranform 1s;
+    &.show{
+      transform: translateX(0);
+    }
+    &.hide{
+        transform: translateX(100%);
+    }
     i{
         font-size: 70px;
     }

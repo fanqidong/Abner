@@ -1,5 +1,5 @@
 <template>
-  <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}">
+  <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}" @scroll.native="checkGoTOP">
     <Bg/>
     <Header :is-menu-open="isMenuOpen" @toggle-menu="setMenu"/>
     <MobileMenu @handle-menu="closeMenu"/>
@@ -13,7 +13,7 @@
     <Footer/>
     <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     <!-- <Loading/> -->
-    <a href="javascript:;" class="go-top" @click="goTop">
+    <a href="javascript:;" :class="['go-top',isButtonShow?'show':'hide']" @click="goTop">
       <i class="iconfont icon-rocket"></i>
     </a>
   </div>
@@ -25,12 +25,14 @@ import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
 import { setTitle } from "@/utils/dom"
+import _ from 'lodash'
 export default {
   name: "App",
   data() {
     return {
       isMenuOpen: false,
-      isMobileMenuOpen: false
+      isMobileMenuOpen: false,
+      isButtonShow:false
     }
   },
   components: {
@@ -46,6 +48,15 @@ export default {
     },
     closeMenu(status) {
       this.isMobileMenuOpen = status
+    },
+    checkGoTOP(){
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      console.log(scrollTop)
+     if (scrollTop>400) {
+          this.isButtonShow = true
+      }else{
+         this.isButtonShow = false
+      }
     },
     goTop(){
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset

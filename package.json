@@ -14,9 +14,11 @@
     "bootstrap3": "^3.3.5",
     "dayjs": "^1.8.11",
     "highlight.js": "^9.15.6",
+    "hls.js": "^0.12.4",
     "leancloud-storage": "^3.12.0",
     "marked": "^0.6.1",
     "vue": "^2.6.6",
+    "vue-aplayer": "^1.6.1",
     "vue-lazyload": "^1.2.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
