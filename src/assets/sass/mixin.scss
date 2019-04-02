@@ -26,13 +26,22 @@
     @content;
 }
 
-@mixin full-screen() {
+@mixin fixed-screen() {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     @content;
+}
+
+@mixin absolute-screen() {
+    @content;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 
 @mixin text-overflow() {

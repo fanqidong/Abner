@@ -17,7 +17,7 @@ export default {
 
 .loading {
   @include flex-center();
-  @include full-screen();
+  @include fixed-screen();
   background: rgba($color: #000, $alpha: 0.5);
   z-index: 9999;
 }

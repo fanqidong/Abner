@@ -11,9 +11,9 @@ let OriginTitile =  document.title
 export const setTitle = () => {
     document.addEventListener("visibilitychange", function () {
         if (document.hidden) {
-            document.title = "(￣︶￣),你真的忍心离开吗~"
+            document.title = "￣︶￣,你真的忍心离开吗~"
         } else {
-            document.title = "♪(･ω･)ﾉ感谢你的陪伴"
+            document.title = "啊哈♪(･ω･)ﾉ感谢你的陪伴"
             clearTimeout(timer)
             timer = setTimeout(function () {
                 document.title = OriginTitile
@@ -21,4 +21,5 @@ export const setTitle = () => {
         }
     })
 }
+
 

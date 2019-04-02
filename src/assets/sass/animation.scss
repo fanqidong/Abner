@@ -158,7 +158,6 @@
         transform: translate(0,0);
     }
 }
-
 @keyframes textConcatIn {
     0% {
         letter-spacing: 2em;
@@ -403,24 +402,20 @@
 
     10% {
         animation-timing-function: cubic-bezier(0, .4, .6, 1);
-        -webkit-transform: translate(0%, 5%) scaleY(1.1);
         transform: translate(0%, 5%) scaleY(1.1)
     }
 
     50% {
         animation-timing-function: cubic-bezier(.4, 0, 1, .6);
-        -webkit-transform: translate(0%, -17%) scaleY(1.1);
         transform: translate(0%, -17%) scaleY(1.1)
     }
 
     0%,
     to {
-        -webkit-transform: translate(0%, 14%) scaleY(.5);
         transform: translate(0%, 14%) scaleY(.5)
     }
 
     90% {
-        -webkit-transform: translate(0%, 5%) scaleY(1.1);
         transform: translate(0%, 5%) scaleY(1.1)
     }
 }

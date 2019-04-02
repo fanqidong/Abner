@@ -15,7 +15,6 @@
             </div>
               <ul class="arcitle-label">
                 <i class="iconfont icon-biaoqian"></i>
-                <!-- <li v-for="label in post.labels" :key="label.id" :style="{backgroundColor: `#${label.color}`}"> -->
                 <li v-for="label in post.labels" :key="label.id">{{label.name}}</li>
               </ul>
             <div class="article-date">

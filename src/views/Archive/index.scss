@@ -1,13 +1,12 @@
 @import "@/assets/sass/mixin.scss";
 .archive{
     padding-top: 2rem;
-    margin: auto;
 }
 .archive-contanier{
     max-width: 900px;
     margin: auto;
     min-height: 6rem;
-    padding: .15rem;
+    padding: .15rem .15rem .25rem;
     background: rgba($color: #fff, $alpha: .6);
 }
 @media screen and (max-width: 992px) {
@@ -22,10 +21,6 @@
     }
 }
 
-h2 {
-    margin: 0;
-}
-
 .archive-total {
     margin: .1rem 0;
 }
@@ -34,11 +29,15 @@ h2 {
     margin: 0 0 .2rem 0;
     &:last-of-type{
         margin-bottom: 0;
+        .tl-body{
+            padding-bottom: .1rem;
+        }
     }
 }
 
 .tl-wrapper.tl-open {
     margin: 0;
+    height: auto;
 }
 
 .tl-wrapper.tl-open .tl-body {
@@ -48,7 +47,6 @@ h2 {
 .tl-header {
     max-width: 1.5rem;
     cursor: pointer;
-
 }
 .tl-year {
     padding: .1rem 0;
@@ -59,19 +57,27 @@ h2 {
 
 .tl-body {
     display: none;
-    border-left: 4px solid #fafeff;
+    padding: .2rem 0;
     margin-left: .71rem;
+    border-left: 4px solid #fafeff;
 }
 .tl-item{
     position: relative;
     padding-left: .3rem;
+    margin:  .2rem 0 .25rem 0;
+    &:first-of-type{
+        margin-top: 0;
+    }
+    &:last-of-type{
+        margin-bottom: 0;
+    }
     &::before {
         content: "";
         position: absolute;
         float: left;
         left: 0;
         top: 50%;
-        margin: -9px 0 0 -9px;
+        margin: -7px 0 0 -9px;
         width: 14px;
         height: 14px;
         border: 4px solid;
@@ -86,7 +92,6 @@ h2 {
 
 .tl-info {
     position: relative;
-    padding: .2rem 0 .25rem 0;
 }
 
 .tl-time {

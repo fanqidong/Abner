@@ -11,6 +11,7 @@
         <li
           v-for="(category,index) in categoryList"
           :key="category.id"
+          :class="[index==currenIndex ?'active': '']"
           @click="handleFilter(index,category.number)"
         >
           <div class="category-cover" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
@@ -78,7 +79,8 @@ export default {
       categoryList: [],
       postList: [],
       partLoading: false,
-      milestone: ""
+      milestone: "",
+      currenIndex: 0
     }
   },
   components: {
@@ -98,9 +100,9 @@ export default {
   methods: {
     async queryCategory() {
       this.categoryList = await store.dispatch("queryCategory")
-      console.info(this.categoryList)
     },
     handleFilter(index, number) {
+      this.currenIndex = index
       this.partLoading = true
       if (index == 0) {
         this.$router.push({ name: "Mood" })

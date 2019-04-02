@@ -18,10 +18,6 @@
         }
     }
 
-    &-avatar {
-        border-radius: 50%;
-    }
-
     &-content {
         display: flex;
         justify-content: space-around;
@@ -52,8 +48,9 @@
     &-avatar {
         width: 66px;
         height: 66px;
+        border-radius: 50%;
+        
     }
-
     &-info {
         display: flex;
         justify-content: space-around;
@@ -63,6 +60,7 @@
         img{
             border: 1px solid #6b0cca;
         }
+        
     }
 
     &-intro {

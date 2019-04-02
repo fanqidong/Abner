@@ -3,10 +3,10 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-03-28 12:56:55
+ * @LastEditTime: 2019-04-02 11:35:40
  */
 export default {
-    title: '樊启东的私人space',
+    title: '旅途与画',
     // 博客仓库Api地址
     blog: 'https://api.github.com/repos/fanqidong/blog-backstage',
     // 位于github个人账号设置->开发者设置->个人token 
@@ -100,14 +100,26 @@ export default {
     /**
      * 音乐播放器 列表配置
      */
-    musicList:[{
-        title: '水星记',
-        artist: '郭顶',
-        src: 'http://m701.music.126.net/20190331222510/552e13a87fbdf8a916069c5db618d703/jdyyaac/0259/050c/045c/5340c51cd82fe3a5fa0e36708c7b92f5.m4a'
-      },
-      {
-        title: '天亮以后说再见',
-        artist: '曲肖冰',
-        src: 'http://m801.music.126.net/20190331220430/9ea2072a92b86af9c04c4456c30b7869/jdyyaac/555c/0359/0753/b6994eea92432431accb0921a0ced83e.m4a'
-      }]
+    musicList:[
+         {
+            name: '东西（Cover：林俊呈）',
+            artist: '纳豆',
+            url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
+            cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
+            lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
+          },
+          {
+            name: '响喜乱舞（Cover：MARiA）',
+            artist: '泠鸢yousa',
+            url: 'https://cdn.moefe.org/music/mp3/kyoukiranbu.mp3',
+            cover: 'https://p1.music.126.net/AUGVPQ_rVrngDH9ocQrn3Q==/109951163613037822.jpg?param=300y300', // prettier-ignore
+            lrc: 'https://cdn.moefe.org/music/lrc/kyoukiranbu.lrc',
+          },
+          {
+            name: '啵唧',
+            artist: 'Hanser',
+            url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
+            cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
+            lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
+          }]
 }

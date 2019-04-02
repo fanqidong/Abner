@@ -1,6 +1,6 @@
 <template>
   <div class="friend row">
-    <section class="friend-container">
+    <section class="friend-container" v-if="friendList.length">
       <ul class="friend-list">
         <li v-for="(friend, index) in friendList" :key="index">
           <div class="friend-content">
@@ -23,7 +23,7 @@
         </li>
       </ul>
     </section>
-    <!-- <Loading v-else/> -->
+    <Loading v-else/>
   </div>
 </template>
 
@@ -42,7 +42,6 @@ export default {
   },
   async created() {
     this.friendList = await store.dispatch("queryType", { type: "Friend" })
-    console.log(this.friendList)
   },
   methods: {}
 }

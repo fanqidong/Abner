@@ -8,7 +8,7 @@
             <rt>Article archive</rt>
           </ruby>
         </h2>
-        <p class="archive-total">好! 目前共计{{postAmount}}篇日志。 继续努力。</p>
+        <p class="archive-total">棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
       </div>
       <div class="timeline-contanier">
         <div
@@ -21,7 +21,7 @@
             <div class="tl-year">{{item.time}}</div>
           </div>
           <ul class="tl-body">
-            <li class="tl-item clearfix" v-for="(item,index) in item.posts" :key="index">
+            <li class="tl-item" v-for="(item,index) in item.posts" :key="index">
               <span class="tl-time">{{item.day}}日</span>
               <div class="tl-content">
                 <div class="tl-info">

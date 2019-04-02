@@ -12,6 +12,7 @@
     </main>
     <Footer/>
     <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
+    <MusicBox />
     <!-- <Loading/> -->
     <a href="javascript:;" :class="['go-top',isButtonShow?'show':'hide']" @click="goTop">
       <i class="iconfont icon-rocket"></i>
@@ -24,6 +25,7 @@ import Footer from "@/components/Footer"
 import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
+import MusicBox from "@/components/MusicBox"
 import { setTitle } from "@/utils/dom"
 import _ from 'lodash'
 export default {
@@ -40,7 +42,8 @@ export default {
     Bg,
     MobileMenu,
     Footer,
-    Loading
+    Loading,
+    MusicBox
   },
   methods: {
     setMenu(status) {

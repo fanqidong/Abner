@@ -1,42 +1,54 @@
 <template>
   <footer class="footer">
-    <APlayer autoplay fixed :list="$config.musicList" :music="currentMusic" :showLrc="true"/>
     <div class="footer-container">
-        <div class="copyright">
-            <p>
-                <span>Copyright © 2017-2019</span>
-                <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
+      <div class="copyright">
+        <p>
+          <span>Copyright © 2017-2019</span>
+          <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
+        </p>
+        <p>All Rights Reserved.</p>
+        <p class="my-birthday">
+            <span>小小东存活了</span>
+            <i class="iconfont icon-heart"></i>
+            {{birthday}}
             </p>
-            <p>All Rights Reserved.</p>
-        </div>
+      </div>
     </div>
   </footer>
 </template>
 
 <script>
-import APlayer from 'vue-aplayer'
-APlayer.disableVersionBadge = true
+import dayjs from "dayjs"
+import { setTimeout } from "timers"
+
 export default {
   name: "Footer",
-  data(){
+  data() {
     return {
-      currentMusic:{
-        title: '天亮以后说再见',
-        artist: '曲肖冰',
-        src: 'http://m801.music.126.net/20190331220430/9ea2072a92b86af9c04c4456c30b7869/jdyyaac/555c/0359/0753/b6994eea92432431accb0921a0ced83e.m4a'
-      }
+      birthday: ""
     }
   },
-  mounted(){
-    console.log(this.$config.musicList)
+  computed: {},
+  mounted() {
+      this.setBirthDay()
   },
-  components:{
-    APlayer
+  methods: {
+    setBirthDay() {
+      let day = dayjs(new Date()).diff("2018-07-20", "day")
+      let hour = dayjs(new Date()).diff("2018-07-20", "hour") % 24
+      let minute = dayjs(new Date()).diff("2018-07-20", "minute") % 60
+      let second = dayjs(new Date()).diff("2018-07-20", "second") % 60
+      this.birthday = `${day}天${hour}小时${minute}分钟${second}秒`
+      setTimeout(() => {
+        this.setBirthDay()
+      }, 1000)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/sass/animation.scss';
 .footer {
   position: absolute;
   left: 0;
@@ -45,25 +57,26 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: .5rem;
-  padding: .1rem 0 .2rem 0;
+  min-height: 0.5rem;
+  padding: 0.1rem 0 0.2rem 0;
   z-index: 100;
   color: #fff;
   &-container {
     max-width: 1200px;
     margin: auto;
   }
-  a{
-      color: #fff;
+  a {
+    color: #fff;
   }
-  .author{
-      margin: 0 .1rem;
+  .author {
+    margin: 0 .1rem;
   }
-}
-@media screen and (max-width:768px){
-    .footer{
-          background: #0c0e10;
-    }
+  .icon-heart{
+      display: inline-block;
+      margin-left: 4px;
+      color: #f00;
+      animation: ld-bounce 1.2s infinite;
+  }
 }
 </style>
 

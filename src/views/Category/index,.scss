@@ -1,11 +1,10 @@
 @import '@/assets/sass/mixin.scss';
 .category {
     padding-top: 2rem;
-    margin: auto;
   &-wrapper {
     max-width: 900px;
     min-height: 6rem;
-    padding: 0.15rem;
+    padding: .15rem;
     margin: auto;
     background: rgba(255, 255, 255, 0.5);
   }
@@ -20,10 +19,14 @@
   overflow: hidden;
   li {
     position: relative;
-    width: 33.33%;
+    width: 20%;
     height: 2rem;
-    margin: 0 .1rem .2rem 0;
+    padding: 0 .1rem .2rem 0;
     cursor: pointer;
+    transition: all 1s;
+    &.active{
+        width: 40%;
+    }
     span {
       // display: none;
       font-size: 22px;
@@ -44,15 +47,15 @@
       bottom: 0;
       top: 0;
       background: no-repeat center/cover;
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba($color: #000, $alpha: .7);
-      }
+    //   &::before {
+    //     content: "";
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     background: rgba($color: #000, $alpha: .7);
+    //   }
     }
     .category-info {
       position: relative;

@@ -100,7 +100,7 @@ export const queryHot = async postList => {
                 query.equalTo('id', id)
                 query.find().then(res => {
                     if (res.length > 0) {
-                        //已存在数据直接返回
+                        //已存在热度直接返回
                         const counter = res[0]
                         item.times = counter.get('time')
                         resolve(item)
@@ -110,9 +110,9 @@ export const queryHot = async postList => {
                         newCounter.set('title', title)
                         newCounter.set('id', id)
                         newCounter.set('time', 1)
-                        newCounter.set('sitelink', location.href)
+                        newCounter.set('site', location.href)
                         newCounter.save().then(() =>
-                            resolve(item)
+                           resolve(item)
                         ).catch(error => {
                             console.log(error)
                         })
