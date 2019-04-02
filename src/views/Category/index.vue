@@ -42,17 +42,17 @@
               <div class="article-tags">
                 <!-- 热度 -->
                 <span>
-                  <i class="fa fa-envira"></i>
+                  <i class="iconfont icon-hot"></i>
                   <em>热度：{{post.times}}°C</em>
                 </span>
                 <!-- 归档 -->
                 <span>
-                  <i class="fa fa-cloud"></i>
+                  <i class="iconfont icon-guidangxiangmu"></i>
                   <em>{{post.milestone.title }}</em>
                 </span>
                 <!-- 标签 -->
                 <span class="archive">
-                  <i class="fa fa-tags"></i>
+                  <i class="iconfont icon-biaoqian"></i>
                   <em v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</em>
                 </span>
               </div>
@@ -116,9 +116,9 @@ export default {
     },
     // 根据分类查询文章
     async queryPost(number) {
-      if(this.postList){
-          this.postList = ''
-      } 
+      if (this.postList) {
+        this.postList = ""
+      }
       this.partLoading = true
       let posts = await store.dispatch("queryArchive", {
         page: 1,

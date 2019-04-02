@@ -1,6 +1,6 @@
 <template>
-  <header class="header" :class="{active:isMenuOpen}">
-    <nav class="menu-wrapper container clearfix" :class="{'menu-open':isMenuOpen}">
+  <header class="header">
+    <nav class="menu-wrapper container clearfix">
       <div class="menu-pc">
           <div class="nav-logo">
             <a href="/" class="brand">

@@ -1,6 +1,6 @@
 <template>
   <div class="aplayer-wrapper hidden-xs">
-     <APlayer :audio="$config.musicList" mini />
+     <APlayer :audio="$config.musicList"  />
   </div>
 </template>
 

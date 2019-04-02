@@ -1,8 +1,11 @@
 <template>
-  <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}" @scroll.native="checkGoTOP">
+  <div id="abner">
     <Bg/>
-    <Header :is-menu-open="isMenuOpen" @toggle-menu="setMenu"/>
-    <MobileMenu @handle-menu="closeMenu"/>
+    <Header :is-menu-open="isMenuOpen" @toggle-menu="setMenu" :class="[{'isvisible': isvisible},{'ishidden':ishidden}]"/>
+    <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]" v-if="$isMobile">
+      <MobileMenu @handle-menu="closeMenu" />
+      <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
+    </div>
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
@@ -11,10 +14,9 @@
       </div>
     </main>
     <Footer/>
-    <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
-    <MusicBox />
+    <!-- <MusicBox /> -->
     <!-- <Loading/> -->
-    <a href="javascript:;" :class="['go-top',isButtonShow?'show':'hide']" @click="goTop">
+    <a href="javascript:;" :class="['go-top',isButtonShow?'show':'']" @click="goTop">
       <i class="iconfont icon-rocket"></i>
     </a>
   </div>
@@ -34,7 +36,9 @@ export default {
     return {
       isMenuOpen: false,
       isMobileMenuOpen: false,
-      isButtonShow:false
+      isButtonShow:false,
+      isvisible: false,
+      ishidden: false
     }
   },
   components: {
@@ -49,17 +53,29 @@ export default {
     setMenu(status) {
       this.isMobileMenuOpen = status
     },
+    getTop(){
+      let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+       window.addEventListener("scroll", _.debounce(() => {
+        let initTop = 100 
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+        console.log("当前滚动值"+scrollTop)
+            scrollTop > 400 ? ( this.isButtonShow = true) : (this.isButtonShow = false)
+        if(scrollTop ==0) this.ishidden = false,this.isvisible = false
+        if (scrollTop>100) {
+              if (scrollTop > top) {
+                this.ishidden = true
+                this.isvisible = false
+            }else{
+                  this.ishidden = false
+                  this.isvisible = true
+            }
+            top = scrollTop
+            console.log("赋值后"+top)
+          }
+      },200),{ passive: true })
+    },
     closeMenu(status) {
       this.isMobileMenuOpen = status
-    },
-    checkGoTOP(){
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-      console.log(scrollTop)
-     if (scrollTop>400) {
-          this.isButtonShow = true
-      }else{
-         this.isButtonShow = false
-      }
     },
     goTop(){
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
@@ -73,12 +89,9 @@ export default {
   mounted() {
     //   页面标题彩蛋
     setTitle()
-    window.addEventListener("scroll",() => {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-        scrollTop >= 0 ? (this.isMenuOpen = true) : (this.isMenuOpen = false)
-      },{ passive: true })
-  },
-  destroyed: function() {}
+   this.getTop()
+   
+  }
 }
 </script>
 

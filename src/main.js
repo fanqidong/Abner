@@ -8,9 +8,9 @@ import AV from 'leancloud-storage';
 AV.init(config.leancloud)
 // 全局样式引入
 import './assets/css/reset.css'
+import './assets/sass/init.scss'
 import './assets/sass/animation.scss'
 import 'aos/dist/aos.css'
-import './assets/sass/init.scss'
 
 // 检测是否是移动端
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
@@ -29,22 +29,14 @@ Vue.use(VueLazyLoad, {
     loading: 'http://img.zcool.cn/community/01f02059151e27b5b3086ed481bc0e.gif'
 })
 
-// 配置音乐播放器
-import APlayer from '@moefe/vue-aplayer';
-
-Vue.use(APlayer, {
-  defaultCover: 'https://github.com/u3u.png', // 设置播放器默认封面图片
-  productionTip: false, // 是否在控制台输出版本信息
-});
-
 // 切换页面销毁所有灯箱
-router.beforeEach((to, from, next) => {
-    Object.keys(window.lgData).forEach(k => {
-        window.lgData[k].destroy && window.lgData[k].destroy(true)
-    })
-    window.lgData = {}
-    next()
-})
+// router.beforeEach((to, from, next) => {
+//     Object.keys(window.lgData).forEach(k => {
+//         window.lgData[k].destroy && window.lgData[k].destroy(true)
+//     })
+//     window.lgData = {}
+//     next()
+// })
 
 new Vue({
     router,

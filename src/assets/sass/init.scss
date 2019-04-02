@@ -23,7 +23,6 @@
 /*小屏幕下(手机类)的样式*/
 @media only screen and (max-width: 601px) {
     .container {
-        position: relative;
         width: 95%;
     }
 }
@@ -31,7 +30,6 @@
 /*中等屏幕下(平板类)的样式*/
 @media only screen and (min-width: 600px) and (max-width: 992px) {
     .container {
-        position: relative;
         width: 85%;
     }
 }
@@ -51,9 +49,10 @@
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
-    .hidden-xs{
+    .hidden-xs {
         display: none;
     }
+
     .go-top {
         right: -3% !important;
 
@@ -223,7 +222,7 @@
             background-color: transparent;
             border-radius: 40px;
         }
-        
+
         &::-webkit-scrollbar-thumb {
             box-shadow: 0 0 15px rgba(245, 220, 184, 0.81);
             border-radius: 40px;
@@ -270,9 +269,10 @@
 }
 
 @media screen and (max-width: 768px) {
-    #abner{
+    #abner {
         padding-bottom: 1.5rem !important;
     }
+
     .markdown-content {
         pre {
             &::-webkit-scrollbar-thumb {
@@ -324,20 +324,18 @@ a {
 
 .go-top {
     position: fixed;
-    right: 2%;
+    right: 0;
     bottom: 8%;
     z-index: 100;
-    color: $white;
     transform: translateX(100%);
-    transition: tranform 1s;
+    will-change: transform;
+    color: $white;
+    transition: all 1s;
 
     &.show {
         transform: translateX(0);
     }
 
-    &.hide {
-        transform: translateX(100%);
-    }
 
     i {
         font-size: 70px;

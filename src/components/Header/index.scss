@@ -1,34 +1,46 @@
 @import '@/assets/sass/mixin.scss';
 @import '@/assets/sass/theme.scss';
+
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     animation: fadeInDown 1s;
+    transform: translateY(0) translateZ(0);
     z-index: 997;
-    transition: all 1s;
-    a,i{
-        color:$white
-    }
-    &.active {
-        position: fixed;
-        top: 0;
-        background: rgba($color: rgb(26, 21, 21), $alpha: .8);
-        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
-        color: #fff;
+    transition: all .5s;
 
-        a {
-            color: #fff;
+    a,
+    i {
+        color: $white;
+    }
+
+    // &.active {
+    //     position: fixed;
+    //     top: 0;
+    //     background: rgba($color: rgb(26, 21, 21), $alpha: .8);
+    //    
+    // }
+
+
+    &.isvisible {
+        top: 0;
+        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .05);
+        background: rgba($color: rgb(26, 21, 21), $alpha: .8);
+        @for $i from 1 through 7 {
+            .menu-list li:nth-of-type(#{$i}) {
+                animation: fadeInRight .3s .25s*$i both;
+            }
         }
+    }
+
+    &.ishidden {
+        transform: translateY(-50px);
     }
 
     .nav-logo {
         transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1);
-    }
-
-    &.active .nav-logo {
-        // top: .05rem;
     }
 }
 
@@ -36,8 +48,8 @@
     position: absolute;
     height: 50px;
     font-size: .22rem;
-    .brand {
 
+    .brand {
         @include flex-align();
         color: #fff;
     }
@@ -45,7 +57,6 @@
     img {
         display: inline-block;
         height: 45px;
-        margin-right: .1rem;
     }
 
 }
@@ -56,21 +67,16 @@
     font-size: .16rem;
     height: 50px;
     line-height: 50px;
-
-    &.menu-open {
-        @for $i from 1 through 7 {
-            .menu-list li:nth-of-type(#{$i}) {
-                animation: scaleInY .3s .25s*$i both;
-            }
-        }
-    }
 }
 
 .menu-list {
     float: right;
-    @include flex(){
+
+    @include flex() {
         justify-content: space-between;
-    };
+    }
+
+    ;
 
     li {
         position: relative;
@@ -88,7 +94,8 @@
     background: none;
     color: #fff;
     cursor: pointer;
-    i{
+
+    i {
         font-size: 40px;
     }
 }
@@ -114,7 +121,7 @@
     }
 
     .brand {
-        font-size: .4rem
+        font-size: .4rem;
     }
 
     .nav-collapse {
@@ -122,7 +129,7 @@
     }
 }
 
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 768px) {
     .nav-collapse {
         display: none;
     }
