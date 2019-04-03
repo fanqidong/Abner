@@ -1,6 +1,6 @@
 <template>
-  <div class="category">
-    <section class="category-wrapper" v-if="categoryList.length" data-aos="fade-up">
+  <div class="category pt200 ">
+    <section class="category-wrapper row" v-if="categoryList.length" data-aos="fade-up">
       <h2 class="category-title">
         <ruby>
           文章分类
@@ -14,13 +14,12 @@
           :class="[index==currenIndex ?'active': '']"
           @click="handleFilter(index,category.number)"
         >
-          <div class="category-cover" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
+          <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
           <div class="category-info">
-            <span
-              class="category-name"
-            >{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
-            <span class="category-desc">{{category.subject}}</span>
+              <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
+            <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
           </div>
+            <span class="category-desc">{{category.subject}}</span>
         </li>
       </ul>
       <div class="article-wrapper">
@@ -95,7 +94,7 @@ export default {
       offset: 20
     }),
       setTimeout(Aos.refresh, 600)
-    this.queryCategory()
+      this.queryCategory()
   },
   methods: {
     async queryCategory() {
@@ -103,11 +102,11 @@ export default {
     },
     handleFilter(index, number) {
       this.currenIndex = index
-      this.partLoading = true
       if (index == 0) {
         this.$router.push({ name: "Mood" })
         return
       }
+      this.partLoading = true
       this.queryPost(number)
     },
     // 前往文章详情页
@@ -133,6 +132,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./index,.scss";
+@import './index.scss'
 </style>
 

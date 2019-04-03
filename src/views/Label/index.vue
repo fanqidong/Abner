@@ -1,5 +1,5 @@
 <template>
-  <div class="label row">
+  <div class="label row pt200">
     <div class="label-content"  v-if="labelList.length" data-aos="fade-up">
       <h2 class="title">
         <ruby>文章标签

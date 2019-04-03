@@ -1,9 +1,6 @@
 @import '../../assets/sass/mixin.scss';
-.article-detail {
-    .contanier {
-        border-radius: 10px;
-    }
-}
+@import '../../assets/sass/theme.scss';
+
 
 .article-header {
     position: relative;
@@ -22,30 +19,30 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     &::before {
-        @include absolute-screen(){
+        @include absolute-screen() {
             content: '';
         }
+
         z-index: 10;
         background: rgba($color: #000, $alpha: .4);
     }
+
     &::after {
-        @include absolute-screen(){
+        @include absolute-screen() {
             content: '';
         }
+
         z-index: 10;
         background: linear-gradient(transparent 80%, rgba(0, 0, 0, .4) 90%, rgba(0, 0, 0, .7) 100%);
     }
 }
 
-.article-category {
-    &-link {
-        color: #fff;
-    }
-}
 
 .arcitle-label {
     @include flex-align();
+
     li {
         margin-right: 4px;
     }
@@ -59,7 +56,7 @@
 }
 
 .article-main {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, .7);
     padding: 2% 3%;
 }
 
@@ -77,17 +74,60 @@
 
 .post {
     &-siblings {
-        display: flex;
-        justify-content: space-around;
+        margin: 10px 0;
+        padding: 0 20px;
+
+        .next {
+            float: right;
+        }
+
     }
 
     &-title {
         display: inline-block;
-        margin-left: .1rem;
+    }
+
+    &-button {
+        position: relative;
+        float: left;
+        width: 45%;
+        padding: .2rem;
+        border-radius: 80px;
+        background: rgba(255, 255, 255, .9);
+        box-shadow: 0px 2px 0px rgb(168, 168, 168), 0px 2px 5px rgba(85, 81, 81, 0.7);
+        animation: glowing-primary 3s infinite;
+
+        &:active {
+            box-shadow: 0px 3px 0px rgba(168, 168, 168, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+            top: 6px;
+        }
+    }
+
+}
+
+@keyframes glowing-primary {
+    from {
+        box-shadow: 0 0 0 rgba(27, 154, 247, .3);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgba(27, 154, 247, .8);
+    }
+
+    to {
+        box-shadow: 0 0 0 rgba(27, 154, 247, .3);
     }
 }
 
 @media screen and (max-width: 768px) {
+    .row {
+        width: 100%;
+    }
+
+    .article-detail {
+        padding: 0;
+    }
+
     .article-header {
         min-height: 100vh;
     }
@@ -96,16 +136,24 @@
         right: 10px;
     }
 
-    .row {
-        width: 100%;
-        padding: 0 !important;
+
+    .post {
+        &-button {
+            width: 100%;
+        }
+    }
+
+    .prev {
+        margin-bottom: 20px;
     }
 }
+
 @media screen and (min-width: 769px) {
-    .article-header{
-        .article-cover{
+    .article-header {
+        .article-cover {
             transition: all 1.5s;
         }
+
         &:hover .article-cover {
             transform: scale(1.1) rotate(-2deg);
         }

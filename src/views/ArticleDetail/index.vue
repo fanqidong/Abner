@@ -1,6 +1,6 @@
 <template>
-  <div class="article-detail row" id="post">
-    <div class="contanier" v-if="post.body">
+  <div class="article-detail contanier pt200" id="post">
+    <div class="row" v-if="post.body">
       <section class="article-header">
         <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
@@ -9,6 +9,7 @@
             <div class="article-archive">
               <i class="iconfont icon-guidangxiangmu"></i>
               <router-link
+                tag="span"
                 :to="{name:'Category'}"
                 class="article-category-link"
               >{{post.milestone.title}}</router-link>
@@ -33,27 +34,27 @@
       </section>
       <section class="article-main">
         <MarkDown :content="post.body" target="#post"/>
-        <div class="post-siblings">
-          <div class="prev">
-            <span>上一篇</span>
+        <div class="post-siblings clearfix">
+          <div class="prev post-button" >
             <a
               href="javascript:;"
               class="post-title"
               :data-number="prevPost.number"
               @click="goDetail(prevPost.number)"
             >
-              <span>#{{prevPost.title}}#</span>
+                <span>上一篇丨</span>
+                <span>{{prevPost.title}}</span>
             </a>
           </div>
-          <div class="next">
-            <span>下一篇</span>
+          <div class="next post-button">
             <a
               href="javascript:;"
               class="post-title"
               :data-number="nextPost.number"
               @click="goDetail(nextPost.number)"
             >
-              <span>#{{nextPost.title}}#</span>
+              <span>下一篇丨</span>
+              <span>{{nextPost.title}}</span>
             </a>
           </div>
         </div>
@@ -69,6 +70,7 @@ import MarkDown from "@/components/Markdown"
 import Loading from "@/components/Loading"
 import { mapState } from "vuex"
 import { queryPosts } from "@/api/request"
+import { formatPost } from "@/utils/format"
 export default {
   name: "ArticleDetail",
   data() {
@@ -96,6 +98,7 @@ export default {
   },
   mounted() {
     //   console.log(this.number)
+    console.log(this.defaultCover)
   },
   updated() {},
   methods: {
@@ -114,6 +117,7 @@ export default {
           page: 1,
           pageSize: ""
         })
+        this.postAll.forEach(formatPost)
         console.log("新增", ...this.postAll)
       }
       this.postAll.map((item, index, arr) => {

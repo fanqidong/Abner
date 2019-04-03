@@ -1,6 +1,6 @@
 <template>
-  <div class="friend row">
-    <section class="friend-container" v-if="friendList.length">
+  <div class="friend  pt200">
+    <section class="friend-container row" v-if="friendList.length">
       <ul class="friend-list">
         <li v-for="(friend, index) in friendList" :key="index">
           <div class="friend-content">

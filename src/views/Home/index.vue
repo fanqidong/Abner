@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <section class="site-meta">
       <div
         class="person-info"

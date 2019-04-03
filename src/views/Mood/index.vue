@@ -1,5 +1,5 @@
 <template>
-  <div class="mood row">
+  <div class="mood row pt200">
     <transition name="fade" mode="out-in" v-if="moodList.length">
       <ul class="mood-list">
         <li class="mood-item" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">

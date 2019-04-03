@@ -76,12 +76,12 @@ export default {
             target: this.target
           })
           //   实例化图片画廊
-          window.lightGallery(document.getElementById("post"), {
-            selector: ".show-img",
-            thumbMargin: 5,
-            download: false,
-            subHtmlSelectorRelative: true
-          })
+        //   window.lightGallery(document.getElementById("post"), {
+        //     selector: ".show-img",
+        //     thumbMargin: 5,
+        //     download: false,
+        //     subHtmlSelectorRelative: true
+        //   })
         }
       })
     },
@@ -106,15 +106,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "@/assets/sass/mixin.scss";
-.markdown-content{
-   overflow:hidden;
-}
-.post-siblings {
-  @include flex() {
-    justify-content: space-around;
-  }
-}
 </style>
 
 

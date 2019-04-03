@@ -98,7 +98,7 @@ export default {
     // 格式化文章 按月份分组
     formatPost(data) {
       let listArr = []
-      data.forEach(function(el, index) {
+      data.forEach((el, index) => {
         let { created_at } = el
         el.day = dayjs(created_at).date()
         el.time = dayjs(created_at).format("YYYY年MM月")

@@ -1,5 +1,46 @@
 @import './theme.scss';
-
+.container {
+    width: 100%;
+    margin: auto;
+}
+.pt200{
+   padding-top: 2rem; 
+}
+@media screen and (max-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+    .row{
+        width: 90%;
+        margin: auto;
+    }
+  }
+  
+  @media screen and (max-width: 993px) {
+    .container {
+      max-width: 720px;
+    }
+    .row{
+        width: 90%;
+        margin: auto;
+    }
+  }
+  
+  @media screen and (min-width: 993px) {
+    .container {
+      max-width: 960px;
+    }
+    .row {
+        max-width: 900px;
+        margin: auto;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
 /*重写滚动条样式*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -13,39 +54,7 @@
     background-color: #e1bfba;
 }
 
-.row {
-    max-width: 900px;
-    margin: auto;
-    padding-top: 2rem;
-}
 
-
-/*小屏幕下(手机类)的样式*/
-@media only screen and (max-width: 601px) {
-    .container {
-        width: 95%;
-    }
-}
-
-/*中等屏幕下(平板类)的样式*/
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-    .container {
-        width: 85%;
-    }
-}
-
-/*大屏幕下(桌面类)的样式*/
-@media only screen and (max-width: 993px) {
-    .container {
-        position: relative;
-        width: 80% !important;
-        max-width: 1125px;
-    }
-
-    .row {
-        width: 85%;
-    }
-}
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
@@ -65,18 +74,6 @@
         color: inherit !important;
     }
 
-    .container {
-        width: 90% !important;
-    }
-
-    .row {
-        width: 92%;
-    }
-
-    .prev span,
-    .next span {
-        display: block;
-    }
 
     pre {
         &::before {
@@ -270,7 +267,7 @@
 
 @media screen and (max-width: 768px) {
     #abner {
-        padding-bottom: 1.5rem !important;
+        padding-bottom: 2rem !important;
     }
 
     .markdown-content {
