@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import ArchiveCard from "@/components/ArchiveCard"
 import Loading from "@/components/Loading"
 import store from "@/store"
 import Aos from "aos"
@@ -58,7 +57,6 @@ export default {
     }
   },
   components: {
-    ArchiveCard,
     Loading
   },
   created() {

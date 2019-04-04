@@ -35,11 +35,29 @@
         }
     }
 }
+.post{
+    &-content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 0 0 0;
+    }
+    &-list{
+        width: 49%;
+        margin-bottom: 2%;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .label-item {
         min-width: 1rem;
         padding: .15rem;
         font-size: 13px;
+    }
+    .post{
+        &-list{
+            width: 100%;
+            margin-bottom: 4%;
+        }
     }
 }

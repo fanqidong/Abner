@@ -70,7 +70,7 @@
     li {
         position: relative;
         @include flex-align();
-        padding: 0 .15rem 0;
+        padding: 0 .15rem;
     }
 }
 
@@ -78,7 +78,7 @@
 /*移动端导航样式*/
 .nav-collapse {
     position: absolute;
-    left: 0;
+    left: 3%;
     line-height: 50px;
     background: none;
     color: $white;

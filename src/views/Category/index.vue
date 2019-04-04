@@ -1,68 +1,39 @@
 <template>
   <div class="category pt200">
-    <section class="category-wrapper row" v-if="categoryList.length" data-aos="fade-up">
-      <h2 class="category-title">
-        <ruby>
-          文章分类
-          <rt>Article category</rt>
-        </ruby>
-      </h2>
-      <ul class="category-list">
-        <li
-          v-for="(category,index) in categoryList"
-          :key="category.id"
-          :class="[index==currenIndex ?'active': '']"
-          @click="handleFilter(index,category.number)"
-        >
-          <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
-          <div class="category-info">
-              <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
-              <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
-          </div>
-            <span class="category-desc">{{category.subject}}</span>
-        </li>
-      </ul>
-      <div class="article-wrapper">
-        <ul class="article-list" v-if="postList.length">
-          <li
-            v-for="post in postList"
-            :key="post.id"
-            class="article-item"
-            @click="goDetail(post.number)"
-          >
-            <div class="article-mask"></div>
-            <img class="article-cover" v-lazy="post.cover.src" :alt="post.cover.text">
-            <div class="article-meta">
-              <!-- 文章内容  Start -->
-              <!-- 文章标题 -->
-              <h2 class="article-title">{{post.title}}</h2>
-              <!-- 简介 -->
-              <div class="article-desc">{{post.desc}}</div>
-              <div class="article-tags">
-                <!-- 热度 -->
-                <span>
-                  <i class="iconfont icon-hot"></i>
-                  <em>热度：{{post.times}}°C</em>
-                </span>
-                <!-- 归档 -->
-                <span>
-                  <i class="iconfont icon-guidangxiangmu"></i>
-                  <em>{{post.milestone.title }}</em>
-                </span>
-                <!-- 标签 -->
-                <span class="archive">
-                  <i class="iconfont icon-biaoqian"></i>
-                  <em v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</em>
-                </span>
+    <div class="category-container">
+        <div class="category-wrapper row" v-if="categoryList.length" data-aos="fade-up">
+          <h2 class="category-title">
+            <ruby>
+              文章分类
+              <rt>Article category</rt>
+            </ruby>
+          </h2>
+          <ul class="category-list">
+            <li
+              v-for="(category,index) in categoryList"
+              :key="category.id"
+              :class="[index==currenIndex ?'active': '']"
+              @click="handleFilter(index,category.number)"
+            >
+              <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
+              <div class="category-info">
+                  <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
+                  <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
               </div>
-              <!-- 文章内容 End -->
+                <span class="category-desc">{{category.subject}}</span>
+            </li>
+          </ul>
+        <div class="post-container">
+            <div class="post-content"  v-if="postList.length">
+                <div class="post-list" v-for="post in postList" :key="post.id">
+                    <ArticleCard  :target="'label'" :post="post" />
+                </div>
             </div>
-          </li>
-        </ul>
-        <partLoading v-if="partLoading"/>
+            <partLoading v-if="partLoading"/>
+        </div>
       </div>
-    </section>
     <Loading v-else/>
+    </div>
   </div>
 </template>
 
@@ -71,6 +42,7 @@ import store from "@/store"
 import Loading from "@/components/Loading"
 import Aos from "aos"
 import partLoading from "@/components/partLoading"
+import ArticleCard from "@/components/ArticleCard"
 export default {
   name: "Category",
   data() {
@@ -84,7 +56,8 @@ export default {
   },
   components: {
     Loading,
-    partLoading
+    partLoading,
+    ArticleCard
   },
   created() {
     Aos.init({

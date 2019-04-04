@@ -9,7 +9,9 @@
     <main ref="scrollingContainer">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
+          <keep-alive>
                 <router-view/>
+          </keep-alive>
         </transition>
       </div>
     </main>

@@ -15,6 +15,7 @@ export default {
 @import '../../assets/sass/animation.scss';
 .part-loading{
     position: relative;
+    color: #fff;
     z-index: 999;
     img{
         width: 1rem;
