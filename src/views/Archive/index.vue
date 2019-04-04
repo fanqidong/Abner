@@ -1,5 +1,5 @@
 <template>
-  <div id="archive" class="archive">
+  <div id="archive" class="archive  row pt200">
     <section class="archive-contanier" v-if="postList.length" data-aos="fade-up">
       <div class="archive-header">
         <h2>

@@ -1,24 +1,9 @@
 @import "@/assets/sass/mixin.scss";
-.archive{
-    padding-top: 2rem;
-}
+
 .archive-contanier{
-    max-width: 900px;
-    margin: auto;
     min-height: 6rem;
     padding: .15rem .15rem .25rem;
     background: rgba($color: #fff, $alpha: .6);
-}
-@media screen and (max-width: 992px) {
-    .archive {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .archive {
-        width: 90%;
-    }
 }
 
 .archive-total {

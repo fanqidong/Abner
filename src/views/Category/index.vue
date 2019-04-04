@@ -1,5 +1,5 @@
 <template>
-  <div class="category pt200 ">
+  <div class="category pt200">
     <section class="category-wrapper row" v-if="categoryList.length" data-aos="fade-up">
       <h2 class="category-title">
         <ruby>
@@ -17,7 +17,7 @@
           <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
           <div class="category-info">
               <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
-            <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
+              <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
           </div>
             <span class="category-desc">{{category.subject}}</span>
         </li>

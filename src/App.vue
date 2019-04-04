@@ -58,9 +58,9 @@ export default {
        window.addEventListener("scroll", _.debounce(() => {
         let initTop = 100 
         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-        // console.log("当前滚动值"+scrollTop)
             scrollTop > window.innerHeight ? ( this.isButtonShow = true) : (this.isButtonShow = false)
         if(scrollTop == 0) this.ishidden = false,this.isvisible = false
+        if(scrollTop > 0) this.ishidden = true
         if (scrollTop>initTop) {
               if (scrollTop > top) {
                 this.ishidden = true
@@ -70,9 +70,6 @@ export default {
                   this.isvisible = true
             }
             top = scrollTop
-            // console.log("赋值后"+top)
-          }else{
-                this.isvisible = false
           }
       },200),{ passive: true })
     },

@@ -16,7 +16,7 @@
             </div>
             <div class="friend-link">
               <a :href="friend.link" target="_blank" rel="noopener noreferer">
-                  一探究竟
+                  前去py
               </a>
             </div>
           </div>
