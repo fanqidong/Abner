@@ -1,11 +1,17 @@
 <template>
-  <div class="mood row pt200">
+  <div class="mood row pt100">
     <transition name="fade" mode="out-in" v-if="moodList.length">
       <ul class="mood-list">
         <li class="mood-item" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
-          <span class="title" :data-title="mood.title"></span>
-          <Markdown :content="mood.body" :only-render="true"/>
-          <span class="date">发表于{{mood.created_at.slice(0,10)}}</span>
+          <!-- <span class="title" :data-title="mood.title"></span> -->
+          <img src="https://fanqidong.github.io/images/avatar.jpg" alt="头像" class="mood-avatar">
+          <div class="mood-body">
+            <Markdown :content="mood.body" :only-render="true"/>
+            <span class="date font12">
+              <i class="iconfont icon-publish"></i>
+              {{mood.created_at.slice(0,10)}}
+            </span>
+          </div>
         </li>
       </ul>
     </transition>
@@ -39,7 +45,7 @@ export default {
       debounceDelay: 200,
       offset: 20
     }),
-    setTimeout(Aos.refresh, 600)
+      setTimeout(Aos.refresh, 600)
   },
   methods: {
     //   获取心情

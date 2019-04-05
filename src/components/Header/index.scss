@@ -23,7 +23,7 @@
 
         @for $i from 1 through 7 {
             .menu-list li:nth-of-type(#{$i}) {
-                animation: fadeInRight .3s .25s*$i both;
+                animation: fadeInRight .3s .2s*$i both;
             }
         }
     }

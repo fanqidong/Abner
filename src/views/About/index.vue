@@ -1,6 +1,6 @@
 <template>
-    <div class="about row">
-        关于
+    <div class="about row pt200">
+       <p class="font22 cfff"> 开发中...</p>
     </div>
 </template>
 

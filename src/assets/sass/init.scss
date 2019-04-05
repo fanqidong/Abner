@@ -1,46 +1,5 @@
 @import './theme.scss';
-.container {
-    width: 100%;
-    margin: auto;
-}
-.pt200{
-   padding-top: 2rem; 
-}
-@media screen and (max-width: 576px) {
-    .container {
-      max-width: 540px;
-    }
-    .row{
-        width: 90%;
-        margin: auto;
-    }
-  }
-  
-  @media screen and (max-width: 993px) {
-    .container {
-      max-width: 720px;
-    }
-    .row{
-        width: 90%;
-        margin: auto;
-    }
-  }
-  
-  @media screen and (min-width: 993px) {
-    .container {
-      max-width: 960px;
-    }
-    .row {
-        max-width: 900px;
-        margin: auto;
-    }
-  }
-  
-  @media screen and (min-width: 1200px) {
-    .container {
-      max-width: 1140px;
-    }
-  }
+
 /*重写滚动条样式*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -54,12 +13,76 @@
     background-color: #e1bfba;
 }
 
+.container {
+    width: 100%;
+    margin: auto;
+}
 
+.pt100{
+    padding-top: 100px;
+}
+.pt150{
+    padding-top: 150px;
+}
+.pt200 {
+    padding-top: 200px;
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .row {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 993px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .row {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .row {
+        max-width: 900px;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
     .hidden-xs {
         display: none;
+    }
+
+    #abner {
+        padding-bottom: 2rem !important;
+    }
+
+    .markdown-content {
+        pre {
+            &::-webkit-scrollbar-thumb {
+                display: none;
+            }
+        }
     }
 
     .go-top {
@@ -185,11 +208,6 @@
         }
     }
 
-    p {
-        text-indent: 2em;
-        margin: .1rem 0;
-    }
-
     a {
         position: relative;
         text-indent: initial;
@@ -265,19 +283,6 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-    #abner {
-        padding-bottom: 2rem !important;
-    }
-
-    .markdown-content {
-        pre {
-            &::-webkit-scrollbar-thumb {
-                display: none;
-            }
-        }
-    }
-}
 
 a {
     color: #233330;

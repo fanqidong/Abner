@@ -2,13 +2,12 @@
     &-list {
         padding: .3rem 0;
         li {
+            display: flex;
             position: relative;
-            max-width: 700px;
+            max-width: 90%;
             margin: auto;
-            background: rgba($color: #FCFAF2, $alpha: .8);
             border-radius: 5px;
             border-bottom-right-radius: 0;
-            padding: 25px 20px;
             text-align: justify;
             margin-bottom: .4rem;
             transition: all .8s;
@@ -41,40 +40,60 @@
 
             }
 
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -.3rem;
-                right: .3rem;
-                border-width: .15rem;
-                border-style: solid;
-                transform: skewX(-64deg);
-                border-color: rgba($color: #FCFAF2, $alpha:.75) transparent transparent transparent;
-            }
-
-            >.desc {
-                margin: 0 0 .1rem 0;
-            }
-
-            >.date {
-                position: absolute;
-                right: .4rem;
-                bottom: .1rem;
-            }
-
             &:hover {
                 transform: translate3d(0, -5px, 0);
-                box-shadow: 1px 1px 10px 10px rgba($color: #000, $alpha: .1);
+                // box-shadow: 1px 1px 10px 10px rgba($color: #000, $alpha: .1);
             }
         }
     }
-    .markdown-content p{
-        text-indent: 0 !important;
+    &-body{
+        flex: 1;
+        position: relative;
+        margin: 1px 0 0 12px; 
+        padding: 10px 10px 26px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        border-radius: 5px;
+        &::before{
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: #fff;
+            border-right-color: #fff;
+        }
+        >.desc {
+            margin: 0 0 .1rem 0;
+        }
+
+        >.date {
+            position: absolute;
+            right: 8px;
+            bottom: 4px;
+            color: #51555e;
+        }
+        i{
+            margin-right: 0;
+            color: gray;
+            font-size: 12px !important;
+        }
+    }
+    &-avatar{
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
     }
 }
 
 @media screen and (max-width: 768px) {
     .title {
         font-size: 12px;
+    }
+    .mood-item{
+        max-width: 100% !important;
     }
 }

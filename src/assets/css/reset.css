@@ -179,7 +179,8 @@ body {
 
 body {
   font-size: 14px;
-  font-family: "Microsoft Yahei";
+  /* font-family: "Microsoft Yahei"; */
+  font-family: Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   color: #121213;
   /* color: #525b66; */
   line-height: 1.428;

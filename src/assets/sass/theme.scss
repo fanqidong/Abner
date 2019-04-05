@@ -1,6 +1,20 @@
 // 页面主题色
 $white:#fff;
 $articleColor:#525b66;
+
+/* 字体大小 */
+$number: 12 14 16 18 20 22;
+
+@each $i in $number {
+    .font#{$i} {
+        font-size: $i*1px;
+    }
+}
+
+.cfff{
+    color: #fff;
+}
+
 /*随机渐变背景色*/
 .random-bg0 {
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);

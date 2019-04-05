@@ -1,7 +1,7 @@
 <template>
-  <div class="category pt200">
-    <div class="category-container">
-        <div class="category-wrapper row" v-if="categoryList.length" data-aos="fade-up">
+  <div class="category pt200 row">
+    <div class="category-container" v-if="categoryList.length" data-aos="fade-up">
+        <div class="category-wrapper">
           <h2 class="category-title">
             <ruby>
               文章分类
@@ -18,30 +18,22 @@
               <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
               <div class="category-info">
                   <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
-                  <span class="category-name">{{category.title}}{{category.title =='每日一说'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
+                  <span class="category-name">{{category.title}}{{category.title =='旧人叙'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
               </div>
                 <span class="category-desc">{{category.subject}}</span>
             </li>
           </ul>
-        <div class="post-container">
-            <div class="post-content"  v-if="postList.length">
-                <div class="post-list" v-for="post in postList" :key="post.id">
-                    <ArticleCard  :target="'label'" :post="post" />
-                </div>
-            </div>
-            <partLoading v-if="partLoading"/>
-        </div>
       </div>
-    <Loading v-else/>
+      <ArticleCard  :target="'label'" :post-list="postList" :loading-status="loadingStatus"/>
     </div>
+    <Loading v-else/>
   </div>
 </template>
 
-<script>
+<script> 
 import store from "@/store"
 import Loading from "@/components/Loading"
 import Aos from "aos"
-import partLoading from "@/components/partLoading"
 import ArticleCard from "@/components/ArticleCard"
 export default {
   name: "Category",
@@ -49,14 +41,13 @@ export default {
     return {
       categoryList: [],
       postList: [],
-      partLoading: false,
+      loadingStatus: false,
       milestone: "",
       currenIndex: 0
     }
   },
   components: {
     Loading,
-    partLoading,
     ArticleCard
   },
   created() {
@@ -79,7 +70,7 @@ export default {
         this.$router.push({ name: "Mood" })
         return
       }
-      this.partLoading = true
+      this.loadingStatus = true
       this.queryPost(number)
     },
     // 前往文章详情页
@@ -91,13 +82,13 @@ export default {
       if (this.postList) {
         this.postList = ""
       }
-      this.partLoading = true
+      this.loadingStatus = true
       let posts = await store.dispatch("queryArchive", {
         page: 1,
         pageSize: "",
         filter: `&milestone=${number}`
       })
-      this.partLoading = false
+      this.loadingStatus = false
       this.postList = posts
     }
   }

@@ -15,27 +15,19 @@
         </div>
         <Loading v-else />
     </div>
-    <div class="post-container">
-        <div class="post-content"  v-if="postList.length">
-            <div class="post-list" v-for="post in postList" :key="post.id">
-                <ArticleCard  :target="'category'" :post="post" />
-            </div>
-        </div>
-        <partLoading v-if="partLoading"/>
+    <ArticleCard  :target="'category'" :post-list="postList" :loading-status="loadingStatus"/>
     </div>
-  </div>
 </template>
 <script>
 import store from "@/store"
 import Loading from '@/components/Loading'
 import Aos from 'aos'
-import partLoading from "@/components/partLoading"
 import ArticleCard from "@/components/ArticleCard"
 export default {
   name: "Label",
   data() {
     return {
-      partLoading: false,
+      loadingStatus: false,
       lable: '',
       labelList: [],
       postList:[]
@@ -43,7 +35,6 @@ export default {
   },
   components:{
       Loading,
-      partLoading,
       ArticleCard
   },
   async created() {
@@ -69,18 +60,18 @@ export default {
     },
     // 过滤文章
     async filterPosts(){
-      if(this.partLoading) return 
+      if(this.loadingStatus) return 
      if (this.postList) {
         this.postList = ""
       }
-      this.partLoading = true
+      this.loadingStatus = true
       const filter = `&labels=${this.label.name}`
       const posts = await store.dispatch('queryArchive', {
         page: 1,
         pageSize: '',
         filter
       })
-      this.partLoading = false
+      this.loadingStatus = false
       this.postList = posts
       console.log(this.postList)
     }

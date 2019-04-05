@@ -1,7 +1,7 @@
 <template>
     <div class="part-loading">
         <img src="../../assets/img/lemon-loading.svg" alt="">
-        <p>拼命加载中...</p>
+        <p>我拼命加载的样子像极了...</p>
     </div>
 </template>
 
