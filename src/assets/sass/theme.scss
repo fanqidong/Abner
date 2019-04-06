@@ -3,7 +3,7 @@ $white:#fff;
 $articleColor:#525b66;
 
 /* 字体大小 */
-$number: 12 14 16 18 20 22;
+$number: 12 14 16 18 20 22 24 26 28;
 
 @each $i in $number {
     .font#{$i} {
@@ -11,9 +11,63 @@ $number: 12 14 16 18 20 22;
     }
 }
 
-.cfff{
+.cfff {
     color: #fff;
 }
+.c000{
+    color: #222;
+}
+
+/* flex  */
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &-column {
+        @extend .flex;
+        flex-direction: column;
+    }
+
+    &1 {
+        @extend .flex;
+        flex: 1;
+    }
+
+    &-wrap {
+        @extend .flex;
+        flex-wrap: wrap;
+    }
+
+    &-center {
+        @extend .flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-around {
+        @extend .flex;
+        justify-content: space-around;
+    }
+
+    &-between {
+        @extend .flex;
+        justify-content: space-between;
+    }
+}
+
+.justify-center {
+    @extend .flex;
+    justify-content: center;
+}
+
+.align-center {
+    @extend .flex;
+    align-items: center;
+}
+
+
+
+
 
 /*随机渐变背景色*/
 .random-bg0 {

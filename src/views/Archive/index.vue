@@ -23,7 +23,7 @@
           <ul class="tl-body">
             <li class="tl-item" v-for="(item,index) in item.posts" :key="index">
               <span class="tl-time">{{item.day}}日</span>
-              <div class="tl-content">
+              <div class="tl-content align-center">
                 <div class="tl-info">
                   <a
                     href="javascript:;"

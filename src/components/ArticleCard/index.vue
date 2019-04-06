@@ -1,28 +1,28 @@
 <template>
   <div class="post-container">
-    <div class="post-content" v-if="postList.length">
+    <div class="post-content flex-between flex-wrap" v-if="postList.length">
       <div class="post-list" v-for="post in postList" :key="post.id">
         <!-- <ArticleCard  :target="'category'" :post="post" /> -->
         <div class="post-card" @click="goDetail(post.number)">
           <div class="post-cover">
             <img v-lazy="post.cover.src" class="post-img" alt>
-            <span class="post-title">{{post.title}}</span>
+            <span class="post-title font16">{{post.title}}</span>
             <div class="post-hot">
               <i class="iconfont icon-hot"></i>
               <span class="post-num">{{post.times}}</span>
             </div>
           </div>
-          <div class="post-meta">
+          <div class="post-meta font14 flex-between align-center">
             <div class="post-time">
               <i class="iconfont icon-calendar"></i>
-              <span>{{post.timeinfo.date}}丨{{post.timeinfo.time}}</span>
+              <span>{{post.timeinfo.date.split('/').join('-')}}丨{{post.timeinfo.time}}</span>
             </div>
             <span class="post-category" v-if="target=='category'">
               <i class="iconfont icon-guidangxiangmu"></i>
               {{post.milestone.title}}
             </span>
-            <ul class="label-list" v-if="target=='label'">
-              <li v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</li>
+            <ul class="label-list flex" v-if="target=='label'">
+              <li  class="align-center" v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</li>
             </ul>
           </div>
         </div>
@@ -52,9 +52,6 @@ export default {
   },
   components: {
     partLoading
-  },
-  data() {
-    return {}
   },
   methods: {
     // 前往详情页

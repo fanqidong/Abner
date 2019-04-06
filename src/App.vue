@@ -91,7 +91,6 @@ export default {
     //   页面标题彩蛋
     setTitle()
    this.getTop()
-   
   }
 }
 </script>

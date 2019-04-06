@@ -3,160 +3,90 @@
 
 .category {
     &-wrapper {
-        min-height: 6rem;
         padding: .15rem;
-        background: rgba(255, 255, 255, 0.5);
+        // background: rgba($color: #fff, $alpha: .9);
     }
 
     &-title {
         margin: 0 0 1em 0;
     }
-}
-
-.category-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    color: $white;
-    overflow: hidden;
-
-    li {
-        position: relative;
-        width: 32%;
-        height: 2rem;
-        padding: 0 .1rem ;
-        margin-bottom: 2%;
-        cursor: pointer;
-        transition: all 1s;
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba($color: #000, $alpha: .6);
-        }
-
-        span {
-            font-size: 22px;
-        }
-
-        .category-desc {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            font-size: 16px;
-        }
-        .category-avatar{
-            width: .8rem;
-            height: .8rem;
-            border-radius: 50%;
-            background: no-repeat center/cover;
-        }
-        .category-cover {
-            position: absolute;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .category-info {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            height: 80%;
-            z-index: 5;
-        }
-    }
-}
-
-.article {
-    &-wrapper {
-        margin-top: 0.2rem;
-    }
 
     &-list {
-        display: flex;
-        flex-wrap: wrap;
+        color: $white;
+        overflow: hidden;
 
         li {
             position: relative;
-            width: 49%;
-            min-height: 3rem;
-            margin: 0 2% 2% 0;
-            border-radius: 10px;
+            width: 32.33%;
+            height: 3rem;
+            margin-bottom: 2%;
+            cursor: pointer;
             overflow: hidden;
-
-            &:nth-child(2n) {
-                margin-right: 0;
+            &:hover .category-cover {
+                transform: scale(1.1);
+            }
+            &:hover .line {
+                width: 50%;
+                opacity: 1;
             }
 
-            &:hover .article-cover {
-                transform: scale(1.15) rotate(-3deg);
+            .line {
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 1px;
+                background: #fff;
+                transition: all .4s ease-out;
+                z-index: 10;
+                opacity: 0;
             }
 
-            em {
-                margin-right: .1rem;
+            .bottom-line {
+                top: auto;
+                bottom: 10%;
             }
         }
+    }
+
+    &-avatar {
+        width: .8rem;
+        height: .8rem;
+        border-radius: 50%;
+        background: no-repeat center/cover;
     }
 
     &-cover {
         position: absolute;
         left: 0;
-        top: 0;
+        right: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background: no-repeat center/cover;
-        transition: all 1s;
+        transition: all 1.5s;
     }
 
-    &-mask {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: #000, $alpha: 0.5);
-        z-index: 1;
+    &-name {
+        margin-right: 10px;
+
+        span {
+            writing-mode: rl-tb;
+        }
     }
 
-    &-meta {
+    &-info {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         height: 100%;
-        z-index: 10;
-        color: $white;
-    }
-
-    &-desc {
-        @include overflow-num(2);
-    }
-
-    &-tags {
-        display: flex;
-        justify-content: space-around;
+        z-index: 5;
+        writing-mode: vertical-lr;
     }
 }
 
-
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
     .category-list {
         li {
-            width: 48%;
-
-            span {
-                font-size: 12px !important;
-            }
+            width: 100%;
         }
     }
 

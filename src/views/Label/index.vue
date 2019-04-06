@@ -7,8 +7,8 @@
               <rt>Article label</rt>
             </ruby>
           </h2>
-          <ul class="label-wrapper">
-            <li  v-for="label in labelList" :key="label.id" class="label-item" @click="handleFilter(label)">
+          <ul class="label-wrapper flex-around flex-wrap">
+            <li  v-for="label in labelList" :key="label.id" class="label-item " @click="handleFilter(label)">
               <span class="text">{{label.name}}</span>
             </li>
           </ul>

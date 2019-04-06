@@ -1,22 +1,18 @@
 .post {
   &-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     margin: 30px 0 0;
   }
 
   &-list {
     width: 49%;
     margin-bottom: 2%;
-    box-shadow: 0 2px 8px 1px rgba(0,0,0,.2);
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
   }
 
   &-card {
-    position: relative;
     &:hover{
        .post-img{
-         transform: scale(1.1) rotate(-2deg);
+         transform: scale(1.1) rotate(-3deg);
        }
     }
   }
@@ -41,15 +37,13 @@
   &-hot {
     position: absolute;
     left: 16px;
-    bottom: 14px;
+    bottom: 6px;
     z-index: 10;
-    font-size: 16px;
   }
 
   &-hot {
     left: auto;
     right: 14px;
-    font-size: 14px;
     i {
       color: orangered;
       margin-right: 0;
@@ -66,24 +60,17 @@
   }
 
   &-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 15px 15px 12px 18px;
     border-radius: 0 0 5px 5px;
     background: rgba($color: #fff, $alpha: .9);
   }
 }
 .label-list{
-  display: flex;
   li{
-    display: flex;
-    align-items: center;
     padding: 2px 8px;
     background: rgba(233, 107, 34, 0.66);
     border-radius: 20px;
     color: rgba(242, 248, 242, 0.925);
-    font-size: 14px;
     &:first-child{
       margin-right: 4px;
     }

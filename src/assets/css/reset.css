@@ -129,15 +129,15 @@ a:focus {
   float: right;
 }
 
-.text-left {
+.tl{
   text-align: left;
 }
 
-.text-right {
+.tr {
   text-align: right;
 }
 
-.text-center {
+.tc {
   text-align: center;
 }
 
@@ -179,10 +179,10 @@ body {
 
 body {
   font-size: 14px;
-  /* font-family: "Microsoft Yahei"; */
-  font-family: Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-  color: #121213;
-  /* color: #525b66; */
+  /* font-family: Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; */
+  /* color: #121213; */
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  color: #525b66;
   line-height: 1.428;
 }
 

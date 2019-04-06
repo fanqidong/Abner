@@ -6,6 +6,7 @@
           <!-- <span class="title" :data-title="mood.title"></span> -->
           <img src="https://fanqidong.github.io/images/avatar.jpg" alt="头像" class="mood-avatar">
           <div class="mood-body">
+            <span class="mood-title font12" :data-title="mood.title">{{mood.title}}</span>
             <Markdown :content="mood.body" :only-render="true"/>
             <span class="date font12">
               <i class="iconfont icon-publish"></i>

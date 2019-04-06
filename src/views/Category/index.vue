@@ -1,26 +1,30 @@
 <template>
-  <div class="category pt200 row">
+  <div class="category pt100 row">
     <div class="category-container" v-if="categoryList.length" data-aos="fade-up">
         <div class="category-wrapper">
-          <h2 class="category-title">
+          <h2 class="category-title cfff">
             <ruby>
               文章分类
               <rt>Article category</rt>
             </ruby>
           </h2>
-          <ul class="category-list">
+          <ul class="category-list flex-around flex-wrap">
             <li
               v-for="(category,index) in categoryList"
               :key="category.id"
-              :class="[index==currenIndex ?'active': '']"
-              @click="handleFilter(index,category.number)"
+              :class="[index==currenIndex ?'active': '','flex-center']"
+              @click="handleFilter(index,category.number,$event)"
             >
               <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
-              <div class="category-info">
-                  <div class="category-avatar" :style="{backgroundImage: `url(${category.cover.trim()})`}"></div>
-                  <span class="category-name">{{category.title}}{{category.title =='旧人叙'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
+              <div class="line top-line"></div>
+              <div class="line bottom-line"></div>
+              <div class="category-info flex-center flex-column">
+                <p class="category-name font18">
+                    {{category.title}}
+                  <span class="font14">{{category.title =='旧人叙'? `(${category.closed_issues})` : `(${category.open_issues})`}}</span>
+                </p>
+                  <span class="category-desc font12">{{category.subject}}</span>
               </div>
-                <span class="category-desc">{{category.subject}}</span>
             </li>
           </ul>
       </div>
@@ -64,7 +68,10 @@ export default {
     async queryCategory() {
       this.categoryList = await store.dispatch("queryCategory")
     },
-    handleFilter(index, number) {
+    handleFilter(index, number,event) {
+      let offsetTop = window.innerHeight
+      console.log(offsetTop)
+      window.scrollTo(0, offsetTop/2)
       this.currenIndex = index
       if (index == 0) {
         this.$router.push({ name: "Mood" })

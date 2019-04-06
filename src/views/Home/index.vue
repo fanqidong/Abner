@@ -1,6 +1,6 @@
 <template>
   <div class="home container">
-    <section class="site-meta">
+    <section class="site-meta flex-center flex-column">
       <div
         class="person-info"
         :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}"
@@ -13,7 +13,7 @@
         </h2>
         <p class="slogan">人生短暂，及时行乐。</p>
         <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
-        <div class="socail-link">
+        <div class="socail-link flex-center flex-around">
             <a :href="item.link" v-for="item in $config.socailLink" :key="item.id" :title="item.name" target="_blank" rel="noopener noreferer">
                 <i class="iconfont" :class="`icon-${item.icon}`"></i>
             </a>
@@ -36,21 +36,21 @@
               <img v-lazy="post.cover.src" :alt="post.cover.text">
             </a>
             <!-- 发表时间 -->
-            <div class="article-date">
-              <span class="month">{{post.timeinfo.month}}</span>
+            <div class="article-date flex-center flex-column">
+              <span class="month font18">{{post.timeinfo.month}}</span>
               <span class="time">
-                <i class="fa fa-calendar-check-o"></i>
+                <i class="iconfont icon-calendar"></i>
                 {{post.timeinfo.date}}
               </span>
             </div>
           </div>
           <!-- 文章内容  Start -->
-          <div class="article-content">
+          <div class="article-content flex-around flex-column">
             <!-- 文章标题 -->
-            <h2 class="article-title">{{post.title}}</h2>
+            <h2 class="article-title font20 c000">{{post.title}}</h2>
             <!-- 简介 -->
-            <div class="article-desc">{{post.desc}}</div>
-            <div class="article-info">
+            <span class="article-desc">{{post.desc}}</span>
+            <div class="article-info flex-between">
               <!-- 热度 -->
               <span>
                 <i class="iconfont icon-hot"></i>

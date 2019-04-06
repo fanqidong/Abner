@@ -1,6 +1,7 @@
 @import '@/assets/sass/mixin.scss';
 @import '@/assets/sass/theme.scss';
-.home{
+
+.home {
     color: $white;
 }
 
@@ -10,7 +11,6 @@
     height: 100vh;
     top: 0;
     left: 0;
-    @include flex-center(column);
 
     .title {
         font-size: 50px;
@@ -23,9 +23,6 @@
     .socail-link {
         position: relative;
         min-width: 4rem;
-        display: flex;
-        justify-content: space-around;
-        justify-items: center;
         padding: .1rem 0;
         background: rgba($color: #000, $alpha: .5);
         border-radius: 10px;
@@ -34,14 +31,17 @@
             color: #07d3f0;
             font-size: 32px;
             text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, .15);
-            &::before{
+
+            &::before {
                 display: none;
             }
         }
     }
-    .iconfont{
+
+    .iconfont {
         font-size: 30px;
     }
+
     .user-avatar {
         display: block;
         width: 120px;
@@ -56,14 +56,15 @@
     }
 
     .slogan {
-        font-size: 0.24rem;
-        margin: 0.1rem 0;
+        font-size: .24rem;
+        margin: .1rem 0;
     }
 }
 
 .article {
     position: relative;
     color: $articleColor;
+
     &-wrapper {
         position: relative;
         margin: 0 0 .3rem 0;
@@ -119,40 +120,31 @@
     &-content {
         position: relative;
         float: right;
-
-        @include flex(column) {
-            justify-content: space-around;
-        }
-
         width: 50%;
         height: 3rem;
-        padding: 15px;
-        background: rgba($color: #fff, $alpha: .6);
+        padding: 8px 12px;
+        background: rgba($color: rgb(212, 209, 209), $alpha: .9);
         border-radius: 0 5px 5px 0;
         cursor: pointer;
     }
 
     &-desc {
         @include overflow-num(2);
-        text-align: justify;
+        text-align: left;
     }
 
     &-title {
-        text-align: justify;
+        text-align: left;
         font-weight: 600;
     }
 
     &-date {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
         top: 0;
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px 0 0 0;
         background: rgba($color: #000, $alpha: .6);
         text-align: center;
         color: #fff;
@@ -165,16 +157,6 @@
     }
 
     &-info {
-        @include flex() {
-            justify-content: space-around;
-        }
-
-        span {
-            display: flex;
-            align-items: center;
-
-        }
-
         span.archive {
             em:not(:first-of-type) {
                 margin-left: .1rem;
@@ -197,12 +179,14 @@
     float: right;
 }
 
-.article-float  .article-link {
+.article-float .article-link {
     border-radius: 0 5px 5px 0;
 }
-.article-float .article-date{
+
+.article-float .article-date {
     border-radius: 0 5px 5px 0;
 }
+
 @media screen and (max-width: 768px) {
     .article {
         &-desc {
@@ -213,17 +197,23 @@
         &-cover {
             width: 100%;
         }
-        &-content{
+
+        &-content {
             border-radius: 0 0 5px 5px;
         }
+
         .article-float .article-content {
             height: auto;
             border-radius: 0 0 5px 5px;
         }
-        .article-float .article-link{
+
+        .article-float .article-link {
             border-radius: 5px 5px 0 0;
         }
-        &-link{
+        .article-float .article-date {
+            border-radius: 5px 5px 0 0;
+        }
+        &-link {
             border-radius: 5px 5px 0 0;
         }
     }
@@ -236,7 +226,8 @@
         .slogan {
             font-size: 25px;
         }
-        .socail-link{
+
+        .socail-link {
             min-width: 6rem;
         }
     }

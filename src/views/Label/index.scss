@@ -11,23 +11,17 @@
     }
 
     &-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
         letter-spacing: 1px;
         color: rgba($color: #fff, $alpha: .9);
     }
 
     &-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         min-width: .8rem;
         margin: .1rem .1rem .2rem .1rem;
-        padding: .1rem;
+        padding: 6px 10px;
         cursor: pointer;
         box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
-        border-radius: 5px;
+        border-radius: 20px;
         transition: all 1s;
         background: #4b7c9c;
         &:hover {

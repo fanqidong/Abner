@@ -18,12 +18,18 @@
     margin: auto;
 }
 
-.pt100{
+.hidden-xs {
+    display: none;
+}
+
+.pt100 {
     padding-top: 100px;
 }
-.pt150{
+
+.pt150 {
     padding-top: 150px;
 }
+
 .pt200 {
     padding-top: 200px;
 }
@@ -69,10 +75,6 @@
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
-    .hidden-xs {
-        display: none;
-    }
-
     #abner {
         padding-bottom: 2rem !important;
     }
@@ -286,7 +288,7 @@
 
 a {
     color: #233330;
-    transition: color .3s;
+    // transition: color .3s;
 }
 
 .iconfont {
@@ -337,7 +339,6 @@ a {
     &.show {
         transform: translateX(0);
     }
-
 
     i {
         font-size: 70px;
