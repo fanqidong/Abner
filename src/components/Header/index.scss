@@ -1,4 +1,3 @@
-@import '@/assets/sass/mixin.scss';
 @import '@/assets/sass/theme.scss';
 
 .header {
@@ -43,7 +42,6 @@
     font-size: .22rem;
 
     .brand {
-        @include flex-align();
         color: #fff;
     }
 
@@ -62,15 +60,13 @@
 
 .menu-list {
     float: right;
-
-    @include flex() {
-        justify-content: space-between;
-    }
-
     li {
         position: relative;
-        @include flex-align();
-        padding: 0 .15rem;
+        padding: 0 15px;
+        transition: background 1s;
+        &:hover{
+            background: rgba(252, 252, 252, .2);
+        }
     }
 }
 
@@ -117,7 +113,7 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
     .nav-collapse {
         display: none;
     }

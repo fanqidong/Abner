@@ -19,7 +19,7 @@
             </a>
         </div>
       </div>
-      <button class="arrow-down"></button>
+      <i class="arrow-down"></i>
     </section>
     <section class="article row">
       <div class="article-list" v-if="posts.length">

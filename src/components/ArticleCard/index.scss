@@ -7,13 +7,12 @@
     width: 49%;
     margin-bottom: 2%;
     box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
-  }
-
-  &-card {
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     &:hover{
-       .post-img{
-         transform: scale(1.1) rotate(-3deg);
-       }
+      transform: translateY(-5px);
+      .post-img{
+        transform: scale(1.1) rotate(-3deg);
+      }
     }
   }
 
@@ -22,6 +21,7 @@
     height: 220px;
     color: #fff;
     overflow: hidden;
+    border-radius: 5px 5px 0 0;
     &::after {
       content: '';
       position: absolute;

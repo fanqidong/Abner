@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer flex-center">
     <div class="footer-container">
       <div class="copyright">
         <p>
@@ -19,8 +19,6 @@
 
 <script>
 import dayjs from "dayjs"
-import { setTimeout } from "timers"
-
 export default {
   name: "Footer",
   data() {
@@ -53,9 +51,6 @@ export default {
   position: absolute;
   left: 0;
   bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   min-height: 0.5rem;
   padding: 0.1rem 0 0.2rem 0;
@@ -74,8 +69,8 @@ export default {
   .icon-heart{
       display: inline-block;
       margin-left: 4px;
-      color: #f00;
-      animation: ld-bounce 1.2s infinite;
+      color: #f15;
+      animation: heartbeat 1s infinite cubic-bezier(.215,.61,.355,1);
   }
 }
 </style>

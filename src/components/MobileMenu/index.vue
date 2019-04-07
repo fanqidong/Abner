@@ -2,7 +2,7 @@
   <div class="menu-mobile">
     <div class="menu-header">
       <div class="site-bg"></div>
-      <div class="site-info">
+      <div class="site-info flex-center flex-around flex-column">
         <img src="../../assets/img/avatar.jpg" alt="头像" class="avatar">
         <p class="intro">启明星辰，东方明珠</p>
       </div>

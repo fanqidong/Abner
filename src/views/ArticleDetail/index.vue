@@ -111,14 +111,14 @@ export default {
       this.isLoading = true
       if (this.posts.length) {
         this.postAll = this.posts
-        console.log("所有", ...this.postAll)
+        // console.log("所有", ...this.postAll)
       } else {
         this.postAll = await queryPosts({
           page: 1,
           pageSize: ""
         })
         this.postAll.forEach(formatPost)
-        console.log("新增", ...this.postAll)
+        // console.log("新增", ...this.postAll)
       }
       this.postAll.map((item, index, arr) => {
         if (number == item.number) {

@@ -3,7 +3,7 @@
 .archive-contanier{
     min-height: 6rem;
     padding: .15rem .15rem .25rem;
-    background: rgba($color: #fff, $alpha: .6);
+    background: rgba($color: #fff, $alpha: .7);
 }
 
 .archive-total {
@@ -72,6 +72,9 @@
 }
 .tl-content {
     position: relative;
+    &:hover{
+        animation: headShake 1s;
+    }
 }
 
 .tl-info {

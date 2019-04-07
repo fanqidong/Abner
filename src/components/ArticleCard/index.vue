@@ -2,7 +2,6 @@
   <div class="post-container">
     <div class="post-content flex-between flex-wrap" v-if="postList.length">
       <div class="post-list" v-for="post in postList" :key="post.id">
-        <!-- <ArticleCard  :target="'category'" :post="post" /> -->
         <div class="post-card" @click="goDetail(post.number)">
           <div class="post-cover">
             <img v-lazy="post.cover.src" class="post-img" alt>

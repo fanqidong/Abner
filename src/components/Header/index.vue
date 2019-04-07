@@ -3,12 +3,12 @@
     <nav class="menu-wrapper container clearfix">
       <div class="menu-pc">
           <div class="nav-logo">
-            <a href="/" class="brand">
+            <a href="/" class="brand align-center">
                 <img src="../../assets/img/logo.png" alt="logo"  @click="isMenuOpen=!isMenuOpen">
             </a>
           </div>
-        <ul class="menu-list">
-          <li v-for="item in $config.menuList" :key="item.id" >
+        <ul class="menu-list flex">
+          <li v-for="item in $config.menuList" :key="item.id" class="align-center">
             <i :class="['iconfont',`icon-${item.icon}`]"></i>
             <router-link :to="item.path" class="title">{{item.text}}</router-link>
           </li>
@@ -39,8 +39,7 @@ export default {
      openMenu(){
        this.$emit('toggle-menu', true)
      }
-  },
-  mounted() {}
+  }
 }
 </script>
 

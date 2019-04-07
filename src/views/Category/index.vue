@@ -70,13 +70,12 @@ export default {
     },
     handleFilter(index, number,event) {
       let offsetTop = window.innerHeight
-      console.log(offsetTop)
-      window.scrollTo(0, offsetTop/2)
       this.currenIndex = index
       if (index == 0) {
         this.$router.push({ name: "Mood" })
         return
       }
+      window.scrollTo(0, offsetTop)
       this.loadingStatus = true
       this.queryPost(number)
     },

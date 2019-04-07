@@ -147,6 +147,49 @@
         transform:translate(0) rotate(0deg)
     }
 }
+@keyframes headShake {
+    0% {
+        transform: translateX(0);
+    }
+
+    6.5% {
+        transform: translateX(-6px) rotateY(-9deg);
+    }
+
+    18.5% {
+        transform: translateX(5px) rotateY(7deg);
+    }
+
+    31.5% {
+        transform: translateX(-3px) rotateY(-5deg);
+    }
+
+    43.5% {
+        transform: translateX(2px) rotateY(3deg);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+}
+@keyframes heartbeat{
+    0%, 60% {
+        transform: scale(1.05);
+    }
+    
+    5% {
+        transform: scale(1.25);
+    }
+    39% {
+        transform: scale(.9);
+    }
+    45% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 @keyframes rocket {
 	0% {
 		transform: translate(0,0);
