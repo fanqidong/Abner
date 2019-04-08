@@ -34,7 +34,7 @@ export const queryPosts = async ({
         console.log(error)
     }
 }
-// 获取当前文章
+// 获取文章详情
 export const queryPost = async number => {
     try {
         const url = `${blog}/issues/${number}?${open}`
@@ -86,7 +86,7 @@ export const queryMood = async ({
     }
 }
 //  获取文章热度
-export const queryHot = async postList => {
+export const queryHot = async (postList, add)=> {
     return new Promise(resolve => {
         if (isDev) return resolve(postList)
         const seq = postList.map(item => {
@@ -102,8 +102,17 @@ export const queryHot = async postList => {
                     if (res.length > 0) {
                         //已存在热度直接返回
                         const counter = res[0]
-                        item.times = counter.get('time')
-                        resolve(item)
+                        // 是否增接热度
+                        if (add) {
+                            counter.increment('time', 1).save(null, {fetchWhenSave: true})
+                                .then(counter => {
+                                    item.times = counter.get('time')
+                                    resolve(item)
+                                }).catch(console.error)
+                        } else {
+                            item.times = counter.get('time')
+                            resolve(item)
+                        }
                     } else {
                         // 不存在则新建
                         const newCounter = new Counter()

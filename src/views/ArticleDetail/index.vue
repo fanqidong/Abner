@@ -4,7 +4,7 @@
       <section class="article-header">
         <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
-          <span class="article-title font18">{{post.title}}</span>
+          <span class="article-title font20">{{post.title}}</span>
           <div class="article-meta">
             <div class="article-archive">
               <i class="iconfont icon-guidangxiangmu"></i>

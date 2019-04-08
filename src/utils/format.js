@@ -37,25 +37,33 @@ export const formatCategory = category => {
         item.cover = desc[0].split(',')[1]
     })
     return category
-}                    
+}
 //  格式化友链 && 关于
-export const formatType = (data, type)=> {
-    if(!data.body) return
+export const formatType = (data, type) => {
+    if (!data.body) return
     let res = data.body.split('##').filter(item => item)
     switch (type) {
         case 'Friend':
             res = res.map(item => {
                 const content = item.split('\r\n').filter(item => item)
-                    return {
-                        name: content[0],
-                        link: content[1].split('link:')[1],
-                        avatar: content[2].split('avatar:')[1],
-                        siteImage: content[3].split('siteImage:')[1],
-                        introduction: content[4].split('introduction:')[1],
-                    }
-                })
+                return {
+                    name: content[0],
+                    link: content[1].split('link:')[1],
+                    avatar: content[2].split('avatar:')[1],
+                    siteImage: content[3].split('siteImage:')[1],
+                    introduction: content[4].split('introduction:')[1],
+                }
+            })
             break;
-                
+        case 'About':
+            res = res.map(item => {
+                const title = item.match(/.+?\r\n/)[0]
+                return {
+                    title,
+                    content: item.slice(title.length)
+                }
+            })
+            break;
         default:
             break;
     }

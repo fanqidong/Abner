@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-03-28 11:26:31
+ * @LastEditTime: 2019-04-08 11:36:37
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -73,7 +73,7 @@ export default new Vuex.Store({
             // 如果存在文章数据则直接获取不发请求
             if (!post) {
               post = await queryPost(number)
-              const newPost = await queryHot([post])
+              const newPost = await queryHot([post], true)
               post = formatPost(newPost[0])
             }
             return post

@@ -5,6 +5,7 @@ import store from "./store"
 import config from "./config/global.config"
 import AV from 'leancloud-storage';
 //初始化leancloud
+window.AV = AV
 AV.init(config.leancloud)
 // 全局样式引入
 import './assets/css/reset.css'

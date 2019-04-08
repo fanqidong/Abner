@@ -1,5 +1,5 @@
 module.exports = {
     productionSourceMap: false,
-    runtimeCompiler: false
+    runtimeCompiler: true
     // publicPath: '/abner'
 }
