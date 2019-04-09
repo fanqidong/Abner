@@ -5,13 +5,13 @@
       :is-menu-open="isMenuOpen"
       @toggle-menu="setMenu"
       :class="[{'isvisible': isvisible},{'ishidden':ishidden}]"
-    />
+      ref="nav" />
     <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]">
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     </div>
-    <main ref="scrollingContainer">
-      <div class="main-content">
+    <main>
+      <div class="main-content" >
         <transition name="fadeIn" mode="out-in">
           <router-view/>
         </transition>
@@ -42,7 +42,7 @@ export default {
       isMobileMenuOpen: false,
       isButtonShow: false,
       isvisible: false,
-      ishidden: false,
+      ishidden: false
     }
   },
   components: {
@@ -59,23 +59,28 @@ export default {
     },
     // 设置导航显示隐藏
     getTop() {
-      let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-      window.addEventListener("scroll", _.debounce(() => {
-          let initTop = 100
-          let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-          scrollTop > window.innerHeight ? (this.isButtonShow = true) : (this.isButtonShow = false)
-          if (scrollTop == 0) (this.ishidden = false), (this.isvisible = false)
-          if (scrollTop > 0) this.ishidden = true
-          if (scrollTop > initTop) {
-            if (scrollTop > top) {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      let initTop = this.$refs.nav.$el.offsetHeight
+      window.addEventListener(
+        "scroll",
+        _.debounce(() => {
+          let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+          _scrollTop > window.innerHeight ? (this.isButtonShow = true) : (this.isButtonShow = false)
+          if (_scrollTop > initTop) {
+            this.ishidden = true
+            this.isvisible = false
+            if (_scrollTop > scrollTop) {
               this.ishidden = true
               this.isvisible = false
             } else {
               this.ishidden = false
               this.isvisible = true
             }
-            top = scrollTop
+          } else {
+            this.ishidden = false
+            this.isvisible = false
           }
+          scrollTop = _scrollTop
         }, 200),
         { passive: true }
       )
