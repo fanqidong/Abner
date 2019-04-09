@@ -15,7 +15,7 @@
               :class="[index==currenIndex ?'active': '','flex-center']"
               @click="handleFilter(index,category.number,$event)"
             >
-              <img v-lazy="category.cover.trim()" class="category-cover" alt="" >
+              <img v-lazy="category.cover.trim()" class="category-cover absolute-full" alt="" >
               <div class="line top-line"></div>
               <div class="line bottom-line"></div>
               <div class="category-info flex-center flex-column">
