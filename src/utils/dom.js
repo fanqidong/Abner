@@ -5,6 +5,19 @@ export const removeEvent = (handle, fn, type) => {
   window.removeEventListener(handle, fn, type || false)
 }
 
+export const requestAni= (() => {
+  return (
+    window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback, 1000 / 60)
+    }
+  )
+})()
+
 /**
  *
  * 动态加载CSS
@@ -19,14 +32,14 @@ export const loadCss = (url, callback) => {
   link.href = url
 }
 
- /**
+/**
  *
  * 动态加载Script
  * @param {String} url
  * @param {Function} callback
  */
 export const loadScript = (url, callback) => {
-  let head = document.querySelector('head')[0]
+  let head = document.querySelector("head")[0]
   let script = document.createElement("script")
   script.type = "text/javascript"
   script.src = url

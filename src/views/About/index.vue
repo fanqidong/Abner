@@ -29,7 +29,7 @@ export default {
     // 获取关于详情
     async queryAbout() {
       this.aboutList = await store.dispatch("queryType", { type: "About" })
-      console.log(this.aboutList)
+      // console.log(this.aboutList)
     },
     refreshApp() {
       window.location.reload()

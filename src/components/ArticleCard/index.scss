@@ -40,7 +40,9 @@
     bottom: 6px;
     z-index: 10;
   }
-
+  &-title{
+     width: 85%;
+  }
   &-hot {
     left: auto;
     right: 14px;
@@ -62,7 +64,7 @@
   &-meta {
     padding: 15px 15px 12px 18px;
     border-radius: 0 0 5px 5px;
-    background: rgba($color: #fff, $alpha: .9);
+    background: #fff;
   }
 }
 .label-list{

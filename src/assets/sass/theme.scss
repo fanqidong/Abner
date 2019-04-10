@@ -81,8 +81,17 @@ $number: 12 14 16 18 20 22 24 26 28;
     align-items: center;
 }
 
-
-
+.text-overflow{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.overflow2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
 
 /*随机渐变背景色*/

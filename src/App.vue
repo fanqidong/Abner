@@ -5,13 +5,14 @@
       :is-menu-open="isMenuOpen"
       @toggle-menu="setMenu"
       :class="[{'isvisible': isvisible},{'ishidden':ishidden}]"
-      ref="nav" />
+      ref="nav"
+    />
     <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]">
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     </div>
     <main>
-      <div class="main-content" >
+      <div class="main-content">
         <transition name="fadeIn" mode="out-in">
           <router-view/>
         </transition>
@@ -31,7 +32,7 @@ import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
 import MusicBox from "@/components/MusicBox"
-import { setTitle } from "@/utils/dom"
+import { setTitle, requestAni } from "@/utils/dom"
 import _ from "lodash"
 
 export default {
@@ -57,14 +58,17 @@ export default {
     setMenu(status) {
       this.isMobileMenuOpen = status
     },
+    getScrollTop() {
+      return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+    },
     // 设置导航显示隐藏
     getTop() {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      let scrollTop = this.getScrollTop()
       let initTop = this.$refs.nav.$el.offsetHeight
       window.addEventListener(
         "scroll",
         _.debounce(() => {
-          let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+          let _scrollTop = this.getScrollTop()
           _scrollTop > window.innerHeight ? (this.isButtonShow = true) : (this.isButtonShow = false)
           if (_scrollTop > initTop) {
             this.ishidden = true
@@ -89,10 +93,15 @@ export default {
       this.isMobileMenuOpen = status
     },
     goTop() {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      let scrollTop = this.getScrollTop()
       if (scrollTop > 0) {
-        window.requestAnimationFrame(this.goTop)
+        requestAni(this.goTop)
         window.scrollTo(0, scrollTop - scrollTop / 10)
+      }
+      console.log(scrollTop)
+      if (scrollTop <= 10) {
+        cancelAnimationFrame(this.goTop)
+        window.scrollTo(0, 0)
       }
     }
   },

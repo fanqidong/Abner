@@ -5,7 +5,7 @@
         <div class="post-card" @click="goDetail(post.number)">
           <div class="post-cover">
             <img v-lazy="post.cover.src" class="post-img" alt>
-            <span class="post-title font16">{{post.title}}</span>
+            <span class="post-title font16 text-overflow tl">{{post.title}}</span>
             <div class="post-hot">
               <i class="iconfont icon-hot"></i>
               <span class="post-num">{{post.times}}</span>

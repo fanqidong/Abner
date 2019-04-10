@@ -168,9 +168,6 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-[v-cloak] {
-  display: none !important;
-}
 
 html,
 body {
@@ -182,6 +179,7 @@ body {
   /* font-family: Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; */
   /* color: #121213; */
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  /* font-family:  Microsoft YaHei; */
   color: #525b66;
   line-height: 1.428;
 }

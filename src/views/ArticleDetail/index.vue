@@ -98,7 +98,6 @@ export default {
   },
   mounted() {
     //   console.log(this.number)
-    console.log(this.defaultCover)
   },
   updated() {},
   methods: {

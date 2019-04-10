@@ -47,7 +47,7 @@
           <!-- 文章内容  Start -->
           <div class="article-content flex-around flex-column">
             <!-- 文章标题 -->
-            <h2 class="article-title font20 c000">{{post.title}}</h2>
+            <div class="article-title font20 c000">{{post.title}}</div>
             <!-- 简介 -->
             <span class="article-desc">{{post.desc}}</span>
             <div class="article-info flex-between">
