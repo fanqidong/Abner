@@ -64,13 +64,13 @@ export default {
     // 设置导航显示隐藏
     getTop() {
       let scrollTop = this.getScrollTop()
-      let initTop = this.$refs.nav.$el.offsetHeight
+      let navTop = this.$refs.nav.$el.offsetHeight
       window.addEventListener(
         "scroll",
         _.debounce(() => {
           let _scrollTop = this.getScrollTop()
           _scrollTop > window.innerHeight ? (this.isButtonShow = true) : (this.isButtonShow = false)
-          if (_scrollTop > initTop) {
+          if (_scrollTop > navTop) {
             this.ishidden = true
             this.isvisible = false
             if (_scrollTop > scrollTop) {
