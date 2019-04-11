@@ -85,6 +85,23 @@ export const queryMood = async ({
         console.log(error)
     }
 }
+
+
+// 获取友链 && 关于
+export const queryType = async type => {
+    try {
+        const url = `${blog}/issues?${closed}&labels=${type}`
+        const response = await fetch(url)
+        checkStatus(response)
+        const data = await response.json()
+        return data[0]
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
 //  获取文章热度
 export const queryHot = async (postList, add)=> {
     return new Promise(resolve => {
@@ -140,15 +157,31 @@ export const queryHot = async (postList, add)=> {
         console.log(error)
     })
 }
-// 获取友链 && 关于
-export const queryType = async type => {
-    try {
-        const url = `${blog}/issues?${closed}&labels=${type}`
-        const response = await fetch(url)
-        checkStatus(response)
-        const data = await response.json()
-        return data[0]
-    } catch (error) {
-        console.log(error)
-    }
-}
+
+//  为网站点赞
+export const queryLikeSite = async type => {
+    return new Promise(resolve => {
+      const query = new AV.Query('Counter')
+      const Counter = AV.Object.extend('Counter')
+      query.equalTo('title', 'site')
+      query.first().then(res => {
+          if (res) {
+            if (type === 'getTimes') {
+              resolve(res.get('time'))
+            } else {
+              res.increment('time', 1).save(null, { fetchWhenSave: true })
+                .then(counter => resolve(counter.get('time')))
+                .catch(console.error)
+            }
+          } else {
+            // 不存在则新建
+            const newcounter = new Counter()
+            newcounter.set('title', 'site')
+            newcounter.set('time', 1)
+            newcounter.set('site', location.href)
+            newcounter.save().then(counter => resolve(counter.get('time'))).catch(console.error)
+          }
+        })
+        .catch(console.error)
+    }).catch(console.error)
+  }
