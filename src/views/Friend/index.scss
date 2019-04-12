@@ -84,6 +84,21 @@
 
         }
     }
+    &-apply{
+        text-align: left;
+        background: #fff;
+        padding: 20px 10px;
+        margin: 20px 0;
+        border-radius: 3px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, .14);
+        h2{
+            margin-bottom: 10px;
+        }
+        p{
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+    }
 }
 
 @media screen and (max-width:768px) {

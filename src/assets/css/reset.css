@@ -178,6 +178,9 @@ body {
   font-size: 14px;
   /* font-family: Arial,PingFangSC-Regular,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif; */
   /* color: #121213; */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   font-family: Consolas, Microsoft Jhenghei, Hiragino Sans GB, Microsoft YaHei;
   color: #525b66;

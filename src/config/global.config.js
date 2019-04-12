@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-04-12 10:05:06
+ * @LastEditTime: 2019-04-12 14:07:55
  */
 export default {
     title: '旅途与画',
@@ -22,7 +22,9 @@ export default {
     },
     // lemon-loading 页面局部加载loading
     loading: '../assets/img/lemon-loading.svg',
-    // 页面导航配置
+    /**
+     * 页面导航配置
+     */
     menuList: [{
             id: 0,
             path: "/",
@@ -66,12 +68,14 @@ export default {
             text: "悟言"
         }
     ],
-    // 个人联系方式配置
+    /**
+     * 个人联系方式配置
+     */
     socailLink: [{
             id: 1,
             icon: 'github',
             link: 'https://github.com/fanqidong',
-            name:'github'
+            name: 'github'
         }, {
             id: 2,
             icon: 'weibo',
@@ -103,29 +107,56 @@ export default {
             name: '简书'
         }
     ],
+    /** 
+     * 页面配置
+     */
+    //    归档页
+    archive: {
+        openComment: false
+    },
+    //    分类页
+    category: {
+        openComment: false
+    },
+    //    标签页
+    label: {
+        openComment: false
+    },
+    //    关于页
+    about: {
+        openComment: true
+    },
+    //    友链页
+    friend: {
+        openComment: true
+    },
+    //     心情页
+    mood: {
+        openComment: true
+    },
     /**
      * 音乐播放器 列表配置
      */
-    musicList:[
-         {
+    musicList: [{
             name: '东西（Cover：林俊呈）',
             artist: '纳豆',
             url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
             cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
             lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
-          },
-          {
+        },
+        {
             name: '响喜乱舞（Cover：MARiA）',
             artist: '泠鸢yousa',
             url: 'https://cdn.moefe.org/music/mp3/kyoukiranbu.mp3',
             cover: 'https://p1.music.126.net/AUGVPQ_rVrngDH9ocQrn3Q==/109951163613037822.jpg?param=300y300', // prettier-ignore
             lrc: 'https://cdn.moefe.org/music/lrc/kyoukiranbu.lrc',
-          },
-          {
+        },
+        {
             name: '啵唧',
             artist: 'Hanser',
             url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
             cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
             lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
-          }]
+        }
+    ]
 }

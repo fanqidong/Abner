@@ -1,25 +1,35 @@
 <template>
   <div class="about row pt200">
     <div class="botui-app-container" id="my-botui-app">
-      <p class="chat-title">与<span class="font18 chat-name">luckydong</span>对话中。。。</p>
+      <p class="chat-title">
+        与
+        <span class="font18 chat-name">luckydong</span>对话中。。。
+      </p>
       <bot-ui></bot-ui>
     </div>
     <button class="btn-refresh" @click="refreshApp">姿势不对，再来一次</button>
+    <Comment v-if="$config.about.openComment && initComment"/>
   </div>
 </template>
 
 <script>
 import initBotApp from "./my-botui-app"
 import store from "@/store"
+import Comment from "@/components/Comment"
 export default {
   name: "About",
   data() {
     return {
-      aboutList: []
+      aboutList: [],
+      initComment: false
     }
   },
+  components:{
+      Comment
+  },
   created() {
-      this.queryAbout()
+    this.queryAbout()
+    this.initComment = true
   },
   mounted() {
     console.clear()
@@ -47,9 +57,9 @@ export default {
     padding-top: 100px;
   }
 }
-.chat-name{
-    display: inline-block;
-    margin: 0 6px;
+.chat-name {
+  display: inline-block;
+  margin: 0 6px;
 }
 .chat-title {
   background: #fff;
