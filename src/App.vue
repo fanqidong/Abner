@@ -14,9 +14,7 @@
     <main>
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <keep-alive>
             <router-view/>
-          </keep-alive>
         </transition>
       </div>
     </main>
@@ -25,14 +23,14 @@
     <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="goTop">
       <i class="iconfont icon-rocket"></i>
     </a>
-    <div class="sitelike-wrapper">
+    <div class="sitelike-wrapper" :class="isButtonShow && 'show'" v-if="!$isMobile">
       <div class="heart-content" @click="likeSite">
         <i class="iconfont icon-heart"></i>
       </div>
       <div class="like-tips font14">
-         已经有{{likeTimes}}人点赞了哦
+          <span> 你已经赞过赞了，不能再点啦！😘😘</span>
+          <!-- <span>已经有{{likeTimes?likeTimes:0}}人点赞了哦</span> -->
       </div>
-      <div></div>
     </div>
   </div>
 </template>
@@ -84,7 +82,7 @@ export default {
         "scroll",
         _.debounce(() => {
           let _scrollTop = this.getScrollTop()
-          _scrollTop > window.innerHeight ? (this.isButtonShow = true) : (this.isButtonShow = false)
+          _scrollTop > window.innerHeight/2 ? (this.isButtonShow = true) : (this.isButtonShow = false)
           if (_scrollTop > navTop) {
             this.ishidden = true
             this.isvisible = false
@@ -144,13 +142,14 @@ export default {
 <style lang="scss">
 @import './assets/sass/animation.scss';
 .sitelike-wrapper {
-  bottom: 5%;
+  display: none;
   position: fixed;
-  left: 1%;
+  bottom: 20%;
+  right: 1%;
   .like-tips{
     position: absolute;
-    left: .2rem;
-    top: -70%;
+    left: -140px;
+    top: -40px;
     margin-top: -20px;
     padding: .1rem;
     min-width: 140px;
@@ -158,8 +157,18 @@ export default {
     background: #fff;
     border-radius: 20px;
     transform: scale(0);
-    transform-origin: left bottom;
+    transform-origin: right bottom;
     transition: transform .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .have-like{
+      position: absolute;
+      width: 140px;
+      left: -150px;
+      top: 5px;
+      background: #fff;
+      padding: 4px 8px;
+      border-radius: 20px;
+      animation: zoomIn 1s both;
   }
   &:hover{
     .like-tips{

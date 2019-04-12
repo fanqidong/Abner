@@ -21,7 +21,7 @@ const checkStatus = res => {
 // 获取文章列表
 export const queryPosts = async ({
     page = 1,
-    pageSize = 10,
+    pageSize = '',
     filter = ''
 }) => {
     try {
@@ -160,6 +160,7 @@ export const queryHot = async (postList, add)=> {
 
 //  为网站点赞
 export const queryLikeSite = async type => {
+    if (isDev) return
     return new Promise(resolve => {
       const query = new AV.Query('Counter')
       const Counter = AV.Object.extend('Counter')

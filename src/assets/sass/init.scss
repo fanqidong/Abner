@@ -80,6 +80,7 @@
     }
 
     .markdown-content {
+       
         pre {
             &::-webkit-scrollbar-thumb {
                 display: none;
@@ -302,7 +303,9 @@ a {
     padding-bottom: 1rem;
     text-align: center;
 }
-
+.main-content{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
 .mobile-menu-open {
     .menu-mask {
         opacity: .7;

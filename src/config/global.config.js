@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-04-02 11:35:40
+ * @LastEditTime: 2019-04-12 10:05:06
  */
 export default {
     title: '旅途与画',
@@ -96,6 +96,12 @@ export default {
             link: 'https://juejin.im/user/5bec34d36fb9a049fb433716',
             name: '掘金'
         },
+        {
+            id: 6,
+            icon: 'jianshu',
+            link: 'https://www.jianshu.com/u/5fb7db0c23ca',
+            name: '简书'
+        }
     ],
     /**
      * 音乐播放器 列表配置

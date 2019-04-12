@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: Vue store
  * @Date: 2019-03-04 10:03:13
- * @LastEditTime: 2019-04-08 11:36:37
+ * @LastEditTime: 2019-04-12 10:24:42
  */
 import Vue from "vue"
 import Vuex from "vuex"
@@ -23,10 +23,10 @@ import {
 import { formatPost, formatCategory, formatType } from "@/utils/format"
 export default new Vuex.Store({
   state: {
-    tips: "",
-    tipsUpdateAt: "",
+    tips: '',
+    tipsUpdateAt: '',
     page: 0,
-    pageSize: 10,
+    pageSize: '',
     posts: [],
     hasMore: true
   },
