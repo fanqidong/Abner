@@ -39,6 +39,19 @@ Vue.use(VueLazyLoad, {
 //     next()
 // })
 
+
+// 生产环境才加入百度统计
+if (location.hostname === "www.luckydong.cn") {
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6d015a128eb19f8bcca11aadbe7993ff";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+}
+
+
 new Vue({
     router,
     store,

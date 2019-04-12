@@ -28,8 +28,8 @@
         <i class="iconfont icon-heart"></i>
       </div>
       <div class="like-tips font14">
-          <span> 你已经赞过赞了，不能再点啦！😘😘</span>
-          <!-- <span>已经有{{likeTimes?likeTimes:0}}人点赞了哦</span> -->
+          <span v-if="haveLikeSite"> 你已经点过赞了，不能再点啦！😘😘</span>
+          <span v-else>已经有{{likeTimes?likeTimes:0}}人点赞了哦</span>
       </div>
     </div>
   </div>

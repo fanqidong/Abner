@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-04-12 14:07:55
+ * @LastEditTime: 2019-04-12 16:50:11
  */
 export default {
     title: '旅途与画',
@@ -25,7 +25,8 @@ export default {
     /**
      * 页面导航配置
      */
-    menuList: [{
+    menuList: [
+        {
             id: 0,
             path: "/",
             icon: "shouye",
@@ -158,5 +159,6 @@ export default {
             cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
             lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
         }
-    ]
+    ],
+    isDev: window.location.href.includes('localhost')
 }
