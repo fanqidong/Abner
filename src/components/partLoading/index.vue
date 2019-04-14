@@ -1,7 +1,7 @@
 <template>
-    <div class="part-loading">
+    <div class="loading c666">
         <img src="../../assets/img/circle-loading.svg" alt="">
-        <p>我拼命加载的样子像极了...</p>
+        <p>玩命加载中...</p>
     </div>
 </template>
 
@@ -13,14 +13,12 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/sass/animation.scss';
-.part-loading{
+.loading{
     position: relative;
-    color: #fff;
     z-index: 999;
     img{
         width: 1rem;
         margin: 20px auto 0;
-        // animation: ld-bounce 1s infinite;
     }
 }
 </style>

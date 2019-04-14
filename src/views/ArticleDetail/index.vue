@@ -1,6 +1,6 @@
 <template>
-  <div class="article-detail contanier pt200" id="post">
-    <div class="row" v-if="post.body">
+  <div class="article-detail row pt100" id="post">
+    <div  v-if="post.body">
       <section class="article-header">
         <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
@@ -14,10 +14,10 @@
                 class="article-category-link"
               >{{post.milestone.title}}</router-link>
             </div>
-              <ul class="arcitle-label">
-                <i class="iconfont icon-biaoqian"></i>
-                <li v-for="label in post.labels" :key="label.id">{{label.name}}</li>
-              </ul>
+            <ul class="arcitle-label align-center">
+              <i class="iconfont icon-biaoqian"></i>
+              <li v-for="label in post.labels" :key="label.id">{{label.name}}</li>
+            </ul>
             <div class="article-date">
               <i class="iconfont icon-calendar"></i>
               <time
@@ -25,40 +25,41 @@
               >{{post.timeinfo.date}}丨{{post.timeinfo.time.toLowerCase()}}</time>
             </div>
             <div class="article-hot">
-                <i class="iconfont icon-eye"></i>
-                <span>{{post.times}}</span>
+              <i class="iconfont icon-eye"></i>
+              <span>{{post.times}}</span>
             </div>
           </div>
           <h2 class="article-month">{{post.timeinfo.month}}</h2>
         </div>
       </section>
-      <section class="article-main">
+      <section class="article-main bfff">
         <MarkDown :content="post.body" target="#post"/>
-        <div class="post-siblings clearfix">
-          <div class="prev post-button" >
-            <a
-              href="javascript:;"
-              class="post-title"
-              :data-number="prevPost.number"
-              @click="goDetail(prevPost.number)"
-            >
-                <span>上一篇丨</span>
-                <span>{{prevPost.title}}</span>
-            </a>
-          </div>
-          <div class="next post-button">
-            <a
-              href="javascript:;"
-              class="post-title"
-              :data-number="nextPost.number"
-              @click="goDetail(nextPost.number)"
-            >
-              <span>下一篇丨</span>
-              <span>{{nextPost.title}}</span>
-            </a>
-          </div>
-        </div>
       </section>
+      <div class="post-siblings clearfix">
+        <div class="prev post-button">
+          <a
+            href="javascript:;"
+            class="post-title"
+            :data-number="prevPost.number"
+            @click="goDetail(prevPost.number)"
+          >
+            <span>上一篇丨</span>
+            <span>{{prevPost.title}}</span>
+          </a>
+        </div>
+        <div class="next post-button">
+          <a
+            href="javascript:;"
+            class="post-title"
+            :data-number="nextPost.number"
+            @click="goDetail(nextPost.number)"
+          >
+            <span>下一篇丨</span>
+            <span>{{nextPost.title}}</span>
+          </a>
+        </div>
+      </div>
+      <Comment v-if="$config.articleDetail.openComment && initComment"/>
     </div>
     <Loading v-if="isLoading"/>
   </div>
@@ -68,6 +69,7 @@
 import store from "@/store"
 import MarkDown from "@/components/Markdown"
 import Loading from "@/components/Loading"
+import Comment from "@/components/Comment"
 import { mapState } from "vuex"
 import { queryPosts } from "@/api/request"
 import { formatPost } from "@/utils/format"
@@ -80,12 +82,14 @@ export default {
       postAll: [],
       prevPost: {},
       nextPost: {},
-      isLoading: false
+      isLoading: false,
+      initComment: false
     }
   },
   components: {
     MarkDown,
-    Loading
+    Loading,
+    Comment
   },
   computed: mapState({
     posts: state => state.posts,
@@ -105,6 +109,7 @@ export default {
       this.isLoading = true
       this.post = await store.dispatch("queryPost", { number })
       this.isLoading = false
+      this.initComment = true
     },
     async getPosts(number) {
       this.isLoading = true

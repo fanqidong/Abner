@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer flex-center">
-    <div class="footer-container">
+  <footer class="footer flex-center c999">
+    <div class="container">
       <div class="copyright">
         <p>
           <span>Copyright © 2017-2019</span>
@@ -9,9 +9,8 @@
         <p>All Rights Reserved.</p>
         <p class="my-birthday">
             <span>小小东存活了</span>
-            <i class="iconfont icon-heart"></i>
-            {{birthday}}
-            </p>
+            <i class="iconfont icon-heart"></i>{{birthday}}
+        </p>
       </div>
     </div>
   </footer>
@@ -52,19 +51,17 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 0.5rem;
-  padding: 0.1rem 0 0.2rem 0;
+  min-height: 50px;
+  padding: 10px 20px;
+  box-sizing: border-box;
   z-index: 100;
-  color: #fff;
-  &-container {
-    max-width: 1200px;
-    margin: auto;
-  }
+  background:#140D19;
+  // border-top: 1px solid #140D19;
   a {
-    color: #fff;
+    color: #88baea;
   }
   .author {
-    margin: 0 .1rem;
+    margin: 0 1em;
   }
   .icon-heart{
       display: inline-block;

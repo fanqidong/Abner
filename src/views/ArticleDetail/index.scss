@@ -41,7 +41,6 @@
 
 
 .arcitle-label {
-    @include flex-align();
 
     li {
         margin-right: 4px;
@@ -56,8 +55,9 @@
 }
 
 .article-main {
-    background: rgba(255, 255, 255, .7);
     padding: 2% 3%;
+    border-radius: 3px;
+    box-shadow: 0px 6px 20px rgba(36, 37, 38, 0.13);
 }
 
 .title-wrapper {
@@ -74,7 +74,7 @@
 
 .post {
     &-siblings {
-        margin: 10px 0;
+        margin: 30px 0;
         padding: 0 20px;
 
         .next {
@@ -135,7 +135,6 @@
     .article-month {
         right: 10px;
     }
-
 
     .post {
         &-button {

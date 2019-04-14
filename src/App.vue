@@ -1,6 +1,5 @@
 <template>
-  <div id="abner">
-    <Bg/>
+  <div id="abner" :style="{paddingBottom:`${footerHeight}px`}">
     <Header
       :is-menu-open="isMenuOpen"
       @toggle-menu="setMenu"
@@ -18,7 +17,7 @@
         </transition>
       </div>
     </main>
-    <Footer/>
+    <Footer ref="footer"/>
     <!-- <MusicBox /> -->
     <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="goTop">
       <i class="iconfont icon-rocket"></i>
@@ -28,8 +27,8 @@
         <i class="iconfont icon-heart"></i>
       </div>
       <div class="like-tips font14">
-          <span v-if="haveLikeSite"> 你已经点过赞了，不能再点啦！😘😘</span>
-          <span v-else>已经有{{likeTimes?likeTimes:0}}人点赞了哦</span>
+          <span v-if="haveLikeSite"></span>
+          <span v-else>{{likeTimes?likeTimes:0}}</span>
       </div>
     </div>
   </div>
@@ -41,8 +40,8 @@ import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import Loading from "@/components/Loading"
 import MusicBox from "@/components/MusicBox"
-import { setTitle, requestAni } from "@/utils/dom"
-import _ from "lodash"
+import { setTitle, requestAni , getScrollTop , Scroll } from "@/utils/dom"
+import _ from "lodash" 
 import store from "@/store"
 export default {
   name: "App",
@@ -54,8 +53,13 @@ export default {
       isvisible: false,
       ishidden: false,
       haveLikeSite: window.localStorage.getItem("haveLikeSite"),
-      likeTimes: 0
+      likeTimes: 0,
+      scrollRate: '',
+      footerHeight: ' '
     }
+  },
+  computed:{
+   
   },
   components: {
     Header,
@@ -66,23 +70,24 @@ export default {
     MusicBox
   },
   methods: {
-    // 设置菜单状态
+    getFooterHeight(){
+      this.footerHeight = document.querySelector('.footer').offsetHeight
+    },
     setMenu(status) {
       this.isMobileMenuOpen = status
     },
-    // 获取滚动条高度
-    getScrollTop() {
-      return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-    },
-    // 设置导航显示隐藏
+    // getScrollTop() {
+    //   return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+    // },
     getTop() {
-      let scrollTop = this.getScrollTop()
+      let scrollTop = getScrollTop()
       let navTop = this.$refs.nav.$el.offsetHeight
       window.addEventListener(
         "scroll",
         _.debounce(() => {
-          let _scrollTop = this.getScrollTop()
+          let _scrollTop = getScrollTop()
           _scrollTop > window.innerHeight/2 ? (this.isButtonShow = true) : (this.isButtonShow = false)
+          this.scrollRate = 1 -  _scrollTop / 400 < 0 ? 0 : 1 -  _scrollTop / 400
           if (_scrollTop > navTop) {
             this.ishidden = true
             this.isvisible = false
@@ -102,27 +107,24 @@ export default {
         { passive: true }
       )
     },
-    // 控制菜单显示
     closeMenu(status) {
       this.isMobileMenuOpen = status
     },
-    // 回到顶部
     goTop() {
-      let scrollTop = this.getScrollTop()
-      if (scrollTop > 0) {
-        requestAni(this.goTop)
-        window.scrollTo(0, scrollTop - scrollTop / 10)
-      }
-      if (scrollTop <= 10) {
-        cancelAnimationFrame(this.goTop)
-        window.scrollTo(0, 0)
-      }
+      // let scrollTop = getScrollTop()
+      // if (scrollTop > 0) {
+      //   requestAni(this.goTop)
+      //   window.scrollTo(0, scrollTop - Math.floor(scrollTop/6))
+      // }
+      // if (scrollTop <= 10) {
+      //   cancelAnimationFrame(this.goTop)
+      //   window.scrollTo(0, 0)
+      // }
+      Scroll(0,200)
     },
-    // 获取点赞数
     async queryLikeSite() {
       this.likeTimes= await store.dispatch("queryLikeSite",  "getTimes")
     },
-    // 点赞存储
     async likeSite() {
       if (this.haveLikeSite) return
       this.likeTimes = await store.dispatch("queryLikeSite")
@@ -132,7 +134,7 @@ export default {
   },
   created() {},
   mounted() {
-    //   页面标题彩蛋
+    this.getFooterHeight()
     setTitle()
     this.getTop()
     this.queryLikeSite()
@@ -144,7 +146,7 @@ export default {
 .sitelike-wrapper {
   display: none;
   position: fixed;
-  bottom: 20%;
+  bottom: 40%;
   right: 1%;
   .like-tips{
     position: absolute;

@@ -1,39 +1,31 @@
 @import '@/assets/sass/theme.scss';
 
 .friend {
-    a{
-        color: $white;
-    }
+   
     &-list {
-        display: flex;
-        flex-wrap: wrap;
-
         li {
             position: relative;
-            display: flex;
-            align-items: center;
             padding: 0 .1rem;
             margin: 0 auto 40px;
         }
     }
 
     &-content {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
         width: 100%;
         transition: all 1s;
         border-radius: 10px;
+        // border: 1px solid #eee;
+        // box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, .1);
+        box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2);
         &:hover {
             transform: translateY(-8px);
-            box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, .1);
         }
     }
 
     &-cover {
         position: relative;
         width: 100%;
-        height: 4rem;
+        height: 220px;
         overflow: hidden;
         border-radius: 10px 10px 0 0;
         &:hover img {
@@ -56,7 +48,6 @@
         display: flex;
         justify-content: space-around;
         padding: 10px 10px 30px 10px;
-        background: rgba(255, 255, 255, .8);
         border-radius: 0 0 10px 10px;
         img{
             border: 1px solid #6b0cca;
@@ -71,7 +62,7 @@
     }
 
     &-link {
-        a {
+        &-btn {
             position: absolute;
             left: 50%;
             bottom: -20px;
@@ -79,24 +70,25 @@
             height: 40px;
             padding: 0 40px;
             border-radius: 40px;
-            background: rebeccapurple;
+            // background: #007fff;
+            color: #fff;
+            background: rgb(0,132,255);
             line-height: 40px;
-
         }
     }
     &-apply{
-        text-align: left;
-        background: #fff;
         padding: 20px 10px;
         margin: 20px 0;
-        border-radius: 3px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, .14);
+        border-radius: 5px;
+        box-shadow: 0 14px 6px -12px rgba(233, 30, 99, 0.42), 0 4px 13px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2);
         h2{
             margin-bottom: 10px;
         }
         p{
             margin-bottom: 10px;
-            word-break: break-all;
+        }
+        span{
+            font-weight: 700;
         }
     }
 }

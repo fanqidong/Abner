@@ -1,10 +1,10 @@
 <template>
-  <div class="mood row pt100">
+  <div class="mood">
+    <Banner :background-image="$config.mood.cover" :keyword="$config.mood.keyword"/>
     <transition name="fade" mode="out-in" v-if="moodList.length">
       <div class="mood-content">
-        <ul class="mood-list">
-          <li class="mood-item" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
-            <!-- <span class="title" :data-title="mood.title"></span> -->
+        <ul class="mood-list row">
+          <li class="mood-item flex" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
             <img src="https://fanqidong.github.io/images/avatar.jpg" alt="头像" class="mood-avatar">
             <div class="mood-body">
               <span class="mood-title font12" :data-title="mood.title">{{mood.title}}</span>
@@ -25,9 +25,10 @@
 
 <script>
 import store from "@/store"
+import Aos from "aos"
 import Loading from "@/components/Loading"
 import Markdown from "@/components/Markdown"
-import Aos from "aos"
+import Banner from "@/components/Banner"
 import Comment from "@/components/Comment"
 export default {
   data() {
@@ -42,7 +43,8 @@ export default {
   components: {
     Loading,
     Markdown,
-    Comment
+    Comment,
+    Banner
   },
   created() {
     this.queryMood()

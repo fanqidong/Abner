@@ -1,6 +1,6 @@
 <template>
   <div id="comment">
-      <div id="valine"></div>
+    <div id="valine"></div>
   </div>
 </template>
 
@@ -34,6 +34,8 @@ export default {
 <style lang="scss">
 /* Valine */
 #valine {
+  max-width: 800px;
+  margin: auto;
   .vwrap,
   .vlist > .vcard {
     border-radius: 3px;
@@ -43,7 +45,7 @@ export default {
   }
 
   * {
-    font-size: .15rem;
+    font-size: 0.15rem;
     color: #986db2;
   }
 
@@ -219,16 +221,18 @@ export default {
       }
     }
   }
-  .vempty{
-      color: #fff;
+  .vempty {
+    color: #999;
   }
 }
-@media screen and (max-width:768px) {
-    #valine {
-        *{
-            font-size: 14px !important;
-        }
+@media screen and (max-width: 768px) {
+  #valine {
+    width: 90%;
+    margin: auto;
+    * {
+      font-size: 14px !important;
     }
+  }
 }
 </style>
 

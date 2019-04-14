@@ -1,12 +1,8 @@
 <template>
-  <div class="label row pt200">
-    <div class="label-container">
+  <div class="label">
+    <Banner :background-image="$config.label.cover" :keyword="$config.label.keyword"/>
+    <div class="label-container row">
         <div class="label-content"  v-if="labelList.length" data-aos="fade-up">
-          <h2 class="title">
-            <ruby>文章标签
-              <rt>Article label</rt>
-            </ruby>
-          </h2>
           <ul class="label-wrapper flex-around flex-wrap">
             <li  v-for="label in labelList" :key="label.id" class="label-item " @click="handleFilter(label)">
               <span class="text">{{label.name}}</span>
@@ -15,7 +11,8 @@
         </div>
         <Loading v-else />
     </div>
-    <ArticleCard  :target="'category'" :post-list="postList" :loading-status="loadingStatus"/>
+    <ArticleCard class="row"  :target="'category'" :post-list="postList" :loading-status="loadingStatus"/>
+    <div class="no-data" v-show="noData">啊哦，暂时没有相关内容，去看看其他的吧~</div>
     </div>
 </template>
 <script>
@@ -23,6 +20,7 @@ import store from "@/store"
 import Loading from '@/components/Loading'
 import Aos from 'aos'
 import ArticleCard from "@/components/ArticleCard"
+import Banner from "@/components/Banner"
 export default {
   name: "Label",
   data() {
@@ -30,12 +28,14 @@ export default {
       loadingStatus: false,
       lable: '',
       labelList: [],
-      postList:[]
+      postList:[],
+      noData: false
     }
   },
   components:{
       Loading,
-      ArticleCard
+      ArticleCard,
+      Banner
   },
   async created() {
     await this.queryLabel()
@@ -63,6 +63,7 @@ export default {
       if(this.loadingStatus) return 
      if (this.postList) {
         this.postList = ""
+        this.noData = false
       }
       this.loadingStatus = true
       const filter = `&labels=${this.label.name}`
@@ -71,9 +72,9 @@ export default {
         pageSize: '',
         filter
       })
+      if(!posts.length) this.noData = true
       this.loadingStatus = false
       this.postList = posts
-      console.log(this.postList)
     }
   }
 }

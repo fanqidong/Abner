@@ -7,9 +7,9 @@
         <p class="intro">启明星辰，东方明珠</p>
       </div>
     </div>
-    <div class="menu-body">
+    <div class="menu-body flex-center">
       <ul class="menu-list">
-        <li v-for="item in $config.menuList" :key="item.id" @click="closeMenu" class="menu-link">
+        <li v-for="item in $config.menuList" :key="item.id" @click="closeMenu" class="menu-link flex">
           <i :class="['iconfont',`icon-${item.icon}`]"></i>
           <router-link :to="item.path" class="title">{{item.text}}</router-link>
         </li>

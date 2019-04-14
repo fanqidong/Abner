@@ -1,13 +1,8 @@
 <template>
-  <div id="archive" class="archive  row pt200">
-    <section class="archive-contanier" v-if="postList.length" data-aos="fade-up">
+  <div id="archive" class="archive">
+    <Banner :background-image="$config.archive.cover" :keyword="$config.archive.keyword" />
+    <section class="archive-contanier row pt50" v-if="postList.length" data-aos="fade-up">
       <div class="archive-header">
-        <h2>
-          <ruby>
-            文章归档
-            <rt>Article archive</rt>
-          </ruby>
-        </h2>
         <p class="archive-total">棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
       </div>
       <div class="timeline-contanier">
@@ -43,9 +38,11 @@
 
 <script>
 import Loading from "@/components/Loading"
-import store from "@/store"
+import Banner from "@/components/Banner"
 import Aos from "aos"
 import dayjs from "dayjs"
+import store from "@/store"
+
 export default {
   name: "Archive",
   data() {
@@ -57,7 +54,8 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
+    Banner
   },
   created() {
     Aos.init({
@@ -66,7 +64,7 @@ export default {
       debounceDelay: 200,
       offset: 20
     }),
-    setTimeout(Aos.refresh, 600)
+      setTimeout(Aos.refresh, 600)
     if (!this.postList.length) {
       this.getPosts()
     }

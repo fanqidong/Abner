@@ -2,11 +2,11 @@
   <header class="header">
     <nav class="menu-wrapper container clearfix">
       <div class="menu-pc">
-          <div class="nav-logo">
-            <a href="/" class="brand align-center">
-                <img src="../../assets/img/logo.png" alt="logo"  @click="isMenuOpen=!isMenuOpen">
-            </a>
-          </div>
+        <div class="nav-logo">
+          <router-link :to="'/'" class="brand align-center" @click="isMenuOpen=!isMenuOpen">
+            <img src="../../assets/img/logo.png" alt="logo">
+          </router-link>
+        </div>
         <ul class="menu-list flex">
           <li v-for="item in $config.menuList" :key="item.id" class="align-center">
             <i :class="['iconfont',`icon-${item.icon}`]"></i>
@@ -23,6 +23,7 @@
 
 <script>
 export default {
+  name: "Header",
   props: {
     "is-menu-open": {
       type: Boolean,
@@ -30,15 +31,13 @@ export default {
     }
   },
   data() {
-    return {
-      
-    }
+    return {}
   },
   computed: {},
   methods: {
-     openMenu(){
-       this.$emit('toggle-menu', true)
-     }
+    openMenu() {
+      this.$emit("toggle-menu", true)
+    }
   }
 }
 </script>

@@ -1,10 +1,33 @@
 <template>
-  <figure class="page-bg flex-center flex-column"></figure>
+  <div class="site site-banner flex-center flex-column">
+    <section class="site-meta absolute-full flex-center flex-column  cfff">
+      <div
+        class="site-info"
+        :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}"
+      >
+        <h2 class="site-title">
+          <ruby>
+            2019
+            <rt>Hi, Fan Qi Dong!</rt>
+          </ruby>
+        </h2>
+        <p class="site-slogan">人生短暂，及时行乐。</p>
+        <img src="../../assets/img/avatar.jpg" alt class="user-avatar">
+        <div class="site-link flex-center flex-around">
+            <a :href="item.link" v-for="item in $config.socailLink" :key="item.id" :title="item.name" target="_blank" rel="noopener noreferer">
+                <i class="iconfont" :class="`icon-${item.icon}`"></i>
+            </a>
+        </div>
+      </div>
+      <i class="arrow-down"></i>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Background',
+  props:['opacity'],
   methods: {},
   mounted() {
   }
@@ -13,23 +36,6 @@ export default {
 
 
 <style lang="scss">
-.page-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-//   background-image: url(../../assets/img/bg.jpg);
-  // background-image:url(https://view.moezx.cc/images/2019/03/24/bg7.png);
-  // background-image:url(https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png);
-  background:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553486196&di=fbc990c55d52659d59afacf9d15971bb&imgtype=jpg&er=1&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fe69f7c5067c0f222c6c1c38d6d45cb7dd8d53a27.png) center/cover;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  z-index: -1;
-  font-size: .4rem;
-}
-
+@import './index.scss'
 </style>
 

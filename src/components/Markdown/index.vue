@@ -12,18 +12,18 @@ const renderer = new marked.Renderer()
 // 渲染图片
 renderer.image = (href, title, text) => {
   return `<span class="show-img" data-src="${href}" data-sub-html="<h4>${text}</h4>">
-                        <img src="${href}" alt="${text}" title="点击图片查看大图" />
-                        ${text ? `<em>${text}</em>` : ""}
-                  </span>`
+              <img src="${href}" alt="${text}" title="点击图片查看大图" />
+              ${text ? `<em>${text}</em>` : ""}
+          </span>`
 }
 
 // 渲染a链接
 renderer.link = (href, title, text) => {
   // 只显示一个图标
   return `<a href="${href}" target="_blank">
-                    <i class="fa fa-link"></i>
-                    ${text}
-            </a>`
+              ${text}
+              <i class="iconfont icon-link"></i>
+          </a>`
 }
 
 /**

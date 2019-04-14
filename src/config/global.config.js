@@ -76,7 +76,7 @@ export default {
             id: 1,
             icon: 'github',
             link: 'https://github.com/fanqidong',
-            name: 'github'
+            name: '大型交友平台'
         }, {
             id: 2,
             icon: 'weibo',
@@ -87,13 +87,13 @@ export default {
             id: 3,
             icon: 'youxiang',
             link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=Z1ZTVVJTVFNTVlQnFhZJBAgK',
-            name: 'QQ邮箱'
+            name: '要给我发邮件吗？'
         },
         {
             id: 4,
             icon: 'zhihu',
             link: 'https://www.zhihu.com/people/fan-qi-dong-57/activities',
-            name: '知乎'
+            name: 'X乎'
         },
         {
             id: 5,
@@ -113,15 +113,21 @@ export default {
      */
     //    归档页
     archive: {
-        openComment: false
+        openComment: false,
+        cover: 'http://s.doyo.cn/img/59/36/17429e9e788978000010.jpg',
+        keyword: '归档丨archive'
     },
     //    分类页
     category: {
-        openComment: false
+        openComment: false,
+        cover: 'https://view.moezx.cc/images/2018/03/09/8972361.jpg',
+        keyword: '分类丨category'
     },
     //    标签页
     label: {
-        openComment: false
+        openComment: false,
+        cover: 'https://view.moezx.cc/images/2018/06/04/01-49.jpg',
+        keyword: '标签丨label'
     },
     //    关于页
     about: {
@@ -129,10 +135,18 @@ export default {
     },
     //    友链页
     friend: {
-        openComment: true
+        openComment: true,
+        cover: 'https://i.loli.net/2018/12/09/5c0cc1e157dc6.jpg',
+        keyword: '友链丨friend'
     },
     //     心情页
     mood: {
+        openComment: true,
+        cover: 'https://view.moezx.cc/images/2019/04/14/1406111060947.jpg',
+        keyword: '心情丨mood'
+    },
+    //     文章详情页
+    articleDetail: {
         openComment: true
     },
     /**

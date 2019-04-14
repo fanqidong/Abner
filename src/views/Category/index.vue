@@ -1,13 +1,8 @@
 <template>
-  <div class="category pt100 row">
-    <div class="category-container" v-if="categoryList.length" data-aos="fade-up">
+  <div class="category">
+    <Banner :background-image="$config.category.cover" :keyword="$config.category.keyword" />
+    <div class="category-container row" v-if="categoryList.length" data-aos="fade-up">
         <div class="category-wrapper">
-          <h2 class="category-title cfff">
-            <ruby>
-              文章分类
-              <rt>Article category</rt>
-            </ruby>
-          </h2>
           <ul class="category-list flex-around flex-wrap">
             <li
               v-for="(category,index) in categoryList"
@@ -36,9 +31,11 @@
 
 <script> 
 import store from "@/store"
-import Loading from "@/components/Loading"
 import Aos from "aos"
 import ArticleCard from "@/components/ArticleCard"
+import Loading from "@/components/Loading"
+import Banner from "@/components/Banner"
+
 export default {
   name: "Category",
   data() {
@@ -52,7 +49,8 @@ export default {
   },
   components: {
     Loading,
-    ArticleCard
+    ArticleCard,
+    Banner
   },
   created() {
     Aos.init({
@@ -69,13 +67,12 @@ export default {
       this.categoryList = await store.dispatch("queryCategory")
     },
     handleFilter(index, number,event) {
-      let offsetTop = window.innerHeight
       this.currenIndex = index
       if (index == 0) {
         this.$router.push({ name: "Mood" })
         return
       }
-      window.scrollTo(0, offsetTop)
+      window.scrollTo(0, 1.5*window.innerHeight)
       this.loadingStatus = true
       this.queryPost(number)
     },

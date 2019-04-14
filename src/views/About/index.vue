@@ -1,5 +1,5 @@
 <template>
-  <div class="about row pt200">
+  <div class="about row pt50">
     <div class="botui-app-container" id="my-botui-app">
       <p class="chat-title">
         与
@@ -52,11 +52,6 @@ export default {
 .about {
   max-width: 800px;
 }
-@media screen and (max-width: 993px) {
-  .row {
-    padding-top: 100px;
-  }
-}
 .chat-name {
   display: inline-block;
   margin: 0 6px;
@@ -75,7 +70,7 @@ export default {
 
 .botui-container {
   text-align: left;
-  border-radius: 20px;
+  border-radius: 5px;
   background: url(../../assets/img/chatbg2.png) no-repeat center/cover;
 }
 .botui-actions-container {
