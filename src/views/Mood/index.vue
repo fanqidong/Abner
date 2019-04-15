@@ -19,14 +19,14 @@
         <Comment v-if="$config.friend.openComment && initComment"/>
       </div>
     </transition>
-    <Loading v-else/>
+    <partLoading v-else/>
   </div>
 </template>
 
 <script>
 import store from "@/store"
 import Aos from "aos"
-import Loading from "@/components/Loading"
+import partLoading from "@/components/partLoading"
 import Markdown from "@/components/Markdown"
 import Banner from "@/components/Banner"
 import Comment from "@/components/Comment"
@@ -41,7 +41,7 @@ export default {
   },
   computed: {},
   components: {
-    Loading,
+    partLoading,
     Markdown,
     Comment,
     Banner

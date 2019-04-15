@@ -1,5 +1,5 @@
 <template>
-  <div class="about row pt50">
+  <div class="about row pt100">
     <div class="botui-app-container" id="my-botui-app">
       <p class="chat-title">
         与

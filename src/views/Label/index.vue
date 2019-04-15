@@ -9,7 +9,7 @@
             </li>
           </ul>
         </div>
-        <Loading v-else />
+        <partLoading v-else />
     </div>
     <ArticleCard class="row"  :target="'category'" :post-list="postList" :loading-status="loadingStatus"/>
     <div class="no-data" v-show="noData">啊哦，暂时没有相关内容，去看看其他的吧~</div>
@@ -17,7 +17,7 @@
 </template>
 <script>
 import store from "@/store"
-import Loading from '@/components/Loading'
+import partLoading from "@/components/partLoading"
 import Aos from 'aos'
 import ArticleCard from "@/components/ArticleCard"
 import Banner from "@/components/Banner"
@@ -33,7 +33,7 @@ export default {
     }
   },
   components:{
-      Loading,
+      partLoading,
       ArticleCard,
       Banner
   },
@@ -56,6 +56,7 @@ export default {
     // 根据标签筛选
     handleFilter(label){
        this.label = label
+       window.scrollTo(0,window.innerHeight)
        this.filterPosts()
     },
     // 过滤文章

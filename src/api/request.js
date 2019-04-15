@@ -105,7 +105,7 @@ export const queryType = async type => {
 //  获取文章热度
 export const queryHot = async (postList, add)=> {
     return new Promise(resolve => {
-        if (isDev) return resolve(postList)
+        if (isDev || location.host.includes('192')) return resolve(postList)
         const seq = postList.map(item => {
             return new Promise(resolve => {
                 const query = new AV.Query('Counter')
@@ -160,7 +160,7 @@ export const queryHot = async (postList, add)=> {
 
 //  为网站点赞
 export const queryLikeSite = async type => {
-    if (isDev) return
+    if (isDev || location.host.includes('192')) return
     return new Promise(resolve => {
       const query = new AV.Query('Counter')
       const Counter = AV.Object.extend('Counter')

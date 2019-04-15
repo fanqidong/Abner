@@ -1,5 +1,6 @@
 <template>
-  <div id="abner" :style="{paddingBottom:`${footerHeight}px`}">
+  <!-- <div id="abner" :style="{paddingBottom:`${footerHeight}px`}"> -->
+  <div id="abner">
     <Header
       :is-menu-open="isMenuOpen"
       @toggle-menu="setMenu"
@@ -10,25 +11,31 @@
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     </div>
-    <main>
+    <!-- 主题内容 S -->
+    <main id="page">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
             <router-view/>
         </transition>
       </div>
     </main>
+    <!-- 主题内容 E -->
     <Footer ref="footer"/>
     <!-- <MusicBox /> -->
+    <!-- 回到顶部 S -->
     <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="goTop">
+    <!-- 回到顶部 E -->
       <i class="iconfont icon-rocket"></i>
     </a>
+    <!-- 网站点赞 S -->
     <div class="sitelike-wrapper" :class="isButtonShow && 'show'" v-if="!$isMobile">
+    <!-- 网站点赞 E -->
       <div class="heart-content" @click="likeSite">
         <i class="iconfont icon-heart"></i>
       </div>
       <div class="like-tips font14">
           <span v-if="haveLikeSite"></span>
-          <span v-else>{{likeTimes?likeTimes:0}}</span>
+          <span v-else>已经有{{likeTimes?likeTimes:0}}人点赞了哦！😘</span>
       </div>
     </div>
   </div>
@@ -38,7 +45,6 @@ import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
-import Loading from "@/components/Loading"
 import MusicBox from "@/components/MusicBox"
 import { setTitle, requestAni , getScrollTop , Scroll } from "@/utils/dom"
 import _ from "lodash" 
@@ -58,15 +64,11 @@ export default {
       footerHeight: ' '
     }
   },
-  computed:{
-   
-  },
   components: {
     Header,
     Bg,
     MobileMenu,
     Footer,
-    Loading,
     MusicBox
   },
   methods: {
@@ -76,9 +78,7 @@ export default {
     setMenu(status) {
       this.isMobileMenuOpen = status
     },
-    // getScrollTop() {
-    //   return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
-    // },
+    // 导航显示隐藏
     getTop() {
       let scrollTop = getScrollTop()
       let navTop = this.$refs.nav.$el.offsetHeight
@@ -122,6 +122,7 @@ export default {
       // }
       Scroll(0,200)
     },
+    // 获取点赞数
     async queryLikeSite() {
       this.likeTimes= await store.dispatch("queryLikeSite",  "getTimes")
     },
@@ -197,7 +198,14 @@ export default {
     margin-right: 0;
   }
 }
-
+body{
+    display: flex;
+    flex-direction: column;
+}
+#page{
+    flex: 1;
+    min-height: 100vh;
+}
 </style>
 
 

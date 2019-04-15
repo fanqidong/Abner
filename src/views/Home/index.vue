@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Bg :opacity="scrollRate"/>
+    <Bg :opacity="scrollRate" :bg-url="bgUrl"/>
     <section class="home-wrapper row">
       <div class="site-recommend bfff flex">
         <i class="iconfont icon-recommend"></i>
@@ -57,7 +57,7 @@
           </article>
           <div class="line">我是有底线的</div>
         </div>
-        <Loading v-else/>
+        <partLoading v-else/>
       </div>
     </section>
   </div>
@@ -67,21 +67,24 @@
 // @ is an alias to /src
 import store from "@/store"
 import { mapState } from "vuex"
-import MarkDown from "@/components/Markdown"
-import Loading from "@/components/Loading"
-import Bg from "@/components/Background"
 import Aos from "aos"
-import _ from "lodash" 
+import _ from "lodash"
+import { getScrollTop } from "@/utils/dom"
+import MarkDown from "@/components/Markdown"
+import partLoading from "@/components/partLoading"
+import Bg from "@/components/Background"
+
 export default {
-  name: "home",
+  name: "Home",
   components: {
     MarkDown,
-    Loading,
-    Bg
+    Bg,
+    partLoading
   },
   data() {
     return {
-    scrollRate: ''
+      scrollRate: "",
+      bgUrl:'https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png'
     }
   },
   computed: mapState({
@@ -98,7 +101,7 @@ export default {
       debounceDelay: 200,
       offset: 20
     }),
-    setTimeout(Aos.refresh, 600)
+      setTimeout(Aos.refresh, 600)
   },
   methods: {
     //  获取文章列表
@@ -112,10 +115,8 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll",() => {
-        let scrollTop = document.documentElement.scrollTop || document.documentElement.scrollTop || window.pageYOffset
-        let rate = scrollTop*1.5/window.innerHeight
-      //  console.log("滚动值"+ rate)
-       this.scrollRate = 1 - rate < 0 ? 0 : 1 - rate
+        let rate = (getScrollTop * 1.5) / window.innerHeight
+        this.scrollRate = 1 - rate < 0 ? 0 : 1 - rate
       },false)
   }
 }

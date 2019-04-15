@@ -1,18 +1,18 @@
 <template>
   <div class="friend">
-    <Banner :background-image="$config.friend.cover" :keyword="$config.friend.keyword" />
+    <Banner :background-image="$config.friend.cover" :keyword="$config.friend.keyword"/>
     <div class="site-recommend bfff flex row">
-        <i class="iconfont icon-recommend"></i>
-        <p>你好啊，今天又是元气满满的一天哦！</p>
+      <i class="iconfont icon-recommend"></i>
+      <p>你好啊，今天又是元气满满的一天哦！</p>
     </div>
-    <section class="friend-container  row " v-if="friendList.length">
+    <section class="friend-container row" v-if="friendList.length">
       <ul class="friend-list flex flex-wrap">
-        <li v-for="(friend, index) in friendList" :key="index">
+        <li v-for="(friend, index) in friendList" :key="index" data-aos="fade-up">
           <div class="friend-content flex-around flex-column">
             <div class="friend-cover">
               <img v-lazy="friend.siteImage" :alt="friend.name" class="friend-cover">
             </div>
-            <div class="friend-info bfff">
+            <div class="friend-info bfff flex-around">
               <img v-lazy="friend.avatar" :alt="friend.name" class="friend-avatar">
               <div class="friend-intro">
                 <span class="friend-name font18 fw600">{{friend.name}}</span>
@@ -48,14 +48,15 @@
         <p>收到邮件后我会第一时间为你加上友链。😘😘😘</p>
       </div>
     </section>
-      <Comment v-if="$config.friend.openComment && initComment"/>
-    <Loading v-else/>
+    <Comment v-if="$config.friend.openComment && initComment"/>
+    <partLoading v-else/>
   </div>
 </template>
 
 <script>
 import store from "@/store"
-import Loading from "@/components/Loading"
+import Aos from "aos"
+import partLoading from "@/components/partLoading"
 import Banner from "@/components/Banner"
 import Comment from "@/components/Comment"
 
@@ -68,13 +69,20 @@ export default {
     }
   },
   components: {
-    Loading,
+    partLoading,
     Comment,
     Banner
   },
   async created() {
     this.friendList = await store.dispatch("queryType", { type: "Friend" })
     this.initComment = true
+    Aos.init({
+      duration: 1000,
+      easing: "ease-out",
+      debounceDelay: 200,
+      offset: 20
+    }),
+      setTimeout(Aos.refresh, 600)
   },
   methods: {}
 }
@@ -82,15 +90,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "./index.scss";
-.site-recommend{
-    padding: 10px 20px;
-    margin: 30px auto;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .05);
-    color: #007fff;
-    border-radius: 5px;
-    .icon-recommend{
-        animation: tada 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
-    }
+.site-recommend {
+  padding: 10px 20px;
+  margin: 30px auto;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: #007fff;
+  border-radius: 5px;
+  .icon-recommend {
+    animation: tada 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+  }
 }
 </style>
 

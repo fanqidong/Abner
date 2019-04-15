@@ -61,14 +61,14 @@
       </div>
       <Comment v-if="$config.articleDetail.openComment && initComment"/>
     </div>
-    <Loading v-if="isLoading"/>
+    <partLoading v-if="isLoading"/>
   </div>
 </template>
 
 <script>
 import store from "@/store"
 import MarkDown from "@/components/Markdown"
-import Loading from "@/components/Loading"
+import partLoading from "@/components/partLoading"
 import Comment from "@/components/Comment"
 import { mapState } from "vuex"
 import { queryPosts } from "@/api/request"
@@ -88,7 +88,7 @@ export default {
   },
   components: {
     MarkDown,
-    Loading,
+    partLoading,
     Comment
   },
   computed: mapState({

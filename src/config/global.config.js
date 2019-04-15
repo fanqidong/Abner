@@ -3,7 +3,7 @@
  * @Github: https://github.com/fanqidong
  * @description: 博客全局配置
  * @Date: 2019-02-27 14:19:22
- * @LastEditTime: 2019-04-12 16:50:11
+ * @LastEditTime: 2019-04-15 12:24:05
  */
 export default {
     title: '旅途与画',
@@ -114,7 +114,7 @@ export default {
     //    归档页
     archive: {
         openComment: false,
-        cover: 'http://s.doyo.cn/img/59/36/17429e9e788978000010.jpg',
+        cover: 'https://view.moezx.cc/images/2019/04/15/bg3.jpg',
         keyword: '归档丨archive'
     },
     //    分类页

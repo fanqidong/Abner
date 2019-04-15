@@ -27,7 +27,7 @@ export default {
 .page {
   &-banner {
     position: relative;
-    height: 100.1vh;
+    height: 60vh;
     overflow: hidden;
   }
   &-arc {
@@ -37,10 +37,10 @@ export default {
     width: 180%;
     height: 100%;
     margin-top: 1px;
-    padding-top: 4vh;
+    padding-top: 2vh;
     border-radius: 100% 100% 0 0;
     z-index: 1;
-    background-image: linear-gradient(to bottom, #f4f5f5 0%, #fff 100%);
+    background: #f4f5f5;
   }
   &-title {
     text-shadow: 1px 1px 3px #0084ff;

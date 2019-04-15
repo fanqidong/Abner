@@ -32,12 +32,12 @@
         </div>
       </div>
     </section>
-    <Loading v-else/>
+    <partLoading v-else/>
   </div>
 </template>
 
 <script>
-import Loading from "@/components/Loading"
+import partLoading from "@/components/partLoading"
 import Banner from "@/components/Banner"
 import Aos from "aos"
 import dayjs from "dayjs"
@@ -54,7 +54,7 @@ export default {
     }
   },
   components: {
-    Loading,
+    partLoading,
     Banner
   },
   created() {

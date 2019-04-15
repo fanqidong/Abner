@@ -25,7 +25,7 @@
       </div>
       <ArticleCard  :target="'label'" :post-list="postList" :loading-status="loadingStatus"/>
     </div>
-    <Loading v-else/>
+    <partLoading v-else/>
   </div>
 </template>
 
@@ -33,7 +33,7 @@
 import store from "@/store"
 import Aos from "aos"
 import ArticleCard from "@/components/ArticleCard"
-import Loading from "@/components/Loading"
+import partLoading from "@/components/partLoading"
 import Banner from "@/components/Banner"
 
 export default {
@@ -48,7 +48,7 @@ export default {
     }
   },
   components: {
-    Loading,
+    partLoading,
     ArticleCard,
     Banner
   },

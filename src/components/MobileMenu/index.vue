@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-mobile">
+  <div class="menu-mobile flex-column">
     <div class="menu-header">
       <div class="site-bg"></div>
       <div class="site-info flex-center flex-around flex-column">
@@ -7,7 +7,7 @@
         <p class="intro">启明星辰，东方明珠</p>
       </div>
     </div>
-    <div class="menu-body flex-center">
+    <div class="menu-body justify-center font18">
       <ul class="menu-list">
         <li v-for="item in $config.menuList" :key="item.id" @click="closeMenu" class="menu-link flex">
           <i :class="['iconfont',`icon-${item.icon}`]"></i>

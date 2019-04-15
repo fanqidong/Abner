@@ -34,7 +34,7 @@ export default {
 <style lang="scss">
 /* Valine */
 #valine {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   .vwrap,
   .vlist > .vcard {

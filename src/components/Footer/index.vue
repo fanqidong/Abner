@@ -3,13 +3,13 @@
     <div class="container">
       <div class="copyright">
         <p>
-          <span>Copyright © 2017-2019</span>
+          <span>Copyright © 2018-2019</span>
           <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
         </p>
         <p>All Rights Reserved.</p>
         <p class="my-birthday">
-            <span>小小东存活了</span>
-            <i class="iconfont icon-heart"></i>{{birthday}}
+          <span>小小东存活了</span>
+          <i class="iconfont icon-heart"></i>{{birthday}}
         </p>
       </div>
     </div>
@@ -25,9 +25,8 @@ export default {
       birthday: ""
     }
   },
-  computed: {},
   mounted() {
-      this.setBirthDay()
+    this.setBirthDay()
   },
   methods: {
     setBirthDay() {
@@ -45,29 +44,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/sass/animation.scss';
+@import "../../assets/sass/animation.scss";
 .footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 50px;
   padding: 10px 20px;
   box-sizing: border-box;
-  z-index: 100;
-  background:#140D19;
-  // border-top: 1px solid #140D19;
+  background: #140d19;
   a {
+    position: relative;
     color: #88baea;
   }
   .author {
     margin: 0 1em;
   }
-  .icon-heart{
-      display: inline-block;
-      margin-left: 4px;
-      color: #f15;
-      animation: heartbeat 1s infinite cubic-bezier(.215,.61,.355,1);
+  .icon-heart {
+    display: inline-block;
+    margin-left: 4px;
+    color: #f15;
+    animation: heartbeat 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 }
 </style>
