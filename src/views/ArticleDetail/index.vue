@@ -35,10 +35,7 @@
       <section class="article-main bfff">
         <MarkDown :content="post.body" target="#post"/>
         <div class="article-reward" :class="qrShow && 'active'">
-          <div
-            class="article-reward-button font16 is-href"
-            @click="qrShow = !qrShow"
-          >赏</div>
+          <div class="article-reward-button font16 is-href" @click="qrShow = !qrShow">赏</div>
           <ul class="article-reward-qr flex flex-around">
             <li>
               <img src="https://fanqidong.github.io/images/zfb.jpg" alt>
@@ -49,7 +46,7 @@
           </ul>
         </div>
       </section>
-      <div class="post-siblings clearfix">
+      <section class="post-siblings clearfix">
         <div class="prev post-button">
           <a
             href="javascript:;"
@@ -72,7 +69,7 @@
             <span>{{nextPost.title}}</span>
           </a>
         </div>
-      </div>
+      </section>
       <Comment v-if="$config.articleDetail.openComment && initComment"/>
     </div>
     <partLoading v-if="isLoading"/>
@@ -116,7 +113,10 @@ export default {
     this.getPosts(this.number)
   },
   mounted() {
-    //   console.log(this.number)
+    document.documentElement.onclick = e => {
+      let ev = e || event
+      if (!ev.target.classList.contains("article-reward-button")) this.qrShow = false
+    }
   },
   methods: {
     async queryPost(number = this.number) {
@@ -149,10 +149,10 @@ export default {
       this.isLoading = false
     },
     goDetail(number) {
-      window.scrollTo(0, 0)
       this.$router.push({ name: "ArticleDetail", params: { number } })
       this.queryPost(number)
       this.getPosts(number)
+      window.scrollTo(0, 0)
     }
   }
 }

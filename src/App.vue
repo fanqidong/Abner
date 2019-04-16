@@ -23,7 +23,7 @@
     <Footer ref="footer"/>
     <!-- <MusicBox /> -->
     <!-- 回到顶部 S -->
-    <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="goTop">
+    <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="$Scroll(0, 200)">
       <!-- 回到顶部 E -->
       <i class="iconfont icon-rocket"></i>
     </a>
@@ -46,7 +46,7 @@ import Footer from "@/components/Footer"
 import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import MusicBox from "@/components/MusicBox"
-import { setTitle, getScrollTop, Scroll, debounce } from "@/utils/dom"
+import { setTitle, getScrollTop, debounce } from "@/utils/dom"
 import store from "@/store"
 export default {
   name: "App",
@@ -60,8 +60,15 @@ export default {
       haveLikeSite: window.localStorage.getItem("haveLikeSite"),
       likeTimes: 0,
       scrollRate: "",
-      footerHeight: " "
+      homeTitle: "你好啊"
     }
+  },
+   metaInfo: {
+      title: 'My Example App', // set a title
+      meta: [{                 // set meta
+        name: 'keyWords',
+        content: 'My Example App'
+      }]
   },
   components: {
     Header,
@@ -71,9 +78,6 @@ export default {
     MusicBox
   },
   methods: {
-    getFooterHeight() {
-      this.footerHeight = document.querySelector(".footer").offsetHeight
-    },
     setMenu(status) {
       this.isMobileMenuOpen = status
     },
@@ -109,19 +113,6 @@ export default {
     closeMenu(status) {
       this.isMobileMenuOpen = status
     },
-    goTop() {
-      // let scrollTop = getScrollTop()
-      // if (scrollTop > 0) {
-      //   requestAni(this.goTop)
-      //   window.scrollTo(0, scrollTop - Math.floor(scrollTop/6))
-      // }
-      // if (scrollTop <= 10) {
-      //   cancelAnimationFrame(this.goTop)
-      //   window.scrollTo(0, 0)
-      // }
-    // 回到顶部
-      Scroll(0, 200)
-    },
     // 获取点赞数
     async queryLikeSite() {
       this.likeTimes = await store.dispatch("queryLikeSite", "getTimes")
@@ -134,7 +125,6 @@ export default {
     }
   },
   mounted() {
-    this.getFooterHeight()
     setTitle()
     this.getTop()
     this.queryLikeSite()
