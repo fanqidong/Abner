@@ -1,6 +1,6 @@
 <template>
   <div class="article-detail row pt100" id="post">
-    <div  v-if="post.body">
+    <div v-if="post.body">
       <section class="article-header">
         <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
@@ -34,6 +34,20 @@
       </section>
       <section class="article-main bfff">
         <MarkDown :content="post.body" target="#post"/>
+        <div class="article-reward" :class="qrShow && 'active'">
+          <div
+            class="article-reward-button font16 is-href"
+            @click="qrShow = !qrShow"
+          >赏</div>
+          <ul class="article-reward-qr flex flex-around">
+            <li>
+              <img src="https://fanqidong.github.io/images/zfb.jpg" alt>
+            </li>
+            <li>
+              <img src="https://fanqidong.github.io/images/wx.png" alt>
+            </li>
+          </ul>
+        </div>
       </section>
       <div class="post-siblings clearfix">
         <div class="prev post-button">
@@ -83,7 +97,8 @@ export default {
       prevPost: {},
       nextPost: {},
       isLoading: false,
-      initComment: false
+      initComment: false,
+      qrShow: false
     }
   },
   components: {
@@ -103,7 +118,6 @@ export default {
   mounted() {
     //   console.log(this.number)
   },
-  updated() {},
   methods: {
     async queryPost(number = this.number) {
       this.isLoading = true

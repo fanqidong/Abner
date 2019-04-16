@@ -1,18 +1,17 @@
-import Vue from "vue"
+// import Vue from "vue"
 import App from "./App.vue"
 import router from "./router"
 import store from "./store"
 import config from "./config/global.config"
 import AV from 'leancloud-storage';
 //初始化leancloud
-window.AV = AV
-AV.init(config.leancloud)
+window.AV.init(config.leancloud)
 // 全局样式引入
 import './assets/css/reset.css'
 import './assets/sass/init.scss'
 import './assets/sass/animation.scss'
 import 'aos/dist/aos.css'
-
+import './assets/js/evanyou'
 // 检测是否是移动端
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
 
@@ -26,6 +25,7 @@ import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(VueLazyLoad, {
     preLoad: 1.3,
+    attempt:3,
     error: require('../src/assets/img/bg7.png'),
     loading: 'http://img.zcool.cn/community/01f02059151e27b5b3086ed481bc0e.gif'
 })

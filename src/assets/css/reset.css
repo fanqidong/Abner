@@ -23,44 +23,44 @@ em,
 button,
 blockquote,
 figure {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  box-sizing: border-box;
-  text-size-adjust: 100%;
-  -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
-  -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    -webkit-tap-highlight-color: transparent;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  border: 0;
-  vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
 }
 
 em,
 b {
-  font-style: normal;
-  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
 }
 
 ul,
 ol {
-  list-style: none;
+    list-style: none;
 }
 
 h1,
@@ -69,126 +69,134 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 i {
-  font-style: normal;
+    font-style: normal;
 }
 
 button,
 input,
 select,
 textarea {
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .clearfix:after {
-  content: "";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 .clearfix {
-  *zoom: 1;
+    *zoom: 1;
 }
 
 /* link */
 
 a {
-  text-decoration: none;
-  outline: none;
-  /* color: #555; */
+    text-decoration: none;
+    outline: none;
+    /* color: #555; */
 }
 
 a:hover {
-  text-decoration: none;
-  outline: none;
+    text-decoration: none;
+    outline: none;
 }
 
 a:focus {
-  outline: none;
+    outline: none;
 }
 
 .hide {
-  display: none;
+    display: none;
 }
 
 .show {
-  display: block;
+    display: block;
 }
 
 .fl {
-  float: left;
+    float: left;
 }
 
 .fr {
-  float: right;
+    float: right;
 }
 
-.tl{
-  text-align: left;
+.tl {
+    text-align: left;
 }
 
 .tr {
-  text-align: right;
+    text-align: right;
 }
 
 .tc {
-  text-align: center;
+    text-align: center;
 }
 
 /*HTML5 reset*/
 
 time {
-  display: inline;
+    display: inline;
 }
 
 button {
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
 audio,
 canvas,
 video {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
 }
 
 audio:not([controls]) {
-  display: none;
+    display: none;
 }
 
 svg:not(:root) {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 ::selection {
-  color: #fff;
-  background: #b28fce;
+    color: #fff;
+    background: #b28fce;
 }
 
 body {
-  font-size: 14px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-  font-family: Consolas, Microsoft Jhenghei, Hiragino Sans GB, Microsoft YaHei;
-  color: #333;
-  line-height: 1.5;
-  background: #f4f5f5;
+    font-size: 14px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family: Consolas, Microsoft Jhenghei, Hiragino Sans GB, Microsoft YaHei;
+    color: #333;
+    line-height: 1.5;
+    background: #f4f5f5;
 }
 
+#evanyou {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

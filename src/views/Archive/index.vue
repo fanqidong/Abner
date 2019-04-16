@@ -2,7 +2,7 @@
   <div id="archive" class="archive">
     <Banner :background-image="$config.archive.cover" :keyword="$config.archive.keyword" />
     <section class="archive-contanier row pt50" v-if="postList.length" data-aos="fade-up">
-      <div class="archive-header">
+      <div class="archive-header font16">
         <p class="archive-total">棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
       </div>
       <div class="timeline-contanier">

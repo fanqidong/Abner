@@ -8,12 +8,39 @@ export const removeEvent = (handle, fn, type) => {
 export const getScrollTop = () => {
     return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
 }
+/**
+ *
+ *
+ * @param {Function} fn 回调
+ * @param {String} wait 时间
+ * @param {Boolean} immediate 是否立即执行
+ */
+export const debounce = (fn, wait, immediate = false) => {
+    let timeout
+    return function (...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            fn.apply(this, args)
+        }, wait)
+        // 是否立即执行一次任务
+        if (immediate) {
+            immediate = false
+            fn.apply(this, args)
+        }
+    }
+}
 
+/**
+ *
+ *
+ * @param {String} url 图片url
+ * @param {Function} callback
+ */
 export const imgLoaded = (url, callback) => {
     const img = new Image()
     img.src = url
     img.onload = () => {
-        console.log("图片加载完成")
+        // console.log("图片加载完成")
         callback && callback()
     }
 }

@@ -27,7 +27,7 @@ export default {
 .page {
   &-banner {
     position: relative;
-    height: 60vh;
+    height: 80vh;
     overflow: hidden;
   }
   &-arc {
