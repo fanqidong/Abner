@@ -5,8 +5,9 @@
         <p>
           <span>Copyright © 2018-2019</span>
           <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
+         
         </p>
-        <p>All Rights Reserved.</p>
+        <p>All Rights Reserved.<span>鄂ICP备19004957号-1</span></p>
         <p class="my-birthday">
           <span>小小东存活了</span>
           <i class="iconfont icon-heart"></i>{{birthday}}

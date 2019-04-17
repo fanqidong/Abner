@@ -5,8 +5,7 @@
 
 export default new VueRouter({
     mode: "history",
-    routes: [
-        {
+    routes: [{
             path: '*',
             redirect: '/'
         },
@@ -54,5 +53,10 @@ export default new VueRouter({
             component: () => import( /* webpackChunkName: "ArticleDetail" */ './views/ArticleDetail')
         }
     ],
-    scrollBehavior: (to, from, savedPosition) => { return {x: 0, y: 0}}
+    scrollBehavior: (to, from, savedPosition) => {
+        return {
+            x: 0,
+            y: 0
+        }
+    }
 });

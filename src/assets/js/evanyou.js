@@ -41,8 +41,8 @@ if (document.getElementById('evanyou')) {
     document.onclick = function(){
         setTimeout(evanyou,100)
     }
-    document.ontouchstart = function(){
-        setTimeout(evanyou,100)
-    }
+    // document.ontouchstart = function(){
+    //     setTimeout(evanyou,100)
+    // }
     evanyou()
   }

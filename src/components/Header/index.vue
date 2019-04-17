@@ -3,7 +3,7 @@
     <nav class="menu-wrapper container clearfix">
       <div class="menu-pc">
         <div class="nav-logo">
-          <router-link :to="'/'" class="brand align-center" @click="isMenuOpen=!isMenuOpen">
+          <router-link :to="{'path':'/'}" class="brand align-center">
             <img src="../../assets/img/logo.png" alt="logo">
           </router-link>
         </div>
@@ -29,9 +29,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-  data() {
-    return {}
   },
   computed: {},
   methods: {

@@ -2,7 +2,6 @@
   <!-- <div id="abner" :style="{paddingBottom:`${footerHeight}px`}"> -->
   <div id="abner">
     <Header
-      :is-menu-open="isMenuOpen"
       @toggle-menu="setMenu"
       :class="[{'isvisible': isvisible},{'ishidden':ishidden}]"
       ref="nav"
@@ -59,16 +58,8 @@ export default {
       ishidden: false,
       haveLikeSite: window.localStorage.getItem("haveLikeSite"),
       likeTimes: 0,
-      scrollRate: "",
-      homeTitle: "你好啊"
+      scrollRate: ""
     }
-  },
-   metaInfo: {
-      title: 'My Example App', // set a title
-      meta: [{                 // set meta
-        name: 'keyWords',
-        content: 'My Example App'
-      }]
   },
   components: {
     Header,

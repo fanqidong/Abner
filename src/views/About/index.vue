@@ -8,13 +8,24 @@
       <bot-ui></bot-ui>
     </div>
     <button class="btn-refresh" @click="refreshApp">姿势不对，再来一次</button>
+    <section class="about-wrapper">
+      <div class="about-content bfff"  v-if="aboutList.length">
+        <AboutCard v-for="about in aboutList" :key="about.title" :label="about.title">
+          <MarkDown :content="about.content" :onlyRender="true"/>
+        </AboutCard>
+      </div>
+       <partLoading v-else/>
+    </section>
     <Comment v-if="$config.about.openComment && initComment"/>
   </div>
 </template>
 
 <script>
-import initBotApp from "./my-botui-app"
 import store from "@/store"
+import initBotApp from "./my-botui-app"
+import MarkDown from "@/components/Markdown"
+import AboutCard from "@/components/AboutCard"
+import partLoading from "@/components/partLoading"
 import Comment from "@/components/Comment"
 export default {
   name: "About",
@@ -24,22 +35,25 @@ export default {
       initComment: false
     }
   },
-  components:{
-      Comment
+  components: {
+    Comment,
+    MarkDown,
+    AboutCard,
+    partLoading
   },
   created() {
     this.queryAbout()
-    this.initComment = true
   },
   mounted() {
-    console.clear()
+    // console.clear()
     initBotApp()
   },
   methods: {
     // 获取关于详情
     async queryAbout() {
       this.aboutList = await store.dispatch("queryType", { type: "About" })
-      // console.log(this.aboutList)
+      this.initComment = true
+      console.log(this.aboutList)
     },
     refreshApp() {
       window.location.reload()
@@ -51,6 +65,19 @@ export default {
 <style lang="scss">
 .about {
   max-width: 800px;
+  min-height: 50vh;
+  &-content {
+    padding: 10px;
+    margin: 0 0 20px;
+    border-radius: 3px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  a{
+      color: #b854d4;
+  }
+  p{
+      color: #666;
+  }
 }
 .chat-name {
   display: inline-block;

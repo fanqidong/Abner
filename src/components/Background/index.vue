@@ -6,10 +6,7 @@
       v-show="isLoaded"
     ></div>
     <div class="site-meta absolute-full flex-center flex-column cfff">
-      <div
-        class="site-info"
-        :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':opacity}"
-      >
+      <div class="site-info" :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':`${opacity}`}">
         <h2 class="site-title">
           <ruby>
             2019

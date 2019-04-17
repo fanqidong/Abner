@@ -1,6 +1,6 @@
 <template>
   <div class="article-detail row pt100" id="post">
-    <div v-if="post.body">
+    <div v-if="post.body" class="article-wrapper">
       <section class="article-header">
         <div class="article-cover" :style="{backgroundImage:`url(${post.cover.src})`}"></div>
         <div class="title-wrapper">
@@ -33,6 +33,13 @@
         </div>
       </section>
       <section class="article-main bfff">
+        <div class="article-menu tr font16 fw600">
+          <router-link :to="{name: 'Home'}">返回首页</router-link>
+          <span>&gt;</span>
+          <router-link :to="{name: 'Archive'}">归档</router-link>
+          <span>&gt;</span>
+          <span>{{post.title}}</span>
+        </div>
         <MarkDown :content="post.body" target="#post"/>
         <div class="article-reward" :class="qrShow && 'active'">
           <div class="article-reward-button font16 is-href" @click="qrShow = !qrShow">赏</div>
@@ -95,13 +102,20 @@ export default {
       nextPost: {},
       isLoading: false,
       initComment: false,
-      qrShow: false
+      qrShow: false,
+      scrollTop:""
     }
   },
   components: {
     MarkDown,
     partLoading,
     Comment
+  },
+  //在页面离开时记录滚动位置
+  beforeRouteLeave(to, from, next) {
+    this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    console.log(this.scrollTop)
+    next()
   },
   computed: mapState({
     posts: state => state.posts,

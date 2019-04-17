@@ -2,11 +2,14 @@
   <div class="home">
     <Bg :opacity="scrollRate" :bg-url="bgUrl"/>
     <section class="home-wrapper row">
-      <div class="site-recommend bfff flex">
-        <i class="iconfont icon-recommend"></i>
-        <p>你好啊，今天又是元气满满的一天哦！</p>
+      <div class="site-recommend bfff tl">
+        <p>
+          <i class="iconfont icon-recommend"></i>你好啊，欢迎访问我的博客！😘
+        </p>
+        <p>今天是{{today.time}}——{{today.week}}</p>
+        <p>元气满满的一天哦！</p>
       </div>
-      <div class="article">
+      <section class="article">
         <div class="article-list" v-if="posts.length">
           <article
             data-aos="fade-up"
@@ -58,7 +61,7 @@
           <div class="line">我是有底线的</div>
         </div>
         <partLoading v-else/>
-      </div>
+      </section>
     </section>
   </div>
 </template>
@@ -68,12 +71,11 @@
 import store from "@/store"
 import { mapState } from "vuex"
 import Aos from "aos"
-import _ from "lodash"
 import { getScrollTop } from "@/utils/dom"
 import MarkDown from "@/components/Markdown"
 import partLoading from "@/components/partLoading"
 import Bg from "@/components/Background"
-
+import dayjs from "dayjs"
 export default {
   name: "Home",
   components: {
@@ -84,13 +86,52 @@ export default {
   data() {
     return {
       scrollRate: "",
-      bgUrl:'https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png'
+      bgUrl: "https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png",
+      toWeek: {
+        Monday: "星期一",
+        Tuesday: "星期二",
+        Wednesday: "星期三",
+        Thursday: "星期四",
+        Friday: "星期五",
+        Saturday: "星期六",
+        Sunday: "星期日"
+      }
     }
   },
-  computed: mapState({
-    posts: state => state.posts,
-    hasMore: state => state.hasMore
-  }),
+  computed: {
+    ...mapState({
+      posts: state => state.posts,
+      hasMore: state => state.hasMore
+    }),
+    today() {
+      let time = dayjs(new Date()).format("YYYY年MM月DD日")
+      let week = this.toWeek[dayjs(new Date()).format("dddd")]
+      return {
+        time,
+        week
+      }
+    }
+  },
+  methods: {
+    //  获取文章列表
+    async getPosts() {
+      await store.dispatch("queryPosts", { type: "article" })
+    },
+    // 前往文章详情页
+    goDetail(number) {
+      this.$router.push({ name: "ArticleDetail", params: { number } })
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+        // console.log(vm)
+    //   console.log("进入页面动值"+vm.scrollTop)
+    //   if (from.name == "ArticleDetail") {
+    //       window.scrollTo(0,vm.scrollTop)
+    //   }
+      //   document.body.scrollTop = vm.scrollTop
+    })
+  },
   created() {
     if (!this.posts.length) {
       this.getPosts()
@@ -103,21 +144,15 @@ export default {
     }),
       setTimeout(Aos.refresh, 600)
   },
-  methods: {
-    //  获取文章列表
-    async getPosts() {
-      await store.dispatch("queryPosts", { type: "article" })
-    },
-    // 前往文章详情页
-    goDetail(number) {
-      this.$router.push({ name: "ArticleDetail", params: { number } })
-    }
-  },
   mounted() {
-    window.addEventListener("scroll",() => {
-        let rate = (getScrollTop * 1.5) / window.innerHeight
+    window.addEventListener(
+      "scroll",
+      () => {
+        let rate = (getScrollTop() * 1.5) / window.innerHeight
         this.scrollRate = 1 - rate < 0 ? 0 : 1 - rate
-      },false)
+      },
+      false
+    )
   }
 }
 </script>

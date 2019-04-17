@@ -4,9 +4,7 @@ import router from "./router"
 import store from "./store"
 import config from "./config/global.config"
 import AV from "leancloud-storage"
-import MetaInfo from 'vue-meta-info'
 
-Vue.use(MetaInfo)
 //初始化leancloud
 window.AV.init(config.leancloud)
 // 全局样式引入
@@ -36,13 +34,14 @@ Vue.use(VueLazyLoad, {
 })
 
 // 切换页面销毁所有灯箱
-// router.beforeEach((to, from, next) => {
-//     Object.keys(window.lgData).forEach(k => {
-//         window.lgData[k].destroy && window.lgData[k].destroy(true)
-//     })
-//     window.lgData = {}
-//     next()
-// })
+router.beforeEach((to, from, next) => {
+    // console.log(from)
+    // Object.keys(window.lgData).forEach(k => {
+    //     window.lgData[k].destroy && window.lgData[k].destroy(true)
+    // })
+    // window.lgData = {}
+    next()
+})
 
 // 生产环境才加入百度统计
 if (location.hostname === "www.luckydong.cn") {

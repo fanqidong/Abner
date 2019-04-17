@@ -1,7 +1,16 @@
 @import '../../assets/sass/mixin.scss';
 @import '../../assets/sass/theme.scss';
 
-
+.article-wrapper{
+    min-height: 50vh;
+    a{
+        color: #eb0e0e;
+    }
+}
+.arcitle-menu{
+    color: #000;
+    margin-bottom: 30px;
+}
 .article-header {
     position: relative;
     width: 100%;
