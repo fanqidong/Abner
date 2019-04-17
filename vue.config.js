@@ -4,9 +4,9 @@ module.exports = {
     configureWebpack: {
         externals: {
           "leancloud-storage": "AV",
-          'vue':'Vue',
-          'vue-router': 'VueRouter',
-          'vuex':'Vuex'
+          // 'vue':'Vue',
+          // 'vue-router': 'VueRouter',
+          // 'vuex':'Vuex'
         }
       }
     // publicPath: '/abner'

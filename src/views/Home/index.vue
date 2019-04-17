@@ -76,6 +76,7 @@ import MarkDown from "@/components/Markdown"
 import partLoading from "@/components/partLoading"
 import Bg from "@/components/Background"
 import dayjs from "dayjs"
+
 export default {
   name: "Home",
   components: {
@@ -101,7 +102,8 @@ export default {
   computed: {
     ...mapState({
       posts: state => state.posts,
-      hasMore: state => state.hasMore
+      hasMore: state => state.hasMore,
+      homeScrollTop: state => state.homeScrollTop
     }),
     today() {
       let time = dayjs(new Date()).format("YYYY年MM月DD日")
@@ -123,14 +125,21 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-        // console.log(vm)
-    //   console.log("进入页面动值"+vm.scrollTop)
+    // next(vm => {
     //   if (from.name == "ArticleDetail") {
-    //       window.scrollTo(0,vm.scrollTop)
+    //       window.scrollTo(0,vm.homeScrollTop)
+    //   }else{
+    //     window.scrollTo(0,0)
     //   }
-      //   document.body.scrollTop = vm.scrollTop
-    })
+    // })
+    next()
+  },
+  //在页面离开时记录滚动位置
+  beforeRouteLeave(to, from, next) {
+    this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+     console.log(this.scrollTop)
+    store.commit('recordScroll',{homeScrollTop:this.scrollTop})
+    next()
   },
   created() {
     if (!this.posts.length) {

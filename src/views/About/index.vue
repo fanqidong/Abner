@@ -53,7 +53,7 @@ export default {
     async queryAbout() {
       this.aboutList = await store.dispatch("queryType", { type: "About" })
       this.initComment = true
-      console.log(this.aboutList)
+      // console.log(this.aboutList)
     },
     refreshApp() {
       window.location.reload()

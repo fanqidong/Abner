@@ -37,8 +37,6 @@
           <router-link :to="{name: 'Home'}">返回首页</router-link>
           <span>&gt;</span>
           <router-link :to="{name: 'Archive'}">归档</router-link>
-          <span>&gt;</span>
-          <span>{{post.title}}</span>
         </div>
         <MarkDown :content="post.body" target="#post"/>
         <div class="article-reward" :class="qrShow && 'active'">
@@ -100,7 +98,7 @@ export default {
       postAll: [],
       prevPost: {},
       nextPost: {},
-      isLoading: false,
+      isLoading: true,
       initComment: false,
       qrShow: false,
       scrollTop:""
@@ -110,12 +108,6 @@ export default {
     MarkDown,
     partLoading,
     Comment
-  },
-  //在页面离开时记录滚动位置
-  beforeRouteLeave(to, from, next) {
-    this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-    console.log(this.scrollTop)
-    next()
   },
   computed: mapState({
     posts: state => state.posts,
@@ -134,9 +126,7 @@ export default {
   },
   methods: {
     async queryPost(number = this.number) {
-      this.isLoading = true
       this.post = await store.dispatch("queryPost", { number })
-      this.isLoading = false
       this.initComment = true
     },
     async getPosts(number) {
@@ -161,12 +151,14 @@ export default {
         }
       })
       this.isLoading = false
+      window.scrollTo(0, 0)
     },
     goDetail(number) {
+      this.isLoading = true
+      this.post = ""
       this.$router.push({ name: "ArticleDetail", params: { number } })
       this.queryPost(number)
       this.getPosts(number)
-      window.scrollTo(0, 0)
     }
   }
 }

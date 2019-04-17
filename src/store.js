@@ -5,10 +5,10 @@
  * @Date: 2019-03-04 10:03:13
  * @LastEditTime: 2019-04-16 14:27:41
  */
-// import Vue from "vue"
-// import Vuex from "vuex"
+import Vue from "vue"
+import Vuex from "vuex"
 
-// Vue.use(Vuex)
+Vue.use(Vuex)
 import {
   queryPosts,
   queryPost,
@@ -22,12 +22,11 @@ import {
 import { formatPost, formatCategory, formatType } from "@/utils/format"
 export default new Vuex.Store({
   state: {
-    tips: '',
-    tipsUpdateAt: '',
     page: 0,
     pageSize: '',
     posts: [],
-    hasMore: true
+    hasMore: true,
+    homeScrollTop: 0
   },
   mutations: {
     //  设置文章列表
@@ -35,6 +34,10 @@ export default new Vuex.Store({
       state.page = page
       state.posts = state.posts.concat(posts)
       state.hasMore = posts.length === state.pageSize
+    },
+    // 记录滚动条高度
+    recordScroll(state,{homeScrollTop}){
+        state.homeScrollTop = homeScrollTop
     }
   },
   actions: {

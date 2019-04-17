@@ -116,7 +116,7 @@ export default {
     }
   },
   mounted() {
-    setTitle()
+    // setTitle()
     this.getTop()
     this.queryLikeSite()
   }

@@ -1,4 +1,4 @@
-// import Vue from "vue"
+import Vue from "vue"
 import App from "./App.vue"
 import router from "./router"
 import store from "./store"
@@ -30,7 +30,7 @@ Vue.use(VueLazyLoad, {
   preLoad: 1.3,
   attempt: 3,
   error: require("../src/assets/img/bg7.png"),
-  loading: "http://img.zcool.cn/community/01f02059151e27b5b3086ed481bc0e.gif"
+  loading: "https://view.moezx.cc/images/2019/04/17/loading.gif"
 })
 
 // 切换页面销毁所有灯箱
@@ -40,6 +40,11 @@ router.beforeEach((to, from, next) => {
     //     window.lgData[k].destroy && window.lgData[k].destroy(true)
     // })
     // window.lgData = {}
+    if (to.meta.title) {
+      document.title = to.meta.title;
+     }
+    
+
     next()
 })
 
