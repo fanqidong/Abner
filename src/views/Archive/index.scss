@@ -1,6 +1,6 @@
 @import "@/assets/sass/mixin.scss";
 
-.archive-contanier{
+.archive-contanier {
     min-height: 6rem;
     padding: .15rem .15rem .25rem;
 }
@@ -11,9 +11,11 @@
 
 .tl-wrapper {
     margin: 0 0 .2rem 0;
-    &:last-of-type{
+
+    &:last-of-type {
         margin-bottom: 0;
-        .tl-body{
+
+        .tl-body {
             padding-bottom: .1rem;
         }
     }
@@ -32,6 +34,7 @@
     max-width: 1.5rem;
     cursor: pointer;
 }
+
 .tl-year {
     padding: .1rem 0;
     border-radius: .5rem;
@@ -41,20 +44,25 @@
 
 .tl-body {
     display: none;
+    max-width: 4rem;
     padding: .2rem 0;
     margin-left: .71rem;
     border-left: 4px solid #fafeff;
 }
-.tl-item{
+
+.tl-item {
     position: relative;
     padding-left: .3rem;
-    margin:  .2rem 0 .25rem 0;
-    &:first-of-type{
+    margin: .2rem 0 .25rem 0;
+
+    &:first-of-type {
         margin-top: 0;
     }
-    &:last-of-type{
+
+    &:last-of-type {
         margin-bottom: 0;
     }
+
     &::before {
         content: "";
         position: absolute;
@@ -69,9 +77,11 @@
         background: #edf1f2;
     }
 }
+
 .tl-content {
     position: relative;
-    &:hover{
+
+    &:hover {
         animation: headShake 1s;
     }
 }
@@ -94,6 +104,7 @@
     padding: 0.1rem;
     border-radius: 0.05rem;
     text-align: justify;
+
     &::before {
         content: "";
         position: absolute;
@@ -223,9 +234,11 @@
         border-right-color: #fff;
     }
 }
-@media screen and (max-width:768px){
+
+@media screen and (max-width:768px) {
+
     .tl-year,
-    .tl-time{
+    .tl-time {
         font-size: 12px;
     }
 }

@@ -5,10 +5,10 @@
  * @Date: 2019-03-04 10:03:13
  * @LastEditTime: 2019-04-16 14:27:41
  */
-import Vue from "vue"
-import Vuex from "vuex"
+// import Vue from "vue"
+// import Vuex from "vuex"
 
-Vue.use(Vuex)
+// Vue.use(Vuex)
 import {
   queryPosts,
   queryPost,

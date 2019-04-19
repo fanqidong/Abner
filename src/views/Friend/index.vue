@@ -3,7 +3,7 @@
     <Banner :background-image="$config.friend.cover" :keyword="$config.friend.keyword"/>
     <div class="site-recommend bfff flex row">
       <i class="iconfont icon-recommend"></i>
-      <p>你好啊，今天又是元气满满的一天哦！</p>
+      <p>四海八方，皆是道友。</p>
     </div>
     <section class="friend-container row" v-if="friendList.length">
       <ul class="friend-list flex flex-wrap">

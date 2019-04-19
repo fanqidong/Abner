@@ -1,11 +1,7 @@
 <template>
   <!-- <div id="abner" :style="{paddingBottom:`${footerHeight}px`}"> -->
   <div id="abner">
-    <Header
-      @toggle-menu="setMenu"
-      :class="[{'isvisible': isvisible},{'ishidden':ishidden}]"
-      ref="nav"
-    />
+    <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'" ref="nav"/>
     <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]">
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
@@ -14,7 +10,12 @@
     <main id="page">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <router-view/>
+          <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"/>
+          </keep-alive>
+        </transition>
+        <transition name="fadeIn" mode="out-in">
+          <router-view v-if="!$route.meta.keepAlive"/>
         </transition>
       </div>
     </main>
@@ -47,6 +48,7 @@ import MobileMenu from "@/components/MobileMenu"
 import MusicBox from "@/components/MusicBox"
 import { setTitle, getScrollTop, debounce } from "@/utils/dom"
 import store from "@/store"
+import { constants } from "crypto"
 export default {
   name: "App",
   data() {
@@ -54,7 +56,6 @@ export default {
       isMenuOpen: false,
       isMobileMenuOpen: false,
       isButtonShow: false,
-      isvisible: false,
       ishidden: false,
       haveLikeSite: window.localStorage.getItem("haveLikeSite"),
       likeTimes: 0,
@@ -84,17 +85,13 @@ export default {
           this.scrollRate = 1 - _scrollTop / 400 < 0 ? 0 : 1 - _scrollTop / 400
           if (_scrollTop > navTop) {
             this.ishidden = true
-            this.isvisible = false
             if (_scrollTop > scrollTop) {
               this.ishidden = true
-              this.isvisible = false
             } else {
               this.ishidden = false
-              this.isvisible = true
             }
           } else {
             this.ishidden = false
-            this.isvisible = false
           }
           scrollTop = _scrollTop
         }, 200),
@@ -119,6 +116,9 @@ export default {
     // setTitle()
     this.getTop()
     this.queryLikeSite()
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll")
   }
 }
 </script>
