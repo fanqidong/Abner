@@ -124,20 +124,19 @@ export default {
       this.$router.push({ name: "ArticleDetail", params: { number } })
     }
   },
+  // 路由进入判断是详情页返回首页还是直接返回首页
   beforeRouteEnter(to, from, next) {
-    // next(vm => {
-    //   if (from.name == "ArticleDetail") {
-    //       window.scrollTo(0,vm.homeScrollTop)
-    //   }else{
-    //     window.scrollTo(0,0)
-    //   }
-    // })
-    next()
+    next(vm => {
+      if (from.name == "ArticleDetail" && vm.$route.params.type == "ArticleDetail") {
+          window.scrollTo(0,vm.homeScrollTop)
+      }else{
+        window.scrollTo(0,0)
+      }
+    })
   },
   //在页面离开时记录滚动位置
   beforeRouteLeave(to, from, next) {
     this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-     console.log(this.scrollTop)
     store.commit('recordScroll',{homeScrollTop:this.scrollTop})
     next()
   },

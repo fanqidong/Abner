@@ -34,9 +34,9 @@
       </section>
       <section class="article-main bfff">
         <div class="article-menu tr font16 fw600">
-          <router-link :to="{name: 'Home'}">返回首页</router-link>
+          <router-link :to="{name: 'Home',params:{type:'ArticleDetail'}}">返回首页</router-link>
           <span>&gt;</span>
-          <router-link :to="{name: 'Archive'}">归档</router-link>
+          <router-link :to="{name: 'Archive'}">文章归档</router-link>
         </div>
         <MarkDown :content="post.body" target="#post"/>
         <div class="article-reward" :class="qrShow && 'active'">

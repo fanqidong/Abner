@@ -5,7 +5,10 @@
         <div class="label-content"  v-if="labelList.length" data-aos="fade-up">
           <ul class="label-wrapper flex-around flex-wrap">
             <li  v-for="label in labelList" :key="label.id" class="label-item " @click="handleFilter(label)">
-              <span class="text">{{label.name}}</span>
+              <span class="text">
+                <i class="iconfont icon-biaoqian"></i>
+                 {{label.name}}
+              </span>
             </li>
           </ul>
         </div>

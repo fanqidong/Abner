@@ -33,7 +33,7 @@
         <i class="iconfont icon-heart"></i>
       </div>
       <div class="like-tips font14">
-        <span v-if="haveLikeSite"></span>
+        <span v-if="haveLikeSite">你已经点过赞啦！</span>
         <span v-else>已经有{{likeTimes?likeTimes:0}}人点赞了哦！😘</span>
       </div>
     </div>
