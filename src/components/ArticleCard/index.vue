@@ -1,7 +1,7 @@
 <template>
   <div class="post-container">
     <div class="post-content flex-between flex-wrap" v-if="postList.length">
-      <div class="post-list" v-for="post in postList" :key="post.id">
+      <div class="post-list is-href" v-for="post in postList" :key="post.id">
         <div class="post-card" @click="goDetail(post.number)">
           <div class="post-cover">
             <img v-lazy="post.cover.src" class="post-img" alt>
