@@ -77,9 +77,7 @@ export default {
     getTop() {
       let scrollTop = getScrollTop()
       let navTop = this.$refs.nav.$el.offsetHeight
-      window.addEventListener(
-        "scroll",
-        debounce(() => {
+      window.addEventListener("scroll", debounce(() => {
           let _scrollTop = getScrollTop()
           _scrollTop > window.innerHeight / 2 ? (this.isButtonShow = true) : (this.isButtonShow = false)
           this.scrollRate = 1 - _scrollTop / 400 < 0 ? 0 : 1 - _scrollTop / 400

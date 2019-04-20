@@ -8,12 +8,17 @@ export default new VueRouter({
   routes: [
     {
       path: "*",
-      redirect: "/"
+      component: () => import("./components/Pagination"),
+      meta: {
+        title: "404—你迷路了",
+        keepAlive: true
+      }
     },
     {
       path: "/",
       name: "Home",
       component: () => import("./views/Home"),
+
       meta: {
         title: "旅途与画",
         keepAlive: true

@@ -1,12 +1,12 @@
 <template>
-  <section class="site site-banner flex-center flex-column" ref="site">
-    <div
-      class="site-lazy-container absolute-full"
-      :style="{backgroundImage:`url(${lazyImage})`}"
-      v-show="isLoaded"
-    ></div>
+  <section class="site site-banner flex-center flex-column">
+    <img class="site-lazy-container absolute-full" :src="lazyImage" ref="lazyBg">
+    <div class="site-banner-bg absolute-full" ref="siteBg"></div>
     <div class="site-meta absolute-full flex-center flex-column cfff">
-      <div class="site-info" :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':`${opacity}`}">
+      <div
+        class="site-info"
+        :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':`${opacity}`}"
+      >
         <h2 class="site-title">
           <ruby>
             2019
@@ -40,21 +40,19 @@ export default {
   props: ["opacity", "bgUrl"],
   data() {
     return {
-      lazyImage: "https://view.moezx.cc/images/2019/03/24/bg7.png",
-      isLoaded: false
+      lazyImage: require('./bg-small.jpg'),
+      bUrl:"https://view.moezx.cc/images/2019/04/17/bg.jpg"
     }
   },
   methods: {},
   mounted() {
-    // imgLoaded(this.bgUrl, ()=> {
-    //   this.isLoaded = true
-    //   this.$refs.site.style.backgroundImage = `url(${this.bgUrl})`
-    // })
+    imgLoaded(this.bgUrl, ()=> {
+      this.$refs.lazyBg.style.cssText = `opacity:0; transition-delay:.5s;`
+      this.$refs.siteBg.style.cssText = `background-image:url(${this.bUrl});opacity:1;`
+    })
   }
 }
 </script>
-
-
 <style lang="scss">
 @import "./index.scss";
 </style>

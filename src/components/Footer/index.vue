@@ -6,10 +6,14 @@
           <span>Copyright © 2018-2019</span>
           <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
         </p>
-        <p><span>鄂ICP备19004957号-1</span>All Rights Reserved.</p>
+        <p>
+          <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1</a>
+          All Rights Reserved.
+        </p>
         <p class="my-birthday">
           <span>小小东存活了</span>
-          <i class="iconfont icon-heart"></i>{{birthday}}
+          <i class="iconfont icon-heart"></i>
+          {{birthday}}
         </p>
       </div>
     </div>
