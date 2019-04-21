@@ -8,10 +8,13 @@
     <!-- 主题内容 S -->
     <main id="page">
       <div class="main-content">
-        <transition name="fadeIn" mode="out-in">
-          <keep-alive :exclude="ArticleDetail">
-            <router-view/>
+         <transition name="fadeIn" mode="out-in">
+          <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"/>
           </keep-alive>
+        </transition>
+        <transition name="fadeIn" mode="out-in">
+          <router-view v-if="!$route.meta.keepAlive"/>
         </transition>
       </div>
     </main>
@@ -114,7 +117,7 @@ export default {
     this.queryLikeSite()
   },
   beforeDestroy() {
-    window.removeEventListener("scroll")
+    // window.removeEventListener("scroll")
   }
 }
 </script>
