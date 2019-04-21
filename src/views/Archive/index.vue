@@ -1,11 +1,18 @@
 <template>
   <div id="archive" class="archive">
-    <Banner :background-image="$config.archive.cover" :keyword="$config.archive.keyword" />
+    <Banner :background-image="$config.archive.cover" :keyword="$config.archive.keyword"/>
     <section class="archive-contanier row pt50" v-if="postList.length" data-aos="fade-up">
-      <div class="archive-header font16">
-        <p class="archive-total">棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
+      <div class="site-recommend bfff flex">
+        <i class="iconfont icon-recommend"></i>
+        <p>棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
       </div>
-      <div class="timeline-contanier">
+      <div class="v-charts">
+        <div class="v-head c666 font22">年度文章归档</div>
+        <div class="v-body">
+          <ve-histogram :data="chartData" width="100%" height="300px"></ve-histogram>
+        </div>
+      </div>
+      <div class="tl-container">
         <div
           class="tl-wrapper"
           v-for="(item,index1) in postList"
@@ -50,7 +57,11 @@ export default {
       currentIndex: "",
       colorArr: ["light", "dark", "black", "primary", "success", "info", "warning", "danger"],
       postList: [],
-      postAmount: 0
+      postAmount: 0,
+      chartData: {
+        columns: ["日期", "文章数量"],
+        rows: []
+      }
     }
   },
   components: {
@@ -113,6 +124,9 @@ export default {
         })
       })
       this.postList = listArr
+      this.postList.map(item => {
+        this.chartData.rows.push({ 日期: item.time, 文章数量: item.posts.length })
+      })
     }
   }
 }

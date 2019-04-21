@@ -10,8 +10,7 @@ export default new VueRouter({
       path: "*",
       component: () => import("./views/404"),
       meta: {
-        title: "404—你迷路了",
-        keepAlive: true
+        title: "404—你迷路了"
       }
     },
     {
@@ -20,8 +19,7 @@ export default new VueRouter({
       component: () => import("./views/Home"),
 
       meta: {
-        title: "旅途与画",
-        keepAlive: true
+        title: "旅途与画"
       }
     },
     {
@@ -32,8 +30,7 @@ export default new VueRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "About" */ "./views/About"),
       meta: {
-        title: "关于我-旅途与画",
-        keepAlive: true
+        title: "关于我-旅途与画"
       }
     },
     {
@@ -41,8 +38,7 @@ export default new VueRouter({
       name: "Archive",
       component: () => import(/* webpackChunkName: "Archive" */ "./views/Archive"),
       meta: {
-        title: "文章归档-旅途与画",
-        keepAlive: true
+        title: "文章归档-旅途与画"
       }
     },
     {
@@ -50,8 +46,7 @@ export default new VueRouter({
       name: "Label",
       component: () => import(/* webpackChunkName: "Archive" */ "./views/Label"),
       meta: {
-        title: "文章标签-旅途与画",
-        keepAlive: true
+        title: "文章标签-旅途与画"
       }
     },
     {
@@ -59,8 +54,7 @@ export default new VueRouter({
       name: "Mood",
       component: () => import(/* webpackChunkName: "Archive" */ "./views/Mood"),
       meta: {
-        title: "悟言-旅途与画",
-        keepAlive: true
+        title: "悟言-旅途与画"
       }
     },
     {
@@ -68,8 +62,7 @@ export default new VueRouter({
       name: "Friend",
       component: () => import(/* webpackChunkName: "Friend" */ "./views/Friend"),
       meta: {
-        title: "知交-旅途与画",
-        keepAlive: true
+        title: "知交-旅途与画"
       }
     },
     {
@@ -77,8 +70,7 @@ export default new VueRouter({
       name: "Category",
       component: () => import(/* webpackChunkName: "Category" */ "./views/Category"),
       meta: {
-        title: "文章分类-旅途与画",
-        keepAlive: true
+        title: "文章分类-旅途与画"
       }
     },
     {
@@ -86,8 +78,7 @@ export default new VueRouter({
       name: "ArticleDetail",
       component: () => import(/* webpackChunkName: "ArticleDetail" */ "./views/ArticleDetail"),
       meta: {
-        title: "文章详情-旅途与画",
-        keepAlive: false
+        title: "文章详情-旅途与画"
       }
     }
   ],

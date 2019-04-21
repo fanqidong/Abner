@@ -12,12 +12,12 @@ export default {
   name: "Banner",
   props: {
     backgroundImage: {
-        type: String,
-        default: ''
+      type: String,
+      default: ""
     },
-    keyword:{
-        type: String,
-        default: ''
+    keyword: {
+      type: String,
+      default: ""
     }
   }
 }
@@ -48,7 +48,7 @@ export default {
   &-cover {
     position: relative;
     height: 100%;
-    background: no-repeat center/cover;
+    background: no-repeat top/cover;
     img {
       display: block;
       width: 100%;
@@ -57,8 +57,13 @@ export default {
   }
 }
 @media screen and (max-width: 992px) {
-  .page-arc {
-    bottom: -90%;
+  .page {
+    &-banner{
+      height: 50vh;
+    }
+    &-arc {
+      bottom: -80%;
+    }
   }
 }
 </style>

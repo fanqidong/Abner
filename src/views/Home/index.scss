@@ -81,7 +81,7 @@
     }
 
     &-desc {
-        text-align: left;
+        text-align: justify;
     }
 
     &-title {
@@ -90,11 +90,6 @@
     }
 
     &-date {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
         border-radius: 5px 0 0 0;
         background: rgba($color: #000, $alpha: .6);
         text-align: center;

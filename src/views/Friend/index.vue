@@ -6,7 +6,7 @@
       <p>四海八方，皆是道友。</p>
     </div>
     <section class="friend-container row" v-if="friendList.length">
-      <ul class="friend-list flex flex-wrap">
+      <ul class="friend-list flex-between flex-wrap">
         <li v-for="(friend, index) in friendList" :key="index" data-aos="fade-up">
           <div class="friend-content flex-around flex-column">
             <div class="friend-cover">
@@ -90,15 +90,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "./index.scss";
-.site-recommend {
-  padding: 10px 20px;
-  margin: 30px auto;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
-  color: #007fff;
-  border-radius: 5px;
-  .icon-recommend {
-    animation: tada 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
-  }
-}
 </style>
 

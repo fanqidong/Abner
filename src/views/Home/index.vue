@@ -24,7 +24,7 @@
                 <img v-lazy="post.cover.src" :alt="post.cover.text">
               </a>
               <!-- 发表时间 -->
-              <div class="article-date flex-center flex-column">
+              <div class="article-date flex-center flex-column absolute-full">
                 <span class="month font18">{{post.timeinfo.month}}</span>
                 <span class="time">
                   <i class="iconfont icon-calendar"></i>
@@ -37,7 +37,7 @@
               <!-- 文章标题 -->
               <div class="article-title font20 c000">{{post.title}}</div>
               <!-- 简介 -->
-              <span class="article-desc overflow2 c8a8">{{post.desc}}</span>
+              <span class="article-desc overflow3 c8a8">{{post.desc}}</span>
               <div class="article-info flex-between c666">
                 <!-- 热度 -->
                 <span>

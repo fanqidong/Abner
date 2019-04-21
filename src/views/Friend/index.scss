@@ -5,8 +5,7 @@
     &-list {
         li {
             position: relative;
-            padding: 0 .1rem;
-            margin: 0 auto 40px;
+            margin: 0 0 40px;
         }
     }
 
@@ -14,9 +13,7 @@
         width: 100%;
         transition: all 1s;
         border-radius: 10px;
-        // border: 1px solid #eee;
-        // box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, .1);
-        box-shadow: 0 6px 20px rgba(36, 37, 38, 0.13);
+        box-shadow: 0 6px 20px rgba(36, 37, 38, .13);
         &:hover {
             transform: translateY(-8px);
         }
@@ -100,14 +97,14 @@
 @media screen and (min-width:993px) {
     .friend-list {
         li {
-            width: 50%;
+            width: 49%;
         }
     }
 }
 @media screen and (min-width:1200px) {
     .friend-list {
         li {
-            width: 33.33%;
+            width: 32%;
         }
     }
 }

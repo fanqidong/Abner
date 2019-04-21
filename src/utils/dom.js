@@ -45,6 +45,13 @@ export const imgLoaded = (url, callback) => {
     }
 }
 
+ /**
+ *
+ *
+ * @param {Number} [number=0] 滚动位置数值
+ * @param {Number} time 滚动时间
+ * @returns
+ */
 export const Scroll = (number = 0, time) => {
     if (!time) {
         document.body.scrollTop = document.documentElement.scrollTop = number

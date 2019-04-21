@@ -1,5 +1,4 @@
 @import './theme.scss';
-
 /*重写滚动条样式*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -20,22 +19,6 @@
 
 .hidden-xs {
     display: none;
-}
-
-.pt50 {
-    padding-top: 50px;
-}
-
-.pt100 {
-    padding-top: 100px;
-}
-
-.pt150 {
-    padding-top: 150px;
-}
-
-.pt200 {
-    padding-top: 200px;
 }
 
 @media screen and (max-width: 576px) {
@@ -85,14 +68,6 @@
             &::-webkit-scrollbar-thumb {
                 display: none;
             }
-        }
-    }
-
-    .go-top {
-        right: -3% !important;
-
-        i {
-            font-size: 40px !important;
         }
     }
 
@@ -311,6 +286,7 @@ a {
 
 #abner {
     position: relative;
+    height: 100%;
     min-height: 100vh;
     text-align: center;
 }
@@ -345,18 +321,35 @@ a {
 
 .go-top {
     position: fixed;
-    right: 0;
-    bottom: 10%;
+    right: -10px;
+    bottom: 15%;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
     z-index: 998;
     transform: translateX(100%);
     will-change: transform;
     transition: transform .3s ease;
-
+    text-align: center;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 10px 0 rgba(0,0,0,.15);
     &.show {
-        transform: translateX(0);
+        transform: translateX(-14px);
     }
 
     i {
-        font-size: 70px;
+        display: block;
+        font-size: 36px;
+        margin-right: 0;
     }
 }
+.site-recommend {
+    padding: 10px 14px;
+    margin: 30px auto;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+    color: #007fff;
+    border-radius: 5px;
+    .icon-recommend {
+      animation: tada 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+    }
+  }

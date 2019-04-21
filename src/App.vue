@@ -1,5 +1,4 @@
 <template>
-  <!-- <div id="abner" :style="{paddingBottom:`${footerHeight}px`}"> -->
   <div id="abner">
     <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'" ref="nav"/>
     <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]">
@@ -10,12 +9,9 @@
     <main id="page">
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
-          <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"/>
+          <keep-alive :exclude="ArticleDetail">
+            <router-view/>
           </keep-alive>
-        </transition>
-        <transition name="fadeIn" mode="out-in">
-          <router-view v-if="!$route.meta.keepAlive"/>
         </transition>
       </div>
     </main>
@@ -77,7 +73,9 @@ export default {
     getTop() {
       let scrollTop = getScrollTop()
       let navTop = this.$refs.nav.$el.offsetHeight
-      window.addEventListener("scroll", debounce(() => {
+      window.addEventListener(
+        "scroll",
+        debounce(() => {
           let _scrollTop = getScrollTop()
           _scrollTop > window.innerHeight / 2 ? (this.isButtonShow = true) : (this.isButtonShow = false)
           this.scrollRate = 1 - _scrollTop / 400 < 0 ? 0 : 1 - _scrollTop / 400
@@ -125,8 +123,8 @@ export default {
 .sitelike-wrapper {
   display: none;
   position: fixed;
-  bottom: 40%;
-  right: 1%;
+  top: 40%;
+  right: 10px;
   .like-tips {
     position: absolute;
     left: -140px;
@@ -139,7 +137,7 @@ export default {
     border-radius: 20px;
     transform: scale(0);
     transform-origin: right bottom;
-    transition: transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .have-like {
     position: absolute;
@@ -158,13 +156,14 @@ export default {
   }
 }
 .heart-content {
-  width: 0.5rem;
-  height: 0.5rem;
-  line-height: 0.5rem;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   color: #fff;
-  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+  background-color: #fff;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 4px 0 rgba(0, 0, 0, .05);
   &:hover {
     i {
       animation: heartbeat 1s infinite;
@@ -174,6 +173,7 @@ export default {
     display: block;
     font-size: 0.22rem;
     margin-right: 0;
+    color: #f15;
   }
 }
 body {
