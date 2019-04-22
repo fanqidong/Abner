@@ -67,6 +67,12 @@ export default {
             path: "/mood",
             icon: "shuoshuo",
             text: "悟言"
+        },
+        {
+            id: 7,
+            path: "/photo",
+            icon: "shuoshuo",
+            text: "相册"
         }
     ],
     /**

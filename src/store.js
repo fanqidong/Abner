@@ -17,7 +17,8 @@ import {
   queryMood,
   queryLabel,
   queryType,
-  queryLikeSite
+  queryLikeSite,
+  queryPhoto
 } from "@/api/request"
 import { formatPost, formatCategory, formatType } from "@/utils/format"
 export default new Vuex.Store({
@@ -100,6 +101,11 @@ export default new Vuex.Store({
     // 获取网站点赞数
     async queryLikeSite(context, payLoad) {
       let data = await queryLikeSite(payLoad)
+      return data
+    },
+    // 获取相册
+    async queryPhoto(){
+      let data = await queryPhoto()
       return data
     }
   }

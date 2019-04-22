@@ -1,14 +1,14 @@
 <template>
-  <div id="abner">
-    <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'" ref="nav"/>
-    <div :class="['mobile-menu-wrapper',{'mobile-menu-open':isMobileMenuOpen}]">
+  <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}">
+    <div :class="['mobile-menu-wrapper']">
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     </div>
-    <!-- 主题内容 S -->
-    <main id="page">
+    <main class="page-container">
+      <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'" ref="nav"/>
+      <!-- 主题内容 S -->
       <div class="main-content">
-         <transition name="fadeIn" mode="out-in">
+        <transition name="fadeIn" mode="out-in">
           <keep-alive>
             <router-view v-if="$route.meta.keepAlive"/>
           </keep-alive>
@@ -17,15 +17,15 @@
           <router-view v-if="!$route.meta.keepAlive"/>
         </transition>
       </div>
+      <!-- 回到顶部 S -->
+      <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="$Scroll(0, 200)">
+        <!-- 回到顶部 E -->
+        <i class="iconfont icon-rocket"></i>
+      </a>
     </main>
     <!-- 主题内容 E -->
-    <Footer ref="footer"/>
+      <Footer ref="footer"/>
     <!-- <MusicBox /> -->
-    <!-- 回到顶部 S -->
-    <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="$Scroll(0, 200)">
-      <!-- 回到顶部 E -->
-      <i class="iconfont icon-rocket"></i>
-    </a>
     <!-- 网站点赞 S -->
     <div class="sitelike-wrapper" :class="isButtonShow && 'show'" v-if="!$isMobile">
       <!-- 网站点赞 E -->
@@ -45,7 +45,7 @@ import Footer from "@/components/Footer"
 import Bg from "@/components/Background"
 import MobileMenu from "@/components/MobileMenu"
 import MusicBox from "@/components/MusicBox"
-import { setTitle, getScrollTop, debounce } from "@/utils/dom"
+import { getScrollTop, debounce } from "@/utils/dom"
 import store from "@/store"
 import { constants } from "crypto"
 export default {
@@ -112,7 +112,6 @@ export default {
     }
   },
   mounted() {
-    // setTitle()
     this.getTop()
     this.queryLikeSite()
   },
@@ -140,7 +139,7 @@ export default {
     border-radius: 20px;
     transform: scale(0);
     transform-origin: right bottom;
-    transition: transform .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .have-like {
     position: absolute;
@@ -166,7 +165,7 @@ export default {
   background-color: #fff;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 4px 0 rgba(0, 0, 0, .05);
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 4px 0 rgba(0, 0, 0, 0.05);
   &:hover {
     i {
       animation: heartbeat 1s infinite;
@@ -183,7 +182,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-#page {
+.page-container {
   flex: 1;
   min-height: 100vh;
 }

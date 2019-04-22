@@ -3,10 +3,7 @@
     <img class="site-lazy-container absolute-full" :src="lazyImage" ref="lazyBg">
     <div class="site-banner-bg absolute-full" ref="siteBg"></div>
     <div class="site-meta absolute-full flex-center flex-column cfff">
-      <div
-        class="site-info"
-        :style="{'transform':`scale3d(${opacity},${opacity},${opacity})`,'opacity':`${opacity}`}"
-      >
+      <div class="site-info active" :style="transformStyle" ref="siteInfo">
         <h2 class="site-title">
           <ruby>
             2019
@@ -35,21 +32,35 @@
 
 <script>
 import { imgLoaded } from "@/utils/dom"
+import { clearTimeout } from "timers"
 export default {
   name: "Background",
   props: ["opacity", "bgUrl"],
   data() {
     return {
-      lazyImage: require('./bg-small.jpg'),
-      bUrl:"https://view.moezx.cc/images/2019/04/17/bg.jpg"
+      lazyImage: require("./bg-small.jpg"),
+      bUrl: "https://view.moezx.cc/images/2019/04/17/bg.jpg",
+      timer: null
+    }
+  },
+  computed: {
+    transformStyle() {
+      return { transform: `scale(${this.opacity})`, opacity: `${this.opacity}` }
     }
   },
   methods: {},
   mounted() {
-    imgLoaded(this.bgUrl, ()=> {
+    this.timer = setTimeout(() => {
+      this.$refs.siteInfo.classList.remove("active")
+    }, 2500)
+
+    imgLoaded(this.bgUrl, () => {
       this.$refs.lazyBg.style.cssText = `opacity:0; transition-delay:.5s;`
       this.$refs.siteBg.style.cssText = `background-image:url(${this.bUrl});opacity:1;`
     })
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer)
   }
 }
 </script>

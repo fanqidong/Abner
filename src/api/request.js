@@ -2,10 +2,16 @@ import axios from "axios"
 import gobalConfig from "../config/global.config"
 import Router from "../router"
 // import AV from 'leancloud-storage'
-const { blog, token, creator, isDev } = gobalConfig
+const {
+  blog,
+  token,
+  creator,
+  isDev
+} = gobalConfig
 const access_token = `access_token=${token.join("")}`
 const open = `creator=${creator}&state=open&${access_token}`
 const closed = `creator=${creator}&state=closed&${access_token}`
+const photoUrl = "https://api.github.com/repos/fanqidong/Blog-Back-Up/contents/min_photos"
 // 状态码检测
 const checkStatus = res => {
   if (res.status >= 200 && res.status < 300) return res
@@ -17,15 +23,15 @@ const checkStatus = res => {
 const httpGet = (url, params) => {
   return new Promise((resolve, reject) => {
     axios({
-      method: "get",
-      baseURL: blog,
-      url,
-      params,
-      timeout: 20000,
-      headers: {
-        "X-Requested-With": "XMLHttpRequest"
-      }
-    })
+        method: "get",
+        baseURL: blog,
+        url,
+        params,
+        timeout: 20000,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        }
+      })
       .then(res => {
         resolve(res.data)
       })
@@ -35,20 +41,21 @@ const httpGet = (url, params) => {
   })
 }
 
-export const queryPosts1 = async () => {
+
+export const queryPhoto = async () => {
   try {
-    const res = await httpGet(`/issues?${open}`, {
-      page: 1,
-      per_page: ""
-    })
-    console.log(res)
+    const res = await httpGet(photoUrl)
+    return res
   } catch (error) {
     console.log(error)
   }
 }
-// queryPosts1()
 // 获取文章列表
-export const queryPosts = async ({ page = 1, pageSize = "", filter = "" }) => {
+export const queryPosts = async ({
+  page = 1,
+  pageSize = "",
+  filter = ""
+}) => {
   try {
     const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
     const res = await fetch(url)
@@ -96,7 +103,10 @@ export const queryLabel = async () => {
   }
 }
 // 获取心情
-export const queryMood = async ({ page = 1, pageSize = 10 }) => {
+export const queryMood = async ({
+  page = 1,
+  pageSize = 10
+}) => {
   try {
     const url = `${blog}/issues?${closed}&labels=mood&&page=${page}&per_page=${pageSize}`
     const res = await fetch(url)
@@ -129,7 +139,10 @@ export const queryHot = async (postList, add) => {
       return new Promise(resolve => {
         const query = new AV.Query("Counter")
         const Counter = AV.Object.extend("Counter")
-        const { title, id } = item
+        const {
+          title,
+          id
+        } = item
         query.equalTo("id", id)
         query
           .find()
@@ -141,7 +154,9 @@ export const queryHot = async (postList, add) => {
               if (add) {
                 counter
                   .increment("time", 1)
-                  .save(null, { fetchWhenSave: true })
+                  .save(null, {
+                    fetchWhenSave: true
+                  })
                   .then(counter => {
                     item.times = counter.get("time")
                     resolve(item)
@@ -199,7 +214,9 @@ export const queryLikeSite = async type => {
           } else {
             res
               .increment("time", 1)
-              .save(null, { fetchWhenSave: true })
+              .save(null, {
+                fetchWhenSave: true
+              })
               .then(counter => resolve(counter.get("time")))
               .catch(console.error)
           }
