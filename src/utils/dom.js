@@ -8,6 +8,10 @@ export const removeEvent = (handle, fn, type) => {
 export const getScrollTop = () => {
     return document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
 }
+
+export const $ = (ele) => {
+    return document.querySelector(ele)
+}
 /**
  *
  *
@@ -45,7 +49,7 @@ export const imgLoaded = (url, callback) => {
     }
 }
 
- /**
+/**
  *
  *
  * @param {Number} [number=0] 滚动位置数值

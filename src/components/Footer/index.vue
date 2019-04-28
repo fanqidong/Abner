@@ -1,19 +1,19 @@
 <template>
-  <footer class="footer flex-center c999">
+  <footer class="footer flex-center c999" ref="footer">
     <div class="container">
       <div class="copyright">
         <p>
-          <span>Copyright © 2018-2019</span>
           <a href="https://github.com/fanqidong" target="_blank" class="author">旅途与画</a>
-        </p>
-        <p>
-          <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1</a>
-          All Rights Reserved.
+          <span>All Rights Reserved.</span>
         </p>
         <p class="my-birthday">
           <span>小小东存活了</span>
           <i class="iconfont icon-heart"></i>
-          {{birthday}}
+          <span>{{birthday}}</span>
+        </p>
+        <p>
+          <span>Copyright © 2018-2019 </span>
+          <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1 </a>
         </p>
       </div>
     </div>
@@ -22,6 +22,7 @@
 
 <script>
 import dayjs from "dayjs"
+import { $ } from "@/utils/dom"
 export default {
   name: "Footer",
   data() {
@@ -29,10 +30,17 @@ export default {
       birthday: ""
     }
   },
+  computed: {
+    footerHeight() {
+      return this.$refs.footer.offsetHeight
+    }
+  },
   mounted() {
     this.setBirthDay()
+    this.fixFooter()
   },
   methods: {
+    // 博客生日
     setBirthDay() {
       let day = dayjs(new Date()).diff("2018-07-20", "day")
       let hour = dayjs(new Date()).diff("2018-07-20", "hour") % 24
@@ -42,6 +50,11 @@ export default {
       setTimeout(() => {
         this.setBirthDay()
       }, 1000)
+    },
+    // 固定footer
+    fixFooter() {
+      document.body.style.paddingBottom = `${this.footerHeight}px`
+      $(".go-top").style.bottom = `${this.footerHeight + 10}px`
     }
   }
 }
@@ -50,7 +63,9 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/sass/animation.scss";
 .footer {
-  padding: 10px 20px;
+  position: absolute;
+  width: 100%;
+  padding: 10px 0;
   box-sizing: border-box;
   background: #140d19;
   a {

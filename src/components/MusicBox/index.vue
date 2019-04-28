@@ -1,34 +1,25 @@
 <template>
-  <div class="aplayer-wrapper hidden-xs">
-     <APlayer :audio="$config.musicList"  />
+  <div class="aplayer-wrapper tl">
+    <APlayer :audio="$config.musicList" mini fixed @onListShow="handleShow" @onListHide="handleHide"/>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "MusicBox",
   data() {
     return {}
   },
-  computed: {
-    
+  methods:{
+     handleShow(){
+       console.log("展开")
+     },
+     handleHide(){
+       console.log(1)
+     }
   },
-  mounted() {
-  },
-  components: {
-    // Aplayer
-  }
+  mounted() {}
 }
 </script>
 
-<style lang="scss" scoped>
-// .aplayer-wrapper{
-//     width: 20%;
-//     margin: auto;
-//     position: fixed;
-//     top: 50%;
-//     transform: translateY(-50%);
-// }
-</style>
 

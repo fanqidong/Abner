@@ -4,6 +4,12 @@ import router from "./router"
 import store from "./store"
 import config from "./config/global.config"
 import AV from "leancloud-storage"
+import APlayer from '@moefe/vue-aplayer'
+
+Vue.use(APlayer, {
+  defaultCover: 'https://github.com/u3u.png', // set the default cover
+  productionTip: false, // disable console output
+});
 
 //初始化leancloud
 window.AV.init(config.leancloud)
@@ -35,7 +41,7 @@ Vue.prototype.$Scroll = Scroll
 
 
 // Vue图片懒加载
-import VueLazyLoad from "vue-lazyload"
+import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,

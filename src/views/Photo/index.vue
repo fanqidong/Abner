@@ -1,16 +1,21 @@
 <template>
   <div class="page row pt100">
     <h1 class="tl">相册</h1>
-    <ul class="photo-wrapper flex-wrap">
-      <li v-for="photo in photoArr" :key="photo.size" class="photo-item">
-        <img :src="photo.download_url" :alt="photo.name">
-      </li>
-    </ul>
+    <section class="photo-container">
+      <ul class="photo-wrapper flex-wrap" v-if="photoArr.length">
+        <li v-for="photo in photoArr" :key="photo.size" class="photo-item">
+          <img v-lazy="photo.download_url" :alt="photo.name">
+        </li>
+      </ul>
+      <partLoading v-else/>
+    </section>
   </div>
 </template>
 
 <script>
 import store from "@/store"
+import partLoading from "@/components/partLoading"
+
 export default {
   name: "Photo",
   data() {
@@ -18,9 +23,11 @@ export default {
       photoArr: []
     }
   },
+  components: {
+    partLoading
+  },
   async created() {
     this.photoArr = await store.dispatch("queryPhoto")
-    console.log(this.photoArr)
   },
   mounted() {
     // console.log(this.$router)
@@ -29,34 +36,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page {
-  p {
-    font-size: 40px;
+.photo {
+  &-wrapper {
+    margin-top: 0.3rem;
   }
-  .index-link {
-    display: block;
-    margin-top: 1em;
-    padding: 0.1rem 0.2rem;
-    border-radius: 5px;
-    background-color: #007fff;
+  &-item {
+    margin: 4px;
+    flex-grow: 1;
+    img {
+      min-width: 100%;
+      height: 4rem;
+      object-fit: cover;
+    }
   }
-  .logo {
-    animation: pulse 1.5s infinite;
-  }
-}
-.photo{
-  &-wrapper{
-    margin-top: .3rem;
-  }
-   &-item{
-     margin: 4px;
-     flex-grow: 1;
-     img{
-       min-width: 100%;
-       height: 4rem;
-       object-fit: cover;
-     }
-   }
 }
 
 @keyframes pulse {

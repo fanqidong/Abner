@@ -13,6 +13,7 @@
         <div class="article-list" v-if="posts.length">
           <article
             data-aos="fade-up"
+            data-aos-once="true"
             v-for="(post,index) in posts"
             :key="post.id"
             class="article-wrapper clearfix"
@@ -42,7 +43,7 @@
                 <!-- 热度 -->
                 <span>
                   <i class="iconfont icon-hot"></i>
-                  <em>热度：{{post.times}}°C</em>
+                  <em>{{post.times}}°C</em>
                 </span>
                 <!-- 归档 -->
                 <span>
@@ -71,7 +72,7 @@
 import store from "@/store"
 import { mapState } from "vuex"
 import Aos from "aos"
-import { getScrollTop } from "@/utils/dom"
+import { getScrollTop, addEvent } from "@/utils/dom"
 import MarkDown from "@/components/Markdown"
 import partLoading from "@/components/partLoading"
 import Bg from "@/components/Background"
@@ -122,22 +123,29 @@ export default {
     // 前往文章详情页
     goDetail(number) {
       this.$router.push({ name: "ArticleDetail", params: { number } })
+    },
+    // 滚动比率
+    handleRate() {
+      addEvent("scroll", () => {
+        let rate = (getScrollTop() * 1.5) / window.innerHeight
+        this.scrollRate = 1 - rate < 0 ? 0 : 1 - rate
+      })
     }
   },
   // 路由进入判断是详情页返回首页还是直接返回首页
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (from.name == "ArticleDetail" && vm.$route.params.type == "ArticleDetail") {
-          window.scrollTo(0,vm.homeScrollTop)
-      }else{
-        window.scrollTo(0,0)
+        window.scrollTo(0, vm.homeScrollTop)
+      } else {
+        window.scrollTo(0, 0)
       }
     })
   },
   //在页面离开时记录滚动位置
   beforeRouteLeave(to, from, next) {
-    this.scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-    store.commit('recordScroll',{homeScrollTop:this.scrollTop})
+    this.scrollTop = getScrollTop()
+    store.commit("recordScroll", { homeScrollTop: this.scrollTop })
     next()
   },
   created() {
@@ -153,14 +161,7 @@ export default {
       setTimeout(Aos.refresh, 600)
   },
   mounted() {
-    window.addEventListener(
-      "scroll",
-      () => {
-        let rate = (getScrollTop() * 1.5) / window.innerHeight
-        this.scrollRate = 1 - rate < 0 ? 0 : 1 - rate
-      },
-      false
-    )
+    this.handleRate()
   }
 }
 </script>

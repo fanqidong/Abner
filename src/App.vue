@@ -1,11 +1,11 @@
 <template>
   <div id="abner" :class="{'mobile-menu-open':isMobileMenuOpen}">
-    <div :class="['mobile-menu-wrapper']">
+    <div class="mobile-menu-wrapper">
       <MobileMenu @handle-menu="closeMenu"/>
       <div class="menu-mask" @click="isMobileMenuOpen=false"></div>
     </div>
     <main class="page-container">
-      <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'" ref="nav"/>
+      <Header @toggle-menu="setMenu" :class="ishidden&&'ishidden'"/>
       <!-- 主题内容 S -->
       <div class="main-content">
         <transition name="fadeIn" mode="out-in">
@@ -19,13 +19,13 @@
       </div>
       <!-- 回到顶部 S -->
       <a href="javascript:;" :class="['go-top',isButtonShow && 'show']" @click="$Scroll(0, 200)">
-        <!-- 回到顶部 E -->
         <i class="iconfont icon-rocket"></i>
       </a>
+      <!-- 回到顶部 E -->
     </main>
     <!-- 主题内容 E -->
-      <Footer ref="footer"/>
-    <!-- <MusicBox /> -->
+    <Footer ref="footer"/>
+    <MusicBox />
     <!-- 网站点赞 S -->
     <div class="sitelike-wrapper" :class="isButtonShow && 'show'" v-if="!$isMobile">
       <!-- 网站点赞 E -->
@@ -47,7 +47,7 @@ import MobileMenu from "@/components/MobileMenu"
 import MusicBox from "@/components/MusicBox"
 import { getScrollTop, debounce } from "@/utils/dom"
 import store from "@/store"
-import { constants } from "crypto"
+
 export default {
   name: "App",
   data() {
@@ -75,26 +75,20 @@ export default {
     // 导航显示隐藏
     getTop() {
       let scrollTop = getScrollTop()
-      let navTop = this.$refs.nav.$el.offsetHeight
       window.addEventListener(
         "scroll",
         debounce(() => {
           let _scrollTop = getScrollTop()
           _scrollTop > window.innerHeight / 2 ? (this.isButtonShow = true) : (this.isButtonShow = false)
           this.scrollRate = 1 - _scrollTop / 400 < 0 ? 0 : 1 - _scrollTop / 400
-          if (_scrollTop > navTop) {
+          if (_scrollTop > scrollTop) {
             this.ishidden = true
-            if (_scrollTop > scrollTop) {
-              this.ishidden = true
-            } else {
-              this.ishidden = false
-            }
           } else {
             this.ishidden = false
           }
           scrollTop = _scrollTop
         }, 200),
-        { passive: true }
+        false
       )
     },
     closeMenu(status) {
@@ -121,71 +115,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "./assets/sass/animation.scss";
-.sitelike-wrapper {
-  display: none;
-  position: fixed;
-  top: 40%;
-  right: 10px;
-  .like-tips {
-    position: absolute;
-    left: -140px;
-    top: -40px;
-    margin-top: -20px;
-    padding: 0.1rem;
-    min-width: 140px;
-    text-align: center;
-    background: #fff;
-    border-radius: 20px;
-    transform: scale(0);
-    transform-origin: right bottom;
-    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .have-like {
-    position: absolute;
-    width: 140px;
-    left: -150px;
-    top: 5px;
-    background: #fff;
-    padding: 4px 8px;
-    border-radius: 20px;
-    animation: zoomIn 1s both;
-  }
-  &:hover {
-    .like-tips {
-      transform: scale(1);
-    }
-  }
-}
-.heart-content {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  color: #fff;
-  background-color: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.18), 0 4px 4px 0 rgba(0, 0, 0, 0.05);
-  &:hover {
-    i {
-      animation: heartbeat 1s infinite;
-    }
-  }
-  i {
-    display: block;
-    font-size: 0.22rem;
-    margin-right: 0;
-    color: #f15;
-  }
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-.page-container {
-  flex: 1;
-  min-height: 100vh;
-}
+
 </style>
 
 
