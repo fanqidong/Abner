@@ -4,7 +4,7 @@
     <transition name="fade" mode="out-in" v-if="moodList.length">
       <div class="mood-content">
         <ul class="mood-list row">
-          <li class="mood-item flex" v-for="mood in moodList" :key="mood.id" data-aos="fade-up">
+          <li class="mood-item flex" v-for="mood in moodList" :key="mood.id" data-aos="fade-up"  data-aos-once="true">
             <img src="https://fanqidong.github.io/images/avatar.jpg" alt="头像" class="mood-avatar">
             <div class="mood-body">
               <span class="mood-title font12" :data-title="mood.title">{{mood.title}}</span>
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       page: 0,
-      pageSize: 10,
+      pageSize: '',
       moodList: [],
       initComment: false
     }

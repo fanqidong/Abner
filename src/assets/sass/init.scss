@@ -380,7 +380,9 @@ a {
     position: fixed;
     top: 40%;
     right: 10px;
-
+    &.show{
+        display: block;
+    }
     .like-tips {
         position: absolute;
         left: -140px;

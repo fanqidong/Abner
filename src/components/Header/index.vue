@@ -2,7 +2,7 @@
   <header class="header">
     <nav class="menu-wrapper container clearfix">
       <div class="menu-pc font16">
-        <router-link :to="{'path':'/'}" class="nav-logo align-center">
+        <router-link :to="{'path':'/'}" class="nav-logo align-center" v-show="isReady">
           <svg class="svg-text">
             <text
               stroke-dasharray="90 310"
@@ -123,10 +123,23 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      isReady: false
+    }
+  },
   methods: {
     openMenu() {
       this.$emit("toggle-menu", true)
+    },
+    initSvg() {
+      setTimeout(() => {
+        this.isReady = true
+      }, 20)
     }
+  },
+  mounted() {
+    this.initSvg()
   }
 }
 </script>
