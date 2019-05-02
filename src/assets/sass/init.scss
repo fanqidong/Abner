@@ -148,7 +148,11 @@
     p {
         margin: 10px 0;
         text-align: justify;
-        word-break: break-word;
+        word-break: break-all;
+    }
+
+    li {
+        word-break: break-all;
     }
 
     a {
@@ -229,7 +233,6 @@
         overflow: auto;
         margin-bottom: 1em;
         background-color: #080808;
-        white-space: pre-wrap;
         word-wrap: break-word;
 
         &::-webkit-scrollbar {
@@ -266,17 +269,18 @@
             overflow: auto;
 
             &::before {
-                color: #fff;
                 content: attr(data-language);
-                height: .4rem;
-                line-height: .4rem;
-                font-size: 1em;
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
+                height: .4rem;
+                line-height: .4rem;
+                font-size: 1em;
+                color: #fff;
                 font-weight: 600;
                 text-align: center;
+                text-transform: uppercase;
             }
 
         }
@@ -380,9 +384,11 @@ a {
     position: fixed;
     top: 40%;
     right: 10px;
-    &.show{
+
+    &.show {
         display: block;
     }
+
     .like-tips {
         position: absolute;
         left: -140px;
@@ -442,13 +448,6 @@ a {
 
 /*移动端样式*/
 @media screen and (max-width: 768px) {
-    .aplayer-wrapper{
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        z-index: 1000;
-        transform: translateY(-85px);
-    }
     .markdown-content {
 
         pre {

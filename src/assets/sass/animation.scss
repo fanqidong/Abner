@@ -147,6 +147,19 @@
         transform:translate(0) rotate(0deg)
     }
 }
+@keyframes slideSpaceInUp {
+    0% {
+        opacity: 0;
+        transform-origin: 50% 0%;
+        transform: scale(.2) translate(0%, -200%);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 50% 0%;
+        transform: scale(1) translate(0%, 0%);
+    }
+}
 @keyframes rubberBand {
     from {
         transform: scale3d(1, 1, 1);

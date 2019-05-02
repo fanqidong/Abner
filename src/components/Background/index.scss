@@ -41,11 +41,11 @@
         }
 
         .site-avatar {
-            animation: fadeInUp 1.2s .9s both;
+            animation: slideSpaceInUp 1.2s 1s both;
         }
 
         .site-link {
-            animation: fadeInUp 1.2s 1.2s both;
+            animation: fadeInUp 1.2s 1.3s both;
         }
     }
 
@@ -94,7 +94,6 @@
         font-size: 28.5px;
     }
 }
-
 
 
 .arrow-down {

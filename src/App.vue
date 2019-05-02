@@ -25,7 +25,7 @@
     </main>
     <!-- 主题内容 E -->
     <Footer ref="footer"/>
-    <MusicBox />
+    <MusicBox/>
     <!-- 网站点赞 S -->
     <div class="sitelike-wrapper" :class="isButtonShow && 'show'" v-if="!$isMobile">
       <!-- 网站点赞 E -->

@@ -12,10 +12,13 @@
           <span>{{birthday}}</span>
         </p>
         <p>
-          <span>Copyright © 2018-2019 </span>
-          <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1 </a>
+          <span>Copyright © 2018-2019</span>
+          <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1</a>
         </p>
       </div>
+    </div>
+    <div class="side-img">
+      <img src="https://catbox.moe/pictures/qts/1457227943457.png" alt>
     </div>
   </footer>
 </template>
@@ -54,7 +57,7 @@ export default {
     // 固定footer
     fixFooter() {
       document.body.style.paddingBottom = `${this.footerHeight}px`
-      $(".go-top").style.bottom = `${this.footerHeight + 10}px`
+      $(".go-top").style.bottom = `${this.footerHeight + 20}px`
     }
   }
 }
@@ -80,6 +83,19 @@ export default {
     margin-left: 4px;
     color: #f15;
     animation: heartbeat 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+}
+.side-img{
+  position: fixed;
+  right: -30px;
+  bottom: 0;
+  z-index: 997;
+}
+@media screen and (max-width: 768px) {
+  .side-img{
+    img{
+      height: 94px;
+    }
   }
 }
 </style>

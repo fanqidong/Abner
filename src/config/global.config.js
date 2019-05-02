@@ -25,8 +25,7 @@ export default {
     /**
      * 页面导航配置
      */
-    menuList: [
-        {
+    menuList: [{
             id: 0,
             path: "/",
             icon: "shouye",
@@ -71,7 +70,7 @@ export default {
         {
             id: 7,
             path: "/photo",
-            icon: "shuoshuo",
+            icon: "album",
             text: "相册"
         }
     ],
@@ -159,25 +158,21 @@ export default {
      * 音乐播放器 列表配置
      */
     musicList: [{
-            name: '东西（Cover：林俊呈）',
-            artist: '纳豆',
-            url: 'https://cdn.moefe.org/music/mp3/thing.mp3',
-            cover: 'https://p1.music.126.net/5zs7IvmLv7KahY3BFzUmrg==/109951163635241613.jpg?param=300y300', // prettier-ignore
-            lrc: 'https://cdn.moefe.org/music/lrc/thing.lrc',
+            name: '像鱼',
+            artist: '王贰浪',
+            url: 'https://files.catbox.moe/3lyigt.m4a',
+            cover: 'https://files.catbox.moe/a930s3.jpg' // prettier-ignore
         },
         {
-            name: '响喜乱舞（Cover：MARiA）',
-            artist: '泠鸢yousa',
-            url: 'https://cdn.moefe.org/music/mp3/kyoukiranbu.mp3',
-            cover: 'https://p1.music.126.net/AUGVPQ_rVrngDH9ocQrn3Q==/109951163613037822.jpg?param=300y300', // prettier-ignore
-            lrc: 'https://cdn.moefe.org/music/lrc/kyoukiranbu.lrc',
-        },
-        {
-            name: '啵唧',
-            artist: 'Hanser',
-            url: 'https://cdn.moefe.org/music/mp3/kiss.mp3',
-            cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
-            lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
+            name: '烦恼歌',
+            artist: '张学友',
+            url: 'https://files.catbox.moe/5wr9hq.m4a',
+            cover: 'https://files.catbox.moe/firsp8.jpg' // prettier-ignore
+        }, {
+            name: 'Insomnia (불면증)',
+            artist: '辉星',
+            url: 'https://files.catbox.moe/cacy7q.m4a',
+            cover: 'https://files.catbox.moe/u0e2nm.jpg' // prettier-ignore
         }
     ],
     isDev: window.location.href.includes('localhost')
