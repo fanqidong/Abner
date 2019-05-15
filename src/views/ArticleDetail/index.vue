@@ -26,7 +26,7 @@
             </div>
             <div class="article-hot">
               <i class="iconfont icon-eye"></i>
-              <span>{{post.times}}</span>
+              <span>{{post.times?post.times:1}}</span>
             </div>
           </div>
           <h2 class="article-month">{{post.timeinfo.month}}</h2>

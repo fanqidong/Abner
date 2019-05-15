@@ -43,7 +43,7 @@
                 <!-- 热度 -->
                 <span>
                   <i class="iconfont icon-hot"></i>
-                  <em>{{post.times}}°C</em>
+                  <em>{{post.times?post.times:1}}°C</em>
                 </span>
                 <!-- 归档 -->
                 <span>
