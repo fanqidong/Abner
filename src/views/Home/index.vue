@@ -43,7 +43,7 @@
                 <!-- 热度 -->
                 <span>
                   <i class="iconfont icon-hot"></i>
-                  <em>{{post.times}}°C</em>
+                  <em>{{post.times?post.times :1}}°C</em>
                 </span>
                 <!-- 归档 -->
                 <span>
@@ -161,6 +161,9 @@ export default {
       setTimeout(Aos.refresh, 600)
   },
   mounted() {
+    setTimeout(()=>{
+console.log(this.posts)
+    },200)
     this.handleRate()
   }
 }

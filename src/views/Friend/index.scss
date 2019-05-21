@@ -103,6 +103,10 @@
 }
 @media screen and (min-width:1200px) {
     .friend-list {
+        &::after{
+            content: '';
+            width: 32%;
+        }
         li {
             width: 32%;
         }

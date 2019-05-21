@@ -7,7 +7,7 @@
     </div>
     <section class="friend-container row" v-if="friendList.length">
       <ul class="friend-list flex-between flex-wrap">
-        <li v-for="(friend, index) in friendList" :key="index" data-aos="fade-up">
+        <li v-for="(friend, index) in friendList" :key="index" data-aos="fade-up"  data-aos-once="true">
           <div class="friend-content flex-around flex-column">
             <div class="friend-cover">
               <img v-lazy="friend.siteImage" :alt="friend.name" class="friend-cover">

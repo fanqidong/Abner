@@ -154,6 +154,12 @@ export default {
     articleDetail: {
         openComment: true
     },
+    //     相册页
+    photo: {
+        openComment: true,
+        cover: 'https://view.moezx.cc/images/2019/04/14/1406111060947.jpg',
+        keyword: '相册丨mood'
+    },
     /**
      * 音乐播放器 列表配置
      */

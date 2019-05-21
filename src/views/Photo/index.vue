@@ -1,21 +1,22 @@
 <template>
   <div class="page row pt100">
     <h1 class="tl">相册</h1>
-    <section class="photo-container">
-      <ul class="photo-wrapper flex-wrap" v-if="photoArr.length">
+    <section class="photo-container" v-if="photoArr.length">
+      <ul class="photo-wrapper flex-wrap">
         <li v-for="photo in photoArr" :key="photo.size" class="photo-item">
           <img v-lazy="photo.download_url" :alt="photo.name">
         </li>
       </ul>
-      <partLoading v-else/>
+       <Comment v-if="$config.photo.openComment && initComment"/>
     </section>
+      <partLoading v-else/>
   </div>
 </template>
 
 <script>
 import store from "@/store"
 import partLoading from "@/components/partLoading"
-
+import Comment from "@/components/Comment"
 export default {
   name: "Photo",
   data() {
@@ -24,9 +25,11 @@ export default {
     }
   },
   components: {
-    partLoading
+    partLoading,
+    Comment
   },
   async created() {
+    this.initComment = true
     this.photoArr = await store.dispatch("queryPhoto")
   },
   mounted() {
@@ -38,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .photo {
   &-wrapper {
-    margin-top: 0.3rem;
+    margin: .3rem auto .5rem; 
   }
   &-item {
     margin: 4px;
