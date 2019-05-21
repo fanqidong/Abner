@@ -6,6 +6,10 @@
         <i class="iconfont icon-recommend"></i>
         <p>棒棒哒! 目前共计{{postAmount}}篇日志。 继续努力哦！</p>
       </div>
+      <div class="github-chart">
+        <p>GitHub年度提交记录</p>
+        <img src="http://ghchart.rshah.org/409ba5/fanqidong" alt="2016rshah's Blue Github Chart">
+      </div>
       <div class="v-charts">
         <div class="v-head c666 font22">年度文章归档</div>
         <div class="v-body">

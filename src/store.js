@@ -51,7 +51,7 @@ export default new Vuex.Store({
         pageSize
       })
       data.forEach(formatPost)
-      data = await queryHot(data)
+      // data = await queryHot(data)
       commit("setPosts", {
         posts: data,
         page: page + 1
@@ -61,7 +61,7 @@ export default new Vuex.Store({
     async queryArchive(context, payLoad) {
       let data = await queryPosts(payLoad)
       data.forEach(formatPost)
-      data = await queryHot(data)
+      // data = await queryHot(data)
       return data
     },
     // 获取当前文章详情
