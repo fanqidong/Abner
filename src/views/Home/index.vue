@@ -43,11 +43,7 @@
                 <!-- 热度 -->
                 <span>
                   <i class="iconfont icon-hot"></i>
-<<<<<<< HEAD
-                  <em>{{post.times?post.times :1}}°C</em>
-=======
                   <em>{{post.times?post.times:1}}°C</em>
->>>>>>> cb219523112a7f74c3af72acbcedc86b49d10b2e
                 </span>
                 <!-- 归档 -->
                 <span>
