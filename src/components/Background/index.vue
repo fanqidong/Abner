@@ -11,7 +11,7 @@
           </ruby>
         </h2>
         <p class="site-slogan">人生短暂，及时行乐。</p>
-        <img src="../../assets/img/avatar.jpg" alt class="site-avatar">
+        <img src="https://user-gold-cdn.xitu.io/2019/5/29/16b01d780b0aa578?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" alt class="site-avatar">
         <div class="site-link flex-center flex-around">
           <a
             :href="item.link"
@@ -32,7 +32,6 @@
 
 <script>
 import { imgLoaded } from "@/utils/dom"
-import { clearTimeout } from "timers"
 export default {
   name: "Background",
   props: ["opacity", "bgUrl"],

@@ -161,9 +161,6 @@ export default {
       setTimeout(Aos.refresh, 600)
   },
   mounted() {
-    setTimeout(()=>{
-console.log(this.posts)
-    },200)
     this.handleRate()
   }
 }
