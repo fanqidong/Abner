@@ -42,16 +42,14 @@ export const debounce = (fn, wait, immediate = false) => {
  */
 export const imgLoaded = (url, callback) => {
     const img = new Image()
-    img.src = url
     img.onload = () => {
         // console.log("图片加载完成")
         callback && callback()
     }
+    img.src = url
 }
 
 /**
- *
- *
  * @param {Number} [number=0] 滚动位置数值
  * @param {Number} time 滚动时间
  * @returns
@@ -63,8 +61,7 @@ export const Scroll = (number = 0, time) => {
     }
     const spacingTime = 20 // 设置循环的间隔时间  值越小消耗性能越高
     let spacingInex = time / spacingTime // 计算循环的次数
-    // console.log("次数"+spacingInex)
-    let nowTop = document.body.scrollTop + document.documentElement.scrollTop // 获取当前滚动条位置
+    let nowTop = document.body.scrollTop || document.documentElement.scrollTop // 获取当前滚动条位置
     let everTop = (number - nowTop) / spacingInex // 计算每次滑动的距离
     let scrollTimer = setInterval(() => {
         if (spacingInex > 0) {
@@ -75,6 +72,7 @@ export const Scroll = (number = 0, time) => {
         }
     }, spacingTime)
 }
+
 export const requestAni = (() => {
     return (
         window.requestAnimationFrame ||
