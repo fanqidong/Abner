@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Bg :opacity="scrollRate" :bg-url="bgUrl"/>
+    <Bg :opacity="scrollRate" :bg-url="bgUrl" />
     <section class="home-wrapper row">
       <div class="site-recommend bfff tl">
         <p>
@@ -10,26 +10,18 @@
         <p>元气满满的一天哦！</p>
       </div>
       <section class="article">
-        <div class="article-list" v-if="posts.length">
-          <article
-            data-aos="fade-up"
-            data-aos-once="true"
-            v-for="(post,index) in posts"
-            :key="post.id"
-            class="article-wrapper clearfix"
-            :class="{'article-float':index%2!=0}"
-            @click="goDetail(post.number)"
-          >
+        <div class="article-list" v-if="postList.length">
+          <article data-aos="fade-up" data-aos-once="true" v-for="(post,index) in postList" :key="post.id" class="article-wrapper clearfix" :class="{'article-float':index%2!=0}" @click="goDetail(post._id)">
             <div class="article-cover">
               <a href="javascript:;" class="article-link">
-                <img v-lazy="post.cover.src" :alt="post.cover.text">
+                <img v-lazy="post.cover" alt="">
               </a>
               <!-- 发表时间 -->
               <div class="article-date flex-center flex-column absolute-full">
-                <span class="month font18">{{post.timeinfo.month}}</span>
+                <span class="month font18">{{post.createAt}}</span>
                 <span class="time">
                   <i class="iconfont icon-calendar"></i>
-                  {{post.timeinfo.date}}
+                  {{post.updateAt}}
                 </span>
               </div>
             </div>
@@ -43,17 +35,17 @@
                 <!-- 热度 -->
                 <span>
                   <i class="iconfont icon-hot"></i>
-                  <em>{{post.times?post.times:1}}°C</em>
+                  <em>{{post.readCount?post.readCount:1}}°C</em>
                 </span>
                 <!-- 归档 -->
                 <span>
                   <i class="iconfont icon-guidangxiangmu"></i>
-                  <em>{{post.milestone.title }}</em>
+                  <em>{{post.category[0] }}</em>
                 </span>
                 <!-- 标签 -->
                 <span class="archive">
                   <i class="iconfont icon-biaoqian"></i>
-                  <em v-for="label in post.labels.slice(0,2)" :key="label.id">{{label.name}}</em>
+                  <em v-for="(label,index) in post.tag" :key="index">{{label}}</em>
                 </span>
               </div>
             </div>
@@ -61,7 +53,7 @@
           </article>
           <div class="line">我是有底线的</div>
         </div>
-        <partLoading v-else/>
+        <partLoading v-else />
       </section>
     </section>
   </div>
@@ -88,6 +80,7 @@ export default {
   data() {
     return {
       scrollRate: "",
+      postList: [],
       bgUrl: "https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png",
       toWeek: {
         Monday: "星期一",
@@ -119,6 +112,17 @@ export default {
     //  获取文章列表
     async getPosts() {
       await store.dispatch("queryPosts", { type: "article" })
+    },
+    async getList() {
+      const res = await fetch("http://localhost:3000/api/queryArticle")
+      const data = await res.json()
+      let result = data.data.map(item => {
+        item.createAt = dayjs(item.createAt).format("MMMM,YYYY/MM/DD,A")
+        item.updateAt = dayjs(item.updateAt).format("MMMM,YYYY/MM/DD,A")
+        return item
+      })
+
+      this.postList = result
     },
     // 前往文章详情页
     goDetail(number) {
@@ -162,6 +166,7 @@ export default {
   },
   mounted() {
     this.handleRate()
+    this.getList()
   }
 }
 </script>

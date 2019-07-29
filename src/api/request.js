@@ -66,6 +66,11 @@ export const queryPosts = async ({
     console.log(error)
   }
 }
+export const searchArticle = ()=> fetch('http://localhost:3000/api/queryArticle').then(res=>{
+  console.log(res)
+}).catch(err=>{
+    console.log(err);
+})
 // 获取文章详情
 export const queryPost = async number => {
   try {

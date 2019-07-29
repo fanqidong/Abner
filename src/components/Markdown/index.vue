@@ -66,7 +66,7 @@ export default {
   methods: {
     // 格式化markdown文本内容
     formatMarkdown() {
-      this.html = marked(this.content)
+      this.html = this.content
       if (this.onlyRender) return
       this.$nextTick(() => {
         if (this.target) {
