@@ -3,10 +3,8 @@
         <Bg :opacity="scrollRate" :bg-url="bgUrl" />
         <section class="home-wrapper row">
             <div class="site-recommend bfff tl">
-                <p>
-                    <i class="iconfont icon-recommend"></i>你好啊，欢迎访问我的博客！😘
-                </p>
-                <p>今天是{{today.time}}——{{today.week}}</p>
+                <p><i class="iconfont icon-recommend"></i>你好啊，欢迎访问我的博客！😘</p>
+                <p>今天是{{ today.time }}——{{ today.week }}</p>
                 <p>元气满满的一天哦！</p>
             </div>
             <section class="article">
@@ -14,10 +12,10 @@
                     <article
                         data-aos="fade-up"
                         data-aos-once="true"
-                        v-for="(post,index) in posts"
+                        v-for="(post, index) in posts"
                         :key="post.id"
                         class="article-wrapper clearfix"
-                        :class="{'article-float':index%2!=0}"
+                        :class="{ 'article-float': index % 2 != 0 }"
                         @click="goDetail(post.number)"
                     >
                         <div class="article-cover">
@@ -26,37 +24,34 @@
                             </a>
                             <!-- 发表时间 -->
                             <div class="article-date flex-center flex-column absolute-full">
-                                <span class="month font18">{{post.timeinfo.month}}</span>
+                                <span class="month font18">{{ post.timeinfo.month }}</span>
                                 <span class="time">
                                     <i class="iconfont icon-calendar"></i>
-                                    {{post.timeinfo.date}}
+                                    {{ post.timeinfo.date }}
                                 </span>
                             </div>
                         </div>
                         <!-- 文章内容  Start -->
                         <div class="article-content flex-around flex-column">
                             <!-- 文章标题 -->
-                            <div class="article-title font20 c000">{{post.title}}</div>
+                            <div class="article-title font20 c000">{{ post.title }}</div>
                             <!-- 简介 -->
-                            <span class="article-desc overflow3 c8a8">{{post.desc}}</span>
+                            <span class="article-desc overflow3 c8a8">{{ post.desc }}</span>
                             <div class="article-info flex-between c666">
                                 <!-- 热度 -->
                                 <span>
                                     <i class="iconfont icon-hot"></i>
-                                    <em>{{post.times?post.times:1}}°C</em>
+                                    <em>{{ post.times ? post.times : 1 }}°C</em>
                                 </span>
                                 <!-- 归档 -->
                                 <span>
                                     <i class="iconfont icon-guidangxiangmu"></i>
-                                    <em>{{post.milestone.title }}</em>
+                                    <em>{{ post.milestone.title }}</em>
                                 </span>
                                 <!-- 标签 -->
                                 <span class="archive">
                                     <i class="iconfont icon-biaoqian"></i>
-                                    <em
-                                        v-for="label in post.labels.slice(0,2)"
-                                        :key="label.id"
-                                    >{{label.name}}</em>
+                                    <em v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</em>
                                 </span>
                             </div>
                         </div>
@@ -117,7 +112,10 @@ export default {
     methods: {
         //  获取文章列表
         async getPosts() {
-            await store.dispatch('queryPosts', { type: 'article' })
+            await store.dispatch('queryPosts', {
+                page: '0',
+                pageSize: '10'
+            })
         },
         // 前往文章详情页
         goDetail(number) {
@@ -167,5 +165,3 @@ export default {
 <style lang="scss" scoped>
 @import './index.scss';
 </style>
-
-

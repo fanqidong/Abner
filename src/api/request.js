@@ -3,7 +3,8 @@ import gobalConfig from '../config/global.config'
 import Router from '../router'
 import AV from 'leancloud-storage'
 const { blog, token, creator, isDev } = gobalConfig
-const access_token = `access_token=${token.join('')}`
+// const access_token = `access_token=${token.join('')}`
+const access_token = `token ${token.join('')}`
 const open = `creator=${creator}&state=open&${access_token}`
 const closed = `creator=${creator}&state=closed&${access_token}`
 const photoUrl = 'https://api.github.com/repos/fanqidong/Blog-Back-Up/contents/min_photos'
@@ -36,6 +37,23 @@ const httpGet = (url, params) => {
     })
 }
 
+// github fetch
+const githubFetch = async (url, isQueryPage = false) => {
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                Authorization: access_token
+            }
+        })
+        checkStatus(response)
+        const data = await response.json()
+        return isQueryPage ? data[0] : data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const queryPhoto = async () => {
     try {
         const res = await httpGet(photoUrl)
@@ -44,78 +62,37 @@ export const queryPhoto = async () => {
         console.log(error)
     }
 }
+
 // 获取文章列表
-export const queryPosts = async ({ page = 1, pageSize = '', filter = '' }) => {
-    try {
-        const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
-        const res = await fetch(url)
-        checkStatus(res)
-        const data = await res.json()
-        return data
-    } catch (error) {
-        console.log(error)
-    }
+export const queryPosts = ({ page = 1, pageSize = 10, filter = '' }) => {
+    const url = `${blog}/issues?state=open&page=${page}&per_page=${pageSize}${filter}`
+    return githubFetch(url)
 }
-// 获取文章详情
-export const queryPost = async number => {
-    try {
-        const url = `${blog}/issues/${number}?${open}`
-        const res = await fetch(url)
-        checkStatus(res)
-        const data = await res.json()
-        return data
-    } catch (error) {
-        console.log(error)
-    }
+
+export const queryPost = number => {
+    const url = `${blog}/issues/${number}?state=open`
+    return githubFetch(url)
 }
 // 获取分类
 export const queryCategory = async () => {
-    try {
-        const url = `${blog}/milestones?${access_token}`
-        const res = await fetch(url)
-        checkStatus(res)
-        const data = await res.json()
-        return data
-    } catch (error) {
-        console.log(error)
-    }
+    const url = `${blog}/milestones`
+    return githubFetch(url)
 }
 // 获取标签
 export const queryLabel = async () => {
-    try {
-        const url = `${blog}/labels?${access_token}`
-        const response = await fetch(url)
-        checkStatus(response)
-        const data = await response.json()
-        return data
-    } catch (err) {
-        console.log(err)
-    }
+    const url = `${blog}/labels`
+    return githubFetch(url)
 }
 // 获取心情
 export const queryMood = async ({ page = 1, pageSize = '' }) => {
-    try {
-        const url = `${blog}/issues?${closed}&labels=mood&&page=${page}&per_page=${pageSize}`
-        const res = await fetch(url)
-        checkStatus(res)
-        const data = await res.json()
-        return data
-    } catch (error) {
-        console.log(error)
-    }
+    const url = `${blog}/issues?state=closed&labels=mood&&page=${page}&per_page=${pageSize}`
+    return githubFetch(url)
 }
 
 // 获取友链 && 关于
 export const queryType = async type => {
-    try {
-        const url = `${blog}/issues?${closed}&labels=${type}`
-        const response = await fetch(url)
-        checkStatus(response)
-        const data = await response.json()
-        return data[0]
-    } catch (error) {
-        console.log(error)
-    }
+    const url = `${blog}/issues?${closed}&labels=${type}`
+    return githubFetch(url, true)
 }
 
 //  获取文章热度
