@@ -119,19 +119,19 @@ export default {
     //    归档页
     archive: {
         openComment: false,
-        cover: 'https://view.moezx.cc/images/2019/04/15/bg3.jpg',
+        cover: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
         keyword: '归档丨archive'
     },
     //    分类页
     category: {
         openComment: false,
-        cover: 'https://view.moezx.cc/images/2018/03/09/8972361.jpg',
+        cover: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
         keyword: '分类丨category'
     },
     //    标签页
     label: {
         openComment: false,
-        cover: 'https://view.moezx.cc/images/2018/06/04/01-49.jpg',
+        cover: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
         keyword: '标签丨label'
     },
     //    关于页
@@ -141,13 +141,13 @@ export default {
     //    友链页
     friend: {
         openComment: true,
-        cover: 'https://i.loli.net/2018/12/09/5c0cc1e157dc6.jpg',
+        cover: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
         keyword: '友链丨friend'
     },
     //     心情页
     mood: {
         openComment: true,
-        cover: 'https://view.moezx.cc/images/2019/04/14/1406111060947.jpg',
+        cover: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
         keyword: '心情丨mood'
     },
     //     文章详情页

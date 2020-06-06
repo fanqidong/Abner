@@ -6,7 +6,7 @@ const { blog, token, creator, isDev } = gobalConfig
 // const access_token = `access_token=${token.join('')}`
 const access_token = `token ${token.join('')}`
 const open = `creator=${creator}&state=open&${access_token}`
-const closed = `creator=${creator}&state=closed&${access_token}`
+const closed = `creator=${creator}&state=closed`
 const photoUrl = 'https://api.github.com/repos/fanqidong/Blog-Back-Up/contents/min_photos'
 // 状态码检测
 const checkStatus = res => {
@@ -48,6 +48,7 @@ const githubFetch = async (url, isQueryPage = false) => {
         })
         checkStatus(response)
         const data = await response.json()
+        console.log("=======",data)
         return isQueryPage ? data[0] : data
     } catch (error) {
         console.log(error)
