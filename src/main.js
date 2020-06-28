@@ -12,7 +12,7 @@ Vue.use(APlayer, {
 });
 
 //初始化leancloud
-// window.AV.init(config.leancloud)
+window.AV.init(config.leancloud)
 
 import vePie from "v-charts/lib/pie.common"
 import veHistogram from "v-charts/lib/histogram.common"

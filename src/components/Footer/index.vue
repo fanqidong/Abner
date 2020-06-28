@@ -12,7 +12,7 @@
           <span>{{birthday}}</span>
         </p>
         <p>
-          <span>Copyright © 2018-2019</span>
+          <span>Copyright ©2018-{{curYear}}</span>
           <a href="http://www.miitbeian.gov.cn" target="_blank">鄂ICP备19004957号-1</a>
         </p>
       </div>
@@ -30,6 +30,7 @@ export default {
   name: "Footer",
   data() {
     return {
+      curYear: new Date().getFullYear(),
       birthday: ""
     }
   },

@@ -6,7 +6,7 @@
             <div class="site-info active" :style="transformStyle" ref="siteInfo">
                 <h2 class="site-title">
                     <ruby>
-                        2019
+                        {{curYear}}
                         <rt>Hi, Fan Qi Dong!</rt>
                     </ruby>
                 </h2>
@@ -30,8 +30,9 @@ export default {
     data() {
         return {
             lazyImage: require("./bg-small.jpg"),
-            bUrl: "https://view.moezx.cc/images/2019/04/17/bg.jpg",
-            timer: null
+            bUrl: "https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg",
+            timer: null,
+            curYear: new Date().getFullYear()
         }
     },
     computed: {

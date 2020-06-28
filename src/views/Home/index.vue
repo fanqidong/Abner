@@ -20,7 +20,7 @@
                     >
                         <div class="article-cover">
                             <a href="javascript:;" class="article-link">
-                                <img v-lazy="post.cover.src" :alt="post.cover.text" />
+                                <img v-lazy="articleBg" :alt="post.cover.text" />
                             </a>
                             <!-- 发表时间 -->
                             <div class="article-date flex-center flex-column absolute-full">
@@ -75,7 +75,7 @@ import MarkDown from '@/components/Markdown'
 import partLoading from '@/components/partLoading'
 import Bg from '@/components/Background'
 import dayjs from 'dayjs'
-
+import articleBg from '../../assets/img/bg10.jpg'
 export default {
     name: 'Home',
     components: {
@@ -85,8 +85,9 @@ export default {
     },
     data() {
         return {
+            articleBg,
             scrollRate: '',
-            bgUrl: 'https://zankyo.cc/wp-content/themes/Sakura/cover/gallery/66041517_p0.png',
+            bgUrl: 'https://s3-view.2heng.xin/aws_cached/2019/04/21/028c53459be4467ca73f10adce5c375f_th.jpg',
             toWeek: {
                 Monday: '星期一',
                 Tuesday: '星期二',
