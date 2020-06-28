@@ -5,7 +5,7 @@
 const defaultTitle = "旅途与画"
 
 export default new VueRouter({
-  mode: "hash",
+  mode: "history",
   linkExactActiveClass:'active',
   routes: [
     {

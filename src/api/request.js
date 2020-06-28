@@ -48,7 +48,7 @@ const githubFetch = async (url, isQueryPage = false) => {
         })
         checkStatus(response)
         const data = await response.json()
-        console.log("=======",data)
+        // console.log("=======",data)
         return isQueryPage ? data[0] : data
     } catch (error) {
         console.log(error)
