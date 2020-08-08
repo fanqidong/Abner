@@ -134,6 +134,14 @@
     border-radius: 0 5px 5px 0;
 }
 
+.btn-next{
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #007fff;
+    cursor: pointer;
+}
 @media screen and (max-width: 768px) {
     .article {
         &-desc {

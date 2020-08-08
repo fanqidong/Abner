@@ -8,7 +8,7 @@
                 <p>元气满满的一天哦！</p>
             </div>
             <section class="article">
-                <div class="article-list" v-if="posts.length">
+                <div class="article-list" v-if="posts.length > 0">
                     <article
                         data-aos="fade-up"
                         data-aos-once="true"
@@ -57,7 +57,8 @@
                         </div>
                         <!-- 文章内容 End -->
                     </article>
-                    <div class="line">我是有底线的</div>
+                    <button v-if="hasMore"  class="btn btn-next" @click="handleNext">下一页</button>
+                    <div v-else class="line">我是有底线的</div>
                 </div>
                 <partLoading v-else />
             </section>
@@ -100,7 +101,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['posts', 'hasMore', 'homeScrollTop']),
+        ...mapState(['posts', 'hasMore', 'homeScrollTop','page']),
         today() {
             let time = dayjs(new Date()).format('YYYY年MM月DD日')
             let week = this.toWeek[dayjs(new Date()).format('dddd')]
@@ -111,14 +112,23 @@ export default {
         }
     },
     methods: {
+        async handleNext() {
+            await store.dispatch('queryPosts', {
+                page: this.page + 1,
+                pageSize: '10',
+                filter: ''
+            })
+        },
         //  获取文章列表
         async getPosts() {
             await store.dispatch('queryPosts', {
-                page: '0',
-                pageSize: '10'
+                page: 1,
+                pageSize: 10,
+                filter: ''
             })
         },
         // 前往文章详情页
+
         goDetail(number) {
             this.$router.push({ name: 'ArticleDetail', params: { number } })
         },

@@ -5,16 +5,17 @@
  * @Date: 2019-03-04 10:03:13
  * @LastEditTime: 2019-04-16 14:27:41
  */
-// import Vue from "vue"
-// import Vuex from "vuex"
+import Vue from "vue"
+import Vuex from "vuex"
 
-// Vue.use(Vuex)
+
+Vue.use(Vuex)
 import { queryPosts, queryPost, queryHot, queryCategory, queryMood, queryLabel, queryType, queryLikeSite, queryPhoto } from '@/api/request'
 import { formatPost, formatCategory, formatType } from '@/utils/format'
 export default new Vuex.Store({
     state: {
-        page: 0,
-        pageSize: '',
+        page: 1,
+        pageSize: 10,
         posts: [],
         hasMore: true,
         homeScrollTop: 0
@@ -24,7 +25,7 @@ export default new Vuex.Store({
         setPosts(state, { posts, page }) {
             state.page = page
             state.posts = state.posts.concat(posts)
-            state.hasMore = posts.length === state.pageSize
+            state.hasMore = !(posts.length < state.pageSize)
         },
         // 记录滚动条高度
         recordScroll(state, { homeScrollTop }) {
@@ -33,18 +34,19 @@ export default new Vuex.Store({
     },
     actions: {
         // 获取文章列表
-        async queryPosts({ commit, state }) {
-            const { page, pageSize, hasMore } = state
+        async queryPosts({ commit, state }, payload) {
+            const { page, pageSize } = payload
+            const hasMore = state
             if (!hasMore) return
             let data = await queryPosts({
-                page: page + 1,
+                page,
                 pageSize
             })
             data && data.forEach(formatPost)
-            // data = await queryHot(data)
+            data = await queryHot(data)
             commit('setPosts', {
                 posts: data,
-                page: page + 1
+                page
             })
         },
         // 获取文章归档
@@ -61,7 +63,7 @@ export default new Vuex.Store({
             if (!post) {
                 post = await queryPost(number)
                 // let newPost = await queryHot([post], true)
-                // post = formatPost(newPost[0])
+                post = formatPost(post)
             }
             return post
         },

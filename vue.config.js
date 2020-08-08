@@ -4,7 +4,6 @@ module.exports = {
   configureWebpack: {
     externals: {
       "leancloud-storage": "AV",
-      'vue': 'Vue',
       'vue-router': 'VueRouter',
       'vuex': 'Vuex'
     }

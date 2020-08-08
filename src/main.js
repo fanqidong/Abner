@@ -1,4 +1,4 @@
-// import Vue from "vue"
+import Vue from "vue"
 import App from "./App.vue"
 import router from "./router"
 import store from "./store"
@@ -62,14 +62,14 @@ router.beforeEach((to, from, next) => {
 })
 
 // 生产环境才加入百度统计
-if (location.hostname === "www.luckydong.cn") {
+if (location.hostname === "101.133.145.182") {
     var _hmt = _hmt || [];
     (function() {
-        var hm = document.createElement("script")
-        hm.src = "https://hm.baidu.com/hm.js?6d015a128eb19f8bcca11aadbe7993ff"
-        var s = document.getElementsByTagName("script")[0]
-        s.parentNode.insertBefore(hm, s)
-    })()
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?86e0f33202d8290790223ff4938a44a0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+    })();
 }
 
 new Vue({

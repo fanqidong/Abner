@@ -3,7 +3,6 @@ import gobalConfig from '../config/global.config'
 import Router from '../router'
 import AV from 'leancloud-storage'
 const { blog, token, creator, isDev } = gobalConfig
-// const access_token = `access_token=${token.join('')}`
 const access_token = `token ${token.join('')}`
 const open = `creator=${creator}&state=open&${access_token}`
 const closed = `creator=${creator}&state=closed`
@@ -39,6 +38,7 @@ const httpGet = (url, params) => {
 
 // github fetch
 const githubFetch = async (url, isQueryPage = false) => {
+    console.log('access_token', access_token)
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -46,11 +46,15 @@ const githubFetch = async (url, isQueryPage = false) => {
                 Authorization: access_token
             }
         })
+        console.log('response', response)
         checkStatus(response)
         const data = await response.json()
         // console.log("=======",data)
         return isQueryPage ? data[0] : data
     } catch (error) {
+        // if (error) {
+        //     window.location.reload();
+        // }
         console.log(error)
     }
 }
@@ -65,8 +69,10 @@ export const queryPhoto = async () => {
 }
 
 // 获取文章列表
-export const queryPosts = ({ page = 1, pageSize = 10, filter = '' }) => {
+export const queryPosts = ({ page = '1', pageSize = ' 10', filter = '' }) => {
+    console.log('pageSize===', pageSize)
     const url = `${blog}/issues?state=open&page=${page}&per_page=${pageSize}${filter}`
+    console.log('url===', url)
     return githubFetch(url)
 }
 
